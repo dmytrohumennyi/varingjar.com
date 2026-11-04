@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="en";var TARGETS={"en":"lecture-05.html","uk":"../../uk/teaching/embedded-software-engineering/lecture-05.html","de":"../../de/teaching/embedded-software-engineering/lecture-05.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Proposal, Standards and Commercial Model — Væringjar II</title><meta content="Reference documents, conformity constraints, V&amp;V, resources and pricing models turn a technical idea into a proposal that can actually be negotiated." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20260928-scientific-v3" rel="stylesheet"/>
+<link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-05.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-05.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-05.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-05.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-05.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="From Lead to Client: RFI, RFC, RFQ and Proposal — Væringjar II" property="og:title"/><meta content="Lecture 4 of Embedded Software Engineering: initial meetings, RFI/RFQ/RFC, proposal structure, versioning, resources, timeline and risk." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/teaching/embedded-software-engineering/lecture-05.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="From Lead to Client: RFI, RFC, RFQ and Proposal — Væringjar II" name="twitter:title"/><meta content="Lecture 4 of Embedded Software Engineering: initial meetings, RFI/RFQ/RFC, proposal structure, versioning, resources, timeline and risk." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Framework</a><a href="../../research.html">Evidence</a><a href="../../implementation.html">Build</a><a class="active" href="../../teaching.html">Teaching</a><a href="../../collaboration.html">Collaborate</a></div>
+<div aria-label="Language" class="lang-switch"><a aria-current="page" class="active" data-lang="en" href="lecture-05.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../uk/teaching/embedded-software-engineering/lecture-05.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../de/teaching/embedded-software-engineering/lecture-05.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Teaching / Lecture 05 · 16.09.2026</div><h1>Proposal, Standards and Commercial Model</h1><p class="lead reader-lead">Reference documents, conformity constraints, V&amp;V, resources and pricing models turn a technical idea into a proposal that can actually be negotiated.</p><div class="reader-badges"><span>16.09.2026</span><span>session 05 / 06</span><span>frozen 28.09.2026</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Course overview →</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / <b>MODULE 04</b> · COMMERCIAL ENGINEERING / 05 · 16.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-05.html">Previous · From Lead to Formal Pre-Sale</a><span class="current">Current · 05</span><a class="next" href="lecture-06.html">Next · From Contract to Requirements and First Architecture</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Key ideas</div><h2>Key ideas</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Know document status</h3><p>Frameworks, standards, guidelines and laws are not interchangeable.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>CE is conformity, not a generic certificate</h3><p>Applicable EU legislation drives conformity; harmonised standards are usually voluntary routes.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>T&amp;M ≠ client owns all risk</h3><p>Commercial model changes exposure, but legal/liability allocation remains contractual.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>Estimate must be traceable</h3><p>Workstreams, resources, materials, lead times and contingency must explain the number.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">Takeaway</div><h2>Practical takeaway</h2><div class="reader-copy"><p class="reader-takeaway">A credible Proposal links the technical solution to reference basis, verification evidence, resources, schedule, uncertainty and a commercial model.</p></div></div></section><section class="reader-section section-tight next-lecture-section"><div class="container"><div class="next-lecture-card"><div class="section-eyebrow">Next time</div><h2>06 — From Contract to Requirements and First Architecture</h2><p>The course crosses from pre-sale into delivery: staffing lead time, discovery, business decomposition, user needs, system requirements and the first architecture sketch.</p></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Reconstructed &amp; frozen notes</div><h2>Full lecture notes</h2><p class="lecture-notes-intro">The complete English academic notes follow the Ukrainian source, retaining the original argument, engineering examples, terminology, diagrams, tasks and editorial qualifications. The original transcripts remain available separately in Ukrainian.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="source-notes/R05-proposal-standarty-ta-komertsiina-model.md">Open source Markdown →</a> <a class="btn btn-ghost" href="source-transcripts/2026-09-16.md">Raw transcript →</a></div><article class="lecture-article lecture-notes-content" lang="en"><h1>Lecture 05. Proposals, Standards and Commercial Models</h1>
+<blockquote>
+<p><strong>Chronology:</strong> 16 September 2026 · fifth session. Primary source: <a href="source-transcripts/2026-09-16.md">the complete transcript</a>. Focus: turn a pre-sales vision into a controlled collection of engineering assumptions, regulatory references, resources and commercial risks.</p>
+</blockquote>
+<h2>1. Our position in the lifecycle</h2>
+<p>The session begins by revisiting the sequence used as the course's teaching model:</p>
+<pre><code class="language-text">Lead
+ ↓
+RFI
+ ↓
+RFC (Request for Clarification — course terminology)
+ ↓
+Proposal
+ ↘
+  RFQ / commercial estimate
+</code></pre>
+<p>In real procurement, the sequence may differ; some deliverables may run in parallel or have different names. What matters is not bureaucratic ordering, but the logic: understand the task first, then articulate an approach, and then <strong>estimate</strong> resources and risks transparently.</p>
+<h2>2. Why an embedded proposal quickly encounters standards</h2>
+<p>For systems interacting with the physical world, customer expectations often cover much more than functions:</p>
+<ul>
+<li>safety;</li>
+<li>security;</li>
+<li>EMC, electrical and mechanical constraints;</li>
+<li>quality processes;</li>
+<li>traceability;</li>
+<li>production and market requirements;</li>
+<li>verification evidence.</li>
+</ul>
+<p>A proposal therefore needs a reference basis: the regulatory, process and <strong>engineering</strong> documents affecting the solution.</p>
+<h2>3. Three levels of guidance: framework → standard → guideline / practice</h2>
+<p>The lecture proposes a helpful teaching hierarchy:</p>
+<pre><code class="language-text">PROCESS / ASSESSMENT FRAMEWORK
+            ↓
+        STANDARDS
+            ↓
+ GUIDELINES / RULE SETS / PRACTICES
+            ↓
+     PROJECT IMPLEMENTATION
+</code></pre>
+<p>This must not be mistaken for a universal legal hierarchy, since particular documents can have different legal or contractual status. It remains a useful way of organizing technical reasoning.</p>
+<h3>Framework / process model</h3>
+<p>Mostly answers the questions “Which processes should exist, and how is their capability assessed?”</p>
+<p>Example: Automotive SPICE.</p>
+<h3>Standard</h3>
+<p>Defines requirements, principles, work products or criteria for a particular domain.</p>
+<h3>Guideline / coding or design rule set</h3>
+<p>Helps translate high-level requirements into concrete engineering rules. Examples include MISRA C/C++, MAAB style guidelines and internal project rules, but the reasons for applying them must always be stated.</p>
+<h2>4. Editorial clarification — Automotive SPICE capability levels</h2>
+<p>The transcript mentioned a model with seven levels. The capability scale in Automotive SPICE PAM 4.0 actually runs from Level 0 through Level 5:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Incomplete</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Performed</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Managed</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Established</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Predictable</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Innovating</td>
+</tr>
+</tbody>
+</table>
+<p>Official VDA QMC PAM 4.0: <a href="https://vda-qmc.de/wp-content/uploads/2023/12/Automotive-SPICE-PAM-v40.pdf">https://vda-qmc.de/wp-content/uploads/2023/12/Automotive-SPICE-PAM-v40.pdf</a></p>
+<p>It is also important that Automotive SPICE is a process assessment model, not a certificate that automatically authorizes the holder to develop systems of a particular complexity class.</p>
+<h2>5. Editorial clarification — standards and CE marking</h2>
+<p>In the spoken lecture, standards were identified too strongly with laws and CE marking with “ISO certification”.</p>
+<p>For the European Union, the more accurate model is:</p>
+<pre><code class="language-text">applicable EU legislation = mandatory legal requirements
+             ↓
+harmonised standards = usually voluntary route to presumption of conformity
+             ↓
+conformity assessment + technical documentation + declaration
+             ↓
+CE marking, where required by applicable law
+</code></pre>
+<p>In other words:</p>
+<ul>
+<li>European standards are generally voluntary technical specifications unless legislation makes a specific requirement mandatory;</li>
+<li>harmonised standards often provide a presumption of conformity, although alternative technical solutions may be acceptable;</li>
+<li>CE marking is not a universal quality certificate and does not always involve a third party;</li>
+<li>first determine exactly which legislation applies to the particular product.</li>
+</ul>
+<p>Official EU resources:</p>
+<ul>
+<li><a href="https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/standards-in-europe/index_en.htm">https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/standards-in-europe/index_en.htm</a></li>
+<li><a href="https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/conformity-assessment/index_en.htm">https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/conformity-assessment/index_en.htm</a></li>
+<li><a href="https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/ce-marking/index_en.htm">https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/ce-marking/index_en.htm</a></li>
+</ul>
+<h2>6. Functional safety classification: do not mix domains and standards</h2>
+<p>HARA and ASIL reappear in the lecture as an example of risk classification determining the rigor of engineering activities.</p>
+<h3>Editorial clarification</h3>
+<p>Under ISO 26262, automotive ASIL is classified using Severity, Exposure and Controllability. QM and ASIL A–D must not be treated as a universal scale that applies without adaptation to every industry.</p>
+<p>ISO 26262-3: <a href="https://www.iso.org/standard/68385.html">https://www.iso.org/standard/68385.html</a></p>
+<p>Similarly, rules such as “prohibit dynamic memory” or “keep 70% of memory unused” may be project-specific or domain-specific guidelines, but should not be presented as universally explicit ISO 26262 requirements without a precise reference.</p>
+<h2>7. A proposal must show architecture, implementation and V&amp;V</h2>
+<p>The <strong>customer</strong> must be able to see not only what we will build but how we will demonstrate that the result satisfies the need.</p>
+<h3>Architecture</h3>
+<ul>
+<li>high-level decomposition;</li>
+<li>major interfaces;</li>
+<li>external dependencies;</li>
+<li>key constraints;</li>
+<li>alternatives and trade-offs.</li>
+</ul>
+<h3>Implementation</h3>
+<ul>
+<li>technologies and tools;</li>
+<li>planned workstreams;</li>
+<li>build and manufacturing route;</li>
+<li>integration strategy;</li>
+<li>feasibility checks or a PoC when needed.</li>
+</ul>
+<h3>Verification &amp; Validation</h3>
+<ul>
+<li>reviews and static analysis;</li>
+<li>unit tests;</li>
+<li>integration tests;</li>
+<li>bench, HIL and real-hardware tests;</li>
+<li>regression and performance tests;</li>
+<li>acceptance and validation evidence.</li>
+</ul>
+<p>Do not mechanically insert every testing technique into each proposal. The V&amp;V strategy must derive from product risks, requirements and the applicable process or reference basis.</p>
+<h2>8. Resources are not only people</h2>
+<p>An embedded-project estimate includes at least four resource layers:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>People</td>
+<td>architect, firmware, hardware, mechanics, QA, safety and security, manager</td>
+</tr>
+<tr>
+<td>Materials</td>
+<td>components, PCBs, mechanical parts, harnesses, fixtures</td>
+</tr>
+<tr>
+<td>External services</td>
+<td>fabrication, assembly, laboratories, certification or conformity-assessment work</td>
+</tr>
+<tr>
+<td>Time / dependencies</td>
+<td>lead times, shipment, customs, redesign cycles and waiting for samples</td>
+</tr>
+</tbody>
+</table>
+<p>Consequently, the Gantt chart and critical path of an embedded project frequently depend on things that cannot be accelerated merely by adding another software engineer.</p>
+<h2>9. Time &amp; Materials and Fixed Price: what really changes</h2>
+<p>The lecture compares two basic commercial models.</p>
+<h3>Time &amp; Materials</h3>
+<p>The customer pays for actual engagement at agreed rates and, as provided by the contract, material and external-service expenses. This model works well with uncertain scope, discovery, research, R&amp;D and frequent changes.</p>
+<h3>Fixed Price</h3>
+<p>The provider commits to completing a defined scope under agreed price and contractual conditions. This requires much clearer scope, acceptance criteria, assumptions and change control.</p>
+<h3>Editorial clarification — risk allocation</h3>
+<p>It is incorrect to claim categorically that “all risks are the customer's under T&amp;M” or “all risks are the vendor's under <strong>Fixed Price</strong>”. Legal, safety, IP, liability, warranty, schedule and commercial risks are allocated by the contract.</p>
+<p>A simplified comparison:</p>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>T&amp;M</th>
+<th>Fixed Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope uncertainty</td>
+<td>easier to absorb through reprioritization</td>
+<td>risky without a change request</td>
+</tr>
+<tr>
+<td>Provider's effort overrun</td>
+<td>more often billable when the work is authorized</td>
+<td>more often reduces the provider's margin</td>
+</tr>
+<tr>
+<td>Customer budget predictability</td>
+<td>lower</td>
+<td>higher for frozen scope</td>
+</tr>
+<tr>
+<td>Need for clear acceptance criteria</td>
+<td>important</td>
+<td>critical</td>
+</tr>
+<tr>
+<td>Legal / liability risk</td>
+<td>depends on the contract</td>
+<td>depends on the contract</td>
+</tr>
+</tbody>
+</table>
+<h2>10. When Fixed Price makes sense</h2>
+<p>In the logic of the lecture, Fixed Price becomes realistic when:</p>
+<ul>
+<li>the problem and scope are well understood;</li>
+<li>requirements are sufficiently stable;</li>
+<li>the provider has done comparable work before;</li>
+<li>acceptance criteria are clear;</li>
+<li>dependencies and customer responsibilities are documented;</li>
+<li>a change-management process exists;</li>
+<li>uncertainty has been reflected in contingency and margin.</li>
+</ul>
+<p>If these conditions do not hold, T&amp;M or a phased engagement model is often more transparent.</p>
+<h2>11. Estimates must be traceable</h2>
+<p>A proper estimate does not begin with “I think it will take three months”. It begins with decomposition.</p>
+<pre><code class="language-text">scope / assumptions
+      ↓
+workstreams / WBS
+      ↓
+roles + effort
+      ↓
+materials + external services
+      ↓
+dependencies / lead times
+      ↓
+risk / contingency
+      ↓
+commercial estimate
+</code></pre>
+<p>Every significant number needs an explanation: where it came from and which factors would change it.</p>
+<h2>12. Review questions</h2>
+<ol>
+<li>Why does a proposal need a reference basis?</li>
+<li>How does a process assessment model differ from a product safety standard?</li>
+<li>What capability levels are defined in Automotive SPICE 4.0?</li>
+<li>Why should CE marking not be called merely “ISO certification”?</li>
+<li>What benefit can a harmonised standard provide in the EU?</li>
+<li>Which three parameters underpin automotive HARA/ASIL classification?</li>
+<li>What is the principal commercial difference between T&amp;M and Fixed Price?</li>
+<li>Why cannot legal and liability risks be inferred from the pricing model alone?</li>
+<li>Which non-human resources belong in an embedded-project estimate?</li>
+<li>What makes an estimate traceable?</li>
+</ol>
+<h2>13. Session diagram</h2>
+<pre><code class="language-text">client need
+   ↓
+reference basis
+   ├─ process/framework
+   ├─ standards / legislation
+   └─ guidelines / project rules
+   ↓
+architecture + implementation + V&amp;V
+   ↓
+resources + timeline + risks
+   ↓
+T&amp;M / FP / hybrid commercial model
+   ↓
+Proposal that can be negotiated
+</code></pre>
+<h2>14. Transition to 22 September 2026</h2>
+<p>An approved proposal leads to another major transition: a contact must become a contract, and the contract must become a delivery team and requirements. The next session starts the journey from a signed agreement through staffing, product discovery, business analysis, user stories and system requirements to the first <strong>architecture</strong> visualization.</p>
+<h2>Verified references</h2>
+<ul>
+<li>Automotive SPICE PAM 4.0: <a href="https://vda-qmc.de/wp-content/uploads/2023/12/Automotive-SPICE-PAM-v40.pdf">https://vda-qmc.de/wp-content/uploads/2023/12/Automotive-SPICE-PAM-v40.pdf</a></li>
+<li>ISO 26262-3:2018: <a href="https://www.iso.org/standard/68385.html">https://www.iso.org/standard/68385.html</a></li>
+<li>EU standards overview: <a href="https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/standards-in-europe/index_en.htm">https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/standards-in-europe/index_en.htm</a></li>
+<li>EU conformity assessment: <a href="https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/conformity-assessment/index_en.htm">https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/conformity-assessment/index_en.htm</a></li>
+<li>CE marking: <a href="https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/ce-marking/index_en.htm">https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/ce-marking/index_en.htm</a></li>
+</ul>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Teaching</b><p style="margin-top:8px">Author teaching materials by Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">About the author →</a></div>
+<div class="footer-links"><b>Course</b><a href="index.html">Course overview</a><a href="lecture-01.html">Lecture 01</a><a href="lecture-02.html">Lecture 02</a><a href="lecture-03.html">Lecture 03</a><a href="lecture-05.html">Lecture 04</a></div>
+<div class="footer-links"><b>Context</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in Power Engineering</a><a href="../../teaching.html">All teaching materials</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Privacy</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../assets/js/locale.js"></script><script defer src="../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

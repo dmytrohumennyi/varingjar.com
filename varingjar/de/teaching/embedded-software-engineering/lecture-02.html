@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="de";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-02.html","uk":"../../../uk/teaching/embedded-software-engineering/lecture-02.html","de":"lecture-02.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Engineering-Team und physische Delivery-Kette — Væringjar II</title><meta content="Firmware, Hardware und Mechanik bilden den Kern; Architektur, Management, Beschaffung und Fertigung verbinden die drei Ströme zu einem System." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20260928-scientific-v3" rel="stylesheet"/>
+<link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-02.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-02.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-02.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-02.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-02.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Das Engineering-Team eines Embedded-Projekts — Væringjar II" property="og:title"/><meta content="Kurzfassung der zweiten Vorlesung des Autorenkurses Embedded Software Engineering: Teamrollen, Hardware, Mechanik, Architektur und Lieferkette." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-02.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Das Engineering-Team eines Embedded-Projekts — Væringjar II" name="twitter:title"/><meta content="Kurzfassung der zweiten Vorlesung des Autorenkurses Embedded Software Engineering: Teamrollen, Hardware, Mechanik, Architektur und Lieferkette." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Modell</a><a href="../../research.html">Evidenz</a><a href="../../implementation.html">Implementierung</a><a class="active" href="../../teaching.html">Lehre</a><a href="../../collaboration.html">Mitwirken</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-02.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../../uk/teaching/embedded-software-engineering/lecture-02.html?lang=uk" hreflang="uk" lang="uk">UA</a><a aria-current="page" class="active" data-lang="de" href="lecture-02.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Lehre / Vorlesung 02 · 02.09.2026</div><h1>Engineering-Team und physische Delivery-Kette</h1><p class="lead reader-lead">Firmware, Hardware und Mechanik bilden den Kern; Architektur, Management, Beschaffung und Fertigung verbinden die drei Ströme zu einem System.</p><div class="reader-badges"><span>02.09.2026</span><span>Sitzung 02 / 06</span><span>eingefroren 28.09.2026</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Kursübersicht →</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / <b>MODULE 02</b> · TEAM &amp; DELIVERY / 02 · 02.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-01.html">Zurück · Embedded-Systeme, Risiken und zwei IT-Geschäftsmodelle</a><span class="current">Aktuell · 02</span><a class="next" href="lecture-03.html">Als Nächstes · Vom unbekannten Unternehmen zum Lead</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Kernideen</div><h2>Kernideen</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Drei Kernströme</h3><p>Firmware, Hardware und Mechanik müssen gemeinsam wachsen statt erst am Ende integriert zu werden.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>Schnittstellen haben eine physische Ebene</h3><p>Ein Peripheral-Controller ist noch keine feldtaugliche Schnittstelle; PHY/Transceiver und Schutz zählen.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>Architektur integriert Entscheidungen</h3><p>Der Architekt hält die Systemkohärenz über lokale Engineering-Entscheidungen hinweg.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>Supply Chain wird kritisch</h3><p>Bauteile, Fertigung, Versand und Re-Spins gehören zum Engineering-Zeitplan.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">Kernaussage</div><h2>Praktische Kernaussage</h2><div class="reader-copy"><p class="reader-takeaway">Das Produkt entsteht durch ein cross-funktionales System, nicht durch isolierte Firmware-, Hardware- und Mechanik-Spezialisten.</p></div></div></section><section class="reader-section section-tight next-lecture-section"><div class="container"><div class="next-lecture-card"><div class="section-eyebrow">Als Nächstes</div><h2>03 — Vom unbekannten Unternehmen zum Lead</h2><p>Vertrauen, Empfehlungen, öffentliche Belege, Technical Champions und Events schaffen die Basis für ein echtes Kundengespräch.</p></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Rekonstruiertes &amp; eingefrorenes Material</div><h2>Vollständiges Vorlesungsskript</h2><p class="lecture-notes-intro">Aus dem primären ukrainischen Transkript rekonstruiert. Redaktionelle Korrekturen und externe Ergänzungen sind im Material ausdrücklich markiert.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R02-inzhenerna-komanda-embedded-proiektu.md">Quell-Markdown öffnen →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-02.md">Ukrainisches Rohtranskript →</a></div><article class="lecture-article lecture-notes-content" lang="de"><h1>Engineering-Team und physische Delivery-Kette</h1>
+<blockquote>
+<p>Chronologie: 2. September 2026 · zweite Veranstaltung. Primärquelle: <a href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-02.md">vollständiges Transkript</a>. Zusammenhang: Fortsetzung von Vorlesung 01 – von der Definition eingebetteter Systeme zu Menschen, Bauteilen und physischer Lieferung.</p>
+</blockquote>
+<h2>1. Vom Software-Stack zum physischen Produkt</h2>
+<p>In der vorigen Veranstaltung wurde Embedded-Software als Software auf festgelegter Hardware definiert. Dieses Konzept wird jetzt zu einer vollständigen Engineering-Kette erweitert.</p>
+<pre>Anwendung
+          ↓
+Middleware / Betriebssystem / Dienste
+          ↓
+HAL / Treiber
+          ↓
+MCU / SoC
+          ↓
+PHY / Transceiver / Versorgung / Schutz
+          ↓
+Leiterplatte + Mechanik + Steckverbinder
+          ↓
+physische Umgebung
+</pre>
+<p>In einem realen Produkt ist das Hardwaredesign nicht mit der Wahl eines MCU oder SoC abgeschlossen. Erforderlich sind weiterhin Versorgungsspannungen, Reset- und Taktschaltungen, möglicherweise Speicher, Schutzmaßnahmen, physische Schnittstellen, Steckverbinder, Leiterplatte, Wärmemanagement, Gehäuse, Fertigung und Integration.</p>
+<h2>2. Hardware Engineering: Das Zielsystem ist nur der Anfang</h2>
+<p>Die Vorlesung zerlegt den Hardware-Arbeitsbereich in Schritte von der Auswahl der Zielplattform bis zur Gestaltung der Umgebung, die einen realen Einsatz ermöglicht.</p>
+<h3>2.1. Mindestfragen an den Entwurf</h3>
+<ul>
+<li>Welcher MCU, SoC, DSP oder FPGA passt hinsichtlich Rechenleistung, Speicher, Peripherie und Produktlebenszyklus?</li>
+<li>Wie wird das System versorgt?</li>
+<li>Wie startet es und wie erfolgt der Reset?</li>
+<li>Welche Taktquellen werden benötigt?</li>
+<li>Welche externen Schnittstellen müssen realisiert werden?</li>
+<li>Welcher elektrische Schutz ist erforderlich?</li>
+<li>Welche EMV- und ESD-Anforderungen ergeben sich aus der Betriebsumgebung?</li>
+<li>Wie werden Leiterplatte und Bauteile gekühlt und mechanisch befestigt?</li>
+<li>Sind die Bauteile in der geplanten Stückzahl verfügbar?</li>
+</ul>
+<h3>2.2. Logische und physische Schicht einer Schnittstelle</h3>
+<p>Ein MCU kann eine digitale Peripheriefunktion anbieten. Das bedeutet noch nicht, dass seine Pins direkt an ein Kabel oder Netzwerk angeschlossen werden dürfen. Viele Schnittstellen benötigen einen Transceiver oder PHY für die physische Signalübertragung.</p>
+<p>Als Beispiel dient CAN:</p>
+<pre>CAN-Controller im MCU
+          ↓
+TX/RX-Logik
+          ↓
+CAN-Transceiver
+          ↓
+differenzielles physisches Signal
+          ↓
+CAN_H / CAN_L-Bus
+</pre>
+<h3>Redaktionelle Präzisierung 01 — CAN und galvanische Trennung</h3>
+<p>Die mündliche Aussage „CAN ist eine galvanisch getrennte Schnittstelle“ ist zu pauschal. Ein CAN-Transceiver wandelt digitale Controllersignale in die physische, gewöhnlich differenzielle Signalform des Übertragungsmediums um. Galvanische Trennung ist eine zusätzliche Entwurfsentscheidung, wenn das System sie benötigt. CAN garantiert diese Trennung nicht von sich aus.</p>
+<p>Offizielle Terminologiereferenz von CiA: <a href="https://www.can-cia.org/fileadmin/cia/documents/brochures/can_dictionary_v13_2026.pdf">https://www.can-cia.org/fileadmin/cia/documents/brochures/can_dictionary_v13_2026.pdf</a></p>
+<h2>3. ESD, EMV und Abschirmung sind keine Synonyme</h2>
+<p>Die Vorlesung betont zu Recht, dass die physische Robustheit nicht auf „später“ verschoben werden darf. Die Begriffe sind aber zu trennen:</p>
+<table>
+<thead>
+<tr>
+<th>Begriff</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESD</td>
+<td>Kurzzeitige elektrostatische Entladung; erfordert geeignete Ableitpfade, Layout, Schutzelemente und Erdungsstrategie.</td>
+</tr>
+<tr>
+<td>EMV (EMC)</td>
+<td>Fähigkeit eines Produkts, in seiner elektromagnetischen Umgebung zufriedenstellend zu funktionieren, ohne unzulässige Störungen zu erzeugen.</td>
+</tr>
+<tr>
+<td>EMI</td>
+<td>Elektromagnetische Störung, die das System aussendet oder empfängt.</td>
+</tr>
+<tr>
+<td>Abschirmung</td>
+<td>Eine von mehreren Maßnahmen zur Begrenzung elektromagnetischer Störungen, keine universelle „ESD-Kappe“.</td>
+</tr>
+</tbody>
+</table>
+<p>Metallabschirmungen, TVS-Dioden, Gleichtaktdrosseln, galvanische Trennung, Filter, Erdung und Leiterplattenlayout behandeln unterschiedliche Aspekte des Problems.</p>
+<h2>4. Drei grundlegende Engineering-Arbeitsbereiche</h2>
+<p>Die Vorlesung führt das Kernteam eingebetteter Systeme auf drei voneinander abhängige Disziplinen zurück:</p>
+<pre>SYSTEM / PRODUKT
+          ↓
+Firmware + Hardware + Mechanik
+          ↓
+Integration
+</pre>
+<h3>Firmware / Software</h3>
+<p>Von der Anwendungslogik über hardwarenahe Treiber, Boot und Updates bis zu Diagnose, Kommunikation, Zeitverhalten und Tests.</p>
+<h3>Hardware</h3>
+<p>Schaltpläne, Bauteilauswahl, Leiterplattenlayout, Stromversorgung, Schnittstellen, Schutz, Inbetriebnahme des Prototyps und Fertigungsbegleitung.</p>
+<h3>Mechanik</h3>
+<p>Gehäuse, Befestigung, Schnittstellen, Wärmepfade, Zugänglichkeit, Fertigbarkeit und Schutz vor der physischen Umgebung.</p>
+<p>Diese Arbeitsbereiche können nicht ehrlich als drei voneinander unabhängige Teams betrachtet werden, deren Ergebnisse erst „am letzten Tag“ integriert werden. Der mechanische Bauraum beeinflusst die Leiterplatte; die Leiterplatte bestimmt Steckerposition und Firmware-Inbetriebnahme; Leistungs- und Temperaturgrenzen beschränken Softwarebetriebsarten; Testbarkeit erfordert Entscheidungen aller drei Gruppen.</p>
+<h2>5. Architekt / Systemingenieur: Entscheidungen vor der Integration verbinden</h2>
+<p>Der Architekt ist in dieser Vorlesung nicht der „Chef der Ingenieure“, sondern sichert die innere Schlüssigkeit der Lösung:</p>
+<ul>
+<li>überträgt Produktbedürfnisse in eine Systemstruktur;</li>
+<li>koordiniert Schnittstellen zwischen Fachbereichen;</li>
+<li>ermittelt technische Zielkonflikte;</li>
+<li>verbindet technische Entscheidungen mit Normen und Randbedingungen;</li>
+<li>unterstützt die Festlegung der Teamzusammensetzung;</li>
+<li>verhindert, dass die Optimierung einer Disziplin das Gesamtsystem beschädigt.</li>
+</ul>
+<p>In der frühen Pre-Sales-Phase hilft diese Rolle außerdem zu bestimmen, welche Kompetenzen dem Kunden zu zeigen sind und ob das vorgeschlagene Vorhaben mit dem Team tatsächlich umgesetzt werden kann.</p>
+<h2>6. Servant Manager / Servant Leader</h2>
+<p>Die Managementfunktion wird als Dienst am Team, nicht als Befehlskette von oben verstanden.</p>
+<p>In der Praxis bedeutet das:</p>
+<ul>
+<li>Hindernisse zwischen Hardware und Mechanik beseitigen;</li>
+<li>technische Probleme mit dem Kunden abstimmen;</li>
+<li>Rechtsfragen, Einkauf und Eskalationen organisieren;</li>
+<li>externe Spezialisten finden;</li>
+<li>Engineering-Zeit vor unnötiger Organisationslast schützen;</li>
+<li>Entscheidungen herbeiführen, für die Ingenieuren Befugnisse oder der vollständige Kontext fehlen.</li>
+</ul>
+<p>Management und Architektur arbeiten somit eng zusammen, lösen jedoch verschiedene Aufgaben: Die Architektur sichert technische Kohärenz, das Management organisiert Abläufe und ermöglicht die termingerechte Lieferung.</p>
+<h2>7. Embedded Engineering braucht eine Lieferkette</h2>
+<p>Anders als rein softwarebasierte Auslieferungen sind Embedded-Projekte an die physische Welt gebunden. Daraus leitet die Vorlesung eine zusätzliche Kette ab:</p>
+<pre>Entwurf
+          ↓
+Bauteilbeschaffung
+          ↓
+Leiterplatten- und Mechanikfertigung
+          ↓
+Montage
+          ↓
+Transport / Zoll
+          ↓
+Inbetriebnahme
+          ↓
+Nacharbeit / nächste Iteration
+</pre>
+<p>Der Engineering-Plan hängt folglich nicht nur von der Entwicklungsgeschwindigkeit ab, sondern auch von Bauteilverfügbarkeit, Lieferzeiten, Fertigungskapazitäten, Logistik und der Möglichkeit weiterer Iterationen.</p>
+<h3>Redaktionelle Präzisierung 02 — Hersteller- und Länderrisiken</h3>
+<p>Die Vorlesung enthält pointierte Beispiele mit bestimmten Herstellern und Ländern. In diesen Notizen werden sie zu überprüfbaren Lieferkettenrisiken verallgemeinert: Bauteillebenszyklus, NRND-/EOL-Status, langfristige Verfügbarkeit, Zweitquellenstrategie, geopolitische oder exportrechtliche Einschränkungen, Herstellerbindung, Preisschwankungen, Supportqualität und Herkunftsnachweis. Diese Kriterien sind ingenieurtechnisch nützlicher als pauschale Aussagen über nationale Herkunft von Marken.</p>
+<h2>8. Kostenoptimierung in der Serienfertigung</h2>
+<p>Bei eingebetteten Produkten kann sich eine kleine Differenz in den Stückkosten der Materialliste auf Tausende oder Millionen Geräte multiplizieren. Deshalb gibt es keine universell richtige Entscheidung zwischen einem teuren hochintegrierten SoC und einem einfacheren MCU mit externen PHY-Bausteinen.</p>
+<p>Ein sachgerechter Vergleich berücksichtigt:</p>
+<pre>Stückkosten der Materialliste + Leiterplattenfläche + Montageaufwand + Prüfkosten + Entwicklungsaufwand + Beschaffungsrisiko + Auswirkungen auf die Zertifizierung + Lebenszykluskosten
+</pre>
+<p>Ein lokal günstigeres Bauteil kann die Fertigungs- oder Supportkosten erhöhen. Umgekehrt kann ein teurerer Schaltkreis die gesamte Materialliste, Leiterplattenfläche und Montagekosten reduzieren.</p>
+<h2>9. Praktische Organisation studentischer Teams</h2>
+<p>Am Ende geht die Veranstaltung von der breiten Theorie zur Gruppenarbeit über. Die Studierenden organisieren sich in kleinen Teams. Dies ist nicht nur Verwaltungsarbeit: Jedes Team modelliert später ein Unternehmen, und die Rollen verändern sich vom geschäftlichen Erstkontakt und Pre-Sales hin zu Engineering und Delivery.</p>
+<p>Die Ausgangsregel lautet: Ein Team soll klein genug für wirksame Koordination, aber vollständig genug für sinnvolle Arbeitsteilung sein.</p>
+<h2>10. Kontrollfragen</h2>
+<ol>
+<li>Weshalb ist ein MCU-Peripheriecontroller noch keine unmittelbar nutzbare physische Schnittstelle?</li>
+<li>Welche Aufgabe erfüllt ein CAN-Transceiver?</li>
+<li>Warum darf CAN nicht mit galvanischer Trennung gleichgesetzt werden?</li>
+<li>Wodurch unterscheidet sich ESD von EMV?</li>
+<li>Welche drei Arbeitsbereiche bilden das Kernteam für eingebettete Systeme in diesem Kurs?</li>
+<li>Wie unterscheiden sich die Aufgaben von Architekt und Manager?</li>
+<li>Warum können Beschaffung und Logistik Teil des kritischen Projektpfades werden?</li>
+<li>Weshalb führt der niedrigste Materiallistenpreis nicht immer zu den niedrigsten Systemkosten?</li>
+</ol>
+<h2>11. Einprägsames Schema</h2>
+<pre>KUNDEN- / PRODUKTBEDARF
+          ↓
+Systemarchitekt
+          ↓
+Firmware + Hardware + Mechanik
+          ↓
+Integration
+          ↓
+Prüfung / Fertigung
+          ↓
+Beschaffung / Logistik
+          ↓
+Lieferung; ein Servant Manager beseitigt fachübergreifende Hindernisse.
+</pre>
+<h2>12. Übergang zum 8. September 2026</h2>
+<p>Nun existiert ein Team, das potenziell etwas entwickeln kann. Die nächste Frage lautet: Woher kommt die Arbeit? Der Kurs geht deshalb zur Entwicklung eines Dienstleistungsgeschäfts über: Wie wird ein unbekanntes Unternehmen sichtbar, wie entsteht Vertrauen und wie wird aus einem Kontakt ein Lead?</p>
+<h2>Geprüfte Referenzen</h2>
+<ul>
+<li>AUTOSAR Classic Platform — Schichtenarchitektur: <a href="https://www.autosar.org/standards/classic-platform">https://www.autosar.org/standards/classic-platform</a></li>
+<li>CAN in Automation, CAN Dictionary 2026: <a href="https://www.can-cia.org/fileadmin/cia/documents/brochures/can_dictionary_v13_2026.pdf">https://www.can-cia.org/fileadmin/cia/documents/brochures/can_dictionary_v13_2026.pdf</a></li>
+</ul>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Lehre</b><p style="margin-top:8px">Lehrmaterialien von Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">Über den Autor →</a></div>
+<div class="footer-links"><b>Kurs</b><a href="index.html">Kursübersicht</a><a href="lecture-01.html">Vorlesung 01</a><a href="lecture-02.html">Vorlesung 02</a><a href="lecture-03.html">Vorlesung 03</a><a href="lecture-02.html">Vorlesung 04</a></div>
+<div class="footer-links"><b>Kontext</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in der Energietechnik</a><a href="../../teaching.html">Alle Lehrmaterialien</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Datenschutz</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

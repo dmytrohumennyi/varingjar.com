@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="de";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-07.html","uk":"../../../uk/teaching/embedded-software-engineering/lecture-07.html","de":"lecture-07.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Vorbereitung eines Engineering-Unternehmens auf Fachveranstaltungen — Væringjar II</title><meta content="Ein Engineering-Unternehmen braucht ein klares Profil: konsistente Identität, nutzbare Kontakte, Visitenkarten und ein nachvollziehbares technisches One-Pager." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-07.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-07.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-07.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-07.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-07.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Vorbereitung eines Engineering-Unternehmens auf Fachveranstaltungen" property="og:title"/><meta content="Ein Engineering-Unternehmen braucht ein klares Profil: konsistente Identität, nutzbare Kontakte, Visitenkarten und ein nachvollziehbares technisches One-Pager." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-07.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Vorbereitung eines Engineering-Unternehmens auf Fachveranstaltungen" name="twitter:title"/><meta content="Ein Engineering-Unternehmen braucht ein klares Profil: konsistente Identität, nutzbare Kontakte, Visitenkarten und ein nachvollziehbares technisches One-Pager." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Modell</a><a href="../../research.html">Evidenz</a><a href="../../implementation.html">Implementierung</a><a class="active" href="../../teaching.html">Lehre</a><a href="../../collaboration.html">Mitwirken</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-07.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../../uk/teaching/embedded-software-engineering/lecture-07.html?lang=uk" hreflang="uk" lang="uk">UA</a><a aria-current="page" class="active" data-lang="de" href="lecture-07.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Lehre / Sitzung 07 · 29.09.2026</div><h1>Vorbereitung eines Engineering-Unternehmens auf Fachveranstaltungen</h1><p class="lead reader-lead">Ein Engineering-Unternehmen braucht ein klares Profil: konsistente Identität, nutzbare Kontakte, Visitenkarten und ein nachvollziehbares technisches One-Pager.</p><div class="reader-badges"><span>29.09.2026</span><span>Session 07 / 09</span><span>01:24:48</span><span>Lecture &amp; practice</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Kursübersicht →</a><a class="btn btn-primary" href="#full-notes">Vollständige deutsche Vorlesungsnotizen ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODULE 05 · CLIENT ENGAGEMENT / 07 · 29.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-06.html">Zurück · 06</a><span class="current">07</span><a class="next" href="lecture-08.html">Weiter · 08</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Chronologischer Kursverlauf</div><h2>Technische Vorlesungsnotizen</h2><p class="reader-intro">Ein Engineering-Unternehmen braucht ein klares Profil: konsistente Identität, nutzbare Kontakte, Visitenkarten und ein nachvollziehbares technisches One-Pager.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Engineering-Profil definieren</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Kontakte nutzbar machen</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Belegbare One-Pager erstellen</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>Lead-Prozess vorbereiten</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Vollständige deutsche Vorlesungsnotizen</div><h2>Vollständige deutsche Vorlesungsnotizen</h2><p class="lecture-notes-intro">Vollständiger deutschsprachiger Fachkontext zu dieser Veranstaltung, einschließlich Beispielen, Tabellen, Modellen, Aufgaben und Quellenverweisen. Die ukrainischen Originalunterlagen bleiben als Primärquellen verlinkt.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R07-2026-09-29.md">Ukrainische Originalnotizen (Markdown) →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-29.md">Ukrainisches Rohtranskript →</a></div><article class="lecture-article lecture-notes-content" lang="de"><h1>Vorbereitung eines Engineering-Unternehmens auf Fachveranstaltungen</h1>
+<blockquote>
+<p>29. September 2026 · kombinierte Vorlesung und Übung · 1 Stunde 24 Minuten 48 Sekunden. Quelle: vollständiges automatisches Transkript L4. Der Stoff wurde redaktionell aufbereitet; tatsächliche Beispiele, Bewertungen und persönliche Beobachtungen des Dozenten sind von allgemeingültigen Anforderungen und statistisch belegten Zusammenhängen zu unterscheiden.</p>
+</blockquote>
+<h2>Die Einordnung dieser Veranstaltung in den Kurs</h2>
+<p>Bisher führte der Kurs von produkt- und dienstleistungsorientierten Geschäftsmodellen über Teamorganisation, Bedarfsermittlung, RFI/RFQ/RFC, Angebote, Vertragsabschluss und Discovery bis zu ersten Architekturkonzepten. Nun wird überprüft, ob die Studierenden diesen Weg mit einer eigenen fiktiven Ingenieurfirma nachvollziehen können, bevor Personalgewinnung, Jira oder GitHub Projects und die planmäßige Umsetzung beginnen. Lernfolge: Positionierung → Arbeitsprodukte → Messegespräch → Folgegespräch → Kundenanfrage → Angebot → technische Umsetzung.</p>
+<h2>1. Ein Team wird zur Firma, wenn es sich verständlich vorstellen kann</h2>
+<p>Jede der vier Studierendengruppen simuliert ein eigenständiges Unternehmen in einem Bereich der Embedded-Entwicklung. Das Team legt Namen, Spezialisierung und Zuständigkeiten fest: Gründung oder Unternehmensleitung, Engineering, Vertrieb, Marketing und Fachkompetenz. Alle zu Geschäftsführern zu ernennen, wäre nicht glaubwürdig: Ein Unternehmen ohne Menschen, die Aufträge fachlich ausführen können, widerspricht sich selbst.</p>
+<p>Die fachliche Positionierung sollte drei Fragen beantworten: Welches Kundenproblem lösen wir? Welches Technologiegebiet beherrschen wir? An welchem Ergebnis lässt sich unsere Kompetenz erkennen? „Wir entwickeln Software“ ist zu allgemein. „Wir entwerfen und verifizieren eingebettete Steuerungssysteme einschließlich Hardware-Software-Integration“ ist präziser, erfordert aber weiterhin Beispiele und belastbare Nachweise.</p>
+<h2>2. Drei erforderliche Arbeitsprodukte</h2>
+<table>
+<thead>
+<tr>
+<th>Arbeitsprodukt</th>
+<th>Verantwortliche</th>
+<th>Welche Aussage innerhalb weniger Sekunden vermittelt werden muss</th>
+<th>Wie die Aussage überprüft wird</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gedruckte Visitenkarte</td>
+<td>Jedes Mitglied nach einer gemeinsamen Gestaltungsvorlage</td>
+<td>Name, Funktion, Unternehmen und direkter Kontakt</td>
+<td>Kontaktdaten funktionieren; Vor- und Familiennamen folgen derselben Reihenfolge</td>
+</tr>
+<tr>
+<td>Digitale Kontaktkarte mit QR-Code</td>
+<td>Jedes Teammitglied</td>
+<td>Schnelle Übernahme von Kontaktdaten ohne manuelles Abtippen</td>
+<td>Der QR-Code öffnet tatsächlich eine Website oder einen strukturierten Kontaktdatensatz</td>
+</tr>
+<tr>
+<td>One-Pager / beidseitiges A5-Blatt</td>
+<td>Gesamtes Team</td>
+<td>Fachliche Ausrichtung verdeutlichen und eine Nachfrage auslösen</td>
+<td>Enthält Nutzenversprechen, Belege, Kernkompetenzen und Kontaktdaten</td>
+</tr>
+</tbody>
+</table>
+<p>Diese Arbeitsprodukte übernehmen unterschiedliche Aufgaben und sollen einander nicht bloß wiederholen. Die Visitenkarte ermöglicht den Kontakt; die digitale Variante vereinfacht den Datenaustausch; der One-Pager eröffnet das technische Gespräch. Darüber hinaus vereinbart das Team eine mündliche Unternehmensvorstellung in ein oder zwei Sätzen.</p>
+<h2>3. Gedruckte und digitale Karten: eine Identität, unterschiedliche Kanäle</h2>
+<p>Der Dozent zeigt Beispiele mehrerer Technologieunternehmen. Er betont den sparsamen Umgang mit Platz, einheitliche Typografie und einen schlüssigen Unternehmensauftritt. Alle Karten eines Teams beruhen auf derselben Markenvorlage. Abweichende Logos, wechselnde Farben oder uneinheitliche Feldreihenfolgen lassen die Organisation weniger geschlossen erscheinen.</p>
+<p>Eine geschäftliche E-Mail-Adresse in der eigenen Firmendomäne schafft in der Regel mehr Vertrauen als ein privates Postfach. Domäne, Namen und Website müssen aber praktisch getestet werden, statt nur in einer Grafik zu existieren. Personennamen sollten in einer international konsistenten Schreibweise erscheinen, möglichst entsprechend der amtlichen Transliteration. Unterschiedliche Sprachen auf einer minimalistischen Karte beeinträchtigen die Klarheit. Ein QR-Bild ohne funktionierendes Ziel ist Dekoration, keine Schnittstelle.</p>
+<p>Ingenieurtechnische Analogie: Eine Visitenkarte ist eine externe Schnittstelle zu einer Person und ihrer Organisation. Wenn die angegebene Adresse nicht existiert, ist die Schnittstelle fehlerhaft – unabhängig von der Qualität des grafischen Entwurfs.</p>
+<h2>4. Der One-Pager als Einstieg in ein Fachgespräch</h2>
+<p>Besprochen wird ein A5-Handout, das bei Auto.AI eingesetzt wurde. Es soll nicht die vollständige Firmenpräsentation auf möglichst wenig Platz pressen, sondern zwei oder drei unmittelbare Anknüpfungspunkte für ein Ingenieurgespräch anbieten. Die Vorderseite kann Firmenname und Kernbotschaft, ein passendes technisches Bild, zwei bis vier Kompetenzfelder sowie belegbare Fallstudien oder freigegebene Kunden- und Partnerreferenzen enthalten. Die Rückseite kann technische Fähigkeiten vertiefen, überprüfbare Partnerschaften zeigen und Website sowie Kontaktdaten aufführen.</p>
+<p>Der One-Pager muss zum Publikum passen: Auf einer Automotive-Veranstaltung etwa ECUs, Verifikation und Validierung, funktionale Sicherheit oder HIL hervorheben; im industriellen Engineering Automatisierung, Regelung, Sensorik und Integration; bei einer KI-Konferenz konkrete eigene Ergebnisse. Eine lange Liste bekannter, aber für das Problem irrelevanter Marken wirkt weniger überzeugend als ein einzelner gut dokumentierter einschlägiger Fall.</p>
+<p>Eine Abbildung soll Technologie erklären und nicht nur leeren Platz füllen. Die Textmenge ist zu begrenzen, eine lesbare Informationshierarchie herzustellen und die ausführliche Erklärung dem persönlichen Gespräch oder der Website vorzubehalten. Im Transkript stellt der Dozent knappe und überladene Beispiele gegenüber und erläutert, warum hohe Informationsdichte ohne visuelle Hierarchie das schnelle Verständnis erschwert.</p>
+<h2>5. Vertrauen als überprüfbares Ergebnis</h2>
+<p>Kunden prüfen rasch, ob Firmenidentität, Logo, Website, E-Mail-Domäne, Namen, Personen, Aufgaben und Projektbeispiele zusammenpassen. Öffentlich genannte Kunden und Partnerschaften müssen real sein und zur Offenlegung freigegeben sein. Fiktive Organisationen sind für ein Rollenspiel zulässig, dürfen aber nicht öffentlich als nachgewiesene reale Aufträge dargestellt werden.</p>
+<p>Ein mögliches redaktionelles Prüfmodell (didaktisches Modell, keine empirisch bestimmte Formel):</p>
+<p>C = I × R × A. Dabei beschreibt C die modellhafte Stimmigkeit des Auftritts, I die Konsistenz der Identität (0–1), R die Relevanz für den Kunden (0–1) und A die Überprüfbarkeit der Aussagen (0–1). Ist einer der Faktoren null, eignet sich die Präsentation nicht für den professionellen Erstkontakt. Die Gleichung ist kein statistisch kalibriertes Vertrauensmaß.</p>
+<h2>6. Von der Visitenkarte zum CRM: Was nach dem Austausch folgt</h2>
+<p>Auf einer Fachmesse werden Kontakte gesammelt, digitalisiert, um Gesprächskontext ergänzt und in ein Kontaktmanagementsystem, CRM oder eine Übungstabelle eingetragen. Ein Kontakt ist noch kein Auftrag. Die Notizen sollen festhalten: Wer ist die Person? Für welche Organisation arbeitet sie? Welches konkrete Problem hat sie? Welche Kompetenz passt dazu? Was wurde als nächster Schritt vereinbart, wer ist zuständig und bis wann? Digitale Visitenkarten beschleunigen die Erfassung, ersetzen aber nicht das Verständnis des technischen Bedarfs.</p>
+<h2>7. Besprechung des ersten studentischen Ergebnisses</h2>
+<p>Am Ende bewertet der Dozent eine studentische Visitenkarte. Er würdigt das Logo und die Funktionsbezeichnung „Lead Software Engineer“, erkennt aber eine private Gmail-Adresse, die inkonsistente Verwendung von Ukrainisch und Englisch sowie einen QR-Code ohne Ziel. Auch die Firmenwebsite fehlt. Dieses Beispiel trennt anschaulich ein grafisch „fertiges“ Layout von einem auf einer echten Messe nutzbaren Arbeitsprodukt.</p>
+<h2>8. Praktische Aufgabe: Abnahmekriterien</h2>
+<ol>
+<li>Das Team definiert Firmenname, Embedded-Spezialisierung, Zielkunden und Aufgabenverteilung.</li>
+<li>Jedes Mitglied erstellt eine gedruckte und eine digitale Kontaktkarte nach einem gemeinsamen Gestaltungssystem.</li>
+<li>Das Team erstellt einen beidseitigen One-Pager mit konkreten Kompetenzen, passenden Abbildungen, Nachweisen und Kontaktdaten.</li>
+<li>Alle gleichen Namen, Funktionen, Firmenadressen, Links, QR-Codes, Markenauftritt und Sprachkonsistenz gegenseitig ab.</li>
+<li>Jedes Mitglied kann in 30–60 Sekunden erklären, wie das Unternehmen einem konkreten Engineering-Kunden hilft.</li>
+</ol>
+<p>Definition of Ready: Die Materialien ermöglichen das Rollenspiel der folgenden Messeveranstaltung und den echten Kontaktaustausch; sie sind mehr als bloß ansprechende Bilder.</p>
+<h2>9. Fragen zur Selbstkontrolle</h2>
+<ul>
+<li>Weshalb ist eine gemeinsame Visitenkartenvorlage wichtiger als individuelle Dekoration?</li>
+<li>Wodurch unterscheidet sich ein One-Pager von einem kommerziellen Angebot?</li>
+<li>Welche Funktion muss ein QR-Code erfüllen, und wie wird sie nachgewiesen?</li>
+<li>Welches Projektbeispiel eignet sich besonders für eine Automotive-Messe, und warum?</li>
+<li>Wie wird aus einem gesammelten Kontakt ein qualifizierter Lead statt einer weiteren Excel-Zeile?</li>
+</ul>
+<h2>Übergang zur nächsten Veranstaltung</h2>
+<p>Sobald die Materialien vorliegen, muss das Team ihre einheitliche Identität, die Glaubwürdigkeit der Organisationsstruktur und die Bereitschaft zum echten Kundengespräch prüfen. Die Übung vom 30. September verlagert den Schwerpunkt von der Erstellung auf das Audit der Arbeitsprodukte und zeigt die Struktur eines technischen Angebots, das nach dem Kunden-Folgegespräch benötigt wird.</p>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Lehre</b><p style="margin-top:8px">Lehrmaterialien von Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">Über den Autor →</a></div>
+<div class="footer-links"><b>Kurs</b><a href="index.html">Kursübersicht</a><a href="lecture-01.html">Vorlesung 01</a><a href="lecture-02.html">Vorlesung 02</a><a href="lecture-03.html">Vorlesung 03</a><a href="lecture-06.html">Vorlesung 04</a><a href="lecture-09.html">Session 09</a><a href="lecture-08.html">Session 08</a><a href="lecture-07.html">Session 07</a></div>
+<div class="footer-links"><b>Kontext</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in der Energietechnik</a><a href="../../teaching.html">Alle Lehrmaterialien</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Datenschutz</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

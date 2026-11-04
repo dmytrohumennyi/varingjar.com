@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="uk";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-11.html","uk":"lecture-11.html","de":"../../../de/teaching/embedded-software-engineering/lecture-11.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Переговори після першого контакту: discovery, партнерство й перехід до проєкту — Væringjar II</title><meta content="Післявиставковий звіт, персоналізований follow-up, склад команди та інтерактивна презентація як шлях до реальної технічної потреби і proposal." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-11.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-11.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-11.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-11.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-11.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Переговори після першого контакту: discovery, партнерство й перехід до проєкту" property="og:title"/><meta content="Рольові клієнтські зустрічі, персоналізована презентація, командні ролі, RFI, delivery-планування та інтелектуальна власність." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-11.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Переговори після першого контакту: discovery, партнерство й перехід до проєкту" name="twitter:title"/><meta content="Рольові клієнтські зустрічі, персоналізована презентація, командні ролі, RFI, delivery-планування та інтелектуальна власність." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/><style id="lecture11-contrast-correction">
+/* Session 11 only: correct the light-theme course context contrast without affecting frozen lectures. */
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 {
+  background: #ebebeb !important;
+  border-color: #bdbdbd !important;
+}
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 .course-breadcrumb,
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 .course-context-nav a,
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 .course-context-nav span {
+  color: #252525 !important;
+}
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 .course-context-nav a,
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 .course-context-nav span {
+  border-color: #a8a8a8 !important;
+}
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 .course-context-nav .current {
+  color: #111 !important; background: #fff !important; font-weight: 700;
+}
+</style>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Модель</a><a href="../../research.html">Докази</a><a href="../../implementation.html">Реалізація</a><a class="active" href="../../teaching.html">Навчання</a><a href="../../collaboration.html">Співпраця</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-11.html?lang=en" hreflang="en" lang="en">EN</a><a aria-current="page" class="active" data-lang="uk" href="lecture-11.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../../de/teaching/embedded-software-engineering/lecture-11.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Навчання / Заняття 11 · 14.10.2026</div><h1>Переговори після першого контакту: discovery, партнерство й перехід до проєкту</h1><p class="lead reader-lead">Рольові клієнтські зустрічі, персоналізована презентація, командні ролі, RFI, delivery-планування та інтелектуальна власність.</p><div class="reader-badges"><span>14.10.2026</span><span>Session 11 / 11</span><span>01:38:33</span><span>Практичне заняття</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Огляд курсу →</a><a class="btn btn-primary" href="#full-notes">Читати повний конспект ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / МОДУЛЬ 03 · РИНОК І КЛІЄНТИ / 11 · 14.10.2026</div><div class="course-context-nav"><a class="previous" href="lecture-10.html">Попереднє · 10</a><span class="current">11</span><span class="next">RFI та планування (план)</span></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Хронологія курсу</div><h2>Практичний розбір</h2><p class="reader-intro">Рольові клієнтські зустрічі, персоналізована презентація, командні ролі, RFI, delivery-планування та інтелектуальна власність.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Follow-up і календарна домовленість</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Чотири ролі та моделі співпраці</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Discovery: від широкого інтересу до потреби</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>RFI, Delivery-планування та IP</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Повний конспект заняття</div><h2>Повний конспект заняття</h2><p class="lecture-notes-intro">Відредагований конспект за заняттям 14 жовтня. Сценарії є навчальною симуляцією; повний транскрипт не публікується через чутливий і неперевірений матеріал.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R11-2026-10-14.md">Повний конспект Markdown →</a></div><article class="lecture-article lecture-notes-content" lang="uk"><h1>Заняття 11. Переговори після першого контакту: discovery, партнерство й перехід до проєкту</h1>
+<blockquote>
+<p><strong>14 жовтня 2026 · практичне заняття № 4 · 1 год 38 хв 33 с.</strong> Матеріал підготовлено за автоматичним транскриптом <code>IgorSikorskyKPI_P4_14102026.mp4.md</code>. Це відредагований навчальний конспект, а не дослівна стенограма. Компанії, посадові особи, результати та переговори у двох сценаріях — <strong>рольова симуляція</strong>. Заявлені учасниками комерційні показники й технічні можливості не перевірені. Деталі умовної оборонної розробки та повний сирий транскрипт не включено до відкритої публікації.</p>
+</blockquote>
+<h2>Місце заняття в курсі: практикуємо conversion, а не красивий виступ</h2>
+<p>У занятті 10 студенти розбирали післявиставковий контакт, follow-up та підготовку першої змістовної зустрічі. Заняття 11, яке викладач назвав одинадцятим у хронології та четвертим практичним за форматом, стало продовженням цієї вправи. Головна мета — провести потенційного замовника від знайомства до <strong>визначеної потреби й погодженого наступного кроку</strong>, а не просто показати корпоративні слайди.</p>
+<p>На початку залишалися відкритими окремі студентські артефакти: landing page, презентації та інші завдання попередньої теми. Їхній розгляд і виправлення включено в практику. Основним методом стала керована рольова гра з зупинками, корекцією помилок і повторними спробами. Вихід — не підписаний контракт, а готовність до RFI, планування та пропозиції.</p>
+<h2>1. Follow-up: від письмової домовленості до календарного запрошення</h2>
+<p>Після зустрічі на професійній виставці команда ініціює контакт із умовним інженерним керівником Отто. Лист повинен прив’язуватися до реальної попередньої розмови, пропонувати конкретні варіанти часу та залишати адресату можливість запропонувати альтернативу. Зустріч погоджується лише тоді, коли сторона підтвердила час, а не коли команда самостійно обрала зручний слот.</p>
+<p>Викладач звернув увагу на зайву бюрократію: після згоди не обов’язково писати окреме «пізніше надішлемо посилання». Доречніше одразу створити календарний захід, додати учасника, часовий пояс, тему і посилання. Запрошення має відповідати погодженій меті. <strong>Календарний інвайт — операційне завершення домовленості, а не заміна самої домовленості.</strong></p>
+<h2>2. Хто йде на зустріч і чому їхні інтереси різні</h2>
+<p>У першій симуляції команда обрала чотири ролі: Engagement Manager, Partnership Manager, Delivery Manager та Engineering/Technical Lead. Кожна потрібна для різних питань, але надлишкова кількість людей без пояснення ролей може збентежити співрозмовника.</p>
+<table>
+<thead>
+<tr>
+<th>Роль</th>
+<th>Основне запитання</th>
+<th>Типовий ризик</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Engagement</td>
+<td>Чи виникне реальна можливість співпраці?</td>
+<td>Перетворити discovery на агресивний продаж</td>
+</tr>
+<tr>
+<td>Partnership</td>
+<td>Чи має сенс довгострокове партнерство, розподіл доходів і ризиків?</td>
+<td>Конфлікт цілей із короткою сервісною угодою</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>Чи можна виконати задум у строки, бюджет і прийнятній якості?</td>
+<td>Рано перевести розмову в контрактні обмеження</td>
+</tr>
+<tr>
+<td>Engineering Lead</td>
+<td>Чи існує технічно здійсненний шлях і яка наша компетенція?</td>
+<td>Зануритися в реалізаційні деталі до формування потреби</td>
+</tr>
+</tbody>
+</table>
+<p>У вправі окремо зіставляються <strong>продаж інженерного сервісу</strong> та <strong>спільна продуктова розробка</strong>. Це різні бізнес-моделі; їхні цілі можуть конкурувати. Engagement прагне швидко сформувати оплачувану роботу, Partnership оцінює довшу спільну перспективу, Delivery контролює здатність виконувати обіцянки. Такий конфлікт інтересів не треба приховувати всередині команди — потрібно погодити позицію до зустрічі.</p>
+<h2>3. Кругове знайомство — частина довіри, а не формальність</h2>
+<p>Співрозмовник знайомий після виставки лише з одним представником компанії. Тому кожний учасник стисло називає своє ім’я, роль, сферу відповідальності та, за доречності, одну професійну перевагу. Наступне слово передається іншому учаснику без довгих церемоній. Зрозумілість ролей важливіша за демонстрацію статусів.</p>
+<p>У симуляції викладач зупиняв спроби надто довго дякувати за присутність, вводити сторонні виправдання або невпевнено описувати себе. Правильний урок — <strong>говорити стисло, впевнено та правдиво</strong>. Професійна впевненість не означає вигадувати стаж, клієнтів, досягнення чи приховувати суттєві ризики.</p>
+<h2>4. Agenda захищає мету зустрічі</h2>
+<p>Перед демонстрацією слайдів команда повинна встановити, навіщо зібралися, що саме має бути з’ясовано, як розподіляється час і яке рішення очікується на виході. Варіант порядку: знайомство → коротке представлення компанії → інтереси співрозмовника → релевантний технічний приклад → питання та наступний крок.</p>
+<p>В іншому студентському сценарії agenda не було. Викладач відразу вказав на це: презентація без узгодженої мети легко перетворюється на самодостатній монолог. Слабка agenda не компенсується ефектною графікою або гаслом.</p>
+<h2>5. Чому стандартна корпоративна презентація не працює</h2>
+<p>Перша команда створила змістовну презентацію умовної embedded-компанії: міжнародні офіси, чисельність персоналу, бренди клієнтів, інструменти, апаратні платформи, тестування та виробничий цикл. Як навчальний виступ матеріал був підготовлений, але після завершення не було зрозуміло, <strong>що саме пропонується цьому конкретному Отто</strong>: сервіс, продукт або спільна розробка.</p>
+<p>До підготовки адресної презентації треба проаналізувати початкові нотатки після виставки, сайт потенційного замовника, його продукти, клієнтів, вакансії, відкриті напрями та публічні профілі ключових учасників. Це підстави для гіпотез, а не гарантія достовірності. Гіпотезу про його проблему треба перевірити питанням. Усі імена партнерів, логотипи та статистика на слайдах потребують правдивого походження і дозволу на розкриття.</p>
+<h2>6. Презентація повинна бути двостороннім інструментом discovery</h2>
+<p>Під час першого виступу студент переважно розповідав і майже не надавав співрозмовнику можливості відповісти. Викладач показав, як <strong>перервати потік слайдів доречним питанням</strong>, почути інтерес і змінити подальшу траєкторію розмови.</p>
+<p>Якщо на слайді показані апаратна, програмна та інфраструктурна компетенції, можна запитати, котрий напрям найближчий клієнтові. Якщо відповідь — software, наступне уточнення стосується рівня: firmware, HAL, middleware, architecture або application. Лише після цього варто уточнювати предметну область. Це звуження простору пошуку, а не спроба вгадати потребу заздалегідь.</p>
+<h2>7. Від широкого інтересу до конкретного запиту</h2>
+<p>У першому сценарії рольовий клієнт поступово уточнив інтерес: software engineering → application level → автомобільні системи паркування → складність сприйняття перешкод. Це <strong>приклад діалогової кваліфікації</strong>, а не опис реального замовлення або перевірена технічна вимога.</p>
+<p>Тут змінюється цінність презентації: вона вже не перелік того, що команда вміє, а засіб отримати предметну проблему. Подальший крок — зафіксувати проблему словами клієнта, уточнити межі, вихідні дані, критерії приймання та невідомі обставини. Не варто одразу обіцяти рішення, доки не виконано технічне discovery.</p>
+<h2>8. Engagement керує ритмом, експерти — змістом</h2>
+<p>Engagement Manager у практиці порівнюється з диригентом: він веде порядок зустрічі, надає слово фахівцям і спостерігає за реакцією клієнта. Technical Lead відповідає за глибину технічної відповіді, Partnership — за партнерську модель, Delivery — за реалістичність виконання. Одна людина не повинна за всіх говорити про все.</p>
+<p>Коли співрозмовник демонструє інтерес до технічної проблеми, логічно залучити технічного керівника. Коли з’являється запит про фази, строки або модель контракту — Delivery. Передача слова має бути вчасною: передчасний перехід до ризиків та договорів може перервати продуктивне з’ясування потреби, але їх не можна ігнорувати на етапі пропозиції.</p>
+<h2>9. Зворотний зв’язок отримують питаннями, а не читанням міміки</h2>
+<p>Викладач звертав увагу на невербальну реакцію клієнта: зосередженість, відволікання, інтерес до певних слайдів. Це корисний сигнал для уточнення теми, але не достовірний доказ потреби. Реальним підтвердженням є відповідь на пряме питання, узгоджений протокол або надісланий клієнтом запит.</p>
+<p>Тому після кожного змістового блоку доречно запитати: «Що з цього найрелевантніше?», «Яка частина задачі сьогодні болить найбільше?», «Яке обмеження є критичним?». Відповіді фіксуються в meeting notes, а припущення позначаються саме як припущення.</p>
+<h2>10. Правильний вихід першої симуляції: RFI та наступний discovery</h2>
+<p>У фіналі першого сценарію співрозмовник погоджується описати очікування до програмного компонента і розглянути наступну технічну дискусію. У виступі використано позначення <strong>RFI і RFC</strong>. RFI зазвичай означає Request for Information; значення RFC залежить від процесу (наприклад, Request for Change), тому в реальній роботі назву та формат документа необхідно явно погодити. Не слід автоматично вважати RFC універсальною «формою технічного запиту».</p>
+<p>Замість продажу наосліп команда може запропонувати: отримати короткий опис проблеми, перевірити здійсненність, підготувати початковий варіант scope та провести наступну зустріч. Це ще не контракт, але вже <strong>перевірюваний наступний крок із відповідальними та результатом</strong>.</p>
+<h2>11. Вхід Delivery: від ідеї до плану та пропозиції</h2>
+<p>Коли клієнт просить описати фази проєкту, Delivery Manager збирає потрібні ролі — інженерів з embedded software, hardware, QA, керівника технічного напряму та інших залежно від задачі. Результатом має стати не обіцянка «ми це зробимо», а чернетка здійсненного плану.</p>
+<p>У занятті прямо названі артефакти: <strong>склад команди, декомпозиція робіт, Gantt chart, фази, deliverables, ризики та кошторис</strong>. До них варто додати явні припущення, залежності й критерії приймання. Моделі Fixed Price і Time &amp;amp; Materials мають різні вимоги до визначеності scope, управління змінами й ризиків; комерційну модель слід обирати за характером невизначеності, а не за звичкою.</p>
+<h2>12. Друга симуляція: коли сильний продукт не збігається з core business</h2>
+<p>Інша студентська команда представила умовну технологічну компанію із сильною спеціалізацією та демонстраційним продуктом. Виступ почався з гасла, проте без належних представлень учасників і чіткої agenda. Викладач зупинив вправу, дав конкретний зворотний зв’язок і попросив повторити вступ.</p>
+<p>Головна проблема виявилася пізніше: продуктова історія майже не перетиналася з основним бізнесом рольового клієнта, пов’язаним із промисловою автоматизацією. Його фраза про <strong>core business</strong> була підставою не продовжувати рекламний монолог, а уточнити, чи є інші напрями діяльності, де може виникнути співпраця. Ситуація навчальна; твердження про фактичні характеристики демонстраційного виробу не вважаються підтвердженими.</p>
+<h2>13. Суміжний бізнес як точка входу — без вигаданого fit</h2>
+<p>Після уточнювального питання рольовий клієнт назвав інший напрям, у якому зацікавлений у програмно-інтелектуальних компонентах. Команда помітила, що частина її компетенцій може бути перенесена у новий контекст. Це дало підставу обговорити окрему зустріч і майбутню пропозицію.</p>
+<p>Ключовий урок: <strong>відсутність збігу з основним бізнесом не дорівнює відсутності можливості</strong>, але й наявність суміжної технології не доводить придатність рішення. Потрібно перевірити сферу застосування, обмеження, комплаєнс, відповідальність сторін і реальну можливість перенесення компонентів. У відкритому конспекті не деталізуються умовні військові застосування та техніки автономного ураження.</p>
+<h2>14. Партнерство, підряд і інтелектуальна власність</h2>
+<p>Під час завершення другої симуляції виникла суперечка, чи має команда виступати просто вендором інженерних послуг, чи наполягати на партнерській моделі. Студенти відстоювали можливість спільного використання напрацювань і не погоджувалися автоматично передавати усю інтелектуальну власність замовникові.</p>
+<p>Практичне розмежування: <strong>background IP</strong> — технології та результати, що існували до співпраці; <strong>foreground IP</strong> — результати, створені в межах нового проєкту. У договорі потрібно визначити права власності, ліцензування, право повторного використання, межі розкриття та обов’язки за NDA. Для регульованих і оборонних сфер окремо перевіряють експортні, договірні та правові обмеження. З навчального діалогу не випливає універсальна юридична заборона певної моделі партнерства.</p>
+<h2>15. Переговори треба завершувати артефактами</h2>
+<p>Для обох симуляцій успішний результат не вимірюється красномовством або кількістю слайдів. Потрібні зафіксовані <strong>problem statement, зацікавлена сторона, відомі вимоги, невідомі припущення, відповідальні, термін наступної комунікації та формат пропозиції</strong>. Це дозволяє передати discovery у delivery без втрати контексту.</p>
+<p>Критично розрізняти досягнуті та лише проговорені результати: домовленість про можливий наступний дзвінок — не виграний тендер, студентський Gantt chart — не погоджений baseline, умовний продукт — не доведена технологічна спроможність компанії.</p>
+<h2>16. Практичні артефакти для студентської команди</h2>
+<p>Після вправи команда має підготувати матеріали, які можна перевірити та обговорити на наступному занятті:</p>
+<ul>
+<li><strong>Meeting brief:</strong> мета, ролі, agenda, початкові питання, бажаний вихід зустрічі.</li>
+<li><strong>Account research:</strong> короткі публічні факти про компанію, окремо — гіпотези про її потреби.</li>
+<li><strong>Discovery log:</strong> питання й відповіді клієнта, пріоритети, ризики, нез’ясовані питання та джерело тверджень.</li>
+<li><strong>Tailored deck:</strong> стислий вступ, релевантна компетенція, один-два кейси, можливі моделі співпраці, чіткий next step.</li>
+<li><strong>Mini-proposal:</strong> проблема, межі, припущення, очікувані результати, фази, команда, ризики й критерії приймання.</li>
+<li><strong>Delivery draft:</strong> початкова Work Breakdown Structure, календарні залежності, Gantt chart та грубий кошторис.</li>
+</ul>
+<p>Всі ці пункти — <strong>завдання і критерії навчальної перевірки</strong>, а не твердження, що вони вже виконані студентами на момент запису.</p>
+<h2>17. Критерії оцінювання практики</h2>
+<p>Вдале виконання означає, що команда продемонструвала п’ять якостей: релевантність презентації конкретному співрозмовнику; дисципліну представлення й передачі слова; здатність ставити відкриті й уточнювальні питання; коректне розмежування сервісу, продукту та партнерства; оформлення домовленості у перевірюваний артефакт.</p>
+<p>Окремо перевіряються фактична доброчесність презентації та повага до конфіденційності. Не можна перетворювати названий у рольовій грі бренд, відсоток, контракт чи продукт на «реальну історію успіху» без підтвердження. Для відкритих навчальних конспектів технічні подробиці оборонного сценарію не є необхідними для опрацювання бізнес-інженерної методики.</p>
+<h2>Питання для самоперевірки</h2>
+<ul>
+<li>Чим погоджена зустріч відрізняється від просто надісланого календарного інвайту?</li>
+<li>Чому Engagement і Partnership можуть пропонувати різні бізнес-моделі в одному й тому самому сценарії?</li>
+<li>Як пояснити ролі учасників без надмірних титулів і довгих представлень?</li>
+<li>Яке питання допомагає перейти від загального інтересу до рівня firmware, HAL, middleware чи application?</li>
+<li>Чому реакція на слайд є лише сигналом, а не доказом потреби?</li>
+<li>Які конкретні дані треба записати, перш ніж пропонувати інженерне рішення?</li>
+<li>У який момент варто передати слово Technical Lead, а в який — Delivery Manager?</li>
+<li>Які частини proposal потрібно підготувати після RFI, ще до затвердження контракту?</li>
+<li>У чому відмінність background IP від foreground IP?</li>
+<li>Як не сплутати умовний студентський сценарій із перевіреним комерційним кейсом?</li>
+</ul>
+<h2>Що заплановано далі</h2>
+<p>Наприкінці заняття викладач анонсував на наступний тиждень нову симуляцію з RFI та RFC: він тимчасово виконуватиме роль Delivery Manager, студенти отримають ролі в робочій команді, сформують фази, Gantt chart, ризики, оцінку вартості та короткий proposal для рольового клієнта. Це <strong>оголошений план</strong>, а не вже проведене заняття чи готові результати. У подальшому мають з’явитися Jira/backlog та власне інженерна реалізація — після погодження умов.</p>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Викладання</b><p style="margin-top:8px">Авторські навчальні матеріали Дмитра Гуменного.</p><a class="footer-about" href="../../about.html">Про автора →</a></div>
+<div class="footer-links"><b>Курс</b><a href="index.html">Огляд курсу</a><a href="lecture-09.html">Заняття 09</a><a href="lecture-10.html">Заняття 10</a><a href="lecture-11.html">Заняття 11</a></div>
+<div class="footer-links"><b>Контекст</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">КПІ · кафедра ІПЗЕ</a><a href="../../teaching.html">Усі навчальні матеріали</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Конфіденційність</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

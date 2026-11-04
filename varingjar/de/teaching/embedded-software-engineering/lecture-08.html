@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="de";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-08.html","uk":"../../../uk/teaching/embedded-software-engineering/lecture-08.html","de":"lecture-08.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Übung: Prüfung von Geschäftsmaterial und technischem Angebot — Væringjar II</title><meta content="Prüfung der Teammaterialien, Organisationsrollen und eines technischen Angebots: Anforderungen, Architektur, PoC, MVP, Verifikation und Lieferung." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-08.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-08.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-08.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-08.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-08.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Übung: Prüfung von Geschäftsmaterial und technischem Angebot" property="og:title"/><meta content="Prüfung der Teammaterialien, Organisationsrollen und eines technischen Angebots: Anforderungen, Architektur, PoC, MVP, Verifikation und Lieferung." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-08.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Übung: Prüfung von Geschäftsmaterial und technischem Angebot" name="twitter:title"/><meta content="Prüfung der Teammaterialien, Organisationsrollen und eines technischen Angebots: Anforderungen, Architektur, PoC, MVP, Verifikation und Lieferung." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Modell</a><a href="../../research.html">Evidenz</a><a href="../../implementation.html">Implementierung</a><a class="active" href="../../teaching.html">Lehre</a><a href="../../collaboration.html">Mitwirken</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-08.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../../uk/teaching/embedded-software-engineering/lecture-08.html?lang=uk" hreflang="uk" lang="uk">UA</a><a aria-current="page" class="active" data-lang="de" href="lecture-08.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Lehre / Sitzung 08 · 30.09.2026</div><h1>Übung: Prüfung von Geschäftsmaterial und technischem Angebot</h1><p class="lead reader-lead">Prüfung der Teammaterialien, Organisationsrollen und eines technischen Angebots: Anforderungen, Architektur, PoC, MVP, Verifikation und Lieferung.</p><div class="reader-badges"><span>30.09.2026</span><span>Session 08 / 09</span><span>01:16:22</span><span>Practice</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Kursübersicht →</a><a class="btn btn-primary" href="#full-notes">Vollständige deutsche Vorlesungsnotizen ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODULE 05 · CLIENT ENGAGEMENT / 08 · 30.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-07.html">Zurück · 07</a><span class="current">08</span><a class="next" href="lecture-09.html">Weiter · 09</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Chronologischer Kursverlauf</div><h2>Technische Vorlesungsnotizen</h2><p class="reader-intro">Prüfung der Teammaterialien, Organisationsrollen und eines technischen Angebots: Anforderungen, Architektur, PoC, MVP, Verifikation und Lieferung.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Artefaktkonsistenz prüfen</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Rollen klarstellen</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Technisches Angebot strukturieren</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>PoC, MVP und V&amp;V planen</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Vollständige deutsche Vorlesungsnotizen</div><h2>Vollständige deutsche Vorlesungsnotizen</h2><p class="lecture-notes-intro">Vollständiger deutschsprachiger Fachkontext zu dieser Veranstaltung, einschließlich Beispielen, Tabellen, Modellen, Aufgaben und Quellenverweisen. Die ukrainischen Originalunterlagen bleiben als Primärquellen verlinkt.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R08-2026-09-30.md">Ukrainische Originalnotizen (Markdown) →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-30.md">Ukrainisches Rohtranskript →</a></div><article class="lecture-article lecture-notes-content" lang="de"><h1>Übung: Prüfung von Geschäftsmaterial und technischem Angebot</h1>
+<blockquote>
+<p>30. September 2026 · Übung · 1 Stunde 16 Minuten 22 Sekunden. Quelle: Transkript P3. Wegen Luftalarms und geringer Teilnahme wurde die Veranstaltung teilweise als Demonstration und individuelle Besprechung durchgeführt. Die erwähnte Wiederholung der Übung war ein Vorschlag, keine bestätigte Veranstaltung.</p>
+</blockquote>
+<h2>Die Einordnung dieser Veranstaltung in den Kurs</h2>
+<p>Am 29. September erhielten die Teams die Aufgabe, eine Corporate Identity, persönliche Kontaktkarten und einen One-Pager zu entwickeln. Am 30. September folgt die Überprüfung: Erfüllen diese Materialien einheitliche Anforderungen, und können sie tatsächlich eine technische Zusammenarbeit anbahnen? Im zweiten Teil wird der Ablauf nach einer Messe dargestellt: Anfrage → technisches Angebot → Machbarkeitsnachweis → gestufte Lieferung.</p>
+<h2>1. Überprüfung studentischer Visitenkarten: praktische Mängel</h2>
+<p>Der Dozent bespricht Materialien von zwei Gruppen. Positiv fallen eine einheitliche Farbpalette, Logo, definierte Rollen, geschäftliche Kontaktdaten, beidseitige Karten und QR-Codes auf. Ein grundlegendes Audit findet trotzdem Fehler: Nachname vor Vorname in englischer Beschriftung; unterschiedliche Farbsysteme für Visitenkarten und One-Pager; widersprüchliche Domains auf Karten und Poster; falsches Partnerlogo; eine unzutreffende Plattformabbildung; fehlende direkte Kontaktdaten auf dem One-Pager.</p>
+<p>Dass es sich um eine Ausbildungsaufgabe handelt, entschuldigt solche Fehler nicht. Sie bilden typische Integrationsprobleme nach, bei denen zwei Arbeitsprodukte unabhängig entstehen, obwohl beide exakt dasselbe Produkt oder Unternehmen beschreiben sollen.</p>
+<table>
+<thead>
+<tr>
+<th>Prüfpunkt</th>
+<th>Mangel</th>
+<th>Auswirkung</th>
+<th>Abnahmebedingung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Namen und Domains</td>
+<td>.ua auf dem Poster, .com auf der Visitenkarte</td>
+<td>Keine eindeutige maßgebliche Kontaktadresse</td>
+<td>Eine konsistente Domain-Identität</td>
+</tr>
+<tr>
+<td>Visuelle Identität</td>
+<td>Unterschiedliche Farbpaletten oder Logos</td>
+<td>Die Marke wirkt aus nicht zusammengehörigen Teilen zusammengesetzt</td>
+<td>Ein gemeinsamer Gestaltungsvertrag</td>
+</tr>
+<tr>
+<td>Funktionen</td>
+<td>„Lead“-Titel ohne erkennbares Team</td>
+<td>Behauptete Hierarchie entspricht nicht der Realität</td>
+<td>Funktionen passen zur tatsächlichen Organisation</td>
+</tr>
+<tr>
+<td>Referenzen</td>
+<td>Falsches Logo eines angeblichen Partners</td>
+<td>Risiko einer irreführenden Darstellung</td>
+<td>Referenzen sind geprüft und zur Veröffentlichung freigegeben</td>
+</tr>
+<tr>
+<td>Technische Illustration</td>
+<td>Ein Flächenflugzeug wird durch das Bild eines Quadrokopters dargestellt</td>
+<td>Schwächt die Glaubwürdigkeit technischer Kompetenz</td>
+<td>Die Abbildung entspricht der Aussage</td>
+</tr>
+<tr>
+<td>Kontakt</td>
+<td>Eine Website ist angegeben, aber keine E-Mail-Adresse oder Telefonnummer</td>
+<td>Interessenten können nur schwer Kontakt aufnehmen</td>
+<td>Ein direkter Kommunikationskanal ist vorhanden</td>
+</tr>
+</tbody>
+</table>
+<h2>2. Funktionen und Verantwortlichkeiten in einem Ingenieurunternehmen</h2>
+<p>Die studentischen Rollen eröffnen die Diskussion über eine häufige, aber keineswegs allgemeingültige Unternehmenshierarchie:</p>
+<p>Eigentümer → C-Level → Fachbereichsdirektoren → Manager → Ingenieure und Spezialisten.</p>
+<p>Der Eigentümer besitzt das Unternehmen; der CEO leitet es im Rahmen seiner gesellschaftsrechtlich und intern festgelegten Befugnisse. CTO und CFO verantworten ihre jeweiligen Funktionsbereiche. Ein Direktor führt einen größeren Fachbereich und kann ein delegiertes Budget besitzen. Engineering-, Projekt- und technische Manager koordinieren Umsetzung und Eskalation; Ingenieure und Technical Leads erbringen fachliche Ergebnisse. Konkrete Entscheidungsbefugnisse und Budgets hängen von Unternehmen, Rechtsform und Richtlinien ab. Das ist ein Lehrbeispiel, keine Rechtsnorm.</p>
+<p>Senior, Middle, Junior und Trainee kennzeichnen Qualifikationsstufen im Personal- und Vergütungssystem, nicht Managementpositionen und nicht automatisch eine Ausgabenbefugnis. Ein Lead Engineer sollte tatsächlich technische Koordination übernehmen, meist für ein Team, dessen Existenz und Verantwortlichkeiten das vorgeschlagene Organigramm widerspiegeln sollte.</p>
+<h2>3. Weshalb ein One-Pager nachweisorientiert aufgebaut sein muss</h2>
+<p>Die Besprechung zeigt Stärken studentischer One-Pager: erkennbare Ausrichtung auf Embedded Systems, ECU/ADAS/Verifikation als Kompetenzfelder, klare Aufgabenverteilung und die Fähigkeit zur Kleinserienfertigung. Zugleich können die Unterlagen überladen sein und zu wenige technische Bilderklärungen enthalten. Auch eine unscharfe Serviceliste ist problematisch: Automotive-ECUs und EV-Ladesäulen können beide legitime Geschäftsgebiete sein, sollten aber als unterschiedliche Richtungen dargestellt werden, jeweils mit einem nachvollziehbaren Bezug zur Kompetenz des Teams.</p>
+<p>Entscheidende Prüffrage: Erkennt ein potenzieller Kunde innerhalb von zehn Sekunden am Messestand die Spezialisierung des Teams? Wenn nicht, muss die Informationshierarchie überarbeitet und die Verbindung von technischem Bild und Nutzenversprechen gestärkt werden.</p>
+<h2>4. Von RFI / RFQ / RFC zum Angebot</h2>
+<p>Nach dem Erstkontakt auf einer Messe und einem Folgegespräch kann ein potenzieller Kunde folgende Anfragen verschicken:</p>
+<ul>
+<li>RFI – Request for Information: Fragen zu Kompetenzen, Projekterfahrung, Werkzeugen, Ressourcen und Lieferfähigkeit des Unternehmens.</li>
+<li>RFQ – Request for Quotation: Anfrage nach Aufwandsschätzungen, Preisannahmen, Lizenzen, Ausrüstung und Auslagen.</li>
+<li>RFC – Request for Clarification: In diesem Kursszenario die Klärung des Vorgehens zur Lösung einer technischen Aufgabe, gefolgt von einem Angebot. In anderen Bereichen hat RFC andere Bedeutungen; der tatsächliche Kundenkontext ist maßgeblich.</li>
+</ul>
+<p>Ein Proposal ist nicht bloß eine Preisliste. Es verbindet ein Ingenieurkonzept, den Verifikationsansatz, Lieferplan, Teamaufstellung und kommerzielle Rahmenbedingungen. In der Aufzeichnung präsentiert der Dozent ein anonymisiertes echtes Angebot für ein ECU Switching System, das nach mehreren technischen Gesprächen entstand. Zahlen und Projektgeschichten sind rückblickende Berufserfahrungen und keine für jedes Projekt gültigen Musterwerte.</p>
+<h2>5. Aufbau eines überzeugenden technischen Angebots</h2>
+<ol>
+<li>Executive Summary: Projektzweck, Mehrwert, geplante Phasen, voraussichtliche Dauer und Budget sowie Zusammenarbeitsmodell.</li>
+<li>Glossar und Abkürzungen: Einheitliche Terminologie für Technik, Einkauf und Management.</li>
+<li>Einführung und Kommunikationshistorie: Ausgangslage, Gegenstand, Vereinbarungen und Annahmen.</li>
+<li>Anforderungsbasis: Erhaltene Dokumente und Referenzen, Anforderungen und offene Unsicherheiten.</li>
+<li>Grobarchitektur: Systemstruktur, Schnittstellen, Datenwege, Stromversorgung und Steuerung.</li>
+<li>Hypothesen für den Detailentwurf: Kandidaten für Module, Bauteile, physische Konzepte und Abhängigkeiten.</li>
+<li>Validierung und Verifikation: Vorgehen, mit dem die geforderte Funktion nachgewiesen wird.</li>
+<li>Phasen, Liefergegenstände und Terminplan: PoC, minimal nutzbares Produkt, Dokumentation, Meilensteine und Gantt-Diagramm.</li>
+<li>Team und Ressourcen: Ingenieurrollen, Auslastung, Arbeitsreihenfolge und Kapazität.</li>
+<li>Kommerzieller Rahmen: Festpreis oder Time &amp; Materials, Ausschlüsse und Annahmen.</li>
+<li>Anhänge und Versionshistorie: detaillierte Zeichnungen, umfangreiche Tabellen und Änderungsverfolgung.</li>
+</ol>
+<p>Dies ist ein Beispiel für die Struktur eines Ingenieurangebots; einzelne Kunden können eine andere Reihenfolge verlangen. Der Dozent betont: Führungskräfte lesen wahrscheinlich zuerst die Executive Summary, technische Gutachter untersuchen dagegen Diagramme, Annahmen und Testmethoden. Im gezeigten Dokument mit 40 Seiten nimmt die Architektur einschließlich der detaillierten Modulaufteilung einen erheblichen Teil ein.</p>
+<h2>6. Architektur vor dem Vertrag: Verständnis des Problems nachweisen</h2>
+<p>In der Angebotsphase existiert noch kein fertiges Produkt. Ein modulares Konzept, CAD-Skizzen, Blockdiagramm, Schnittstellenbeschreibungen und ausgewählte physische Nachweise ermöglichen dem Kunden dennoch, die technische Machbarkeit einzuschätzen. Visualisierung muss fachliche Argumentation ergänzen: Ein Bild beantwortet „Wie könnte das aussehen?“, eine technische Skizze „Wie könnte es funktionieren?“.</p>
+<p>Beim ECU-Switcher-Beispiel beschreibt der Dozent einen Machbarkeitsnachweis mit Evaluierungsplatine, UART-Kommunikation, experimentellem Prüfaufbau und Wärmebildaufnahme. Damit wird ein technisches Risiko frühzeitig reduziert; es ist kein Nachweis, dass das spätere Gerät bereits sämtliche Anforderungen erfüllt. Die veröffentlichten Notizen enthalten weder vertrauliche Kundenunterlagen noch kommerzielle Zahlen des Falles.</p>
+<h2>7. PoC → MVP → Dokumentation und Wiederholbarkeit</h2>
+<p>Ein Proof of Concept prüft eine riskante technische Hypothese. Ein Minimum Viable Product stellt jene Mindestfunktionen bereit, die bereits einen praktischen Nutzen erzeugen; dazu gehören ausdrücklich definierte Abnahmekriterien. Fertigungsdokumentation macht Montage, Prüfung und Support reproduzierbar. Jede Phase benötigt klar bestimmte Ergebnisse: Demonstrationsprotokoll oder PoC-Bericht, Liste abgenommener MVP-Funktionen sowie Quelldateien und Fertigungsanweisungen zur Reproduktion.</p>
+<p>Illustrative Schätzgleichung (keine statistische Formel): E = Σ(rᵢ × tᵢ). Hier bezeichnet E die geschätzten Personenstunden, rᵢ die Zahl der Fachkräfte in Rolle i und tᵢ den geschätzten Aufwand pro Fachkraft dieser Rolle. Dies ist nur eine einfache Konsistenzprüfung des Ressourcenplans; eine Finanzkalkulation benötigt zudem Stundensätze, Reserven, Material und explizite Annahmen.</p>
+<h2>8. Geschäftsmodell und Änderungsverwaltung</h2>
+<p>Im Beispielprojekt wurde Time &amp; Materials gewählt, weil die technische Aufgabe neuartig und der Umfang nicht vollständig vorhersehbar war. Das entbindet nicht davon, Budget, Dauer, Änderungen, Risiken und Arbeitsumfang zu überwachen und abzustimmen. Ein Angebot kann mehrfach überarbeitet werden. Nach der ersten Besprechung sollte ein Änderungsprotokoll Version, Datum, Änderung, Autor und Entscheidung des Kunden dokumentieren.</p>
+<h2>9. Aufgaben für Studierende und Abnahmekriterien</h2>
+<ol>
+<li>Jede Visitenkarte und jeden One-Pager anhand der Mängelcheckliste prüfen.</li>
+<li>Ein kompaktes Organigramm mit Zuständigkeiten erstellen und die Aufgabe jedes Beteiligten erklären.</li>
+<li>Ein lösbares Kundenproblem identifizieren und die eigentliche Anforderung von einer bevorzugten Technologie unterscheiden.</li>
+<li>Ein Inhaltsverzeichnis für ein Angebot erstellen, das diese Anfrage beantwortet.</li>
+<li>Die risikoreichste Hypothese auswählen und den kleinsten geeigneten PoC zu ihrer Prüfung definieren.</li>
+<li>Überprüfbare Referenzen vorbereiten und fiktive Partnerschaften aus dem Rollenspiel nicht als real ausgeben.</li>
+</ol>
+<p>Ergebnis: Das Team ist auf die realitätsnahe Simulation eines Kundengesprächs vorbereitet. Die nächste Veranstaltung behandelt Erstkontakt, Einwände und die Vereinbarung eines Folgetermins. Das ausführliche technische Angebot wird in einer späteren Phase ausgearbeitet.</p>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Lehre</b><p style="margin-top:8px">Lehrmaterialien von Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">Über den Autor →</a></div>
+<div class="footer-links"><b>Kurs</b><a href="index.html">Kursübersicht</a><a href="lecture-01.html">Vorlesung 01</a><a href="lecture-02.html">Vorlesung 02</a><a href="lecture-03.html">Vorlesung 03</a><a href="lecture-06.html">Vorlesung 04</a><a href="lecture-09.html">Session 09</a><a href="lecture-08.html">Session 08</a><a href="lecture-07.html">Session 07</a></div>
+<div class="footer-links"><b>Kontext</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in der Energietechnik</a><a href="../../teaching.html">Alle Lehrmaterialien</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Datenschutz</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

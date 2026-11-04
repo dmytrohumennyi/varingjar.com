@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="de";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-05.html","uk":"../../../uk/teaching/embedded-software-engineering/lecture-05.html","de":"lecture-05.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Proposal, Standards und Geschäftsmodell — Væringjar II</title><meta content="Referenzdokumente, Konformitätsanforderungen, V&amp;V, Ressourcen und Preismodelle machen aus einer technischen Idee ein verhandelbares Proposal." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20260928-scientific-v3" rel="stylesheet"/>
+<link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-05.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-05.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-05.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-05.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-05.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Vom Lead zum Kunden: RFI, RFC, RFQ und Proposal — Væringjar II" property="og:title"/><meta content="Vorlesung 4 zu Embedded Software Engineering: Initial Meeting, RFI/RFQ/RFC, Proposal, Ressourcen, Zeitplan und Risiken." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-05.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Vom Lead zum Kunden: RFI, RFC, RFQ und Proposal — Væringjar II" name="twitter:title"/><meta content="Vorlesung 4 zu Embedded Software Engineering: Initial Meeting, RFI/RFQ/RFC, Proposal, Ressourcen, Zeitplan und Risiken." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Modell</a><a href="../../research.html">Evidenz</a><a href="../../implementation.html">Implementierung</a><a class="active" href="../../teaching.html">Lehre</a><a href="../../collaboration.html">Mitwirken</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-05.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../../uk/teaching/embedded-software-engineering/lecture-05.html?lang=uk" hreflang="uk" lang="uk">UA</a><a aria-current="page" class="active" data-lang="de" href="lecture-05.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Lehre / Vorlesung 05 · 16.09.2026</div><h1>Proposal, Standards und Geschäftsmodell</h1><p class="lead reader-lead">Referenzdokumente, Konformitätsanforderungen, V&amp;V, Ressourcen und Preismodelle machen aus einer technischen Idee ein verhandelbares Proposal.</p><div class="reader-badges"><span>16.09.2026</span><span>Sitzung 05 / 06</span><span>eingefroren 28.09.2026</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Kursübersicht →</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / <b>MODULE 04</b> · COMMERCIAL ENGINEERING / 05 · 16.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-05.html">Zurück · Vom Lead zum formalisierten Pre-Sales</a><span class="current">Aktuell · 05</span><a class="next" href="lecture-06.html">Als Nächstes · Vom Vertrag zu Anforderungen und erster Architektur</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Kernideen</div><h2>Kernideen</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Dokumentstatus unterscheiden</h3><p>Frameworks, Standards, Guidelines und Gesetze sind nicht austauschbar.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>CE ist Konformität, kein generisches Zertifikat</h3><p>Anwendbares EU-Recht treibt die Konformität; harmonisierte Standards sind meist freiwillige Wege.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>T&amp;M ≠ alle Risiken beim Kunden</h3><p>Das Commercial Model ändert Exposure, rechtliche Haftung bleibt vertraglich.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>Estimate muss nachvollziehbar sein</h3><p>Workstreams, Ressourcen, Material, Lead Times und Contingency müssen die Zahl erklären.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">Kernaussage</div><h2>Praktische Kernaussage</h2><div class="reader-copy"><p class="reader-takeaway">Ein belastbares Proposal verbindet Technical Solution mit Reference Basis, Verification Evidence, Ressourcen, Zeitplan, Unsicherheit und Geschäftsmodell.</p></div></div></section><section class="reader-section section-tight next-lecture-section"><div class="container"><div class="next-lecture-card"><div class="section-eyebrow">Als Nächstes</div><h2>06 — Vom Vertrag zu Anforderungen und erster Architektur</h2><p>Der Kurs wechselt von Pre-Sales zu Delivery: Staffing Lead Time, Discovery, Business Decomposition, User Needs, System Requirements und erste Architekturskizze.</p></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Rekonstruiertes &amp; eingefrorenes Material</div><h2>Vollständiges Vorlesungsskript</h2><p class="lecture-notes-intro">Aus dem primären ukrainischen Transkript rekonstruiert. Redaktionelle Korrekturen und externe Ergänzungen sind im Material ausdrücklich markiert.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R05-proposal-standarty-ta-komertsiina-model.md">Quell-Markdown öffnen →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-16.md">Ukrainisches Rohtranskript →</a></div><article class="lecture-article lecture-notes-content" lang="de"><h1>Proposal, Standards und Geschäftsmodell</h1>
+<blockquote>
+<p>Chronologie: 16. September 2026 · fünfte Veranstaltung. Primärquelle: <a href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-16.md">vollständiges Transkript</a>. Schwerpunkt: Die Pre-Sales-Vision in eine kontrollierte Gesamtheit technischer Annahmen, regulatorischer Bezüge, Ressourcen und kommerzieller Risiken überführen.</p>
+</blockquote>
+<h2>1. Unsere Position im Projektlebenszyklus</h2>
+<p>Die Sitzung beginnt mit einer Wiederholung der didaktischen Ablaufkette:</p>
+<pre>Lead
+          ↓
+RFI
+          ↓
+RFC (Request for Clarification – Kursbegriff)
+          ↓
+Proposal / Angebot
+         ↘
+RFQ / kommerzielle Schätzung
+</pre>
+<p>In der wirklichen Beschaffung können die Schritte anders verlaufen, parallel ausgeführt oder unterschiedlich benannt werden. Entscheidend ist nicht die bürokratische Reihenfolge, sondern die Logik: zuerst die Aufgabe verstehen, dann den Lösungsansatz formulieren und Ressourcen und Risiken transparent abschätzen.</p>
+<h2>2. Weshalb Embedded-Angebote schnell auf Normen treffen</h2>
+<p>Bei Systemen mit Wirkung auf die physische Welt umfassen Kundenerwartungen meist mehr als die reine Funktion:</p>
+<ul>
+<li>funktionale Sicherheit;</li>
+<li>Cybersicherheit;</li>
+<li>elektromagnetische Verträglichkeit sowie elektrische und mechanische Randbedingungen;</li>
+<li>Qualitätsprozesse;</li>
+<li>Rückverfolgbarkeit;</li>
+<li>Fertigungs- und Marktanforderungen;</li>
+<li>Nachweise der Verifikation.</li>
+</ul>
+<p>Ein Angebot benötigt daher eine Referenzgrundlage aus regulatorischen, prozessualen und technischen Dokumenten, die die Lösung beeinflussen.</p>
+<h2>3. Drei Orientierungsebenen: Framework → Norm → Guideline / Praxis</h2>
+<p>Die Vorlesung schlägt folgende hilfreiche Lehrhierarchie vor:</p>
+<pre>PROZESS- / BEWERTUNGSFRAMEWORK
+          ↓
+NORMEN
+          ↓
+RICHTLINIEN / REGELSÄTZE / PRAKTIKEN
+          ↓
+PROJEKTUMSETZUNG
+</pre>
+<p>Dies ist nicht als universelle rechtliche Hierarchie zu verstehen: Dokumente können sehr unterschiedlichen rechtlichen oder vertraglichen Status besitzen. Zur Strukturierung technischer Überlegungen ist die Reihenfolge dennoch hilfreich.</p>
+<h3>Framework / Prozessmodell</h3>
+<p>Beantwortet überwiegend die Fragen „Welche Prozesse sind erforderlich, und wie wird ihre Fähigkeit bewertet?“</p>
+<p>Beispiel: Automotive SPICE.</p>
+<h3>Norm / Standard</h3>
+<p>Legt Anforderungen, Prinzipien, Arbeitsprodukte oder Kriterien für ein bestimmtes Gebiet fest.</p>
+<h3>Guideline / Programmier- oder Entwurfsregelsatz</h3>
+<p>Überträgt übergeordnete Anforderungen in konkrete technische Regeln. Beispiele sind MISRA C/C++, MAAB-Gestaltungsrichtlinien und interne Projektregeln. Die Gründe für ihre Anwendung sind stets ausdrücklich anzugeben.</p>
+<h2>4. Redaktionelle Präzisierung — Automotive-SPICE-Fähigkeitsstufen</h2>
+<p>Im Transkript wurde ein Modell mit sieben Stufen erwähnt. Die Fähigkeitsskala des Automotive SPICE PAM 4.0 reicht tatsächlich von Level 0 bis Level 5:</p>
+<table>
+<thead>
+<tr>
+<th>Stufe</th>
+<th>Bezeichnung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Incomplete (unvollständig)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Performed (durchgeführt)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Managed (gesteuert)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Established (etabliert)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Predictable (vorhersagbar)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Innovating (innovativ)</td>
+</tr>
+</tbody>
+</table>
+<p>Offizielles VDA QMC PAM 4.0: <a href="https://vda-qmc.de/wp-content/uploads/2023/12/Automotive-SPICE-PAM-v40.pdf">https://vda-qmc.de/wp-content/uploads/2023/12/Automotive-SPICE-PAM-v40.pdf</a></p>
+<p>Außerdem ist Automotive SPICE ein Modell zur Prozessbewertung und kein Zertifikat, das seinen Inhaber automatisch zur Entwicklung von Systemen bestimmter Komplexitätsklassen berechtigt.</p>
+<h2>5. Redaktionelle Präzisierung — Normen und CE-Kennzeichnung</h2>
+<p>In der mündlichen Vorlesung wurden Normen zu stark mit Gesetzen und die CE-Kennzeichnung mit einer „ISO-Zertifizierung“ gleichgesetzt.</p>
+<p>Für die Europäische Union ist folgendes Modell präziser:</p>
+<pre>Anwendbare EU-Rechtsvorschriften = zwingende rechtliche Anforderungen
+          ↓
+harmonisierte Normen = üblicherweise freiwilliger Weg zur Konformitätsvermutung
+          ↓
+Konformitätsbewertung + technische Unterlagen + Erklärung
+          ↓
+CE-Kennzeichnung, sofern das einschlägige Recht sie verlangt
+</pre>
+<p>Anders ausgedrückt:</p>
+<ul>
+<li>Europäische Normen sind in der Regel freiwillige technische Spezifikationen, sofern nicht eine Rechtsvorschrift bestimmte Anforderungen verbindlich macht;</li>
+<li>harmonisierte Normen begründen oft eine Vermutung der Konformität, obwohl alternative technische Lösungen zulässig sein können;</li>
+<li>die CE-Kennzeichnung ist kein universelles Qualitätssiegel und erfordert nicht in jedem Fall eine Drittprüfung;</li>
+<li>zunächst ist genau festzustellen, welche EU-Vorschriften auf das konkrete Produkt anwendbar sind.</li>
+</ul>
+<p>Offizielle EU-Quellen:</p>
+<ul>
+<li><a href="https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/standards-in-europe/index_en.htm">https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/standards-in-europe/index_en.htm</a></li>
+<li><a href="https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/conformity-assessment/index_en.htm">https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/conformity-assessment/index_en.htm</a></li>
+<li><a href="https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/ce-marking/index_en.htm">https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/ce-marking/index_en.htm</a></li>
+</ul>
+<h2>6. Einstufung funktionaler Sicherheit: Domänen und Normen nicht vermischen</h2>
+<p>HARA und ASIL erscheinen erneut als Beispiel dafür, wie Risikoklassifizierung die Strenge der technischen Maßnahmen beeinflusst.</p>
+<h3>Redaktionelle Präzisierung</h3>
+<p>Nach ISO 26262 wird Automotive-ASIL anhand von Severity, Exposure und Controllability eingestuft. QM und ASIL A–D dürfen nicht ohne Anpassung als universelle Skala für sämtliche Industrien verstanden werden.</p>
+<p>ISO 26262-3: <a href="https://www.iso.org/standard/68385.html">https://www.iso.org/standard/68385.html</a></p>
+<p>Auch Regeln wie „dynamische Speicherallokation verbieten“ oder „70 % des Speichers ungenutzt lassen“ können projekt- oder domänenspezifische Vorgaben sein. Ohne eine präzise Referenz dürfen sie nicht als ausdrücklich universelle Forderungen der ISO 26262 ausgegeben werden.</p>
+<h2>7. Ein Angebot muss Architektur, Implementierung und V&amp;V erklären</h2>
+<p>Der Kunde muss erkennen können, was gebaut werden soll und wie nachgewiesen wird, dass das Ergebnis den Bedarf erfüllt.</p>
+<h3>Architektur</h3>
+<ul>
+<li>Grobe Systemzerlegung;</li>
+<li>wesentliche Schnittstellen;</li>
+<li>externe Abhängigkeiten;</li>
+<li>wichtige Randbedingungen;</li>
+<li>Alternativen und technische Zielkonflikte.</li>
+</ul>
+<h3>Implementierung</h3>
+<ul>
+<li>Technologien und Werkzeuge;</li>
+<li>geplante Arbeitsbereiche;</li>
+<li>Aufbau- und Fertigungsweg;</li>
+<li>Integrationsstrategie;</li>
+<li>Machbarkeitsprüfungen oder PoC bei Bedarf.</li>
+</ul>
+<h3>Verifikation und Validierung</h3>
+<ul>
+<li>Reviews und statische Analyse;</li>
+<li>Unit-Tests;</li>
+<li>Integrationstests;</li>
+<li>Prüfstand-, HIL- und Hardwaretests;</li>
+<li>Regressionstests und Leistungsmessungen;</li>
+<li>Abnahme- und Validierungsnachweise.</li>
+</ul>
+<p>Nicht jede Testmethode soll mechanisch in jedes Angebot eingefügt werden. Die V&amp;V-Strategie muss sich aus Produktrisiken, Anforderungen und den anwendbaren Prozess- und Referenzgrundlagen ergeben.</p>
+<h2>8. Ressourcen sind mehr als Personal</h2>
+<p>Die Schätzung eines Embedded-Projekts umfasst mindestens vier Ressourcenebenen:</p>
+<table>
+<thead>
+<tr>
+<th>Ebene</th>
+<th>Beispiele</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personal</td>
+<td>Architekt, Firmware, Hardware, Mechanik, QA, Safety und Security, Management</td>
+</tr>
+<tr>
+<td>Material</td>
+<td>Bauteile, Leiterplatten, mechanische Teile, Kabelbäume, Vorrichtungen</td>
+</tr>
+<tr>
+<td>Externe Leistungen</td>
+<td>Fertigung, Bestückung, Labore, Zertifizierung oder Arbeiten zur Konformitätsbewertung</td>
+</tr>
+<tr>
+<td>Zeit / Abhängigkeiten</td>
+<td>Lieferzeiten, Versand, Zoll, Überarbeitungszyklen und Wartezeiten auf Muster</td>
+</tr>
+</tbody>
+</table>
+<p>Der Gantt-Plan und der kritische Pfad eines Embedded-Projekts hängen daher häufig von Umständen ab, die sich nicht allein durch einen weiteren Softwareentwickler beschleunigen lassen.</p>
+<h2>9. Time &amp; Materials und Fixed Price: Was sich tatsächlich ändert</h2>
+<p>Die Vorlesung vergleicht zwei grundlegende Vergütungsmodelle.</p>
+<h3>Time &amp; Materials</h3>
+<p>Der Kunde bezahlt die tatsächliche Arbeitsleistung nach vereinbarten Sätzen und – soweit vertraglich geregelt – Material sowie externe Leistungen. Dieses Modell eignet sich bei unsicherem Umfang, Discovery, Forschung und Entwicklung und häufigen Änderungen.</p>
+<h3>Fixed Price / Festpreis</h3>
+<p>Der Dienstleister verpflichtet sich, einen festgelegten Umfang zu vereinbartem Preis und vertraglichen Bedingungen fertigzustellen. Das erfordert deutlich klarere Leistungsabgrenzung, Abnahmekriterien, Annahmen und Änderungssteuerung.</p>
+<h3>Redaktionelle Präzisierung — Risikoverteilung</h3>
+<p>Pauschale Aussagen wie „bei T&amp;M trägt der Kunde alle Risiken“ oder „beim Festpreis trägt der Anbieter alle Risiken“ sind falsch. Rechtliche, Safety-, IP-, Haftungs-, Gewährleistungs-, Termin- und Geschäftsrisiken werden vertraglich verteilt.</p>
+<p>Vereinfachter Vergleich:</p>
+<table>
+<thead>
+<tr>
+<th>Risiko</th>
+<th>T&amp;M</th>
+<th>Festpreis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unsicherheit des Umfangs</td>
+<td>Lässt sich durch Neupriorisierung leichter aufnehmen</td>
+<td>Ohne Änderungsantrag riskant</td>
+</tr>
+<tr>
+<td>Mehraufwand des Anbieters</td>
+<td>Bei freigegebener Arbeit häufiger abrechenbar</td>
+<td>Verringert häufiger die Marge des Anbieters</td>
+</tr>
+<tr>
+<td>Budgetplanbarkeit für den Kunden</td>
+<td>Geringer</td>
+<td>Bei eingefrorenem Umfang höher</td>
+</tr>
+<tr>
+<td>Bedarf an eindeutigen Abnahmekriterien</td>
+<td>Wichtig</td>
+<td>Entscheidend</td>
+</tr>
+<tr>
+<td>Rechtliche / Haftungsrisiken</td>
+<td>Abhängig vom Vertrag</td>
+<td>Abhängig vom Vertrag</td>
+</tr>
+</tbody>
+</table>
+<h2>10. Wann ein Festpreis sinnvoll ist</h2>
+<p>In der Logik der Vorlesung ist ein Festpreis realistisch, wenn:</p>
+<ul>
+<li>Problem und Leistungsumfang gut verstanden sind;</li>
+<li>die Anforderungen ausreichend stabil sind;</li>
+<li>der Anbieter vergleichbare Arbeiten schon ausgeführt hat;</li>
+<li>die Abnahmekriterien klar sind;</li>
+<li>Abhängigkeiten und Pflichten des Kunden dokumentiert sind;</li>
+<li>ein Änderungsmanagement besteht;</li>
+<li>Unsicherheit in Reserve und Marge berücksichtigt wurde.</li>
+</ul>
+<p>Sind diese Bedingungen nicht erfüllt, ist T&amp;M oder ein phasenweises Zusammenarbeitsmodell häufig transparenter.</p>
+<h2>11. Schätzungen müssen nachvollziehbar sein</h2>
+<p>Eine fundierte Schätzung beginnt nicht mit „Ich glaube, das dauert drei Monate“, sondern mit einer Zerlegung der Aufgabe.</p>
+<pre>Umfang / Annahmen
+          ↓
+Arbeitsbereiche / WBS
+          ↓
+Rollen + Aufwand
+          ↓
+Material + externe Leistungen
+          ↓
+Abhängigkeiten / Lieferzeiten
+          ↓
+Risiken / Reserve
+          ↓
+kommerzielle Schätzung
+</pre>
+<p>Jede wesentliche Zahl braucht eine Erklärung: Woher stammt sie und welche Faktoren würden sie verändern?</p>
+<h2>12. Kontrollfragen</h2>
+<ol>
+<li>Warum benötigt ein Angebot eine Referenzgrundlage?</li>
+<li>Wodurch unterscheidet sich ein Prozessbewertungsmodell von einer Produktsicherheitsnorm?</li>
+<li>Welche Fähigkeitsstufen definiert Automotive SPICE 4.0?</li>
+<li>Warum ist die CE-Kennzeichnung nicht bloß eine „ISO-Zertifizierung“?</li>
+<li>Welchen Vorteil kann eine harmonisierte Norm innerhalb der EU bieten?</li>
+<li>Auf welchen drei Parametern beruht die Automotive-HARA-/ASIL-Einstufung?</li>
+<li>Was ist der wesentliche kommerzielle Unterschied zwischen T&amp;M und Festpreis?</li>
+<li>Warum lassen sich rechtliche und Haftungsrisiken nicht allein aus dem Preismodell ableiten?</li>
+<li>Welche nicht-personellen Ressourcen gehören in eine Embedded-Projektschätzung?</li>
+<li>Wann ist eine Schätzung rückverfolgbar und nachvollziehbar?</li>
+</ol>
+<h2>13. Schema der Veranstaltung</h2>
+<pre>Kundenbedarf
+          ↓
+Referenzgrundlage (Prozess/Framework + Normen/Recht + Richtlinien/Projektregeln)
+          ↓
+Architektur + Implementierung + V&amp;V
+          ↓
+Ressourcen + Zeitplan + Risiken
+          ↓
+T&amp;M / Festpreis / Hybridmodell
+          ↓
+verhandelbares Angebot
+</pre>
+<h2>14. Übergang zum 22. September 2026</h2>
+<p>Auf ein angenommenes Angebot folgt eine weitere wichtige Veränderung: Ein Kontakt wird zum Vertrag, aus dem Vertrag müssen ein arbeitsfähiges Delivery-Team und Anforderungen werden. Die nächste Sitzung führt vom unterschriebenen Vertrag über Personalplanung, Produkt-Discovery, Business-Analyse und User Stories zu Systemanforderungen und ersten Architekturvisualisierungen.</p>
+<h2>Geprüfte Referenzen</h2>
+<ul>
+<li>Automotive SPICE PAM 4.0: <a href="https://vda-qmc.de/wp-content/uploads/2023/12/Automotive-SPICE-PAM-v40.pdf">https://vda-qmc.de/wp-content/uploads/2023/12/Automotive-SPICE-PAM-v40.pdf</a></li>
+<li>ISO 26262-3:2018: <a href="https://www.iso.org/standard/68385.html">https://www.iso.org/standard/68385.html</a></li>
+<li>EU-Normenübersicht: <a href="https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/standards-in-europe/index_en.htm">https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/standards-in-europe/index_en.htm</a></li>
+<li>EU-Konformitätsbewertung: <a href="https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/conformity-assessment/index_en.htm">https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/conformity-assessment/index_en.htm</a></li>
+<li>CE-Kennzeichnung: <a href="https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/ce-marking/index_en.htm">https://europa.eu/youreurope/business/product-rules-compliance/general-product-compliance/ce-marking/index_en.htm</a></li>
+</ul>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Lehre</b><p style="margin-top:8px">Lehrmaterialien von Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">Über den Autor →</a></div>
+<div class="footer-links"><b>Kurs</b><a href="index.html">Kursübersicht</a><a href="lecture-01.html">Vorlesung 01</a><a href="lecture-02.html">Vorlesung 02</a><a href="lecture-03.html">Vorlesung 03</a><a href="lecture-05.html">Vorlesung 04</a></div>
+<div class="footer-links"><b>Kontext</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in der Energietechnik</a><a href="../../teaching.html">Alle Lehrmaterialien</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Datenschutz</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

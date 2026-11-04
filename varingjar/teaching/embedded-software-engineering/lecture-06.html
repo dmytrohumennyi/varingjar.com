@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="en";var TARGETS={"en":"lecture-06.html","uk":"../../uk/teaching/embedded-software-engineering/lecture-06.html","de":"../../de/teaching/embedded-software-engineering/lecture-06.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>From Contract to Requirements and First Architecture — Væringjar II</title><meta content="The course crosses from pre-sale into delivery: staffing lead time, discovery, business decomposition, user needs, system requirements and the first architecture sketch." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20260928-scientific-v3" rel="stylesheet"/>
+<link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-06.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-06.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-06.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-06.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-06.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="From Lead to Client: RFI, RFC, RFQ and Proposal — Væringjar II" property="og:title"/><meta content="Lecture 4 of Embedded Software Engineering: initial meetings, RFI/RFQ/RFC, proposal structure, versioning, resources, timeline and risk." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/teaching/embedded-software-engineering/lecture-06.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="From Lead to Client: RFI, RFC, RFQ and Proposal — Væringjar II" name="twitter:title"/><meta content="Lecture 4 of Embedded Software Engineering: initial meetings, RFI/RFQ/RFC, proposal structure, versioning, resources, timeline and risk." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Framework</a><a href="../../research.html">Evidence</a><a href="../../implementation.html">Build</a><a class="active" href="../../teaching.html">Teaching</a><a href="../../collaboration.html">Collaborate</a></div>
+<div aria-label="Language" class="lang-switch"><a aria-current="page" class="active" data-lang="en" href="lecture-06.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../uk/teaching/embedded-software-engineering/lecture-06.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../de/teaching/embedded-software-engineering/lecture-06.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Teaching / Lecture 06 · 22.09.2026</div><h1>From Contract to Requirements and First Architecture</h1><p class="lead reader-lead">The course crosses from pre-sale into delivery: staffing lead time, discovery, business decomposition, user needs, system requirements and the first architecture sketch.</p><div class="reader-badges"><span>22.09.2026</span><span>session 06 / 06</span><span>frozen 28.09.2026</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Course overview →</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / <b>MODULE 05</b> · REQUIREMENTS &amp; ARCHITECTURE / 06 · 22.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-05.html">Previous · Proposal, Standards and Commercial Model</a><span class="current">Current · 06</span><a class="next" href="#forecast">Next · Forecast</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Key ideas</div><h2>Key ideas</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Contract does not create a team</h3><p>Staffing lead time and prerequisites must be visible before the start promise.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>Decompose before specifying</h3><p>Turn customer speech into domains/components before writing requirements.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>Need ≠ solution</h3><p>ROS 2, YOLO or LiDAR are candidate technologies until requirements justify them.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>Traceability drives V-model</h3><p>Needs flow to system/component requirements and back to verification evidence.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">Takeaway</div><h2>Practical takeaway</h2><div class="reader-copy"><p class="reader-takeaway">Delivery starts by preserving traceability from an imperfect customer statement to a testable system model—not by coding the first idea that sounds plausible.</p></div></div></section><section class="reader-section section-tight next-lecture-section" id="forecast"><div class="container"><div class="next-lecture-card"><div class="section-eyebrow">Forecast</div><h2>Next 1–2 sessions</h2><p>The frozen 22 September notes contain a forecast for the next 1–2 sessions. It remains a forecast until a new primary transcript is uploaded.</p></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Reconstructed &amp; frozen notes</div><h2>Full lecture notes</h2><p class="lecture-notes-intro">The complete English academic notes follow the Ukrainian source, retaining the original argument, engineering examples, terminology, diagrams, tasks and editorial qualifications. The original transcripts remain available separately in Ukrainian.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="source-notes/R06-vid-kontraktu-do-vymoh-ta-arkhitektury.md">Open source Markdown →</a> <a class="btn btn-ghost" href="source-transcripts/2026-09-22.md">Raw transcript →</a></div><article class="lecture-article lecture-notes-content" lang="en"><h1>Lecture 06. From Contract to Requirements and the First Architecture</h1>
+<blockquote>
+<p><strong>Chronology:</strong> 22 September 2026 · sixth session. Primary source: <a href="source-transcripts/2026-09-22.md">the complete transcript</a>. Transition: pre-sales ends and the student teams' roles begin shifting from sales and engagement to systems engineering.</p>
+</blockquote>
+<h2>1. When a lead becomes a client in this course model</h2>
+<p>The lecture establishes a clear educational boundary: as long as the process concerns meetings, RFIs, RFQs, RFCs and proposals, it remains a lead or opportunity. Once the legal documents and commercial starting point are agreed, the client/project relationship begins.</p>
+<h3>Editorial clarification 01</h3>
+<p>In real CRM, accounting and contracting processes, lead, opportunity, prospect, <strong>customer</strong> and client may have different boundaries. Likewise, a contract need not be signed by a C-level executive: signing authority is defined by the individual company. In this course, “signed agreement → client” is a useful teaching model, not a universal legal definition.</p>
+<h2>2. Project start lead time must already be sold in the proposal</h2>
+<p>A signed contract does not instantly create a team. Hardware, firmware and systems roles can require lengthy hiring and onboarding. Before a project starts, therefore, document:</p>
+<ul>
+<li>the earliest start date;</li>
+<li>staffing assumptions;</li>
+<li>which people are already available;</li>
+<li>which roles must still be recruited or allocated;</li>
+<li>dependencies on customer access, hardware, accounts and documents;</li>
+<li>what happens if these prerequisites are late.</li>
+</ul>
+<p>Practical principle: do not promise a Monday start on Thursday if the team does not yet exist.</p>
+<h2>3. Form the core team during pre-sales</h2>
+<p>Continuity is best provided by people who have already studied the problem statement during pre-sales:</p>
+<ul>
+<li>architect / systems engineer;</li>
+<li>technical lead or leads;</li>
+<li>engineering / delivery manager;</li>
+<li>domain experts.</li>
+</ul>
+<p>These roles form the core. The team then scales to match the actual scope.</p>
+<pre><code class="language-text">pre-sale core
+     ↓
+contract
+     ↓
+core team retained
+     +
+newly staffed specialists
+     ↓
+delivery team
+</code></pre>
+<h2>4. An important reality: discovery after signing may change the picture</h2>
+<p>The lecture describes situations where the customer withholds part of the context before signing or uses the pre-sales task to evaluate capabilities. Consequently, the first actual delivery input may be different from the early problem statement.</p>
+<p>The right response is neither to take offence nor to start implementing an outdated <strong>proposal</strong>: re-establish the actual scope, assumptions and gaps.</p>
+<p>This is another reason for traceability and change control.</p>
+<h2>5. Teaching case: a robot for automated PCB testing</h2>
+<p>The customer input in the lecture is deliberately given as a long, partly structured spoken description. The system concept includes:</p>
+<ul>
+<li>a ready-made six-degree-of-freedom robot manipulator;</li>
+<li>a custom end effector;</li>
+<li>three methods for interacting with objects: electromagnetic pickup, mechanical gripper and contact test matrix;</li>
+<li>automatic tool selection and orientation;</li>
+<li>control and computing;</li>
+<li>computer vision;</li>
+<li>network communication;</li>
+<li>ROS 2 integration;</li>
+<li>reporting and cloud storage;</li>
+<li>operation in proximity to people.</li>
+</ul>
+<p>The case is not about selecting a particular robot brand. It shows how to derive an <strong>engineering</strong> structure from a customer's spoken description.</p>
+<h2>6. Business analysis: decompose first, do not invent requirements</h2>
+<p>The business analyst or systems analyst should not start by immediately “inventing requirements”. First, decompose the input into logical domains and components.</p>
+<p>An example of the decomposition from the lecture:</p>
+<pre><code class="language-text">Customer statement
+      ↓
+1. Robot manipulator
+2. End effector
+3. Sensor / vision subsystem
+4. Control subsystem
+5. Communication
+6. Functional safety
+7. Test / reporting / cloud
+</code></pre>
+<p>This creates a map on which to ask questions and identify missing information.</p>
+<h2>7. From chapters to user stories</h2>
+<p>After decomposition, the lecture introduces user stories as a way to describe the system from the viewpoint of an actor or role.</p>
+<p>The conventional form is:</p>
+<pre><code class="language-text">As a &lt;role&gt;
+I want &lt;capability&gt;
+so that &lt;value / outcome&gt;
+</code></pre>
+<p>An example close to the lecture:</p>
+<blockquote>
+<p>As an operator, I want to select and activate the required end-effector tool so that the robot can manipulate different object types without manual reconfiguration.</p>
+</blockquote>
+<h3>Editorial clarification 02 — actor versus component</h3>
+<p>At times in the transcript, a component or control subsystem is described as the “user”. This can be a useful modelling device when identifying interactions; however, in the traditional agile sense a user story usually captures the needs of an actor or stakeholder. Component behaviors should later be formalized through system, software, <strong>hardware</strong> or interface requirements.</p>
+<h2>8. From user need to engineering requirements</h2>
+<p>The course constructs the following traceability chain:</p>
+<pre><code class="language-text">Customer need / speech
+      ↓
+Business decomposition
+      ↓
+User stories / stakeholder needs
+      ↓
+System requirements
+      ↓
+HW / SW / FW / Mechanical / Interface requirements
+      ↓
+Architecture / component description
+      ↓
+Implementation
+      ↓
+Verification &amp; Validation
+</code></pre>
+<p>This is the central <strong>engineering</strong> idea of the session: every lower level should explain which higher-level need it fulfils.</p>
+<h2>9. What makes a good requirement?</h2>
+<p>The lecture establishes several important rules that must be retained.</p>
+<h3>Atomic</h3>
+<p>One requirement states one verifiable need, rather than combining multiple unrelated conditions in a long sentence.</p>
+<h3>Unambiguous</h3>
+<p>Avoid terms such as “sufficient”, “fast”, “convenient” or “reliable” unless they are quantified or tied to an acceptance criterion.</p>
+<h3>Testable / verifiable</h3>
+<p>It should be clear how to demonstrate compliance.</p>
+<h3>Identifiable and traceable</h3>
+<p>Each requirement needs an identifier, revision or change history, and a connection to the parent need or requirement and to verification evidence.</p>
+<h3>Consistent</h3>
+<p>The complete requirement set should contain no hidden contradictions.</p>
+<h3>Example</h3>
+<p>Weak wording:</p>
+<blockquote>
+<p>Robot shall position the tool very accurately.</p>
+</blockquote>
+<p>Better wording:</p>
+<blockquote>
+<p>SYS-POS-001: The robot shall position the active tool center point within ±0.2 mm of the commanded Cartesian position under the defined test load.</p>
+</blockquote>
+<p>The test conditions, reference frame and measurement method still need to be defined; that is exactly how a requirement becomes professionally usable.</p>
+<h2>10. System requirements versus component requirements</h2>
+<p>The lecture correctly distinguishes the following levels:</p>
+<h3>System requirement</h3>
+<p>Describes the behavior or property of the whole system or an interaction between major components.</p>
+<h3>Hardware / software / firmware / mechanical requirement</h3>
+<p>Allocates part of the system behavior to a specific engineering domain or component.</p>
+<p>Example:</p>
+<pre><code class="language-text">SYS-COM-001
+Robot controller and end-effector controller shall exchange command/status data through the defined system network.
+
+        ↓ allocation
+
+HW-COM-...
+SW-COM-...
+IF-COM-...
+</code></pre>
+<h2>11. Editorial clarification — ROS 2, YOLO and safety</h2>
+<p>The case mentions ROS 2, YOLO, camera, LiDAR and RADAR as possible solution elements. These should not be transformed into requirements simply because someone mentioned them during discovery.</p>
+<ul>
+<li><strong>ROS 2 is a technology or platform decision:</strong> define the interaction and deployment requirement first, and choose a solution later.</li>
+<li>YOLO is a family of object-detection models, not automatically the best classifier or PCB inspection method.</li>
+<li>LiDAR, RADAR and cameras are possible sensing technologies, not universal answers to functional-safety questions.</li>
+<li>Robot-cell safety architecture must derive from risk assessment, operating modes and applicable standards; the sensor type follows the analysis rather than serving as a starting assumption.</li>
+</ul>
+<p>This is an essential discipline in requirements <strong>engineering</strong>: do not confuse the need with a premature solution.</p>
+<h2>12. The first architecture sketch</h2>
+<p>When system requirements and the main components begin to emerge, the first topology or architecture visualization can be drafted.</p>
+<p>The educational case diagram:</p>
+<pre><code class="language-text">                    Supervisory / Test Computer
+                       │        │        │
+                       │        │        └── Reports / storage
+                       │        └────────── Vision / perception
+                       │
+                    System network
+                  ┌────┴───────────┐
+                  │                │
+          Robot Controller   End-Effector Controller
+                  │                │
+          Robot Manipulator   Tool rotation / gripper /
+                              magnet / contact matrix
+                  └──────── mechanical coupling ───────┘
+</code></pre>
+<p>This is not detailed architecture yet. Its purpose is to make gaps visible: interfaces, ownership, power, timing, <strong>safety</strong> boundaries, data flow and physical coupling.</p>
+<h2>13. The V-model is traceability, not a decorative letter V</h2>
+<p>In the lecture, requirements lead toward implementation and then back toward verification.</p>
+<pre><code class="language-text">Needs                    Validation
+  ↓                         ↑
+System requirements     System test
+  ↓                         ↑
+Component requirements  Integration test
+  ↓                         ↑
+Design / architecture   Unit/component verification
+  ↓                         ↑
+       Implementation
+</code></pre>
+<p>The point is that test evidence must correspond to the level of the requirement being verified.</p>
+<h2>14. Team practical assignment</h2>
+<p>At the end of the session, the first substantial practical scenario is defined. Teams are expected to behave like small service companies.</p>
+<p>For the next stage they must:</p>
+<ol>
+<li>form their teams;</li>
+<li>assign initial roles in engagement or business, technical leadership and management;</li>
+<li>develop a company identity;</li>
+<li>prepare business cards and digital contact details;</li>
+<li>prepare a public-facing story or landing materials;</li>
+<li>act as though they are leaving for an industry conference tomorrow;</li>
+<li>approach the lecturer as a prospective lead and secure a follow-up;</li>
+<li>then work through meetings → RFI/RFQ/RFC → proposal → decomposition → requirements.</li>
+</ol>
+<p>Thus the first assessment track tests not one isolated topic, but the entire journey covered since 1 September.</p>
+<h2>15. Review questions</h2>
+<ol>
+<li>Why must staffing lead time be shown before the contractual start?</li>
+<li>What should you do when the actual scope after signing differs from the pre-sales picture?</li>
+<li>Why does business analysis start with decomposition rather than requirements?</li>
+<li>How do stakeholder needs, user stories and system requirements differ?</li>
+<li>What makes a requirement atomic?</li>
+<li>Why is a requirement weak if no verification method is identified?</li>
+<li>Why should a named technology not automatically become a requirement?</li>
+<li>What should the first architecture diagram reveal?</li>
+<li>How does the V-model connect requirements to test evidence?</li>
+<li>Which deliverables should each student “company” prepare before its first practical session?</li>
+</ol>
+<h2>16. Forecast for the next one or two sessions — as of 22 September 2026</h2>
+<h3>Likely Session 07 — practical lead-generation / initial-meeting simulation</h3>
+<p>The homework already suggests the next step: teams present their “companies”, conduct an initial encounter, seek a follow-up and record discovery questions. Expected deliverables include a company one-pager, role map, contact card or QR code, two or three cases or capability statements, and a list of questions for the lead.</p>
+<h3>Likely Session 08 — from follow-up to RFI/proposal and requirements baseline</h3>
+<p>After simulating the lead funnel, the natural progression is a specific customer case: receive an RFI or problem statement, answer it, establish assumptions and open questions, develop a high-level proposal and construct the first traceability chain from need to system and allocated requirements.</p>
+<p><strong>Important:</strong> this is a forecast, not a frozen claim about what actually took place. Once a new recording is uploaded, the actual session is added as new content; this forecast is not rewritten.</p>
+<h2>Verified references</h2>
+<ul>
+<li>ROS 2 documentation: <a href="https://docs.ros.org/en/jazzy/">https://docs.ros.org/en/jazzy/</a></li>
+<li>AUTOSAR Classic Platform (example of layered architecture): <a href="https://www.autosar.org/standards/classic-platform">https://www.autosar.org/standards/classic-platform</a></li>
+<li>ISO 26262-3:2018 (example of formal concept and HARA discipline in automotive): <a href="https://www.iso.org/standard/68385.html">https://www.iso.org/standard/68385.html</a></li>
+</ul>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Teaching</b><p style="margin-top:8px">Author teaching materials by Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">About the author →</a></div>
+<div class="footer-links"><b>Course</b><a href="index.html">Course overview</a><a href="lecture-01.html">Lecture 01</a><a href="lecture-02.html">Lecture 02</a><a href="lecture-03.html">Lecture 03</a><a href="lecture-06.html">Lecture 04</a></div>
+<div class="footer-links"><b>Context</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in Power Engineering</a><a href="../../teaching.html">All teaching materials</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Privacy</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../assets/js/locale.js"></script><script defer src="../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="uk";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-06.html","uk":"lecture-06.html","de":"../../../de/teaching/embedded-software-engineering/lecture-06.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Від контракту до вимог та першої архітектури — Væringjar II</title><meta content="Курс переходить із pre-sale у delivery: staffing lead time, discovery, business decomposition, user needs, system requirements і перша architecture sketch." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20260928-scientific-v3" rel="stylesheet"/>
+<link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-06.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-06.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-06.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-06.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-06.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Від ліда до клієнта: RFI, RFC, RFQ і Proposal — Væringjar II" property="og:title"/><meta content="Конспект лекції 3 авторського курсу Інженерія програмного забезпечення вбудованих систем: як сервісна компанія перетворює цільову компанію на лід." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-06.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Від ліда до клієнта: RFI, RFC, RFQ і Proposal — Væringjar II" name="twitter:title"/><meta content="Конспект лекції 3 авторського курсу Інженерія програмного забезпечення вбудованих систем: як сервісна компанія перетворює цільову компанію на лід." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Модель</a><a href="../../research.html">Докази</a><a href="../../implementation.html">Реалізація</a><a class="active" href="../../teaching.html">Навчання</a><a href="../../collaboration.html">Співпраця</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-06.html?lang=en" hreflang="en" lang="en">EN</a><a aria-current="page" class="active" data-lang="uk" href="lecture-06.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../../de/teaching/embedded-software-engineering/lecture-06.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Викладання / Лекція 06 · 22.09.2026</div><h1>Від контракту до вимог та першої архітектури</h1><p class="lead reader-lead">Курс переходить із pre-sale у delivery: staffing lead time, discovery, business decomposition, user needs, system requirements і перша architecture sketch.</p><div class="reader-badges"><span>22.09.2026</span><span>заняття 06 / 06</span><span>заморожено 28.09.2026</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Огляд курсу →</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / <b>MODULE 05</b> · REQUIREMENTS &amp; ARCHITECTURE / 06 · 22.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-05.html">Попередня · Proposal, стандарти та комерційна модель</a><span class="current">Зараз · 06</span><a class="next" href="#forecast">Далі · Forecast</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Ключові ідеї</div><h2>Ключові ідеї</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Контракт не створює команду</h3><p>Staffing lead time та prerequisites мають бути видимими до start promise.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>Спочатку decomposition</h3><p>Customer speech треба розкласти на domains/components до написання requirements.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>Need ≠ solution</h3><p>ROS 2, YOLO або LiDAR — candidate technologies, доки requirements їх не обґрунтують.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>Traceability веде V-model</h3><p>Needs переходять у system/component requirements і повертаються verification evidence.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">Висновок</div><h2>Практичний висновок</h2><div class="reader-copy"><p class="reader-takeaway">Delivery починається зі збереження traceability від недосконалого customer statement до testable system model, а не з кодування першої правдоподібної ідеї.</p></div></div></section><section class="reader-section section-tight next-lecture-section" id="forecast"><div class="container"><div class="next-lecture-card"><div class="section-eyebrow">Прогноз</div><h2>Наступні 1–2 заняття</h2><p>У замороженому конспекті від 22 вересня є прогноз наступних 1–2 занять. Він лишається прогнозом, доки не буде завантажено новий первинний транскрипт.</p></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Реконструйований та заморожений матеріал</div><h2>Повний конспект лекції</h2><p class="lecture-notes-intro">Конспект перебудовано з первинного українського транскрипту. Редакторські виправлення та зовнішні доповнення всередині матеріалу позначені явно.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R06-vid-kontraktu-do-vymoh-ta-arkhitektury.md">Відкрити Markdown →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-22.md">Сирий транскрипт →</a></div><article class="lecture-article lecture-notes-content" lang="uk"><h1>Лекція 06. Від контракту до вимог та першої архітектури</h1>
+<blockquote>
+<p><strong>Хронологія:</strong> 22.09.2026 · шосте заняття.<br/>
+<strong>Первинне джерело:</strong> <a href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-22.md">повний транскрипт</a>.<br/>
+<strong>Поворот:</strong> pre-sale закінчується; ролі студентських команд починають рухатися від sales/engagement до system engineering.</p>
+</blockquote>
+<h2>1. Коли lead стає client у моделі курсу</h2>
+<p>Лекція проводить чітку навчальну межу: доки є meetings, RFI/RFQ/RFC/Proposal — це lead/opportunity. Після погодження юридичних документів і commercial start point починається client/project relationship.</p>
+<h3>Редакторське уточнення 01</h3>
+<p>У реальних CRM, accounting і contracting processes слова <em>lead, opportunity, prospect, customer, client</em> можуть мати інші boundaries. Так само договір не обов'язково підписує саме C-level: signing authority визначає конкретна компанія. У курсі «signed agreement → client» — <strong>корисна навчальна модель</strong>, а не універсальна юридична дефініція.</p>
+<h2>2. Start lead time треба продати ще в Proposal</h2>
+<p>Підписаний contract не створює людей миттєво. Hardware/firmware/system roles можуть мати довгий hiring/onboarding time. Тому до старту проєкту треба заздалегідь зафіксувати:</p>
+<ul>
+<li>earliest start date;</li>
+<li>staffing assumptions;</li>
+<li>які люди вже available;</li>
+<li>які ролі ще треба recruit/allocate;</li>
+<li>що залежить від client access, hardware, accounts, documents;</li>
+<li>що відбувається, якщо ці prerequisites запізнюються.</li>
+</ul>
+<p>Практичний принцип: <strong>не обіцяти Monday start у Thursday, якщо команда ще не існує.</strong></p>
+<h2>3. Core team формується ще у pre-sale</h2>
+<p>Найкращий continuity дають люди, які вже бачили problem statement під час pre-sale:</p>
+<ul>
+<li>architect/system engineer;</li>
+<li>technical lead(s);</li>
+<li>engineering/delivery manager;</li>
+<li>domain experts.</li>
+</ul>
+<p>Вони утворюють кістяк. Далі команда масштабується залежно від реального scope.</p>
+<pre><code class="language-text">pre-sale core
+     ↓
+contract
+     ↓
+core team retained
+     +
+newly staffed specialists
+     ↓
+delivery team
+</code></pre>
+<h2>4. Важлива реальність: після контракту discovery може змінити картину</h2>
+<p>У лекції є досвід, коли до договору клієнт не розкриває весь контекст або використовує pre-sale task як capability check. Тому перший delivery input може відрізнятися від ранньої постановки.</p>
+<p>Правильна реакція — не ображатися і не починати кодити старий Proposal, а <strong>повторно зафіксувати actual scope, assumptions та gaps</strong>.</p>
+<p>Це ще один аргумент для traceability і change control.</p>
+<h2>5. Навчальний case: робот для автоматичного тестування PCB</h2>
+<p>Клієнтський input у лекції навмисно поданий як довгий, частково структурований усний потік. Ідея системи:</p>
+<ul>
+<li>готовий 6-DoF robot manipulator;</li>
+<li>custom end effector;</li>
+<li>три способи взаємодії з об'єктами: electromagnetic pickup, mechanical gripper, contact test matrix;</li>
+<li>automatic tool selection/orientation;</li>
+<li>controller/computing;</li>
+<li>computer vision;</li>
+<li>network communication;</li>
+<li>ROS 2 integration;</li>
+<li>reporting/cloud storage;</li>
+<li>operation поруч із людьми.</li>
+</ul>
+<p>Цей case потрібен не для вибору конкретного robot brand. Він демонструє, <strong>як із customer speech отримати engineering structure</strong>.</p>
+<h2>6. Business analysis: перший крок — decomposition, не requirements</h2>
+<p>Business analyst/system analyst спочатку не має права одразу «вигадувати реквайменти». Спершу треба розкласти input на логічні domains/components.</p>
+<p>Приклад decomposition з лекції:</p>
+<pre><code class="language-text">Customer statement
+      ↓
+1. Robot manipulator
+2. End effector
+3. Sensor / vision subsystem
+4. Control subsystem
+5. Communication
+6. Functional safety
+7. Test / reporting / cloud
+</code></pre>
+<p>Це створює карту, на якій уже можна ставити питання й шукати missing information.</p>
+<h2>7. Від chapters до user stories</h2>
+<p>Після decomposition лекція переходить до user stories як способу побачити систему з погляду actor/role.</p>
+<p>Класична форма:</p>
+<pre><code class="language-text">As a &lt;role&gt;
+I want &lt;capability&gt;
+so that &lt;value / outcome&gt;
+</code></pre>
+<p>Приклад, близький до лекції:</p>
+<blockquote>
+<p>As an operator, I want to select and activate the required end-effector tool so that the robot can manipulate different object types without manual reconfiguration.</p>
+</blockquote>
+<h3>Редакторське уточнення 02 — actor vs component</h3>
+<p>У транскрипті як «user» інколи виступає сам component/control subsystem. Це може бути корисною modeling technique для пошуку взаємодій, але <strong>user story у класичному agile сенсі зазвичай описує потребу actor/stakeholder</strong>. Поведінку компонентів краще далі формалізувати через system/software/hardware requirements або interface requirements.</p>
+<h2>8. Від user need до engineering requirements</h2>
+<p>Курс будує такий traceability chain:</p>
+<pre><code class="language-text">Customer need / speech
+      ↓
+Business decomposition
+      ↓
+User stories / stakeholder needs
+      ↓
+System requirements
+      ↓
+HW / SW / FW / Mechanical / Interface requirements
+      ↓
+Architecture / component description
+      ↓
+Implementation
+      ↓
+Verification &amp; Validation
+</code></pre>
+<p>Це центральна інженерна ідея заняття: <strong>кожний нижчий рівень має пояснювати, яку верхньорівневу потребу він реалізує.</strong></p>
+<h2>9. Яким має бути requirement</h2>
+<p>У лекції сформульовано кілька сильних правил, які варто зберегти.</p>
+<h3>Atomic</h3>
+<p>Один requirement — одна перевірювана вимога, а не пакет різних умов, з'єднаних довгим реченням.</p>
+<h3>Unambiguous</h3>
+<p>Уникати слів «достатньо», «швидко», «зручно», «надійно», якщо вони не визначені кількісно або через acceptance criterion.</p>
+<h3>Testable / verifiable</h3>
+<p>Повинно бути зрозуміло, <strong>як довести виконання</strong>.</p>
+<h3>Identifiable and traceable</h3>
+<p>Requirement має ID, version/change history та зв'язок із parent need/requirement і verification evidence.</p>
+<h3>Consistent</h3>
+<p>Сукупність requirements не повинна мати прихованих суперечностей.</p>
+<h3>Приклад</h3>
+<p>Погано:</p>
+<blockquote>
+<p>Robot shall position the tool very accurately.</p>
+</blockquote>
+<p>Краще:</p>
+<blockquote>
+<p>SYS-POS-001: The robot shall position the active tool center point within ±0.2 mm of the commanded Cartesian position under the defined test load.</p>
+</blockquote>
+<p>Тут ще треба визначити test conditions, reference frame і measurement method — саме так requirement стає дорослим.</p>
+<h2>10. System requirements vs component requirements</h2>
+<p>Лекція правильно розділяє:</p>
+<h3>System requirement</h3>
+<p>Описує поведінку або властивість <strong>системи як цілого</strong> або interaction між великими компонентами.</p>
+<h3>Hardware / software / firmware / mechanical requirement</h3>
+<p>Алокує частину системної поведінки конкретному engineering domain/component.</p>
+<p>Приклад:</p>
+<pre><code class="language-text">SYS-COM-001
+Robot controller and end-effector controller shall exchange command/status data through the defined system network.
+
+        ↓ allocation
+
+HW-COM-...
+SW-COM-...
+IF-COM-...
+</code></pre>
+<h2>11. Редакторське уточнення — ROS 2, YOLO і safety</h2>
+<p>У case звучать ROS 2, YOLO, camera/LiDAR/RADAR як можливі рішення. Їх не треба перетворювати на requirements лише тому, що вони прозвучали у discovery.</p>
+<ul>
+<li><strong>ROS 2</strong> — technology/platform choice; спочатку треба вимога до interaction/deployment, а вже потім рішення.</li>
+<li><strong>YOLO</strong> — family of object-detection models; це не автоматично найкращий classifier/inspection method для PCB.</li>
+<li><strong>LiDAR/RADAR/camera</strong> — candidate sensing technologies, а не універсальна відповідь на functional safety.</li>
+<li>Safety architecture для robot cell має виходити з risk assessment, operating modes і applicable standards; sensor type — наслідок analysis, а не starting assumption.</li>
+</ul>
+<p>Це ключова дисципліна requirements engineering: <strong>не змішувати need з premature solution.</strong></p>
+<h2>12. Перший architecture sketch</h2>
+<p>Коли system requirements і main components уже проглядаються, можна будувати першу topology/architecture visualization.</p>
+<p>Навчальна схема case:</p>
+<pre><code class="language-text">                    Supervisory / Test Computer
+                       │        │        │
+                       │        │        └── Reports / storage
+                       │        └────────── Vision / perception
+                       │
+                    System network
+                  ┌────┴───────────┐
+                  │                │
+          Robot Controller   End-Effector Controller
+                  │                │
+          Robot Manipulator   Tool rotation / gripper /
+                              magnet / contact matrix
+                  └──────── mechanical coupling ───────┘
+</code></pre>
+<p>Це ще не detailed architecture. Її задача — <strong>зробити gaps видимими</strong>: interfaces, ownership, power, timing, safety boundary, data flow, physical coupling.</p>
+<h2>13. V-model як traceability, а не декоративна літера V</h2>
+<p>У лекції requirements переходять до implementation і назад до verification.</p>
+<pre><code class="language-text">Needs                    Validation
+  ↓                         ↑
+System requirements     System test
+  ↓                         ↑
+Component requirements  Integration test
+  ↓                         ↑
+Design / architecture   Unit/component verification
+  ↓                         ↑
+       Implementation
+</code></pre>
+<p>Сенс: test evidence має відповідати тому рівню requirement, який перевіряється.</p>
+<h2>14. Практична робота команд</h2>
+<p>Наприкінці заняття сформовано перший великий сценарій практики. Команди мають поводитися як маленькі service companies.</p>
+<p>До наступної роботи треба:</p>
+<ol>
+<li>сформувати команди;</li>
+<li>визначити початкові ролі — engagement/business, technical lead, leadership;</li>
+<li>придумати company identity;</li>
+<li>підготувати business card / digital contact;</li>
+<li>підготувати public-facing story/landing materials;</li>
+<li>поводитися так, ніби завтра їдете на conference;</li>
+<li>«вцепити» викладача як lead і добитися follow-up;</li>
+<li>далі пройти meetings → RFI/RFQ/RFC → Proposal → decomposition → requirements.</li>
+</ol>
+<p>Тобто перша атестаційна траєкторія перевіряє <strong>не одну тему</strong>, а весь шлях, який курс уже пройшов з 1 вересня.</p>
+<h2>15. Контрольні запитання</h2>
+<ol>
+<li>Чому staffing lead time треба показати ще до contract start?</li>
+<li>Що робити, якщо actual scope після договору відрізняється від pre-sale picture?</li>
+<li>Чому BA спочатку робить decomposition, а не пише requirements?</li>
+<li>Чим stakeholder need, user story і system requirement відрізняються?</li>
+<li>Що означає atomic requirement?</li>
+<li>Чому requirement без verification method слабкий?</li>
+<li>Чому technology name не завжди має бути requirement?</li>
+<li>Що саме має показати перша architecture diagram?</li>
+<li>Як V-model пов'язує requirement і test evidence?</li>
+<li>Які артефакти має підготувати студентська «компанія» перед першою практикою?</li>
+</ol>
+<h2>16. Прогноз наступних 1–2 занять — станом на 22.09.2026</h2>
+<h3>Ймовірне заняття 07 — практичний lead-generation / initial meeting simulation</h3>
+<p>Логічне продовження вже задано домашнім завданням: команди презентують свої «компанії», проводять first contact, намагаються отримати follow-up і фіксують discovery questions. Очікувані артефакти: company one-pager, role map, contact card/QR, 2–3 cases або capability statements, список питань до ліда.</p>
+<h3>Ймовірне заняття 08 — від follow-up до RFI/Proposal та requirement baseline</h3>
+<p>Після симуляції lead funnel природно перейти до конкретного customer case: отримати RFI/problem statement, відповісти, сформувати assumptions/open questions, high-level Proposal та першу traceability chain <code>need → system requirements → allocated requirements</code>.</p>
+<p><strong>Важливо:</strong> це прогноз, а не «заморожений факт» про те, що реально відбудеться. Після нового аплоаду фактичне заняття додається новим блоком, а цей прогноз не переписується.</p>
+<h2>Перевірені посилання</h2>
+<ul>
+<li>ROS 2 documentation: <a href="https://docs.ros.org/en/jazzy/">https://docs.ros.org/en/jazzy/</a></li>
+<li>AUTOSAR Classic Platform (приклад layered architecture): <a href="https://www.autosar.org/standards/classic-platform">https://www.autosar.org/standards/classic-platform</a></li>
+<li>ISO 26262-3:2018 (приклад formal concept/HARA discipline у automotive): <a href="https://www.iso.org/standard/68385.html">https://www.iso.org/standard/68385.html</a></li>
+</ul>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Викладання</b><p style="margin-top:8px">Авторські навчальні матеріали Дмитра Гуменного.</p><a class="footer-about" href="../../about.html">Про автора →</a></div>
+<div class="footer-links"><b>Курс</b><a href="index.html">Огляд курсу</a><a href="lecture-01.html">Лекція 01</a><a href="lecture-02.html">Лекція 02</a><a href="lecture-03.html">Лекція 03</a><a href="lecture-06.html">Лекція 04</a></div>
+<div class="footer-links"><b>Контекст</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">КПІ · кафедра ІПЗЕ</a><a href="../../teaching.html">Усі навчальні матеріали</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Конфіденційність</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

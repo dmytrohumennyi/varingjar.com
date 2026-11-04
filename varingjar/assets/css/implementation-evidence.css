@@ -1,0 +1,23 @@
+/* Dissertation-grounded implementation page. Scoped, plain typographic information design. */
+body .implementation-evidence-intro{padding:42px 0 31px!important;border-bottom:1px solid rgba(109,192,133,.25);background:none!important;}
+body .implementation-evidence-intro .lead{max-width:870px;color:#c6ddce;line-height:1.65;font-size:clamp(16px,1.6vw,19px)!important;margin:12px 0 0!important;}
+body .implementation-evidence-intro h1{font-size:clamp(34px,4vw,58px)!important;line-height:1.12!important;max-width:900px!important;margin:8px 0 0!important;}
+body .implementation-evidence{padding:48px 0 49px;border-bottom:1px solid rgba(109,192,133,.2);}
+body .implementation-evidence.timing-evidence{background:rgba(30,62,41,.12);}
+body .implementation-evidence .evidence-label{font-size:12px!important;letter-spacing:.09em;font-weight:700;color:#93cfa6!important;margin:0 0 12px!important;}
+body .implementation-evidence h2{font-size:clamp(27px,3vw,40px)!important;line-height:1.18!important;letter-spacing:-.025em;margin:0 0 15px!important;color:#e8fff0!important;max-width:860px;text-transform:none!important;}
+body .implementation-evidence .evidence-intro{font-size:16px!important;line-height:1.72!important;max-width:940px;color:#c9e0d1!important;margin:0 0 22px!important;}
+body .implementation-abstraction{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font:500 clamp(14px,1.55vw,17px)/1.4 var(--science-sans);color:#8dd9a7;margin:0 0 23px;}
+body .implementation-abstraction strong{font-weight:650;color:#e1f8e8;}
+body .evidence-table-wrap{width:100%;overflow-x:auto;}
+body .evidence-table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:520px;background:transparent!important;color:#d0e7d7;}
+body .evidence-table th,body .evidence-table td{padding:12px 15px!important;border:0!important;border-bottom:1px solid rgba(129,217,151,.21)!important;font-size:14px!important;line-height:1.55!important;text-align:left!important;vertical-align:top!important;background:transparent!important;color:#d0e7d7!important;}
+body .evidence-table thead th{font-size:12px!important;letter-spacing:.02em;color:#a3c8ad!important;font-weight:700;}
+body .evidence-table tbody th{width:32%;font-family:var(--science-mono);font-size:13.5px!important;font-weight:650;color:#b8eed0!important;overflow-wrap:anywhere;}
+body .evidence-timing th:nth-child(1){width:25%}
+body .evidence-timing th:nth-child(2){width:28%}
+body .evidence-table tbody tr:hover{background:rgba(59,116,73,.12)}
+body .timing-constraint{border-left:2px solid #86cf99;padding:9px 0 9px 17px;margin:22px 0 8px!important;font-size:15px!important;line-height:1.6!important;color:#deeadf!important;max-width:900px;}
+body .evidence-source{font-size:12px!important;line-height:1.65!important;color:#aac3b2!important;max-width:950px;margin:0!important;}
+body .implementation-evidence + .module-hub{padding-top:45px;}
+@media(max-width:680px){body .implementation-evidence-intro{padding:25px 0!important}body .implementation-evidence{padding:35px 0}body .evidence-table{min-width:490px}}

@@ -1,0 +1,33 @@
+{
+  "experiment": "EXP-01",
+  "purpose": "baseline with irreversible actuator #2 destruction",
+  "config": {
+    "dt": 0.01,
+    "t_end": 16.0,
+    "fault_time": 5.0,
+    "x0": 0.2,
+    "rho0_1": 1.0,
+    "rho0_2": 1.0,
+    "xi_nominal": 0.05,
+    "xi_post_fault": 0.4,
+    "adaptive_control": false,
+    "seed": 26082026
+  },
+  "theory_mapping": {
+    "plant": "Eq. (1), scalar reference Eq. (3)",
+    "resource_degradation": "Eq. (4), u_rep = 0",
+    "S": "Eq. (5)",
+    "P": "Eq. (6)",
+    "F": "Eq. (7)",
+    "regime": "Eqs. (8)-(10)",
+    "control": "Eq. (11), baseline fixes K=K_N"
+  },
+  "experiment_specialization": {
+    "B_d_rho": "(B/2) * [rho1, rho2]",
+    "fault": "damage impulse D2 computed so -eta*D2 makes rho2 exactly zero",
+    "disturbance": {
+      "before_fault": 0.05,
+      "after_fault": 0.4
+    }
+  }
+}

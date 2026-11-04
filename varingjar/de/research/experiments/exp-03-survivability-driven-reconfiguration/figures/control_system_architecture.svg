@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 860" role="img" aria-labelledby="title desc">
+<title id="title">EXP-03 control system architecture</title>
+<desc id="desc">Four-level control architecture with Mission Manager, Supervisor, Servo Control and Hardware Layer, plus resource-function-configuration decision path.</desc>
+<defs>
+  <marker id="a" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#89a094"/>
+  </marker>
+  <marker id="g" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#76ff98"/>
+  </marker>
+  <style>
+    .outer{fill:#09110d;stroke:#183326;stroke-width:2}
+    .layer{fill:#0c1712;stroke:#274937;stroke-width:2}
+    .focus{fill:#0c1712;stroke:#76ff98;stroke-width:2}
+    .txt{font-family:monospace;fill:#dce9df;font-size:18px}
+    .small{font-family:monospace;fill:#89a094;font-size:14px}
+    .green{font-family:monospace;fill:#76ff98;font-size:18px;font-weight:bold}
+    .line{fill:none;stroke:#89a094;stroke-width:2;marker-end:url(#a)}
+    .gline{fill:none;stroke:#76ff98;stroke-width:3;marker-end:url(#g)}
+    .dash{fill:none;stroke:#89a094;stroke-width:2;stroke-dasharray:7 5;marker-end:url(#a)}
+  </style>
+</defs>
+
+<rect x="25" y="25" width="1350" height="810" rx="8" class="outer"/>
+<text x="55" y="67" class="green">EXP-03 CONTROL SYSTEM — HIERARCHICAL EXECUTION AND RECONFIGURATION</text>
+
+<!-- L3 -->
+<rect x="70" y="100" width="1260" height="115" rx="6" class="layer"/>
+<text x="105" y="135" class="green">L3 · MISSION MANAGER</text>
+<text x="105" y="168" class="txt">Mission mode · function priorities · Φ_min · degraded mission acceptance</text>
+<text x="1175" y="168" text-anchor="end" class="small">10 Hz / event-driven</text>
+
+<!-- L2 -->
+<rect x="70" y="250" width="1260" height="245" rx="6" class="focus"/>
+<text x="105" y="286" class="green">L2 · SUPERVISOR — EXP-03 CORE</text>
+<text x="1175" y="286" text-anchor="end" class="small">100 Hz · Δt = 10 ms</text>
+
+<rect x="110" y="325" width="220" height="105" rx="5" class="layer"/>
+<text x="220" y="356" text-anchor="middle" class="green">ANALYZE</text>
+<text x="220" y="385" text-anchor="middle" class="small">read ρ</text>
+<text x="220" y="408" text-anchor="middle" class="small">compute f, Φ, S</text>
+
+<rect x="385" y="325" width="250" height="105" rx="5" class="layer"/>
+<text x="510" y="356" text-anchor="middle" class="green">SELECT</text>
+<text x="510" y="385" text-anchor="middle" class="small">admissible set</text>
+<text x="510" y="408" text-anchor="middle" class="small">c* = arg max S</text>
+
+<rect x="690" y="325" width="220" height="105" rx="5" class="layer"/>
+<text x="800" y="356" text-anchor="middle" class="green">APPLY</text>
+<text x="800" y="385" text-anchor="middle" class="small">activate c*</text>
+<text x="800" y="408" text-anchor="middle" class="small">switch resource path</text>
+
+<rect x="965" y="325" width="260" height="105" rx="5" class="layer"/>
+<text x="1095" y="356" text-anchor="middle" class="green">VERIFY</text>
+<text x="1095" y="385" text-anchor="middle" class="small">Φ ≥ Φ_min</text>
+<text x="1095" y="408" text-anchor="middle" class="small">γ &lt; 1</text>
+
+<path d="M330 377 L385 377" class="gline"/>
+<path d="M635 377 L690 377" class="gline"/>
+<path d="M910 377 L965 377" class="gline"/>
+
+<!-- L1 -->
+<rect x="70" y="530" width="1260" height="105" rx="6" class="layer"/>
+<text x="105" y="566" class="green">L1 · SERVO CONTROL</text>
+<text x="105" y="599" class="txt">state feedback  uₖ = −Kx̂ₖ  ·  same K = 0.8 in all mission-preserving configurations</text>
+<text x="1175" y="599" text-anchor="end" class="small">1 kHz deterministic</text>
+
+<!-- L0 -->
+<rect x="70" y="670" width="1260" height="105" rx="6" class="layer"/>
+<text x="105" y="706" class="green">L0 · HARDWARE / HAL</text>
+<text x="105" y="739" class="txt">actuators M_A/M_B · sensors E/I · networks C₁/C₂ · resource health ρᵢ</text>
+<text x="1175" y="739" text-anchor="end" class="small">10 kHz / interrupt</text>
+
+<!-- vertical flows -->
+<path d="M700 215 L700 250" class="line"/>
+<path d="M700 495 L700 530" class="gline"/>
+<path d="M700 635 L700 670" class="gline"/>
+
+<!-- feedback back up -->
+<path d="M1250 722 C1360 722,1360 375,1225 375" class="dash"/>
+<text x="1290" y="545" transform="rotate(-90 1290 545)" class="small">ρᵢ, diagnostics, fault events</text>
+
+<!-- conceptual mapping -->
+<text x="95" y="814" class="small">Article-derived execution hierarchy: L0 Hardware → L1 Servo → L2 Supervisor → L3 Mission Manager.</text>
+</svg>

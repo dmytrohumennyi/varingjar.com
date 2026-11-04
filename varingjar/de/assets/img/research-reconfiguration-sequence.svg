@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="550" viewBox="0 0 800 550">
+  <defs>
+    <marker id="arrow3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#000"/></marker>
+    <marker id="arrow3r" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="10 0, 0 3.5, 10 7" fill="#000"/></marker>
+  </defs>
+  <rect width="800" height="550" fill="white"/>
+  <text x="400" y="25" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Reconfiguration Sequence Upon Failure Detection</text>
+  
+  <rect x="40" y="45" width="80" height="35" fill="white" stroke="#000" stroke-width="2"/>
+  <text x="80" y="68" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold">WdgM</text>
+  <rect x="160" y="45" width="100" height="35" fill="white" stroke="#000" stroke-width="2"/>
+  <text x="210" y="68" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold">SafetyManager</text>
+  <rect x="300" y="45" width="100" height="35" fill="white" stroke="#000" stroke-width="2"/>
+  <text x="350" y="68" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold">ConfigManager</text>
+  <rect x="440" y="45" width="80" height="35" fill="white" stroke="#000" stroke-width="2"/>
+  <text x="480" y="68" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold">RTE</text>
+  <rect x="560" y="45" width="80" height="35" fill="white" stroke="#000" stroke-width="2"/>
+  <text x="600" y="68" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold">BSW</text>
+  <rect x="680" y="45" width="80" height="35" fill="white" stroke="#000" stroke-width="2"/>
+  <text x="720" y="68" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold">DEM</text>
+  
+  <line x1="80" y1="80" x2="80" y2="520" stroke="#000" stroke-width="1" stroke-dasharray="5,3"/>
+  <line x1="210" y1="80" x2="210" y2="520" stroke="#000" stroke-width="1" stroke-dasharray="5,3"/>
+  <line x1="350" y1="80" x2="350" y2="520" stroke="#000" stroke-width="1" stroke-dasharray="5,3"/>
+  <line x1="480" y1="80" x2="480" y2="520" stroke="#000" stroke-width="1" stroke-dasharray="5,3"/>
+  <line x1="600" y1="80" x2="600" y2="520" stroke="#000" stroke-width="1" stroke-dasharray="5,3"/>
+  <line x1="720" y1="80" x2="720" y2="520" stroke="#000" stroke-width="1" stroke-dasharray="5,3"/>
+  
+  <rect x="15" y="95" width="60" height="15" fill="#E8E8E8" stroke="#000"/>
+  <text x="45" y="106" text-anchor="middle" font-family="Arial" font-size="8">Detection</text>
+  <line x1="80" y1="120" x2="200" y2="120" stroke="#000" stroke-width="1" marker-end="url(#arrow3)"/>
+  <text x="140" y="115" text-anchor="middle" font-family="Arial" font-size="9">1: SupervisionFailed(SE_id, type)</text>
+  <rect x="195" y="125" width="30" height="35" fill="white" stroke="#000"/>
+  <line x1="210" y1="165" x2="710" y2="165" stroke="#000" stroke-width="1" marker-end="url(#arrow3)"/>
+  <text x="460" y="160" text-anchor="middle" font-family="Arial" font-size="9">2: ReportError(DTC, status)</text>
+  
+  <rect x="15" y="180" width="60" height="15" fill="#E8E8E8" stroke="#000"/>
+  <text x="45" y="191" text-anchor="middle" font-family="Arial" font-size="8">Analysis</text>
+  <rect x="195" y="200" width="30" height="50" fill="white" stroke="#000"/>
+  <text x="230" y="220" text-anchor="start" font-family="Arial" font-size="8" font-style="italic">Calculate:</text>
+  <text x="230" y="232" text-anchor="start" font-family="Arial" font-size="8" font-style="italic">ρᵢ(t), S(t)</text>
+  <text x="230" y="244" text-anchor="start" font-family="Arial" font-size="8" font-style="italic">ΔΦ = Φ_cur - Φ_req</text>
+  <line x1="210" y1="260" x2="340" y2="260" stroke="#000" stroke-width="1" marker-end="url(#arrow3)"/>
+  <text x="275" y="255" text-anchor="middle" font-family="Arial" font-size="9">3: RequestConfig(S(t), constraints)</text>
+  
+  <rect x="15" y="270" width="60" height="15" fill="#E8E8E8" stroke="#000"/>
+  <text x="45" y="281" text-anchor="middle" font-family="Arial" font-size="8">Selection</text>
+  <rect x="335" y="270" width="30" height="60" fill="white" stroke="#000"/>
+  <text x="370" y="290" text-anchor="start" font-family="Arial" font-size="8" font-style="italic">Optimize:</text>
+  <text x="370" y="302" text-anchor="start" font-family="Arial" font-size="8" font-style="italic">max S(config)</text>
+  <text x="370" y="314" text-anchor="start" font-family="Arial" font-size="8" font-style="italic">s.t. resources</text>
+  <line x1="350" y1="340" x2="220" y2="340" stroke="#000" stroke-width="1" marker-end="url(#arrow3r)"/>
+  <text x="285" y="335" text-anchor="middle" font-family="Arial" font-size="9">4: ConfigSelected(cfg_id, Φ_new)</text>
+  
+  <rect x="15" y="355" width="60" height="15" fill="#E8E8E8" stroke="#000"/>
+  <text x="45" y="366" text-anchor="middle" font-family="Arial" font-size="8">Apply</text>
+  <line x1="210" y1="380" x2="470" y2="380" stroke="#000" stroke-width="1" marker-end="url(#arrow3)"/>
+  <text x="340" y="375" text-anchor="middle" font-family="Arial" font-size="9">5: SwitchConfiguration(cfg_id)</text>
+  <line x1="480" y1="395" x2="590" y2="395" stroke="#000" stroke-width="1" marker-end="url(#arrow3)"/>
+  <text x="535" y="390" text-anchor="middle" font-family="Arial" font-size="9">6: ReconfigBSW()</text>
+  <rect x="585" y="400" width="30" height="30" fill="white" stroke="#000"/>
+  <text x="620" y="418" text-anchor="start" font-family="Arial" font-size="8" font-style="italic">Update</text>
+  <line x1="600" y1="435" x2="490" y2="435" stroke="#000" stroke-width="1" marker-end="url(#arrow3r)"/>
+  <text x="545" y="448" text-anchor="middle" font-family="Arial" font-size="9">7: BSW_Ready</text>
+  <line x1="480" y1="455" x2="220" y2="455" stroke="#000" stroke-width="1" marker-end="url(#arrow3r)"/>
+  <text x="350" y="468" text-anchor="middle" font-family="Arial" font-size="9">8: ConfigApplied(status)</text>
+  
+  <rect x="15" y="475" width="60" height="15" fill="#E8E8E8" stroke="#000"/>
+  <text x="45" y="486" text-anchor="middle" font-family="Arial" font-size="8">Verify</text>
+  <line x1="210" y1="500" x2="710" y2="500" stroke="#000" stroke-width="1" marker-end="url(#arrow3)"/>
+  <text x="460" y="495" text-anchor="middle" font-family="Arial" font-size="9">9: LogReconfiguration(cfg_id, S_new, Φ_new)</text>
+  
+  <rect x="620" y="250" width="160" height="80" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="700" y="268" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">Selection Criterion:</text>
+  <text x="700" y="285" text-anchor="middle" font-family="Arial" font-size="9" font-style="italic">cfg* = argmax S(cfg)</text>
+  <text x="700" y="302" text-anchor="middle" font-family="Arial" font-size="9">subject to:</text>
+  <text x="700" y="317" text-anchor="middle" font-family="Arial" font-size="9" font-style="italic">Φ(cfg) ≥ Φ_min(mode)</text>
+</svg>

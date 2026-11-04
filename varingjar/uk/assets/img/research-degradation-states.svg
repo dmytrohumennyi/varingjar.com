@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="420" viewBox="0 0 750 420">
+  <defs><marker id="arrow2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#000"/></marker></defs>
+  <rect width="750" height="420" fill="white"/>
+  <text x="375" y="25" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">System Degradation State Machine in Post-Critical Mode</text>
+  
+  <circle cx="60" cy="120" r="12" fill="#000"/>
+  
+  <rect x="110" y="80" width="130" height="80" rx="5" fill="white" stroke="#000" stroke-width="2"/>
+  <text x="175" y="105" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold">NOMINAL</text>
+  <line x1="110" y1="115" x2="240" y2="115" stroke="#000"/>
+  <text x="175" y="132" text-anchor="middle" font-family="Arial" font-size="9">S(t) ≥ S_nom</text>
+  <text x="175" y="148" text-anchor="middle" font-family="Arial" font-size="9">Φ(t) = Φ_max</text>
+  
+  <rect x="290" y="80" width="130" height="80" rx="5" fill="white" stroke="#000" stroke-width="2"/>
+  <text x="355" y="105" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold">DEGRADED</text>
+  <line x1="290" y1="115" x2="420" y2="115" stroke="#000"/>
+  <text x="355" y="132" text-anchor="middle" font-family="Arial" font-size="9">S_deg ≤ S(t) &lt; S_nom</text>
+  <text x="355" y="148" text-anchor="middle" font-family="Arial" font-size="9">Reconfig active</text>
+  
+  <rect x="470" y="80" width="130" height="80" rx="5" fill="white" stroke="#000" stroke-width="2"/>
+  <text x="535" y="105" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold">LIMP_HOME</text>
+  <line x1="470" y1="115" x2="600" y2="115" stroke="#000"/>
+  <text x="535" y="132" text-anchor="middle" font-family="Arial" font-size="9">S_min ≤ S(t) &lt; S_deg</text>
+  <text x="535" y="148" text-anchor="middle" font-family="Arial" font-size="9">Minimal function</text>
+  
+  <rect x="630" y="80" width="100" height="80" rx="5" fill="white" stroke="#000" stroke-width="3"/>
+  <text x="680" y="105" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold">SAFE_STOP</text>
+  <line x1="630" y1="115" x2="730" y2="115" stroke="#000"/>
+  <text x="680" y="132" text-anchor="middle" font-family="Arial" font-size="9">S(t) &lt; S_min</text>
+  <text x="680" y="148" text-anchor="middle" font-family="Arial" font-size="9">Emergency</text>
+  
+  <line x1="72" y1="120" x2="105" y2="120" stroke="#000" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <line x1="240" y1="120" x2="285" y2="120" stroke="#000" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="262" y="112" text-anchor="middle" font-family="Arial" font-size="8">failure detected</text>
+  <line x1="420" y1="120" x2="465" y2="120" stroke="#000" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="442" y="112" text-anchor="middle" font-family="Arial" font-size="8">reconfig failed</text>
+  <line x1="600" y1="120" x2="625" y2="120" stroke="#000" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="612" y="112" text-anchor="middle" font-family="Arial" font-size="8">critical</text>
+  
+  <path d="M 355 80 Q 355 50 175 50 Q 175 50 175 75" fill="none" stroke="#000" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arrow2)"/>
+  <text x="265" y="45" text-anchor="middle" font-family="Arial" font-size="8">recovery complete</text>
+  <path d="M 535 80 Q 535 35 265 35 Q 175 35 175 75" fill="none" stroke="#000" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arrow2)"/>
+  <text x="355" y="28" text-anchor="middle" font-family="Arial" font-size="8">full recovery</text>
+  
+  <rect x="200" y="200" width="350" height="200" rx="5" fill="white" stroke="#000" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="375" y="220" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold">Reconfiguration Process (DEGRADED state)</text>
+  <circle cx="230" cy="270" r="8" fill="#000"/>
+  <rect x="260" y="250" width="100" height="40" rx="3" fill="white" stroke="#000"/>
+  <text x="310" y="275" text-anchor="middle" font-family="Arial" font-size="9">ANALYZE</text>
+  <rect x="260" y="310" width="100" height="40" rx="3" fill="white" stroke="#000"/>
+  <text x="310" y="335" text-anchor="middle" font-family="Arial" font-size="9">SELECT_CONFIG</text>
+  <rect x="400" y="250" width="100" height="40" rx="3" fill="white" stroke="#000"/>
+  <text x="450" y="275" text-anchor="middle" font-family="Arial" font-size="9">APPLY</text>
+  <rect x="400" y="310" width="100" height="40" rx="3" fill="white" stroke="#000"/>
+  <text x="450" y="335" text-anchor="middle" font-family="Arial" font-size="9">VERIFY</text>
+  <circle cx="520" cy="330" r="8" fill="none" stroke="#000" stroke-width="2"/>
+  <circle cx="520" cy="330" r="4" fill="#000"/>
+  
+  <line x1="238" y1="270" x2="255" y2="270" stroke="#000" stroke-width="1" marker-end="url(#arrow2)"/>
+  <line x1="310" y1="290" x2="310" y2="305" stroke="#000" stroke-width="1" marker-end="url(#arrow2)"/>
+  <line x1="360" y1="330" x2="395" y2="330" stroke="#000" stroke-width="1" marker-end="url(#arrow2)"/>
+  <path d="M 450 310 L 450 290" fill="none" stroke="#000" stroke-width="1" marker-end="url(#arrow2)"/>
+  <line x1="450" y1="350" x2="450" y2="370" stroke="#000" stroke-width="1"/>
+  <path d="M 450 370 Q 450 385 310 385 Q 260 385 260 355" fill="none" stroke="#000" stroke-width="1" marker-end="url(#arrow2)"/>
+  <text x="355" y="380" text-anchor="middle" font-family="Arial" font-size="8">[failed]</text>
+  <line x1="500" y1="270" x2="520" y2="270" stroke="#000" stroke-width="1"/>
+  <line x1="520" y1="270" x2="520" y2="318" stroke="#000" stroke-width="1" marker-end="url(#arrow2)"/>
+  <text x="310" y="245" text-anchor="middle" font-family="Arial" font-size="8">ρᵢ(t), δⱼ(t)</text>
+  <text x="450" y="245" text-anchor="middle" font-family="Arial" font-size="8">Config switch</text>
+  <text x="490" y="275" text-anchor="middle" font-family="Arial" font-size="8">[OK]</text>
+</svg>

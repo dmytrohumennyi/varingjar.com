@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1056" height="600" viewBox="0 0 1056 600" role="img" aria-labelledby="title desc">
+<title id="title">Survivability of a robotic mission under resource and model degradation</title>
+<desc id="desc">Three engineering scenes of one rover: normal mission, damaged wheel together with uncertain environmental estimates, and a possible constrained continuation with a reconfigured plan. The wheel remains damaged; no recovery is guaranteed.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07120d"/><stop offset=".52" stop-color="#0c2016"/><stop offset="1" stop-color="#08130d"/></linearGradient>
+ <radialGradient id="halo"><stop stop-color="#7cffab" stop-opacity=".13"/><stop offset="1" stop-color="#4bf58d" stop-opacity="0"/></radialGradient>
+ <linearGradient id="metal" x1="0" y1="0" x2=".75" y2="1"><stop stop-color="#356447"/><stop offset=".38" stop-color="#1e4a33"/><stop offset="1" stop-color="#0c271a"/></linearGradient>
+ <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#152d22"/><stop offset="1" stop-color="#07150d"/></linearGradient>
+ <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7cffae" stop-opacity=".5"/><stop offset="1" stop-color="#0c3d24" stop-opacity=".25"/></linearGradient>
+ <linearGradient id="route" x1="0" x2="1"><stop stop-color="#70e698"/><stop offset="1" stop-color="#bcffd1"/></linearGradient>
+ <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M 32 0 L 0 0 0 32" fill="none" stroke="#c0ffd2" stroke-opacity=".055" stroke-width=".8"/></pattern>
+ <pattern id="gravel" width="30" height="28" patternUnits="userSpaceOnUse"><circle cx="7" cy="7" r=".9" fill="#5d996d" opacity=".36"/><circle cx="22" cy="18" r=".75" fill="#77a581" opacity=".28"/></pattern>
+ <filter id="glow"><feGaussianBlur stdDeviation="3"/></filter>
+ <g id="rover">
+  <ellipse cx="0" cy="104" rx="132" ry="14" fill="#000" opacity=".37"/>
+  <!-- six independently suspended wheels, with front tire closest to observer -->
+  <g fill="#06140e" stroke="#628971" stroke-width="2.1">
+    <ellipse cx="-94" cy="17" rx="21" ry="31"/><ellipse cx="-2" cy="24" rx="19" ry="28"/><ellipse cx="91" cy="19" rx="21" ry="31"/>
+    <ellipse cx="-93" cy="79" rx="24" ry="37"/><ellipse cx="2" cy="84" rx="24" ry="36"/><ellipse cx="93" cy="79" rx="24" ry="37"/>
+  </g>
+  <g fill="none" stroke="#9ed7ad" stroke-width="2" opacity=".9"><ellipse cx="-93" cy="79" rx="15" ry="25"/><ellipse cx="2" cy="84" rx="15" ry="25"/><ellipse cx="93" cy="79" rx="15" ry="25"/></g>
+  <g stroke="#306a47" stroke-width="1.3"><path d="M-93 52V106M2 56V109M93 52V106"/><path d="M-110 79H-76M-15 84H19M76 79H110"/></g>
+  <path d="M-124 13L-76 -31L74 -32L128 11L112 64L-111 64Z" fill="url(#steel)" stroke="#8acc9d" stroke-width="2.4"/>
+  <path d="M-124 13L-75 -31L74 -32L128 11L96 29L-99 30Z" fill="url(#metal)" stroke="#b0fac3" stroke-width="1.6"/>
+  <path d="M-99 30H96L112 64H-111Z" fill="#0a1e14" stroke="#428259" stroke-width="1.8"/>
+  <path d="M-103 49H103M-61 64V30M63 64V30" stroke="#529567" stroke-width="1.5" opacity=".7"/>
+  <g fill="#7cffac"><circle cx="-93" cy="42" r="2.4"/><circle cx="93" cy="42" r="2.4"/><circle cx="7" cy="47" r="1.8"/></g>
+  <!-- exposed top deck with frame, sensor and computation module -->
+  <path d="M-74 -28L-37 -55L49 -55L81 -28L39 -10L-48 -11Z" fill="#0c2518" stroke="#a8edb9" stroke-width="1.9"/>
+  <path d="M-44 -39L-13 -49L35 -45L51 -32L22 -20L-28 -21Z" fill="url(#glass)" stroke="#73d79a" stroke-width="1.6"/>
+  <path d="M-31 -37L13 -35L34 -38" fill="none" stroke="#c9ffdb" stroke-width="1.6" stroke-linecap="round"/>
+  <rect x="-36" y="-56" width="18" height="7" rx="2" fill="#43835a" stroke="#a3eab7" stroke-width="1"/>
+  <path d="M-7 -55V-118" stroke="#7eb995" stroke-width="5"/><path d="M-7 -95L23 -88" stroke="#4b8d66" stroke-width="2"/>
+  <path d="M-28 -126L-10 -142L11 -136L17 -118L-12 -112Z" fill="#234e35" stroke="#b8ffd0" stroke-width="2"/>
+  <circle cx="-6" cy="-127" r="10" fill="#052411" stroke="#bbffd1" stroke-width="1.8"/><circle cx="-6" cy="-127" r="4" fill="#a8ffc0"/>
+  <path d="M-85 -26L-109 -10M83 -24L110 -9" stroke="#74b586" stroke-width="2"/>
+  <g stroke="#74b586" stroke-width="1.5" fill="none"><path d="M-72 20l28 0M44 20h25"/><path d="M-56 -17l9 -3M55 -17l9 3"/></g>
+ </g>
+</defs>
+<rect width="1056" height="600" rx="18" fill="url(#bg)"/>
+<rect width="1056" height="600" rx="18" fill="url(#grid)"/>
+<path d="M352 48V543M704 48V543" stroke="#72b984" stroke-opacity=".18" stroke-dasharray="2 8"/>
+<rect x="1" y="1" width="1054" height="598" rx="17" fill="none" stroke="#64b47c" stroke-opacity=".34" stroke-width="1.4"/>
+<g fill="url(#halo)"><circle cx="175" cy="294" r="215"/><circle cx="528" cy="284" r="215"/><circle cx="880" cy="298" r="236"/></g>
+<!-- low-relief orbital/terrain contours add context but remain clearly schematic -->
+<g stroke="#4b8c61" fill="none" stroke-width="1" opacity=".19"><path d="M19 487Q84 458 151 482T294 471T455 480T596 470T737 484T1033 474"/><path d="M17 507Q86 484 151 501T295 492T461 502T596 494T735 504T1035 494"/><path d="M19 522Q86 504 157 520T296 513T459 521T605 512T744 523T1036 510"/></g>
+<path d="M33 77H125M385 77H477M737 77H829" stroke="#a4f9ba" stroke-opacity=".24"/>
+<g font-family="DejaVu Sans, Arial, sans-serif" font-weight="700" letter-spacing="2" font-size="19" fill="#bcffd0"><text x="35" y="61">01</text><text x="387" y="61">02</text><text x="739" y="61">03</text></g>
+<!-- sensor state: coherent -->
+<g fill="none" stroke="#8ce7a7" stroke-width="1.7" opacity=".7"><path d="M143 140Q175 113 207 140"/><path d="M128 129Q175 82 222 129"/><circle cx="175" cy="145" r="4" fill="#baffce" stroke="none"/></g>
+<!-- normal scenario physical mission path -->
+<g transform="translate(176 341)"><use href="#rover"/></g>
+<g stroke="#b8ffd0" stroke-width="2.4" fill="none" stroke-linecap="round"><path d="M72 488Q141 478 215 484T285 480"/><path d="M276 474L286 480L278 487"/></g>
+<g fill="#c7ffd8"><circle cx="96" cy="486" r="3"/><circle cx="176" cy="483" r="3"/><circle cx="254" cy="483" r="3"/></g>
+<!-- fault scene: retained body but wheel physically damaged, prediction invalid -->
+<g transform="translate(528 341)"><use href="#rover"/></g>
+<ellipse cx="620" cy="416" rx="26" ry="38" fill="#0b1a12" stroke="#b8c6ba" stroke-width="2.5" stroke-dasharray="4 7"/>
+<path d="M610 404L630 426M630 404L610 426" stroke="#ccd9cf" stroke-width="4" stroke-linecap="round"/>
+<!-- sensor model is out of agreement (not necessarily a sensor hardware fault) -->
+<g fill="none" stroke-linecap="round" stroke-width="2"><path d="M438 166Q528 109 612 152" stroke="#8ceca9" opacity=".6"/><path d="M438 166Q533 90 612 206" stroke="#d5e0d5" opacity=".7" stroke-dasharray="5 7"/><path d="M595 149L607 143M597 207L612 207" stroke="#cae7cf"/></g>
+<g fill="#a6e5b4" opacity=".9"><circle cx="438" cy="166" r="4"/><circle cx="612" cy="152" r="4"/></g>
+<g fill="none" stroke="#b3c6b7" stroke-width="1.8"><circle cx="528" cy="145" r="15" stroke-dasharray="3 4"/><path d="M528 137V147M528 154v1" stroke-linecap="round"/></g>
+<path d="M417 485H641" stroke="#849d8b" opacity=".44" stroke-width="2" stroke-dasharray="4 9"/>
+<!-- resuming with same broken wheel, now with constrained route around the obstacle -->
+<g transform="translate(879 341)"><use href="#rover"/></g>
+<ellipse cx="970" cy="416" rx="26" ry="38" fill="#0b1a12" stroke="#b8c6ba" stroke-width="2.5" stroke-dasharray="4 7"/>
+<path d="M960 404L980 426M980 404L960 426" stroke="#ccd9cf" stroke-width="4" stroke-linecap="round"/>
+<!-- alternative mission path: a different capability, not a repair -->
+<path d="M751 489C790 470 805 443 846 455S902 511 971 486L1013 469" fill="none" stroke="#81fba8" stroke-width="3.7" stroke-linecap="round"/>
+<path d="M1001 466L1014 468L1009 480" fill="none" stroke="#bfffd1" stroke-width="3" stroke-linecap="round"/>
+<path d="M782 486Q813 443 844 455" fill="none" stroke="#83a98a" stroke-width="1" stroke-dasharray="3 6"/>
+<path d="M899 166l-25 24-27-19-28 28" fill="none" stroke="#b7ffd0" stroke-width="2.2" stroke-linecap="round"/>
+<g fill="#c6ffda"><circle cx="819" cy="199" r="4.5"/><circle cx="847" cy="171" r="4"/><circle cx="874" cy="190" r="4"/><circle cx="899" cy="166" r="5"/></g>
+<!-- transitions are conditional, no guaranteed path -->
+<g fill="none" stroke-width="2.3" stroke-linecap="round"><path d="M325 310H374" stroke="#96c7a3" stroke-dasharray="4 8"/><path d="M364 303L375 310L364 317" stroke="#96c7a3"/><path d="M674 310H724" stroke="url(#route)"/><path d="M714 303L725 310L714 317" stroke="#bdffd1"/></g>
+<!-- schematic explanatory status bands: labels live in accessible external HTML -->
+<g stroke="#94d8a7" stroke-opacity=".16"><path d="M26 543H1030"/></g>
+<g fill="none" stroke="#89ecaa" stroke-width="2.1"><path d="M33 555H319"/><path d="M385 555H671" stroke="#a1b5a7" stroke-dasharray="3 7"/><path d="M737 555H1023"/></g>
+<g fill="#bcffd0"><circle cx="33" cy="555" r="3.5"/><circle cx="319" cy="555" r="3.5"/><circle cx="737" cy="555" r="3.5"/><circle cx="1023" cy="555" r="3.5"/></g>
+</svg>

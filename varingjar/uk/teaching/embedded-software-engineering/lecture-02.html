@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="uk";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-02.html","uk":"lecture-02.html","de":"../../../de/teaching/embedded-software-engineering/lecture-02.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Інженерна команда та фізичний delivery chain — Væringjar II</title><meta content="Firmware, hardware і mechanics утворюють core; architecture, management, procurement і manufacturing з’єднують ці три потоки в одну систему." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20260928-scientific-v3" rel="stylesheet"/>
+<link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-02.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-02.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-02.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-02.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-02.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Інженерна команда embedded-проєкту — Væringjar II" property="og:title"/><meta content="Конспект заняття 2 авторського курсу Інженерія програмного забезпечення вбудованих систем." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-02.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Інженерна команда embedded-проєкту — Væringjar II" name="twitter:title"/><meta content="Конспект заняття 2 авторського курсу Інженерія програмного забезпечення вбудованих систем." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Модель</a><a href="../../research.html">Докази</a><a href="../../implementation.html">Реалізація</a><a class="active" href="../../teaching.html">Навчання</a><a href="../../collaboration.html">Співпраця</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-02.html?lang=en" hreflang="en" lang="en">EN</a><a aria-current="page" class="active" data-lang="uk" href="lecture-02.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../../de/teaching/embedded-software-engineering/lecture-02.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Викладання / Лекція 02 · 02.09.2026</div><h1>Інженерна команда та фізичний delivery chain</h1><p class="lead reader-lead">Firmware, hardware і mechanics утворюють core; architecture, management, procurement і manufacturing з’єднують ці три потоки в одну систему.</p><div class="reader-badges"><span>02.09.2026</span><span>заняття 02 / 06</span><span>заморожено 28.09.2026</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Огляд курсу →</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / <b>MODULE 02</b> · КОМАНДА &amp; DELIVERY / 02 · 02.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-01.html">Попередня · Вбудовані системи, ризики та дві моделі ІТ-бізнесу</a><span class="current">Зараз · 02</span><a class="next" href="lecture-03.html">Далі · Від невідомої компанії до ліда</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Ключові ідеї</div><h2>Ключові ідеї</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Три core streams</h3><p>Firmware, hardware і mechanics мають розвиватися разом, а не інтегруватися в останній день.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>Інтерфейс має physical layer</h3><p>Peripheral controller ще не є готовим польовим інтерфейсом; потрібні PHY/transceiver і protection.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>Architecture інтегрує рішення</h3><p>Архітектор утримує системну цілісність між локальними engineering choices.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>Supply chain потрапляє на critical path</h3><p>Компоненти, fabrication, shipping і re-spins є частиною engineering schedule.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">Висновок</div><h2>Практичний висновок</h2><div class="reader-copy"><p class="reader-takeaway">Продукт доставляє cross-functional system, а не три ізольовані спеціалісти firmware, hardware і mechanics.</p></div></div></section><section class="reader-section section-tight next-lecture-section"><div class="container"><div class="next-lecture-card"><div class="section-eyebrow">Далі</div><h2>03 — Від невідомої компанії до ліда</h2><p>Довіра, referrals, public evidence, technical champions та events створюють передумови, щоб потенційний клієнт почав реальну розмову.</p></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Реконструйований та заморожений матеріал</div><h2>Повний конспект лекції</h2><p class="lecture-notes-intro">Конспект перебудовано з первинного українського транскрипту. Редакторські виправлення та зовнішні доповнення всередині матеріалу позначені явно.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R02-inzhenerna-komanda-embedded-proiektu.md">Відкрити Markdown →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-02.md">Сирий транскрипт →</a></div><article class="lecture-article lecture-notes-content" lang="uk"><h1>Лекція 02. Інженерна команда embedded-проєкту</h1>
+<blockquote>
+<p><strong>Хронологія:</strong> 02.09.2026 · друге заняття.<br/>
+<strong>Первинне джерело:</strong> <a href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-02.md">повний транскрипт</a>.<br/>
+<strong>Зв'язок:</strong> продовження лекції 01 — від визначення embedded до людей, компонентів і фізичного delivery.</p>
+</blockquote>
+<h2>1. Від software stack до фізичного виробу</h2>
+<p>На попередньому занятті embedded було показано як software, що працює на наперед визначеному hardware. Тепер ця ідея розгортається у повний engineering chain.</p>
+<pre><code class="language-text">Application
+   ↓
+Middleware / OS / services
+   ↓
+HAL / drivers
+   ↓
+MCU / SoC
+   ↓
+PHY / transceivers / power / protection
+   ↓
+PCB + mechanics + connectors
+   ↓
+physical environment
+</code></pre>
+<p>У реальному виробі вибір MCU/SoC не закриває hardware design. Потрібні power rails, reset/clock, memory за потреби, protection, фізичні інтерфейси, роз'єми, PCB, тепловий режим, корпус, виробництво й інтеграція.</p>
+<h2>2. Hardware engineer: target — лише початок</h2>
+<p>У лекції hardware stream декомпозується від вибору target до оточення, яке робить цей target придатним до реальної експлуатації.</p>
+<h3>2.1. Мінімальний набір питань</h3>
+<ul>
+<li>Який MCU/SoC/DSP/FPGA потрібен за compute, memory, peripherals та lifecycle?</li>
+<li>Як він живиться?</li>
+<li>Як запускається і reset-иться?</li>
+<li>Які clock sources потрібні?</li>
+<li>Які зовнішні інтерфейси треба реалізувати?</li>
+<li>Який electrical protection потрібен?</li>
+<li>Які EMC/ESD вимоги накладає середовище?</li>
+<li>Як плата охолоджується і монтується?</li>
+<li>Чи доступні компоненти для потрібного обсягу виробництва?</li>
+</ul>
+<h3>2.2. Логічний та фізичний рівні інтерфейсу</h3>
+<p>MCU може мати цифрову peripheral-функцію, але це не означає, що її pins можна напряму вивести на кабель або мережу. Для багатьох інтерфейсів потрібен <strong>transceiver / PHY</strong>, який формує фізичний рівень.</p>
+<p>Приклад з CAN:</p>
+<pre><code class="language-text">CAN controller in MCU
+       ↓ TX/RX logic
+CAN transceiver
+       ↓ differential physical signal
+CAN_H / CAN_L bus
+</code></pre>
+<h3>Редакторське уточнення 01 — CAN та galvanic isolation</h3>
+<p>Усна теза «CAN є гальванічно розв'язаним інтерфейсом» занадто сильна. <strong>CAN transceiver</strong> перетворює цифрові сигнали controller-а у фізичні, зазвичай диференційні, сигнали середовища передачі. <strong>Galvanic isolation — окремий design choice</strong>, який додають, коли це потрібно системі; CAN сам по собі не гарантує ізоляцію.</p>
+<p>Офіційний термінологічний довідник CiA: <a href="https://www.can-cia.org/fileadmin/cia/documents/brochures/can_dictionary_v13_2026.pdf">https://www.can-cia.org/fileadmin/cia/documents/brochures/can_dictionary_v13_2026.pdf</a></p>
+<h2>3. ESD, EMC та shielding — не одне й те саме</h2>
+<p>Лекція правильно підводить до думки, що physical robustness не можна відкласти «на потім». Але варто розвести поняття:</p>
+<table>
+<thead>
+<tr>
+<th>Поняття</th>
+<th>Сенс</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESD</td>
+<td>короткочасний електростатичний розряд; потрібні protection paths, layout, components, grounding strategy</td>
+</tr>
+<tr>
+<td>EMC</td>
+<td>здатність виробу нормально працювати у своєму electromagnetic environment і не створювати неприйнятних завад</td>
+</tr>
+<tr>
+<td>EMI</td>
+<td>electromagnetic interference — завади, які система випромінює або сприймає</td>
+</tr>
+<tr>
+<td>Shielding</td>
+<td>один із засобів EMC/EMI control; не універсальна «ESD шапочка»</td>
+</tr>
+</tbody>
+</table>
+<p>Тобто metal shield, TVS diode, common-mode choke, galvanic isolation, filtering, grounding і PCB layout вирішують різні частини проблеми.</p>
+<h2>4. Три базові engineering streams</h2>
+<p>Лекція зводить core embedded team до трьох взаємозалежних потоків:</p>
+<pre><code class="language-text">             SYSTEM / PRODUCT
+             /      |       \
+      Firmware   Hardware   Mechanics
+             \      |       /
+               Integration
+</code></pre>
+<h3>Firmware / Software</h3>
+<p>Від application logic до low-level drivers, boot/update, diagnostics, communication, timing та тестів.</p>
+<h3>Hardware</h3>
+<p>Schematic, component selection, PCB/layout, power, interfaces, protection, prototype bring-up, manufacturing support.</p>
+<h3>Mechanics</h3>
+<p>Enclosure, mounting, interfaces, thermal paths, accessibility, manufacturability, protection від фізичного середовища.</p>
+<p>Ключове: ці streams не можуть чесно працювати як три незалежні команди з інтеграцією «в останній день». Mechanical envelope впливає на PCB, PCB — на connector placement і firmware bring-up, power/thermal limits — на software modes, а testability вимагає рішень усіх трьох потоків.</p>
+<h2>5. Architect / system engineer: з'єднати рішення до того, як їх треба інтегрувати</h2>
+<p>Архітектор у логіці лекції — не «начальник інженерів», а роль, яка тримає цілісність рішення:</p>
+<ul>
+<li>перетворює product need у системну структуру;</li>
+<li>узгоджує interfaces між streams;</li>
+<li>виявляє trade-offs;</li>
+<li>прив'язує рішення до standards/constraints;</li>
+<li>допомагає формувати team composition;</li>
+<li>не дає локальній оптимізації одного stream зламати систему в цілому.</li>
+</ul>
+<p>На ранній pre-sale стадії ця роль також допомагає зрозуміти, <strong>яку компетенцію треба показати клієнту</strong> і чи здатна команда реально виконати майбутню роботу.</p>
+<h2>6. Servant manager / servant leader</h2>
+<p>Лекція окремо вводить management-функцію як <strong>service to team</strong>, а не вертикальне командування.</p>
+<p>Практичний зміст:</p>
+<ul>
+<li>зняти blocker між hardware і mechanics;</li>
+<li>донести technical issue клієнту;</li>
+<li>організувати legal/procurement/escalation;</li>
+<li>знайти зовнішнього експерта;</li>
+<li>захистити engineering time від організаційного шуму;</li>
+<li>забезпечити рішення там, де інженер не має authority або контексту.</li>
+</ul>
+<p>Таким чином manager і architect працюють поруч, але вирішують різні задачі: architecture тримає технічну цілісність, management — організаційний потік і можливість команди виконати роботу.</p>
+<h2>7. Embedded має supply chain</h2>
+<p>На відміну від чистого software delivery, embedded прив'язаний до фізичного світу. У лекції з цього виростає окремий ланцюг:</p>
+<pre><code class="language-text">Design
+  ↓
+component sourcing
+  ↓
+PCB / mechanical fabrication
+  ↓
+assembly
+  ↓
+shipping / customs
+  ↓
+bring-up
+  ↓
+rework / next iteration
+</code></pre>
+<p>Тому engineering plan залежить не лише від velocity розробників, а й від component availability, lead time, виробничих слотів, логістики і можливості повторної ітерації.</p>
+<h3>Редакторське уточнення 02 — vendor/country risk</h3>
+<p>У лекції є емоційні приклади про конкретних виробників і країни. У конспекті їх краще узагальнити до <strong>supply-chain risk</strong>: lifecycle/NRND/EOL, long-term availability, second-source strategy, геополітичні або export-control обмеження, vendor lock-in, volatility ціни, якість support та traceability component origin. Це перевірювані інженерні критерії; вони сильніші за узагальнення про походження бренду.</p>
+<h2>8. Cost optimization у mass production</h2>
+<p>В embedded одинична різниця в BOM може масштабуватися на тисячі або мільйони виробів. Тому trade-off «інтегрований дорогий SoC проти простішого MCU + зовнішні PHY» не має універсальної відповіді.</p>
+<p>Для рішення треба рахувати:</p>
+<pre><code class="language-text">unit BOM
++ PCB area
++ assembly complexity
++ test cost
++ engineering effort
++ supply risk
++ certification impact
++ lifecycle cost
+</code></pre>
+<p>Локально дешевший компонент може зробити дорожчим виробництво або support. І навпаки — дорожчий IC може зменшити BOM/area/assembly.</p>
+<h2>9. Практична організація студентських команд</h2>
+<p>Наприкінці заняття курс переходить від загальної теорії до групової роботи. Студенти мають самоорганізуватися у невеликі команди. Це не просто адміністративне розбиття: надалі кожна команда буде моделювати компанію, а ролі всередині неї змінюватимуться від business/pre-sale до engineering/delivery.</p>
+<p>Початкове правило: <strong>команда має бути достатньо малою, щоб домовлятися, і достатньо повною, щоб розподіляти ролі.</strong></p>
+<h2>10. Контрольні запитання</h2>
+<ol>
+<li>Чому peripheral controller в MCU ще не дорівнює готовому фізичному інтерфейсу?</li>
+<li>Яку функцію виконує CAN transceiver?</li>
+<li>Чому galvanic isolation не слід ототожнювати з CAN?</li>
+<li>Чим ESD відрізняється від EMC?</li>
+<li>Які три engineering streams утворюють core embedded team у цьому курсі?</li>
+<li>Де проходить межа між architect і manager?</li>
+<li>Чому procurement і logistics можуть потрапити на critical path проєкту?</li>
+<li>Чому найнижча BOM ціна не завжди означає найнижчу system cost?</li>
+</ol>
+<h2>11. Схема для запам'ятовування</h2>
+<pre><code class="language-text">                  CLIENT / PRODUCT NEED
+                           │
+                    System Architect
+                           │
+       ┌───────────────────┼───────────────────┐
+       │                   │                   │
+   Firmware            Hardware            Mechanics
+       │                   │                   │
+       └────────────── Integration ────────────┘
+                           │
+                 Test / Manufacturing
+                           │
+             Procurement / Logistics
+                           │
+                        Delivery
+
+         Servant Manager removes cross-cutting blockers
+</code></pre>
+<h2>12. Місток до 08.09.2026</h2>
+<p>Тепер у нас вже є команда, яка потенційно здатна щось розробити. Наступне питання: <strong>звідки взяти роботу?</strong> Тому курс переходить до service business development: як невідома компанія стає видимою, як виникає довіра і як контакт перетворюється на lead.</p>
+<h2>Перевірені посилання</h2>
+<ul>
+<li>AUTOSAR Classic Platform — layered architecture: <a href="https://www.autosar.org/standards/classic-platform">https://www.autosar.org/standards/classic-platform</a></li>
+<li>CAN in Automation, CAN Dictionary 2026: <a href="https://www.can-cia.org/fileadmin/cia/documents/brochures/can_dictionary_v13_2026.pdf">https://www.can-cia.org/fileadmin/cia/documents/brochures/can_dictionary_v13_2026.pdf</a></li>
+</ul>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Викладання</b><p style="margin-top:8px">Авторські навчальні матеріали Дмитра Гуменного.</p><a class="footer-about" href="../../about.html">Про автора →</a></div>
+<div class="footer-links"><b>Курс</b><a href="index.html">Огляд курсу</a><a href="lecture-01.html">Лекція 01</a><a href="lecture-02.html">Лекція 02</a><a href="lecture-03.html">Лекція 03</a><a href="lecture-02.html">Лекція 04</a></div>
+<div class="footer-links"><b>Контекст</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">КПІ · кафедра ІПЗЕ</a><a href="../../teaching.html">Усі навчальні матеріали</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Конфіденційність</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

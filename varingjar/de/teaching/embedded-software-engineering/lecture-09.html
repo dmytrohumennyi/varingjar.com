@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="de";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-09.html","uk":"../../../uk/teaching/embedded-software-engineering/lecture-09.html","de":"lecture-09.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Messe-Simulation: Vom Erstkontakt zum Engineering-Projekt — Væringjar II</title><meta content="Eine Messe-Simulation führt vom Erstkontakt über qualifizierte Leads zum Folgetermin und Engineering-Projekt; Rollen und Vertrauensgrenzen werden erprobt." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-09.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-09.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-09.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-09.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-09.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Messe-Simulation: Vom Erstkontakt zum Engineering-Projekt" property="og:title"/><meta content="Eine Messe-Simulation führt vom Erstkontakt über qualifizierte Leads zum Folgetermin und Engineering-Projekt; Rollen und Vertrauensgrenzen werden erprobt." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-09.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Messe-Simulation: Vom Erstkontakt zum Engineering-Projekt" name="twitter:title"/><meta content="Eine Messe-Simulation führt vom Erstkontakt über qualifizierte Leads zum Folgetermin und Engineering-Projekt; Rollen und Vertrauensgrenzen werden erprobt." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Modell</a><a href="../../research.html">Evidenz</a><a href="../../implementation.html">Implementierung</a><a class="active" href="../../teaching.html">Lehre</a><a href="../../collaboration.html">Mitwirken</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-09.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../../uk/teaching/embedded-software-engineering/lecture-09.html?lang=uk" hreflang="uk" lang="uk">UA</a><a aria-current="page" class="active" data-lang="de" href="lecture-09.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Lehre / Sitzung 09 · 06.10.2026</div><h1>Messe-Simulation: Vom Erstkontakt zum Engineering-Projekt</h1><p class="lead reader-lead">Eine Messe-Simulation führt vom Erstkontakt über qualifizierte Leads zum Folgetermin und Engineering-Projekt; Rollen und Vertrauensgrenzen werden erprobt.</p><div class="reader-badges"><span>06.10.2026</span><span>Session 09 / 09</span><span>01:32:22</span><span>Lecture &amp; practice</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Kursübersicht →</a><a class="btn btn-primary" href="#full-notes">Vollständige deutsche Vorlesungsnotizen ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODULE 05 · CLIENT ENGAGEMENT / 09 · 06.10.2026</div><div class="course-context-nav"><a class="previous" href="lecture-08.html">Zurück · 08</a><span class="current">09</span><span class="next">Follow-up → RFI / proposal (planned)</span></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Chronologischer Kursverlauf</div><h2>Technische Vorlesungsnotizen</h2><p class="reader-intro">Eine Messe-Simulation führt vom Erstkontakt über qualifizierte Leads zum Folgetermin und Engineering-Projekt; Rollen und Vertrauensgrenzen werden erprobt.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Stand und Demo vorbereiten</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Geeigneten Lead qualifizieren</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Rollen unterscheiden</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>Follow-up vereinbaren</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Vollständige deutsche Vorlesungsnotizen</div><h2>Vollständige deutsche Vorlesungsnotizen</h2><p class="lecture-notes-intro">Vollständiger deutschsprachiger Fachkontext zu dieser Veranstaltung, einschließlich Beispielen, Tabellen, Modellen, Aufgaben und Quellenverweisen. Die ukrainischen Originalunterlagen bleiben als Primärquellen verlinkt.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R09-2026-10-06.md">Ukrainische Originalnotizen (Markdown) →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-10-06.md">Ukrainisches Rohtranskript →</a></div><article class="lecture-article lecture-notes-content" lang="de"><h1>Messe-Simulation: Vom Erstkontakt zum Engineering-Projekt</h1>
+<blockquote>
+<p>6. Oktober 2026 · Vorlesung und praktische Simulation · 1 Stunde 32 Minuten 22 Sekunden. Quelle: Transkript L5. Kunden- und Firmennamen, Vereinbarungen, Partnerschaften, Standorte und einige technische Beispiele wurden von Studierenden im Rollenspiel erfunden. Sie belegen keine realen Verträge. Persönliche Kultur- und Marktbeobachtungen des Dozenten sind keine verifizierten allgemeingültigen Gesetze.</p>
+</blockquote>
+<h2>Die Rolle der Veranstaltung im Kurs: vom Verständnis zur Umsetzung</h2>
+<p>Nach der Erstellung von Visitenkarten und One-Pagern sowie der Besprechung einer Angebotsstruktur üben die Studierenden eine realistische berufliche Situation. Der Dozent übernimmt die Rolle eines potenziellen Engineering-Kunden („Otto“ vertritt im Szenario ein Unternehmen für Fabrikautomatisierung); die Studierenden repräsentieren ihre fiktiven Embedded-Unternehmen. Ziel ist ein qualifizierter Kontakt mit vereinbartem Folgegespräch, nicht die sofortige Unterzeichnung eines großen Vertrags.</p>
+<p>Der eingangs genannte Ausbildungsweg lautet: vor der ersten Leistungsüberprüfung einen Kunden gewinnen; danach Projekt, Team und Architektur strukturieren; schließlich ein MVP realisieren. Das ist ein im Unterricht formulierter Plan, kein Nachweis bereits abgeschlossener Schritte.</p>
+<h2>1. Reisevorbereitung als ingenieurtechnische Organisationsaufgabe</h2>
+<p>Im Szenario legt ein Quarterly Business Review (QBR) ein Ziel fest: Teilnahme an einer europäischen Fachmesse. Zur Delegation gehören Vertreter aus Engagement und Delivery sowie Ingenieure, die fachliche Fragen beantworten und weitere Treffen vereinbaren können. Die Reiseabteilung plant Strecke, Übernachtungen und Arbeitskalender; die Teilnehmenden sollten prüfen, ob Ruhezeiten, Besprechungen und Vorbereitung tatsächlich möglich sind.</p>
+<p>Messestände erfordern vorausschauende Logistik: Versand und Aufbau der Exponate, Stromversorgung, Monitore, Präsentationsunterlagen, Kabel und Ersatzverbindungen. Die Aufzeichnung warnt davor, sich ausschließlich auf überlastetes WLAN zu verlassen. Bei netzwerkabhängigen technischen Vorführungen sollten kabelgebundene Verbindungen vorgesehen werden. Statt eine allgemeine Ausstattungsliste unkritisch zu übernehmen, erstellt das Team eine standbezogene Risiko-Checkliste.</p>
+<h2>2. Erfolgskriterium für die Begegnung: Lead statt Vertrag</h2>
+<p>Das erste Messeergebnis ist ein Lead: eine Person oder Organisation mit erkennbarem Interesse. Bei der Qualifizierung wird geprüft, ob ein echtes Problem existiert, der Anbieter dafür Kompetenz besitzt, ein Folgetermin vereinbart werden kann und welcher konkrete nächste Schritt folgt. Ein verbindlich vereinbartes Folgegespräch ist für diese Übung wertvoller als ein großer Stapel zufällig gesammelter Visitenkarten.</p>
+<p>Ein didaktisches Konversionsmodell (seine Koeffizienten sind nicht empirisch bestimmt):</p>
+<p>N_follow-up = N_contact × p_relevant × p_meeting. N_contact bezeichnet die Zahl sinnvoller Kontakte, p_relevant den Anteil mit passendem Bedarf, p_meeting den Anteil dieser Kontakte, der einem weiteren Gespräch zustimmt, und N_follow-up die erwartete Zahl der Folgetermine. Die Darstellung hilft, über die Qualität des Vertriebstrichters nachzudenken, ersetzt jedoch keine CRM-Daten.</p>
+<h2>3. Die ersten 30 Sekunden: Den Kunden zu Wort kommen lassen</h2>
+<p>Ein Besucher nähert sich dem Stand. Schweigen oder sofort einen beliebigen Werbemonolog zu beginnen, ist wenig produktiv. Besser: freundlich begrüßen, die Vorführung knapp einordnen und eine offene Frage zu Branche und Problem stellen. Ziel ist der Aufbau von Kontext, nicht das Gewinnen einer Debatte.</p>
+<p>In der ersten Szene bietet ein Student Medienproduktion an, während „Otto“ industrielle Fertigung erwartet. Das verdeutlicht eine semantische Falle: „Produktion“ kann physische Güterherstellung oder Medienerstellung bedeuten. Die frühzeitige Klärung von Branche und Bedeutung macht ein relevantes Gespräch erst möglich.</p>
+<h2>4. Technische Gemeinsamkeiten sind wichtiger als berühmte Marken</h2>
+<p>Im Rollenspiel positionieren sich studentische Firmen unter anderem mit Automotive-ECUs, Software, ADAS, Embedded Safety, UAVs, Mechanik und Automatisierung. Der „Kunde“ prüft ihre Aussagen wiederholt: Was genau machen Sie? Wo liegt Ihre fachliche Kompetenz? Welche Schnittstelle gibt es zu meinem Problem? Können Sie das demonstrieren?</p>
+<p>Ein Unternehmen, das ein konkretes Modul, eine Schnittstelle, ein Prüfwerkzeug, eine Randbedingung und ein Ergebnis erklären kann, hat überzeugendere technische Argumente als ein Anbieter, der nur bekannte OEM-Namen aufzählt. Sämtliche in fiktiven Szenen genannten Kunden und Partnerschaften sind als Rollenspielbeispiele zu kennzeichnen und dürfen nicht als tatsächliche Referenzen ausgegeben werden.</p>
+<h2>5. Anbieter, Kunde oder Partner: die eigene Rolle verstehen</h2>
+<p>Eine Kernlektion lautet: Vor der Anreise muss das Team wissen, wen es sucht. Soll es als Dienstleister auftreten, untersucht es den Bedarf des potenziellen Auftraggebers. Sucht das eigene Unternehmen dagegen einen Fertigungsunterauftragnehmer, ändern sich Fragen und Nutzenversprechen. Als drittes Modell schlägt ein Student überraschend gemeinsame Entwicklung mit geteiltem Risiko vor. Das erfordert eine gesonderte Betrachtung von IP-Rechten, Finanzierung, Aufteilung von Risiken und Erträgen sowie Steuerungsstrukturen.</p>
+<table>
+<thead>
+<tr>
+<th>Gesprächsmodell</th>
+<th>Unser Angebot</th>
+<th>Schwerpunkt der Fragen</th>
+<th>Ergebnis des Kontakts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wir sind Anbieter</td>
+<td>Ingenieurdienstleistung oder Produkt</td>
+<td>Kundenproblem, Erfolgskriterien, Budgetrahmen</td>
+<td>Technisches Folgegespräch / RFI</td>
+</tr>
+<tr>
+<td>Wir sind Auftraggeber</td>
+<td>Potenzieller Auftrag</td>
+<td>Kapazität, Fertigung, Zertifizierung, Lieferfähigkeit</td>
+<td>Lieferantenqualifizierung</td>
+</tr>
+<tr>
+<td>Wir sind Partner</td>
+<td>Gemeinsame Produktentwicklung</td>
+<td>Geistiges Eigentum, Risiken, Beiträge, Markt, Governance</td>
+<td>Verhandlung des Zusammenarbeitsmodells</td>
+</tr>
+</tbody>
+</table>
+<h2>6. Auch die Ablehnung eines schlechten Geschäfts kann erfolgreich sein</h2>
+<p>In einer Szene verlangt „Otto“ den direkten Zugang zu Bestandskunden des studentischen Unternehmens. Der Student erkennt einen möglichen Interessenkonflikt. Statt Kontakte ungeprüft weiterzugeben, muss der Anbieter den Zweck der Anfrage klären und vertragliche sowie Vertraulichkeitsgrenzen beachten. Ein unproduktives Gespräch zu beenden, kann bestehende Kundenbeziehungen schützen.</p>
+<p>Die zweite Figur „Udo“ repräsentiert einen Fachbereich eines bekannten OEM. Ein gemeinsames technisches Gebiet und die Möglichkeit einer überprüfbaren internen Vorstellung schaffen eine Grundlage für ein weiteres Gespräch. Tatsächliche Identitäten und Kontaktdaten anderer Kunden dürfen dennoch nicht ohne entsprechende Erlaubnis offengelegt werden.</p>
+<h2>7. Kultureller Kontext ohne Stereotype</h2>
+<p>Das Transkript enthält persönliche Beobachtungen des Dozenten über deutsche Geschäftskultur, Weltregionen, Preisgestaltung und geopolitische Risiken. In wissenschaftlichen Lehrnotizen sind diese als subjektive Erfahrungen, nicht als universelle Merkmale von Ländern und Menschen zu lesen. Praktisch sollten Studierende Einkaufsbedingungen, regulatorische Einschränkungen, Exportkontrollen, Vertraulichkeitspflichten und Vorlieben der konkreten Gesprächspartner recherchieren. Annahmen auf Basis der Nationalität ersetzen keine Sorgfaltsprüfung.</p>
+<p>Gespräche über kriegsbedingte Risiken müssen wahrheitsgemäß, professionell und sicherheitsbewusst geführt werden. Sie dürfen keine vertraulichen Informationen offenbaren oder unbelegte Garantien für eine ununterbrochene Lieferung abgeben. Die Beschreibung realer organisatorischer Resilienzmaßnahmen ist hilfreicher als bloße Beschwichtigungen.</p>
+<h2>8. Nach dem Kontakt: Maßnahmen noch am selben Tag</h2>
+<p>Unmittelbar nach dem Gespräch werden Person, Unternehmen, Profil, konkretes Problem, nachgewiesene Kompetenzen, Risiken oder Einwände, zugesagte Unterlagen und geplanter Folgekontakt dokumentiert. Gemäß Unternehmensregeln gelangen diese Daten an das Engagement-Team und ins CRM. Es ist klar zwischen „jemand nahm eine Visitenkarte“ und „ein Folgetermin wurde vereinbart“ zu unterscheiden.</p>
+<p>Kommt derselbe Besucher am Folgetag erneut am Stand vorbei, kann aggressives Nachverkaufen kontraproduktiv sein. Eine Begrüßung genügt; die weitere Kommunikation läuft über den bereits vereinbarten Teamkanal.</p>
+<h2>9. Von der Firmenpräsentation zum nächsten Engineering-Schritt</h2>
+<p>Nach der Simulation bereitet jedes Team bis zu zehn inhaltlich gehaltvolle Folien für das Folgegespräch vor: Wer sind wir, welche Branche bedienen wir, welche technischen Fähigkeiten und Nachweise haben wir, über welche Ressourcen und Standorte verfügen wir, welches Kooperationsmodell bieten wir, was könnten wir liefern und in welchen Phasen? Das Beispiel des Dozenten umfasst Titelfolie, Agenda, Standorte, ausgewählte Kunden, Partnerschaften, Fähigkeiten, Engagement-Modell, Technologien und Feldtests. Unbestätigte Logos und tatsächlich NDA-geschützte Kundendaten dürfen nicht verwendet werden.</p>
+<p>Der nächste Kursschritt lautet: Folgegespräch → RFI / kursspezifisches RFC / RFQ → Angebot → Jira oder GitHub Project → MVP. So führt die akademische Simulation zur Planung realer Ingenieurarbeit.</p>
+<h2>10. Individuelle Aufgabe</h2>
+<ol>
+<li>Das Messeziel des Unternehmens bestimmen: als Anbieter, Auftraggeber oder Partner handeln.</li>
+<li>Ein dreiminütiges Gespräch mit einem „Kunden“ führen und Bedarf, Randbedingungen sowie den nächsten Schritt dokumentieren.</li>
+<li>Prüfen, ob der Lead qualifiziert ist: technische Relevanz, nutzbarer Kontakt und Einwilligung in die weitere Kommunikation.</li>
+<li>Das Gespräch in einem CRM oder einer Übungstabelle dokumentieren, ohne vertrauliche Kundendaten zu übernehmen.</li>
+<li>Eine Präsentation mit höchstens zehn Folien für das Folgegespräch erstellen; sämtliche technischen Behauptungen und Referenznutzungsrechte prüfen.</li>
+<li>Fünf Discovery-Fragen vorbereiten, die von einem Geschäftsproblem zu einer künftig messbaren Systemanforderung führen.</li>
+</ol>
+<h2>Fragen zur Selbstkontrolle</h2>
+<ul>
+<li>Wodurch unterscheidet sich ein Lead von einem unterzeichneten Auftrag?</li>
+<li>Warum ist es riskant, unbemerkt von der Rolle des Anbieters in die Rolle des Auftraggebers zu wechseln?</li>
+<li>Ab welchem Punkt ist nachgewiesene Kompetenz wichtiger als ein Markenname?</li>
+<li>Wie lassen sich Kundenkontakte schützen und Interessenkonflikte vermeiden?</li>
+<li>Welche Arbeitsprodukte sind nötig, um vom Folgegespräch zur Architektur und zum MVP-Plan zu gelangen?</li>
+</ul>
+<h2>Ausblick auf die nächsten ein bis zwei Veranstaltungen laut Quelle</h2>
+<p>Für die nächste Veranstaltung waren Folgegespräch, Erfassung von RFI-/RFC-Informationen und Angebotsentwurf vorgesehen; anschließend sollten ein Jira- oder GitHub-Projekt erstellt und ein MVP umgesetzt werden. Dies ist eine angekündigte Planung im Transkript und keine bestätigte Darstellung bereits erledigter Arbeiten.</p>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Lehre</b><p style="margin-top:8px">Lehrmaterialien von Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">Über den Autor →</a></div>
+<div class="footer-links"><b>Kurs</b><a href="index.html">Kursübersicht</a><a href="lecture-01.html">Vorlesung 01</a><a href="lecture-02.html">Vorlesung 02</a><a href="lecture-03.html">Vorlesung 03</a><a href="lecture-06.html">Vorlesung 04</a><a href="lecture-09.html">Session 09</a><a href="lecture-08.html">Session 08</a><a href="lecture-07.html">Session 07</a></div>
+<div class="footer-links"><b>Kontext</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in der Energietechnik</a><a href="../../teaching.html">Alle Lehrmaterialien</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Datenschutz</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>
