@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="uk";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-14.html","uk":"lecture-14.html","de":"../../../de/teaching/embedded-software-engineering/lecture-14.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>HARA для PoC, гібридний контракт і план першого епіку — Væringjar II</title><meta content="Що брати в PoC і як це визначає HARA, Fixed Price для власного інженерингу й T&amp;M для вендорів, три рівні збірки та план EPIC 1 із 29 етапів і gates G1–G4." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-14.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-14.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-14.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-14.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-14.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="HARA для PoC, гібридний контракт і план першого епіку" property="og:title"/><meta content="Що брати в PoC і як це визначає HARA, Fixed Price для власного інженерингу й T&amp;M для вендорів, три рівні збірки та план EPIC 1 із 29 етапів і gates G1–G4." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-14.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="HARA для PoC, гібридний контракт і план першого епіку" name="twitter:title"/><meta content="Що брати в PoC і як це визначає HARA, Fixed Price для власного інженерингу й T&amp;M для вендорів, три рівні збірки та план EPIC 1 із 29 етапів і gates G1–G4." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/><script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script><style id="lecture-figure-style">.lecture-notes-content figure.lecture-figure{margin:28px 0;padding:0;max-width:100%}.lecture-notes-content figure.lecture-figure a{display:block;border:0;background:#fff;padding:10px;border-radius:6px;border:1px solid rgba(127,127,127,.35)}.lecture-notes-content figure.lecture-figure img{display:block;width:100%;height:auto;margin:0 auto}.lecture-notes-content figure.lecture-figure-small{max-width:560px}.lecture-notes-content figure.lecture-figure-wide{width:min(1180px,calc(100vw - 48px));max-width:none}.lecture-notes-content figure.lecture-figure figcaption{margin-top:10px}.lecture-notes-content .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}@media (max-width:640px){.lecture-notes-content .table-scroll table{min-width:600px;width:600px;max-width:none!important;table-layout:auto}}</style></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Модель</a><a href="../../research.html">Докази</a><a href="../../implementation.html">Реалізація</a><a class="active" href="../../teaching.html">Навчання</a><a href="../../collaboration.html">Співпраця</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-14.html?lang=en" hreflang="en" lang="en">EN</a><a aria-current="page" class="active" data-lang="uk" href="lecture-14.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../../de/teaching/embedded-software-engineering/lecture-14.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Навчання / Заняття 14 · 28.10.2026</div><h1>HARA для PoC, гібридний контракт і план першого епіку</h1><p class="lead reader-lead">Що брати в PoC і як це визначає HARA, Fixed Price для власного інженерингу й T&amp;M для вендорів, три рівні збірки та план EPIC 1 із 29 етапів і gates G1–G4.</p><div class="reader-badges"><span>28.10.2026</span><span>Заняття 14 / 14</span><span>01:34:00</span><span>Практичне заняття</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Огляд курсу →</a><a class="btn btn-primary" href="#full-notes">Читати повний конспект ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / МОДУЛЬ 04 · COMMERCIAL ENGINEERING / 14 · 28.10.2026</div><div class="course-context-nav"><a class="previous" href="lecture-13.html">Попереднє · 13</a><span class="current">14</span><span class="next">EPIC 2, діаграма Ганта й команда (план)</span></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Хронологія курсу</div><h2>Інженерний конспект</h2><p class="reader-intro">Що брати в PoC і як це визначає HARA, Fixed Price для власного інженерингу й T&amp;M для вендорів, три рівні збірки та план EPIC 1 із 29 етапів і gates G1–G4.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>PoC і HARA</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Власний сервіс — FP, вендори — T&amp;M</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Збірка на трьох рівнях</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>План EPIC 1 з чотирма gates</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Повний конспект заняття</div><h2>Повний конспект заняття</h2><p class="lecture-notes-intro">Повний авторський конспект за транскриптом від 28 жовтня, схемою draw.io та Excel-планом викладача. Досвід роботи з виробниками — особиста практика викладача, без назв компаній.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R14-2026-10-28.md">Повний конспект Markdown →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-10-28.md">Оригінальний транскрипт →</a></div><article class="lecture-article lecture-notes-content" lang="uk"><h1>Заняття 14. HARA для PoC, гібридний контракт і детальний план першого епіку</h1>
+<blockquote>
+<p><strong>28 жовтня 2026 · практичне заняття · 1 год 34 хв.</strong> Матеріал підготовлено за автоматичним транскриптом <code>IgorSikorskyKPI_28102026.mp4</code>, схемою draw.io та Excel-планом, які викладач створював під час заняття. Це відредагований навчальний конспект, а не дослівна стенограма: очевидні помилки розпізнавання виправлено, терміни уніфіковано з попередніми заняттями. Досвід роботи з виробниками й постачальниками — <strong>особиста практика викладача</strong>, подана без назв компаній. Редакторські уточнення позначено окремо.</p>
+</blockquote>
+<h2>0. Організаційне</h2>
+<ul>
+<li>Заняття записується; відео й автотранскрипт доступні студентам для конспекту.</li>
+<li>Робочий файл схем викладач вивантажив на Google Drive; після завершення курсу матеріали буде розміщено на його сервері з посиланням на сайті.</li>
+<li>За підсумками курсу планується методичний посібник.</li>
+<li>Нагадування про безпеку: у разі повітряної тривоги — бути обачними й подбати про власну безпеку.</li>
+</ul>
+<h2>1. Повторення: фази, gates і конус невизначеності</h2>
+<p>Заняття 13 описало, як представити замовнику way of work: розбити проєкт на фази 1, 2, 3 … N, сказати про відкритість до продовження (підтримка, ліквідація тощо) і чесно показати <strong>щонайменше два gates</strong>. Gate — точка виходу:</p>
+<ul>
+<li>R&amp;D завершилося успішно — йдемо на PoC;</li>
+<li>неуспішно — gate дає змогу швидко «одропнутися» на ранній стадії з мінімальними втратами часу й грошей <strong>для обох сторін</strong>;</li>
+<li>або знайти іншу концепцію й повернутися на початок зі спробою № 2, № 3.</li>
+</ul>
+<p>Залежно від типу проєкту варто як мінімум не забувати про R&amp;D і PoC. R&amp;D перевіряє <strong>технічну досяжність</strong> за поточного стану науки й техніки: якщо ні — треба шукати іншу науку чи техніку або чекати, поки вони дозріють. R&amp;D також <strong>звужує конус невизначеності</strong>: що далі в часі подія, то більше припущень і то важче оцінити, що ви зможете реалізувати, скільки це коштуватиме й скільки займе. Це теж треба прокомунікувати замовнику на етапі R&amp;D.</p>
+<h2>2. Що дає PoC: правильний вибір інструмента</h2>
+<p>Після успішного R&amp;D запропонуйте замовнику Proof of Concept. Акцент у PoC — не на красі й не на фіналізації виробу, а на перевірці вибору:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Що перевіряє PoC</th>
+<th>Приклад</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Компонентна база</td>
+<td>Обраний чіп справді працює з AI; DSP встигає без надмірних затримок обробляти 10 відеопотоків з 10 камер паралельно</td>
+</tr>
+<tr>
+<td>Фреймворк</td>
+<td>Чи є в ньому достатній tooling для задачі</td>
+</tr>
+<tr>
+<td>Мова програмування</td>
+<td>Чи достатньо вона функціонально безпечна, чи є під неї підтримка</td>
+</tr>
+<tr>
+<td>Операційна система</td>
+<td>Чи є під неї нормальний компілятор — інакше доведеться переписувати тонни вже готового коду</td>
+</tr>
+</tbody>
+</table></div>
+<p>Ризик пропуску PoC колосальний: ви закладете чіп, закупите його, розробите під нього електроніку, корпус і систему охолодження, а він «не потягне». PoC коштує грошей, але <strong>забирає великі ризики майбутнього у виборі інструмента</strong>.</p>
+<h2>3. Що саме брати в PoC: HARA</h2>
+<p>Проєкт може бути великим: власне hardware (друковані плати), firmware на ньому, механіка (корпус), у який усе вбудовано, комунікаційний протокол між пристроями, десктопна частина, cloud. Навчальна топологія: два фізичні пристрої у двох корпусах, на кожному — власна електроніка з чіпами й firmware; між ними — протокол; один firmware є master, а окремий комп’ютер працює як шлюз і «прокидає» дані з cloud.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l14-hara-sketch.png"><img src="../../../assets/img/teaching/embedded-software-engineering/l14-hara-sketch.png" alt="Топологія: два корпуси Mech з платами HW і firmware FW, з'єднані протоколом; один FW зв'язаний з комп'ютером-шлюзом і хмарою; поруч HARA зі двома ризиками: ComProt bit losing high 10 7 7 і Thermal management MCU hot medium 5 5 5" loading="lazy"/></a><figcaption class="diagram-note">Рис. 14.1. Навчальна топологія й короткий HARA до неї: втрата бітів у комунікаційному протоколі — high (10 | 7 | 7), перегрів MCU в корпусі — medium (5 | 5 | 5). Схема викладача (draw.io).</figcaption></figure>
+
+<p>У PoC беруть <strong>найбільш «стрьомне»</strong> — те, де можна «дати в штангу». Щоб визначити, що саме, проводять вправу <strong>HARA — Hazard Analysis and Risk Assessment</strong> (аналіз загроз і оцінка ризиків). Усі інженери збираються разом (бажано офлайн) і аналізують, що може статися із системою: де ви не впевнені, чого раніше не робили, де будете першовідкривачами.</p>
+<p>Приклад із заняття:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Об’єкт</th>
+<th>Загроза</th>
+<th>Оцінки</th>
+<th>Рівень</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Комунікаційний протокол</td>
+<td>Втрата бітів (bit losing); відмова протоколу «вбиває все»</td>
+<td>severity 10, частота 7 (статистика й досвід інженерів), impact 7</td>
+<td><strong>high</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Термоменеджмент корпусу</td>
+<td>Механік не впевнений, що «гарячий» MCU не перегріватиметься</td>
+<td>5, 5, 5</td>
+<td><strong>medium</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Із результатами HARA ви йдете до замовника: «У межах PoC ми хотіли б дослідити ці два питання — вони видаються найнебезпечнішими», і аргументуєте це слайдами й таблицею. Реакція замовника залежить від його ситуації:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Замовник</th>
+<th>Що дозволить дослідити в PoC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Має фінансові клопоти</td>
+<td>Лише ризики рівня high</td>
+</tr>
+<tr>
+<td>Збалансований</td>
+<td>High і medium</td>
+</tr>
+<tr>
+<td>«Адекватний» — хоче йти далі без ризиків</td>
+<td>High, medium і low</td>
+</tr>
+</tbody>
+</table></div>
+<h2>4. Як виглядає таблиця HARA</h2>
+<p>Викладач показав типову структуру такого аналізу (знайдений приклад, за його словами, ближчий до TARA — аналізу загроз кібербезпеки, але структура та сама):</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Зміст</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ідентифікатор</td>
+<td>Номер загрози</td>
+</tr>
+<tr>
+<td>Опис</td>
+<td>Що відбулося і в якій функціональності або компоненті (комунікація, механіка…)</td>
+</tr>
+<tr>
+<td>Контроль</td>
+<td>Як ризик контролюватиметься: автоматичне виправлення, дія оператора або прийняття ризику</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>Сила впливу</td>
+</tr>
+<tr>
+<td>Probability</td>
+<td>Імовірність того, що це станеться</td>
+</tr>
+<tr>
+<td>Рівень ризику</td>
+<td>Добуток severity × probability; ви вводите власні межі low / medium / high</td>
+</tr>
+<tr>
+<td>Action plan</td>
+<td>Що робитимемо, щоб зменшити ризик: дослідити, змінити, перебудувати — або нічого, якщо ризик приймається</td>
+</tr>
+</tbody>
+</table></div>
+<p>High треба обов’язково аналізувати; щодо medium і low ви свідомо вирішуєте, що робити, зважаючи на ймовірність. Два приклади:</p>
+<ul>
+<li><strong>Падіння метеорита</strong>: наслідки дуже серйозні, але ймовірність дуже низька — ризик класифікують як низький.</li>
+<li><strong>Пілот засинає за штурвалом</strong> із вимкненим автопілотом: важкі умови роботи роблять імовірність досить високою, наслідки — серйозні, тож ризик дуже високий.</li>
+</ul>
+<blockquote>
+<p><strong>Редакторське уточнення щодо прикладу з пілотами.</strong> Деталі, які викладач навів з пам’яті (Air France, переліт Парижа «майже до Польщі»), не вдалося підтвердити. Задокументовані випадки, коли засинали обидва пілоти: рейс Ethiopian Airlines ET343 Хартум — Аддис-Абеба (серпень 2022 року) пролетів аеропорт призначення, і екіпаж прокинувся від сигналу автопілота; рейс Batik Air Кендарі — Джакарта (січень 2024 року) — за звітом індонезійського розслідування обидва пілоти спали близько 28 хвилин, і літак відхилився від курсу. Суть прикладу це не змінює: висока ймовірність × важкі наслідки = високий ризик.</p>
+<p><strong>Редакторське уточнення щодо методики.</strong> Числова оцінка «severity × probability», яку використав викладач, — спрощена матриця ризиків у дусі FMEA, зручна для внутрішнього пріоритезування PoC. Формальний HARA за <strong>ISO 26262-3</strong> класифікує кожну небезпечну подію за трьома параметрами — <strong>Severity (S0–S3), Exposure (E0–E4), Controllability (C0–C3)</strong> — і визначає рівень <strong>ASIL A–D</strong> або QM. Аналіз загроз кібербезпеки <strong>TARA</strong> описано в <strong>ISO/SAE 21434</strong>. Якщо проєкт підпадає під ці стандарти, внутрішню таблицю для PoC не слід видавати замовнику за формальний HARA чи TARA.</p>
+</blockquote>
+<h2>5. Що робити з результатом PoC</h2>
+<p>Ризики, визначені в HARA (у прикладі — протокол і перегрів корпусу), стають <strong>об’єктами дослідження</strong> в PoC. Якщо проблема підтвердилася, її треба розв’язати — як мінімум знайти шлях вирішення:</p>
+<ul>
+<li><strong>шлях знайдено</strong> — це достатня умова переходу далі по проєкту;</li>
+<li><strong>шлях не знайдено</strong> — зупиняємо проєкт або повторюємо дослідження.</li>
+</ul>
+<p>Далі проєкт рухається по фічах, одна за одною, аж до кінця.</p>
+<h2>6. Гібридний контракт: що робимо ми, а що вендори</h2>
+<p>На занятті 13 розглядали Fixed Price, Time &amp; Material і T&amp;M з верхньою межею, а також їхнє поєднання за фазами. Практика показує ще один варіант — поділ <strong>за відповідальністю</strong>. Повернімося до топології з двома пристроями.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l14-responsibility-split.png"><img src="../../../assets/img/teaching/embedded-software-engineering/l14-responsibility-split.png" alt="Угорі топологія: інтернет, PC, два корпуси з HW і FW. Унизу дві обведені групи: вендори HW manufacturing, sources, Mech manufacturing, Harness manufacturing, Delivery з позначкою T&amp;M; власні функції SW dev, Arch dev, manufacturing review and support, legal finance office, assembly з позначкою FP; стрілки від legal до кожного вендора" loading="lazy"/></a><figcaption class="diagram-note">Рис. 14.2. Поділ відповідальності: ліворуч — зовнішні вендори (T&amp;M), праворуч — власний інженерний сервіс (FP). Сині стрілки — legal, який веде претензійну роботу з кожним вендором. Схема викладача (draw.io).</figcaption></figure>
+
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Хто</th>
+<th>Функції</th>
+<th>Модель</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ми</strong> (in-house)</td>
+<td>Software development; architecture; manufacturing review and support — технічний нагляд за виробництвом; legal / finance / office management; assembly (див. розділ 7)</td>
+<td><strong>FP</strong></td>
+</tr>
+<tr>
+<td><strong>Вендори</strong></td>
+<td>Виробництво hardware; виробництво механіки (корпуси); виробництво жгутів (harness); постачання компонентів (sources); доставка</td>
+<td><strong>T&amp;M</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Ми спроєктуємо механіку, розробимо й заревʼюємо hardware, наші механік і електронік спроєктують жгут — але <strong>виготовляти не будемо</strong>: немає заводу, компетенцій, техніків, які обжмуть кабелі, вкладуть їх в ізолятор і кабель-канали. Виготовлення передають зовнішнім організаціям. <strong>Вендор</strong> — інша організація, яка за гроші надає вам сервіс: завод, постачальник або перевізник.</p>
+<h3>Чому чистий Fixed Price на все — постріл собі в ногу</h3>
+<p>Чистий FP на все разом означає, що замовник хоче «сходити в магазин і купити відро картоплі»: заплатити, почекати й отримати готовий виріб. Але вендори вам не підконтрольні: вони можуть змінити <strong>час, якість і ціну</strong>. Викладач навів власну практику:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Ланка</th>
+<th>Що відбувається на практиці</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Електроніка</td>
+<td>Виготовлення зазвичай замовляють у Китаї, бо дешевше. Останнім часом виробники обмежують замовлення з України: друковані плати виготовляють, але компоненти не запаюють. З’явився ще один вендор — постачальник компонентів (мікросхем, транзисторів, конекторів, пасивних елементів): більше грошей, часу й ризиків</td>
+</tr>
+<tr>
+<td>Механіка</td>
+<td>Виробничі потужності в Білій Церкві, Харкові, Києві; питання до якості й термінів. Старий якісний і пунктуальний виробник підняв ціну в півтора раза — і фактично вибув із гри</td>
+</tr>
+<tr>
+<td>Жгути</td>
+<td>Виготовлення в Кам’янці-Подільському; останнім часом виникли питання до якості</td>
+</tr>
+<tr>
+<td>Доставка</td>
+<td>В Україні великі й непрогнозовані затримки</td>
+</tr>
+<tr>
+<td>Компоненти</td>
+<td>Можуть просто зникнути з ринку; дефіцит мікроконтролерів і мікропроцесорів — замовляти доводиться за місяць-два до потреби</td>
+</tr>
+</tbody>
+</table></div>
+<p>Усі ці ланки можуть «грати» одночасно, а поштовий сервіс множить усе на власний коефіцієнт затримок і цін. І найгірше — це <strong>фізичний виріб</strong>. Якщо під час вхідного контролю виявили брак, переробка одразу подвоює час доставки. Якщо вендор відмовиться переробляти — підключається legal, а це знову час. Окремо викладач підкреслив, що виріб рідко створюється в одній країні, тому війна й обмеження десь у світі завжди впливають на ланцюг постачання.</p>
+<p>Висновок: <strong>Fixed Price на виробничу частину в сучасних умовах — не лише України, а й Європи — для будь-якого embedded-проєкту означає вистрілити собі в ногу.</strong></p>
+<h3>Коли FP на вендорську частину все ж можливий</h3>
+<p>Лише за умови, що у вас є підтверджені legal договори з доставкою, постачальником компонентів і виробниками hardware, механіки та жгутів. Тоді, якщо вендор затягує, корпоративні юристи йдуть із ним у суд, і вендор компенсує втрати, передбачені вашим FP-договором із замовником. Але сучасні виробники добре розуміють ці ризики й майже напевно такий договір не підпишуть. А якщо підпишуть — «взвинтять» ціну. Ви теж піднімете свою, а замовник або підніме ціну власного продукту, або відмовиться від вас.</p>
+<h3>Рекомендований поділ</h3>
+<p>Переконайте замовника розбити модель співпраці на дві групи:</p>
+<ul>
+<li><strong>in-house сервіс</strong> — software, architecture, manufacturing review, legal, finance, office management, assembly — за <strong>фіксованим часом і фіксованою ціною</strong>;</li>
+<li><strong>закупівля компонентів, виробництво електроніки, механіки й жгутів, доставка</strong> — за <strong>time and material</strong>.</li>
+</ul>
+<p>Тоді, як кажуть, «і вовки ситі, і кози цілі». Ваш ризик і ризик проєкту — «рідні брати»: якщо щось «фейлиться», страждають обидві сторони. Пояснивши це, ви зазвичай знайдете розуміння в замовника, якщо він «у своєму розумі». Сучасні клієнти з такою комбінованою моделлю непогано знайомі.</p>
+<p>У проєкті тепер <strong>два запобіжники</strong>: цей поділ відповідальності та gates після ризикованих фаз. Разом вони тримають у балансі навантаження й ризики для вас, клієнта й вендорів.</p>
+<h2>7. Дилема assembly: віддати чи тримати в себе</h2>
+<figure class="diagram lecture-figure lecture-figure-small"><a href="../../../assets/img/teaching/embedded-software-engineering/l14-assembly-levels.png"><img src="../../../assets/img/teaching/embedded-software-engineering/l14-assembly-levels.png" alt="Вкладені прямокутники Mech і HW з трьома блоками assembly: збірка механіки, збірка плати і збірка виробу" loading="lazy"/></a><figcaption class="diagram-note">Рис. 14.3. Три рівні збірки: механіка, друкована плата (PCBA) і виріб у цілому. Схема викладача (draw.io).</figcaption></figure>
+
+<p><strong>Варіант 1: збірку робить завод механіки.</strong> Припустімо, механічний виріб складається приблизно зі 120 елементів: передня частина, основа, рама, верхній корпус, внутрішні елементи жорсткості. Ви передаєте заводу конструкторську документацію, після чого технолог заводу й ваш інженер погоджують техпроцес: гнуття, лазерне різання, фрезерування тощо. Кожна машина працює трохи інакше: два ідентичні гнучкі верстати гнуть по-різному, фарбувальна машина дає трохи інший відтінок. Тому інженер і технолог мають не просто обмінятися специфікацією, а <strong>проговорити</strong>, що саме зробити, щоб виріб гарантовано зібрався й запрацював. Викладач пожартував про «козу» — «конструкторську записку», фактично специфікацію під конкретний завод. Після виготовлення ваш інженер надає <strong>складальну документацію</strong> (інструкцію зі збирання), і завод збирає виріб.</p>
+<ul>
+<li>Плюс: ви отримуєте готовий механічний виріб.</li>
+<li>Мінус: ціна суттєво зростає — для виробника це додаткові зобов’язання, люди і складальний цех, якого в нього може й не бути.</li>
+</ul>
+<p><strong>Але збірка має три рівні:</strong></p>
+<ol>
+<li><strong>Збірка механіки</strong> — з окремих дверцят, рам тощо.</li>
+<li><strong>Збірка плати</strong> — компоненти від постачальника розпаюють на «голу» PCB й отримують <strong>PCBA</strong> (PCB assembly).</li>
+<li><strong>Збірка виробу</strong> — PCBA встановлюють у механіку; після цього в готовий виріб завантажують firmware.</li>
+</ol>
+<p>Саме ця багатоступеневість спонукала викладача створити <strong>власну роль assembly</strong> — окремий складальний цех. Його закриває <strong>технік (technician)</strong> з двома компетенціями: механічна збірка й збірка/монтаж PCBA. «Якщо функцію використовують двічі, логічно зробити з неї окрему функцію».</p>
+<p>Якщо для техніка організовано робоче місце, склад і адекватні інструменти — тобто він почувається комфортно, а не «білою вороною в IT-офісі», — він може взяти на себе й <strong>виготовлення значної частини жгутів</strong>: закупити конектори, провід, ізолятори й зібрати жгути за вашим проєктом. Отже, власний assembly:</p>
+<ul>
+<li>суттєво зменшує ризик помилок на етапі збірки механіки;</li>
+<li>відкриває можливість перетягнути до себе harness manufacturing.</li>
+</ul>
+<p>Навіщо це студентам-програмістам? Бо ви розробляєте <strong>систему</strong>: софт вбудовано в чіп, чіп — у плату, плата — в корпус. Ніхто з вас, імовірно, не супроводжуватиме виробництво особисто, але розуміти, як збудовано цей процес, дуже важливо.</p>
+<h2>8. Приклад: два пристрої й робоче місце оператора</h2>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l14-system-topology.png"><img src="../../../assets/img/teaching/embedded-software-engineering/l14-system-topology.png" alt="Топологія навчального проєкту: два корпуси з HW і FW, з'єднані радіоканалом, один передає дані на PC; оператори бачать на PC список Item 1, Item 2, Item 3" loading="lazy"/></a><figcaption class="diagram-note">Рис. 14.4. Навчальний проєкт: пристрій A, пристрій B і PC зі списком подій (Item 1, 2, 3) для операторів. Схема викладача (draw.io).</figcaption></figure>
+
+<p>Умовний замовник хоче систему з трьох частин:</p>
+<ul>
+<li><strong>пристрій A</strong> — реальний виріб із кріпленням, електронікою і кодом; через сенсори визначає, що його встановлено й увімкнено, і передає свій стан радіоканалом;</li>
+<li><strong>пристрій B</strong> — приймає цей потік даних і, розпізнавши потрібну подію, передає її на комп’ютер операторів;</li>
+<li><strong>комп’ютер операторів</strong> показує, яку дію виконувати зараз: Item 1, Item 2, Item 3. Цього достатньо: побачивши Item 1, оператори виконують відповідну дію.</li>
+</ul>
+<p>Замовнику «горить», тож перший крок — <strong>детальне планування</strong>. Найкращий інструмент для цього, за досвідом викладача, — Excel.</p>
+<h2>9. Детальний план EPIC 1</h2>
+<p>Нижче — часова діаграма розбиття проєкту на фази, яку викладач будував у реальному часі. Gates G1–G4 стоять там, де результат може зупинити проєкт.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>№</th>
+<th>Етап</th>
+<th>Gate</th>
+<th>Що відбувається</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Збір інформації про об’єкт і середовище (≈ R&amp;D)</td>
+<td><strong>G1</strong></td>
+<td>Які радіоканали можна використати на місці експлуатації й сертифікувати; робота в шумах; які частоти вже зайняті (щоб уникнути інтерференції); температури, рівень забруднення, живлення. «Більше питань, ніж відповідей». Без цього немає предметної області. Середовище може виявитися настільки поганим, що проєкт далі не піде</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Розробка й ухвалення вимог до системи (system requirements)</td>
+<td><strong>G2</strong></td>
+<td>Без вимог систему не описати. Доки вимоги не ухвалено із замовником, проєктувати далі не можна — він може захотіти інше</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Архітектурний опис системи</td>
+<td>—</td>
+<td>Декомпозиція: які підсистеми, hardware, чіпи. Реальний view на проєкт</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Аналіз ризиків (HARA, за потреби TARA)</td>
+<td>—</td>
+<td>HARA — функціональна безпека, TARA — кібербезпека</td>
+</tr>
+<tr>
+<td>5</td>
+<td>PoC за ризиками з HARA/TARA</td>
+<td><strong>G3</strong></td>
+<td>Окремий R&amp;D тут не потрібен: етап 1 уже є дослідженням. PoC може сказати: «не лізьте туди» — наприклад, електромагнітна інтерференція «валить» усе</td>
+</tr>
+<tr>
+<td>6</td>
+<td>MVP</td>
+<td>—</td>
+<td>Мінімальна функція: підтвердити, що пристрої A і B бачать один одного, засвітити індикатор. Без корпусу, «примотано скотчем». Продає ваш сервіс</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Деталізація вимог до SW, механіки та HW</td>
+<td>—</td>
+<td>Тепер зрозуміло, про що йдеться: є вимоги, архітектура, перевірені ризики й демо</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Оцінка завантаженості HW (ресурси для FW)</td>
+<td>—</td>
+<td>Який чіп, яка комунікація, оптика чи радіо потрібні, щоб firmware працював згідно з вимогами</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Пошук компонентної бази на ринку (HW)</td>
+<td><strong>G4</strong></td>
+<td>Чіп, RAM, елементи живлення, радіоінтерфейс — чи вони реально є і чи можна їх купити. Без закупівлі подальшого розвитку немає</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Модель / віртуалізація: SW mockup (застосунок)</td>
+<td>—</td>
+<td>Імітатори пристроїв A і B, їхньої механіки та радіоканалу. Проєкт без заліза, до інтеграції. Методологія — ваш вибір (класичний підхід, TDD)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Hardware development: schematic, PCB, BoM</td>
+<td>—</td>
+<td>Паралельно з етапом 10. Результат: схема, PCB, 3D-модель і перелік компонентів із цінами й кількістю</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Review HW</td>
+<td>—</td>
+<td>Інший інженер перевіряє hardware. <strong>Обов’язкова стадія</strong></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Review HW by FW</td>
+<td>—</td>
+<td>Firmware-інженер перевіряє, чи функціонал «ляже» на це залізо</td>
+</tr>
+<tr>
+<td>14</td>
+<td>All hands (HW)</td>
+<td>—</td>
+<td>Зустріч із замовником: чи це те бачення, яке він хоче</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Mechanical development (вимоги + STEP-моделі HW)</td>
+<td>—</td>
+<td>Механік проєктує корпус на основі вимог і 3D-моделей плат від hardware-інженера. У виробництво ще нічого не пішло</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Review механіки by HW</td>
+<td>—</td>
+<td>Hardware-інженер перевіряє механіку</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Rework (HW / Mech)</td>
+<td>—</td>
+<td>Буде завжди: плата не стане в корпус або стане, але грітиметься</td>
+</tr>
+<tr>
+<td>18</td>
+<td>All hands (HW + Mech)</td>
+<td>—</td>
+<td>Демо для всіх стейкхолдерів: менеджмент, замовник, інженери</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Manufacturing (HW і Mech)</td>
+<td>—</td>
+<td>Обидві частини йдуть на виробництво</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Manufacturing support (HW і Mech)</td>
+<td>—</td>
+<td>Довгий «мутний» час постійної комунікації інженерів із виробниками</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Procurement і доставка компонентів</td>
+<td>—</td>
+<td>Час виробництва використовують для закупівлі стандартних деталей механіки (болти, гайки, шайби, гровери, ніжки, ручки) й електроніки (наприклад, Mouser, DigiKey): закупівля, розмитнення, доставка, зберігання на складі чи в сейфі офісу. Відповідає <strong>Procurement Manager</strong></td>
+</tr>
+<tr>
+<td>22</td>
+<td>Assembly (Mech)</td>
+<td>—</td>
+<td>Механіка приходить раніше; збирає технік</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Review (Mech)</td>
+<td>—</td>
+<td>Перевірка зібраної механіки</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Rework (Mech)</td>
+<td>—</td>
+<td>Закладайте одразу: assembly і rework ідуть разом</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Assembly (HW)</td>
+<td>—</td>
+<td>Монтаж плат</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Review (HW)</td>
+<td>—</td>
+<td>Перевірка зібраних плат</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Rework (HW)</td>
+<td>—</td>
+<td>На першій ітерації помилки виправляють на місці: ріжуть доріжки, напаюють перемички</td>
+</tr>
+<tr>
+<td>28</td>
+<td>FW: фіналізація й завантаження</td>
+<td>—</td>
+<td>Код, «наклепаний» на моделі (етап 10), завершують на реальному залізі</td>
+</tr>
+<tr>
+<td>29</td>
+<td>FW: тестування</td>
+<td>—</td>
+<td>Тестування на реальному залізі</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Редакторське уточнення.</strong> У робочому Excel-файлі рядки 23–24 і 26–27 підписано як «review / Review (Mech)» та «review / Review (HW)». За поясненням викладача на занятті, послідовність така: збірка → review → rework, тому в таблиці вони подані як Review і Rework.</p>
+</blockquote>
+<p><strong>Орієнтовні строки виробництва</strong> з досвіду викладача:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Що</th>
+<th>Строк</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Механіка (корпус розміром із мікрохвильовку)</td>
+<td>від 10 до 30 днів</td>
+</tr>
+<tr>
+<td>Hardware</td>
+<td>від 3 до 5 тижнів</td>
+</tr>
+</tbody>
+</table></div>
+<p>Цей час «гріх простояти»: саме тоді треба забезпечити, щоб компоненти й інструменти були в наявності.</p>
+<h3>Один епік — це ще не проєкт</h3>
+<p>Усе описане — один <strong>епік</strong>. В embedded-розробці разом із механікою та hardware одного епіку не буває — <strong>мінімум три</strong>. Тому план «заморожено»: на наступному тижні викладач обіцяв продовжити з EPIC 2.</p>
+<h2>Практичні висновки</h2>
+<ul>
+<li>PoC — інвестиція, що знімає ризик неправильного вибору компонентів, фреймворків, мови й ОС.</li>
+<li>Що брати в PoC, визначають за HARA (і TARA), проведеним усією інженерною командою.</li>
+<li>Пріоритети ризиків показують замовнику; обсяг PoC він обирає залежно від свого бюджету й ставлення до ризику.</li>
+<li>Знайдений шлях вирішення ризику — достатня умова переходу далі; не знайдений — стоп або нове дослідження.</li>
+<li>Fixed Price доречний для власного інженерного сервісу; виробництво, закупівля й доставка — за T&amp;M.</li>
+<li>Збірка має три рівні; власна роль техніка-асемблера зменшує ризики й дає змогу виготовляти жгути в себе.</li>
+<li>Детальний план епіку — ланцюжок від збору даних до тестування firmware з gates там, де проєкт може зупинитися.</li>
+<li>Строки виробництва використовують для паралельних закупівель і підготовки.</li>
+</ul>
+<h2>Питання для самоперевірки</h2>
+<ul>
+<li>Які чотири види вибору перевіряє PoC?</li>
+<li>Як провести HARA і хто має в ньому брати участь?</li>
+<li>З яких полів складається таблиця HARA?</li>
+<li>Як замовник із різним фінансовим станом обирає обсяг PoC?</li>
+<li>Чим спрощена оцінка severity × probability відрізняється від класифікації S/E/C → ASIL за ISO 26262?</li>
+<li>Чому Fixed Price на виробничу частину embedded-проєкту небезпечний?</li>
+<li>За якої умови FP на вендорську частину можливий і чому вендори рідко на це погоджуються?</li>
+<li>Які три рівні збірки є у фізичному виробі?</li>
+<li>Чому власна роль assembly вигідна компанії?</li>
+<li>Де в плані EPIC 1 стоять gates G1–G4 і чому саме там?</li>
+<li>Навіщо рев’ю hardware двічі — іншим hardware-інженером і firmware-інженером?</li>
+<li>Що робить procurement manager, поки триває виробництво?</li>
+</ul>
+<h2>Що заплановано далі</h2>
+<p>Викладач анонсував на наступний тиждень: EPIC 2 та наступні епіки, діаграму Ганта, формування команди, визначення потрібних інженерів і їхніх специфікацій, умовний найм і міграцію плану в Jira. Це <strong>оголошений план</strong>, а не вже проведені заняття.</p>
+<h2>Матеріали заняття</h2>
+<ul>
+<li>Схема draw.io з заняття: <a href="../../../teaching/embedded-software-engineering/source-materials/2026-10-28-hara-responsibility-assembly.drawio">завантажити .drawio</a></li>
+<li>Excel-план EPIC 1: <a href="../../../teaching/embedded-software-engineering/source-materials/2026-10-28-epic1-plan.xlsx">завантажити .xlsx</a></li>
+</ul>
+<h2>Перевірені посилання</h2>
+<ul>
+<li>ISO 26262-3:2018, Road vehicles — Functional safety — Part 3: Concept phase: https://www.iso.org/standard/68385.html</li>
+<li>ISO/SAE 21434:2021, Road vehicles — Cybersecurity engineering: https://www.iso.org/standard/70918.html</li>
+<li>Batik Air, обидва пілоти заснули (ITV News, 11.03.2024): https://www.itv.com/news/2024-03-11/plane-veered-off-course-after-pilots-fell-asleep-on-flight-report-says</li>
+<li>Ethiopian Airlines ET343 (The Tribune, 19.08.2022): https://www.tribuneindia.com/news/trending/both-pilots-fall-asleep-while-flying-at-37-000-feet-miss-their-landing-423279</li>
+</ul></article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Викладання</b><p style="margin-top:8px">Авторські навчальні матеріали Дмитра Гуменного.</p><a class="footer-about" href="../../about.html">Про автора →</a></div>
+<div class="footer-links"><b>Курс</b><a href="index.html">Огляд курсу</a><a href="lecture-12.html">Заняття 12</a><a href="lecture-13.html">Заняття 13</a><a href="lecture-14.html">Заняття 14</a></div>
+<div class="footer-links"><b>Контекст</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">КПІ · кафедра ІПЗЕ</a><a href="../../teaching.html">Усі навчальні матеріали</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Конфіденційність</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

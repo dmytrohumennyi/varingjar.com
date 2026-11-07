@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="uk";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-01.html","uk":"lecture-01.html","de":"../../../de/teaching/embedded-software-engineering/lecture-01.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Вбудовані системи, ризики та дві моделі ІТ-бізнесу — Væringjar II</title><meta content="Основи курсу: що таке embedded-ПЗ, чому фізичний світ змінює інженерію та як продуктова й сервісна моделі задають рамку роботи." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20260928-scientific-v3" rel="stylesheet"/>
+<link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-01.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-01.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-01.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-01.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-01.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Вбудовані системи та дві моделі ІТ-бізнесу — Væringjar II" property="og:title"/><meta content="Конспект заняття 1 авторського курсу Інженерія програмного забезпечення вбудованих систем." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-01.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Вбудовані системи та дві моделі ІТ-бізнесу — Væringjar II" name="twitter:title"/><meta content="Конспект заняття 1 авторського курсу Інженерія програмного забезпечення вбудованих систем." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Модель</a><a href="../../research.html">Докази</a><a href="../../implementation.html">Реалізація</a><a class="active" href="../../teaching.html">Навчання</a><a href="../../collaboration.html">Співпраця</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-01.html?lang=en" hreflang="en" lang="en">EN</a><a aria-current="page" class="active" data-lang="uk" href="lecture-01.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../../de/teaching/embedded-software-engineering/lecture-01.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Викладання / Лекція 01 · 01.09.2026</div><h1>Вбудовані системи, ризики та дві моделі ІТ-бізнесу</h1><p class="lead reader-lead">Основи курсу: що таке embedded-ПЗ, чому фізичний світ змінює інженерію та як продуктова й сервісна моделі задають рамку роботи.</p><div class="reader-badges"><span>01.09.2026</span><span>заняття 01 / 06</span><span>заморожено 28.09.2026</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Огляд курсу →</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / <b>MODULE 01</b> · ОСНОВИ / 01 · 01.09.2026</div><div class="course-context-nav"><a class="previous" href="index.html">Попередня · Embedded Software Engineering</a><span class="current">Зараз · 01</span><a class="next" href="lecture-02.html">Далі · Інженерна команда та фізичний delivery chain</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Ключові ідеї</div><h2>Ключові ідеї</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>ПЗ прив’язане до hardware</h3><p>Ресурси, периферія та фізичні наслідки є частиною software problem.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>Safety ≠ security</h3><p>Functional safety працює з ненавмисними відмовами; cybersecurity — з навмисними атаками.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>Дві бізнес-моделі</h3><p>Product company бере product/market risk; service company продає engineering capability.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>IP/NDA — договірні</h3><p>Конфіденційність і права треба читати в угодах, а не вважати автоматичними.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">Висновок</div><h2>Практичний висновок</h2><div class="reader-copy"><p class="reader-takeaway">Embedded-інженерія — зв’язана технічна й бізнесова система: hardware, verification, ownership і delivery constraints впливають на software від першого дня.</p></div></div></section><section class="reader-section section-tight next-lecture-section"><div class="container"><div class="next-lecture-card"><div class="section-eyebrow">Далі</div><h2>02 — Інженерна команда та фізичний delivery chain</h2><p>Firmware, hardware і mechanics утворюють core; architecture, management, procurement і manufacturing з’єднують ці три потоки в одну систему.</p></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Реконструйований та заморожений матеріал</div><h2>Повний конспект лекції</h2><p class="lecture-notes-intro">Конспект перебудовано з первинного українського транскрипту. Редакторські виправлення та зовнішні доповнення всередині матеріалу позначені явно.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R01-vbudovani-systemy-ta-modeli-it-biznesu.md">Відкрити Markdown →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-01.md">Сирий транскрипт →</a></div><article class="lecture-article lecture-notes-content" lang="uk"><h1>Лекція 01. Вбудовані системи та дві моделі ІТ-бізнесу</h1>
+<blockquote>
+<p><strong>Хронологія:</strong> 01.09.2026 · старт курсу.<br/>
+<strong>Первинне джерело:</strong> <a href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-01.md">повний автоматичний транскрипт</a>.<br/>
+<strong>Статус:</strong> реконструйовано з первинного запису та зафіксовано 28.09.2026.</p>
+</blockquote>
+<h2>Навіщо існує цей курс</h2>
+<p>Курс розглядає не стільки синтаксис мов програмування чи теорію алгоритмів, скільки <strong>повний інженерно-бізнесовий життєвий цикл embedded-проєкту</strong>. У лекції сформульована амбіція пройти шлях від ідеї до першого прибутку, а далі — до рутинної delivery-роботи і, зрештою, завершення проєкту або бізнесу.</p>
+<p>Ключова рамка курсу:</p>
+<pre><code class="language-text">ідея
+  ↓
+формалізація потреби
+  ↓
+клієнт / ринок / фінансування
+  ↓
+команда + процеси + артефакти
+  ↓
+розробка embedded-системи
+  ↓
+верифікація / валідація / інтеграція
+  ↓
+delivery / підтримка / завершення
+</code></pre>
+<p>Оцінювання прив’язане до <strong>групового проєкту та демонстрацій</strong>, а не лише до відтворення теорії. Студенти самоорганізовуються в команди; ролі й артефакти у цих командах надалі еволюціонуватимуть разом із курсом.</p>
+<h2>1. Що таке embedded у робочому сенсі курсу</h2>
+<p>Робоча ознака embedded-ПЗ — воно створюється для <strong>визначеного апаратного середовища</strong> і є частиною фізичного виробу або системи. Для нього суттєвими є не тільки функції програми, а й пам'ять, обчислювальні ресурси, енергоспоживання, периферія, інтерфейси, часові характеристики та фізичні наслідки помилки.</p>
+<p>У лекції протиставлені дві типові топології.</p>
+<h3>1.1. Компактна система: application → HAL → hardware</h3>
+<p>Для відносно невеликих MCU-рішень прикладна логіка може працювати безпосередньо поверх vendor HAL/driver layer.</p>
+<pre><code class="language-text">Application / business logic
+            ↓
+HAL + low-level drivers
+            ↓
+MCU / DSP / SoC / інший target
+</code></pre>
+<p>Переваги: менший стек, контрольовані ресурси, передбачуваність. Ціна — більша прив'язаність до target і потреба власноруч закривати більше інфраструктурних задач.</p>
+<h3>1.2. Багаторівнева система: application → middleware/OS → HAL → hardware</h3>
+<p>У більших системах доцільно перевикористовувати готові мережеві, файлові, діагностичні та інші служби.</p>
+<pre><code class="language-text">Application
+    ↓
+Middleware / services
+    ↓
+Operating system / runtime
+    ↓
+HAL / drivers
+    ↓
+Hardware
+</code></pre>
+<p>Це не робить систему автоматично «кращою». Це інший компроміс: більше повторного використання і гнучкості, але складніший software stack, інтеграція, update/security surface і більше взаємозалежностей.</p>
+<h2>2. Чому embedded не можна розглядати як «просто software»</h2>
+<p>Код зрештою впливає на фізичний світ: формує електричний сигнал, керує виконавчим органом, обмінюється даними по фізичному інтерфейсу. Через це дефект може проявитися не тільки як неправильний текст на екрані, а як:</p>
+<ul>
+<li>неправильна команда актуатору;</li>
+<li>пошкодження hardware;</li>
+<li>небезпечний стан обладнання;</li>
+<li>дорогий rework вже виготовленої партії;</li>
+<li>порушення вимог safety/security;</li>
+<li>втрата довіри клієнта.</li>
+</ul>
+<p>Звідси центральна теза лекції: <strong>якісна embedded-розробка невіддільна від тестування, системної інженерії та контролю ризиків.</strong></p>
+<h2>3. Functional safety та cybersecurity — це різні осі ризику</h2>
+<p>Лекція вводить два різні джерела небажаної поведінки:</p>
+<table>
+<thead>
+<tr>
+<th>Вісь</th>
+<th>Що трапилось</th>
+<th>Типове запитання</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Functional safety</td>
+<td>система через випадкову відмову або дефект переходить у небезпечний стан</td>
+<td>«Що станеться, якщо компонент відмовить?»</td>
+</tr>
+<tr>
+<td>Cybersecurity</td>
+<td>хтось навмисно намагається змінити поведінку або отримати несанкціонований доступ</td>
+<td>«Що може зробити атакувальник і як ми це обмежимо?»</td>
+</tr>
+</tbody>
+</table>
+<p>Ці сфери взаємодіють, але не заміняють одна одну.</p>
+<h3>Редакторське уточнення 01 — ISO 26262</h3>
+<p>Усне формулювання лекції було ширшим, ніж коректна область застосування стандарту. <strong>ISO 26262 — стандарт функціональної безпеки для E/E-систем серійних дорожніх транспортних засобів.</strong> Для industrial, aerospace, railway, medical та інших доменів існують власні профільні стандарти; ISO 26262 не є універсальним «базовим стандартом для всіх safety-critical галузей».</p>
+<p>Офіційне джерело: <a href="https://www.iso.org/standard/68385.html">https://www.iso.org/standard/68385.html</a></p>
+<h3>Редакторське уточнення 02 — QM та ASIL</h3>
+<p>Для automotive у ISO 26262 використовується <strong>QM та ASIL A–D</strong>. ASIL у HARA не отримується простим множенням «ймовірність × наслідок». Класифікація базується на поєднанні <strong>Severity, Exposure та Controllability</strong>. Детальний алгоритм треба вивчати безпосередньо за ISO 26262-3.</p>
+<p>Для cybersecurity автомобільного E/E-життєвого циклу профільним джерелом є ISO/SAE 21434: <a href="https://www.iso.org/standard/70918.html">https://www.iso.org/standard/70918.html</a>.</p>
+<h2>4. Ідея + ресурс = шанс на технологію</h2>
+<p>У лекції бізнес розглядається через дві необхідні складові:</p>
+<pre><code class="language-text">ІДЕЯ  +  РЕСУРСИ  →  ТЕХНОЛОГІЯ  →  ЦІННІСТЬ ДЛЯ РИНКУ
+</code></pre>
+<p>Сама ідея не гарантує продукту. Потрібні люди, час, гроші, обладнання, виробництво, маркетинг, legal/IP, тестування, доступ до ринку. Гроші тут зручні як універсальна форма ресурсу, але не є єдиним ресурсом.</p>
+<h2>5. Дві бізнес-моделі, які курс використовує як основну розвилку</h2>
+<h3>5.1. Product company</h3>
+<p>Команда розвиває <strong>власну продуктову ідею</strong> й бере на себе ринковий ризик: що саме будувати, для кого, як захистити IP, як масштабувати виробництво, як підтримувати продукт.</p>
+<h3>5.2. Service company</h3>
+<p>Клієнт має бізнесову або технічну потребу, але залучає зовнішню engineering capacity. Сервісна компанія надає людей, процеси, інфраструктуру, domain expertise, іноді hardware/manufacturing capacity і бере оплату за погоджену модель співпраці.</p>
+<table>
+<thead>
+<tr>
+<th>Питання</th>
+<th>Product</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Хто визначає ринкову ідею</td>
+<td>власник продукту</td>
+<td>клієнт</td>
+</tr>
+<tr>
+<td>Хто фінансує engineering</td>
+<td>власник / інвестор</td>
+<td>клієнт за договором</td>
+</tr>
+<tr>
+<td>Основний ризик</td>
+<td>product-market + engineering</td>
+<td>delivery + commercial + reputation</td>
+</tr>
+<tr>
+<td>Основний актив</td>
+<td>продукт / IP / бренд / канали</td>
+<td>компетенції / delivery capability / репутація</td>
+</tr>
+<tr>
+<td>Що продається</td>
+<td>продукт або ліцензія</td>
+<td>інженерний сервіс / результат робіт</td>
+</tr>
+</tbody>
+</table>
+<p>Курс свідомо починає шлях із service model, бо вона дозволяє розібрати багато реальних процесів — lead generation, pre-sale, proposal, staffing, delivery — до переходу до product model.</p>
+<h2>6. IP та NDA: що треба зрозуміти до початку роботи</h2>
+<p>Лекція наголошує на двох практичних обмеженнях сервісної роботи: <strong>конфіденційність</strong> і <strong>права на результати роботи</strong>.</p>
+<h3>Редакторське уточнення 03 — NDA</h3>
+<p>Правильне розшифрування: <strong>Non-Disclosure Agreement</strong>, а не <em>Not Discussion Agreement</em>. NDA визначає зобов'язання щодо нерозголошення конфіденційної інформації; конкретні межі залежать від тексту договору й права, що застосовується.</p>
+<h3>Редакторське уточнення 04 — IP ownership</h3>
+<p>Теза «в service company IP завжди належить клієнту» корисна як типова бізнесова модель, але <strong>не є універсальним юридичним правилом</strong>. Ownership, assignment, licensing, background IP, foreground IP та право повторного використання визначаються договором і застосовним правом. На практиці це треба читати в MSA/SOW/IP clauses, а не виводити з самого факту аутсорсингу.</p>
+<h2>7. Авторська кар'єрна теза лекції</h2>
+<p>У лекції є окремий авторський погляд: спочатку корисно накопичити досвід на реальних service-проєктах, побачити сильні й слабкі процеси, навчитися працювати з клієнтом і ризиками — і лише після цього, за наявності ідеї та ресурсу, переходити до власного продукту.</p>
+<p>Це <strong>кар'єрна рекомендація лектора</strong>, а не універсальна єдина траєкторія.</p>
+<h2>8. Контрольні запитання</h2>
+<ol>
+<li>Яка властивість робить embedded-ПЗ відмінним від довільної desktop/web-програми?</li>
+<li>Коли bare-metal/HAL-підхід може бути кращим за OS-based stack?</li>
+<li>Чому software defect в embedded може перетворитися на hardware або safety problem?</li>
+<li>Чим functional safety відрізняється від cybersecurity?</li>
+<li>Чому «ідея» ще не є технологією?</li>
+<li>Що продає product company, а що — service company?</li>
+<li>Чому IP ownership не можна визначати лише зі слова «outsourcing»?</li>
+<li>Які обмеження NDA реально накладає на інженера?</li>
+</ol>
+<h2>9. Міні-завдання</h2>
+<p>Сформулюйте одну embedded-ідею і опишіть її у двох режимах:</p>
+<ul>
+<li><strong>Product:</strong> ви самі фінансуєте і продаєте продукт.</li>
+<li><strong>Service:</strong> цю ж потребу приносить клієнт, а ви продаєте йому engineering service.</li>
+</ul>
+<p>Для кожного режиму вкажіть: owner ідеї, owner ризику, джерело фінансування, очікуваний результат, ключові IP/NDA питання.</p>
+<h2>10. Місток до 02.09.2026</h2>
+<p>Після визначення embedded-системи та двох бізнес-моделей логічне наступне питання: <strong>хто саме перетворює ідею на фізичний виріб?</strong> Наступне заняття переходить від абстрактної моделі до engineering team: firmware, hardware, mechanics, architecture, management і фізичний supply chain.</p>
+<h2>Перевірені посилання</h2>
+<ul>
+<li>ISO 26262-3:2018, Concept phase / HARA: <a href="https://www.iso.org/standard/68385.html">https://www.iso.org/standard/68385.html</a></li>
+<li>ISO/SAE 21434:2021, Road vehicles — Cybersecurity engineering: <a href="https://www.iso.org/standard/70918.html">https://www.iso.org/standard/70918.html</a></li>
+<li>AUTOSAR Classic Platform: <a href="https://www.autosar.org/standards/classic-platform">https://www.autosar.org/standards/classic-platform</a></li>
+</ul>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Викладання</b><p style="margin-top:8px">Авторські навчальні матеріали Дмитра Гуменного.</p><a class="footer-about" href="../../about.html">Про автора →</a></div>
+<div class="footer-links"><b>Курс</b><a href="index.html">Огляд курсу</a><a href="lecture-01.html">Лекція 01</a><a href="lecture-02.html">Лекція 02</a><a href="lecture-03.html">Лекція 03</a><a href="lecture-01.html">Лекція 04</a></div>
+<div class="footer-links"><b>Контекст</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">КПІ · кафедра ІПЗЕ</a><a href="../../teaching.html">Усі навчальні матеріали</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Конфіденційність</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

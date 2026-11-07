@@ -1,0 +1,15 @@
+time_s,branch,event,resource,damage_D,rho_after
+5.0,supervised,MOTOR_A_DESTROYED,motor_a,1.0,0.0
+5.0,supervised,INVALIDATE_c0,,,
+5.0,supervised,ANALYZE_c0,,,
+5.01,supervised,SELECT_c0,,,
+5.0200000000000005,supervised,APPLY_c0_TO_c1,,,
+5.03,supervised,VERIFY_c1,,,
+12.0,supervised,ENCODER_DESTROYED,encoder,1.0,0.0
+12.0,supervised,INVALIDATE_c1,,,
+12.0,supervised,ANALYZE_c1,,,
+12.01,supervised,SELECT_c1,,,
+12.02,supervised,APPLY_c1_TO_c3,,,
+12.030000000000001,supervised,VERIFY_c3,,,
+5.0,baseline,MOTOR_A_DESTROYED,motor_a,1.0,0.0
+12.0,baseline,ENCODER_DESTROYED,encoder,1.0,0.0

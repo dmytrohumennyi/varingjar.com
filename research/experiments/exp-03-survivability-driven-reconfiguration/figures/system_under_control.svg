@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 690" role="img" aria-labelledby="title desc">
+<title id="title">EXP-03 controlled system</title>
+<desc id="desc">A redundant single-axis electromechanical cyber-physical system with two actuator channels, two sensor channels and two communication channels.</desc>
+<defs>
+  <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#89a094"/>
+  </marker>
+  <marker id="arrowGreen" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#76ff98"/>
+  </marker>
+  <style>
+    .bg{fill:#09110d;stroke:#183326;stroke-width:2}
+    .sub{fill:#0c1712;stroke:#274937;stroke-width:2}
+    .active{fill:#0c1712;stroke:#76ff98;stroke-width:2}
+    .backup{fill:#0c1712;stroke:#89a094;stroke-width:2;stroke-dasharray:8 5}
+    .txt{font-family:monospace;fill:#dce9df;font-size:19px}
+    .small{font-family:monospace;fill:#89a094;font-size:15px}
+    .green{font-family:monospace;fill:#76ff98;font-size:18px;font-weight:bold}
+    .line{fill:none;stroke:#89a094;stroke-width:2;marker-end:url(#arrow)}
+    .gline{fill:none;stroke:#76ff98;stroke-width:3;marker-end:url(#arrowGreen)}
+    .dash{fill:none;stroke:#89a094;stroke-width:2;stroke-dasharray:7 5;marker-end:url(#arrow)}
+  </style>
+</defs>
+
+<rect x="25" y="25" width="1350" height="640" rx="8" class="bg"/>
+<text x="55" y="65" class="green">EXP-03 CONTROLLED OBJECT — REDUNDANT SINGLE-AXIS ELECTROMECHANICAL CPS</text>
+<text x="55" y="92" class="small">The scalar state x represents a generalized critical coordinate (position / angle / deviation).</text>
+
+<!-- command/control -->
+<rect x="55" y="145" width="235" height="115" rx="6" class="active"/>
+<text x="172" y="180" text-anchor="middle" class="green">SERVO CONTROLLER</text>
+<text x="172" y="212" text-anchor="middle" class="txt">uₖ = −Kx̂ₖ</text>
+<text x="172" y="239" text-anchor="middle" class="small">K = 0.8 in c₀...c₃</text>
+
+<!-- network paths -->
+<rect x="365" y="115" width="190" height="75" rx="6" class="active"/>
+<text x="460" y="147" text-anchor="middle" class="green">C₁</text>
+<text x="460" y="171" text-anchor="middle" class="small">primary network</text>
+<rect x="365" y="215" width="190" height="75" rx="6" class="backup"/>
+<text x="460" y="247" text-anchor="middle" class="txt">C₂</text>
+<text x="460" y="271" text-anchor="middle" class="small">backup network</text>
+
+<!-- actuators -->
+<rect x="630" y="105" width="190" height="85" rx="6" class="active"/>
+<text x="725" y="139" text-anchor="middle" class="green">M_A</text>
+<text x="725" y="166" text-anchor="middle" class="small">primary actuator</text>
+<rect x="630" y="215" width="190" height="85" rx="6" class="backup"/>
+<text x="725" y="249" text-anchor="middle" class="txt">M_B</text>
+<text x="725" y="276" text-anchor="middle" class="small">backup actuator</text>
+
+<!-- plant -->
+<rect x="900" y="115" width="330" height="175" rx="8" class="active"/>
+<text x="1065" y="157" text-anchor="middle" class="green">MECHANICAL PLANT</text>
+<text x="1065" y="197" text-anchor="middle" class="txt">xₖ₊₁ = Axₖ + b(c,ρ)uₖ + ξₖ</text>
+<text x="1065" y="230" text-anchor="middle" class="small">A = 0.9 · ξ = 0.02</text>
+<text x="1065" y="258" text-anchor="middle" class="small">selected actuator determines b(c,ρ)</text>
+
+<!-- sensors -->
+<rect x="900" y="390" width="190" height="85" rx="6" class="active"/>
+<text x="995" y="424" text-anchor="middle" class="green">E</text>
+<text x="995" y="451" text-anchor="middle" class="small">primary encoder</text>
+<rect x="1130" y="390" width="190" height="85" rx="6" class="backup"/>
+<text x="1225" y="424" text-anchor="middle" class="txt">I</text>
+<text x="1225" y="451" text-anchor="middle" class="small">backup IMU</text>
+
+<!-- resource monitor -->
+<rect x="570" y="420" width="240" height="125" rx="6" class="sub"/>
+<text x="690" y="455" text-anchor="middle" class="green">RESOURCE STATE</text>
+<text x="690" y="488" text-anchor="middle" class="txt">ρ = [ρ_MA ... ρ_C2]ᵀ</text>
+<text x="690" y="517" text-anchor="middle" class="small">0 = failed · 1 = healthy</text>
+
+<!-- mission functions -->
+<rect x="55" y="430" width="430" height="155" rx="6" class="sub"/>
+<text x="270" y="464" text-anchor="middle" class="green">MISSION-LEVEL FUNCTIONS</text>
+<text x="270" y="499" text-anchor="middle" class="txt">F₁ stabilization · F₂ tracking</text>
+<text x="270" y="530" text-anchor="middle" class="txt">F₃ telemetry · F₄ diagnostics</text>
+<text x="270" y="559" text-anchor="middle" class="small">availability is computed from selected resources</text>
+
+<!-- arrows -->
+<path d="M290 180 L365 152" class="gline"/>
+<path d="M290 220 L365 252" class="dash"/>
+<path d="M555 152 L630 147" class="gline"/>
+<path d="M555 252 L630 257" class="dash"/>
+<path d="M820 147 L900 170" class="gline"/>
+<path d="M820 257 L900 232" class="dash"/>
+
+<path d="M1065 290 L995 390" class="gline"/>
+<path d="M1095 290 L1225 390" class="dash"/>
+<path d="M900 432 C820 432,850 350,810 350 L810 420" class="line"/>
+
+<path d="M570 482 L485 505" class="line"/>
+<path d="M570 465 C500 395,345 350,255 260" class="line"/>
+
+<!-- fault notes -->
+<text x="640" y="335" class="small">Fault #1:  t = 5 s  →  ρ_MA = 0 permanently</text>
+<text x="930" y="520" class="small">Fault #2:  t = 12 s →  ρ_E = 0 permanently</text>
+</svg>

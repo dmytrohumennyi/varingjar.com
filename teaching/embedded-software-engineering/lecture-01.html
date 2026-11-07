@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="en";var TARGETS={"en":"lecture-01.html","uk":"../../uk/teaching/embedded-software-engineering/lecture-01.html","de":"../../de/teaching/embedded-software-engineering/lecture-01.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Embedded Systems, Risk and Two IT Business Models — Væringjar II</title><meta content="Course foundations: what embedded software is, why physical effects change engineering, and how product and service business models frame the work." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20260928-scientific-v3" rel="stylesheet"/>
+<link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-01.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-01.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-01.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-01.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-01.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Embedded Systems and Two IT Business Models — Væringjar II" property="og:title"/><meta content="Конспект заняття 1 авторського курсу Інженерія програмного забезпечення вбудованих систем." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/teaching/embedded-software-engineering/lecture-01.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Embedded Systems and Two IT Business Models — Væringjar II" name="twitter:title"/><meta content="Конспект заняття 1 авторського курсу Інженерія програмного забезпечення вбудованих систем." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Framework</a><a href="../../research.html">Evidence</a><a href="../../implementation.html">Build</a><a class="active" href="../../teaching.html">Teaching</a><a href="../../collaboration.html">Collaborate</a></div>
+<div aria-label="Language" class="lang-switch"><a aria-current="page" class="active" data-lang="en" href="lecture-01.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../uk/teaching/embedded-software-engineering/lecture-01.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../de/teaching/embedded-software-engineering/lecture-01.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Teaching / Lecture 01 · 01.09.2026</div><h1>Embedded Systems, Risk and Two IT Business Models</h1><p class="lead reader-lead">Course foundations: what embedded software is, why physical effects change engineering, and how product and service business models frame the work.</p><div class="reader-badges"><span>01.09.2026</span><span>session 01 / 06</span><span>frozen 28.09.2026</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Course overview →</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / <b>MODULE 01</b> · FOUNDATIONS / 01 · 01.09.2026</div><div class="course-context-nav"><a class="previous" href="index.html">Previous · Embedded Software Engineering</a><span class="current">Current · 01</span><a class="next" href="lecture-02.html">Next · Engineering Team and the Physical Delivery Chain</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Key ideas</div><h2>Key ideas</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Hardware-bound software</h3><p>Resources, peripherals and physical consequences are part of the software problem.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>Safety ≠ security</h3><p>Functional safety treats unintended faults; cybersecurity treats intentional hostile actions.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>Two business paths</h3><p>Product companies own market/product risk; service companies sell engineering capability.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>IP/NDA are contractual</h3><p>Confidentiality and ownership must be read from actual agreements, not assumed.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">Takeaway</div><h2>Practical takeaway</h2><div class="reader-copy"><p class="reader-takeaway">Embedded engineering is a coupled technical-and-business system: hardware, verification, ownership and delivery constraints shape the software from day one.</p></div></div></section><section class="reader-section section-tight next-lecture-section"><div class="container"><div class="next-lecture-card"><div class="section-eyebrow">Next time</div><h2>02 — Engineering Team and the Physical Delivery Chain</h2><p>Firmware, hardware and mechanics form the core; architecture, management, procurement and manufacturing make the three streams work as one system.</p></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Reconstructed &amp; frozen notes</div><h2>Full lecture notes</h2><p class="lecture-notes-intro">The complete English academic notes follow the Ukrainian source, retaining the original argument, engineering examples, terminology, diagrams, tasks and editorial qualifications. The original transcripts remain available separately in Ukrainian.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="source-notes/R01-vbudovani-systemy-ta-modeli-it-biznesu.md">Open source Markdown →</a> <a class="btn btn-ghost" href="source-transcripts/2026-09-01.md">Raw transcript →</a></div><article class="lecture-article lecture-notes-content" lang="en"><h1>Lecture 01. Embedded Systems and Two Models of IT Business</h1>
+<blockquote>
+<p><strong>Chronology:</strong> 1 September 2026 · course opening. Primary source: <a href="source-transcripts/2026-09-01.md">the complete automatic transcript</a>. Status: reconstructed from the original recording and frozen on 28 September 2026.</p>
+</blockquote>
+<h2>Why this course exists</h2>
+<p>This course is concerned less with programming-language syntax or algorithm theory than with the entire <strong>engineering</strong> and business lifecycle of an embedded project. The ambition stated in the lecture is to follow the journey from an idea to initial revenue, through routine delivery work and eventually to completion of the project or business.</p>
+<p>The course's central framework:</p>
+<pre><code class="language-text">idea
+  ↓
+definition of the need
+  ↓
+customer / market / funding
+  ↓
+team + processes + deliverables
+  ↓
+embedded-system development
+  ↓
+verification / validation / integration
+  ↓
+delivery / support / closure
+</code></pre>
+<p>Assessment is based on a team project and demonstrations, not merely on reproducing theory. Students organize into teams themselves; the roles and deliverables of those teams will evolve as the course progresses.</p>
+<h2>1. What “embedded” means in this course</h2>
+<p>The practical characteristic of embedded software is that it is designed for a particular <strong>hardware</strong> environment and forms part of a physical product or system. Beyond program functions, memory, computational resources, energy consumption, peripherals, interfaces, timing characteristics and the physical consequences of an error are all important.</p>
+<p>The lecture contrasts two common topologies.</p>
+<h3>1.1. Compact system: application → HAL → hardware</h3>
+<p>For relatively small MCU designs, application logic may operate directly on top of the vendor's HAL or driver layer.</p>
+<pre><code class="language-text">Application / business logic
+            ↓
+HAL + low-level drivers
+            ↓
+MCU / DSP / SoC / another target
+</code></pre>
+<p>Advantages include a smaller stack, controlled resource use and predictability. The trade-off is tighter coupling to the target and the need to implement more infrastructural functionality yourself.</p>
+<h3>1.2. Layered system: application → middleware/OS → HAL → hardware</h3>
+<p>In larger systems, reusing existing networking, filesystem, diagnostics and other services may be appropriate.</p>
+<pre><code class="language-text">Application
+    ↓
+Middleware / services
+    ↓
+Operating system / runtime
+    ↓
+HAL / drivers
+    ↓
+Hardware
+</code></pre>
+<p>This does not automatically make the system “better”. It is another trade-off: greater reuse and flexibility, but also a more complex software stack, integration, update and security attack surfaces, and more interdependencies.</p>
+<h2>2. Why embedded engineering is not “just software”</h2>
+<p>The code ultimately affects the physical world: it generates electrical signals, controls actuators and exchanges data over physical interfaces. Consequently, a defect may manifest not merely as incorrect on-screen text but as:</p>
+<ul>
+<li>an incorrect command to an actuator;</li>
+<li>hardware damage;</li>
+<li>an unsafe equipment state;</li>
+<li>expensive rework of a manufactured production batch;</li>
+<li>non-compliance with safety or security requirements;</li>
+<li>loss of customer trust.</li>
+</ul>
+<p>The lecture's central claim follows: high-quality embedded development is inseparable from testing, systems <strong>engineering</strong> and risk management.</p>
+<h2>3. Functional safety and cybersecurity are distinct risk dimensions</h2>
+<p>The lecture introduces two different sources of unwanted behavior:</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>What happened</th>
+<th>Typical question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Functional safety</td>
+<td>a random failure or defect puts the system into a hazardous state</td>
+<td>“What happens if a component fails?”</td>
+</tr>
+<tr>
+<td>Cybersecurity</td>
+<td>an actor deliberately attempts to alter behavior or gain unauthorized access</td>
+<td>“What could an attacker do, and how do we limit it?”</td>
+</tr>
+</tbody>
+</table>
+<p>These fields interact but cannot substitute for one another.</p>
+<h3>Editorial clarification 01 — ISO 26262</h3>
+<p>The spoken formulation in the lecture was broader than the standard's actual scope. ISO 26262 is a functional-<strong>safety</strong> standard for electrical/electronic systems in series-production road vehicles. Industrial, aerospace, railway, medical and other domains have their own applicable standards; ISO 26262 is not a universal baseline for every safety-critical industry.</p>
+<p>Official source: <a href="https://www.iso.org/standard/68385.html">https://www.iso.org/standard/68385.html</a></p>
+<h3>Editorial clarification 02 — QM and ASIL</h3>
+<p>Automotive ISO 26262 uses QM and ASIL A–D. The ASIL resulting from HARA is not calculated by simply multiplying “probability × consequence”. Classification involves the combination of Severity, Exposure and Controllability. The detailed method should be studied in ISO 26262-3 itself.</p>
+<p>For cybersecurity engineering throughout the automotive E/E lifecycle, the domain-specific reference is ISO/SAE 21434: <a href="https://www.iso.org/standard/70918.html">https://www.iso.org/standard/70918.html</a>.</p>
+<h2>4. Idea + resources = an opportunity to build technology</h2>
+<p>The lecture presents a business in terms of two necessary ingredients:</p>
+<pre><code class="language-text">IDEA  +  RESOURCES  →  TECHNOLOGY  →  VALUE FOR THE MARKET
+</code></pre>
+<p>An idea alone does not guarantee a product. People, time, money, equipment, manufacturing, marketing, legal/IP work, testing and market access are needed. Money is a convenient general representation of resources, but it is not the only resource.</p>
+<h2>5. Two business models used as the course's first major decision</h2>
+<h3>5.1. Product company</h3>
+<p>A team develops its own product idea and assumes the associated market <strong>risk</strong>: what to build, for whom, how to protect IP, how to scale manufacturing and how to support the product.</p>
+<h3>5.2. Service company</h3>
+<p>A customer has a business or technical need but obtains external engineering capacity. A service company provides people, processes, infrastructure, domain expertise and sometimes hardware or manufacturing capability, receiving payment under an agreed engagement model.</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Product</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who defines the market idea?</td>
+<td>product owner</td>
+<td>customer</td>
+</tr>
+<tr>
+<td>Who finances engineering?</td>
+<td>owner / investor</td>
+<td>customer, under contract</td>
+</tr>
+<tr>
+<td>Principal risk</td>
+<td>product–market fit + engineering</td>
+<td>delivery + commercial + reputational</td>
+</tr>
+<tr>
+<td>Principal asset</td>
+<td>product / IP / brand / distribution channels</td>
+<td>expertise / delivery capability / reputation</td>
+</tr>
+<tr>
+<td>What is sold?</td>
+<td>a product or licence</td>
+<td>engineering services / project deliverables</td>
+</tr>
+</tbody>
+</table>
+<p>The course deliberately starts with the service model because it offers access to real processes—lead generation, pre-sales, proposal, staffing and delivery—before moving to the product model.</p>
+<h2>6. IP and NDAs: what must be understood before work starts</h2>
+<p>The lecture stresses two practical constraints on service engagements: confidentiality and the rights to work products.</p>
+<h3>Editorial clarification 03 — NDA</h3>
+<p>The correct expansion is Non-Disclosure Agreement, not “Not Discussion Agreement”. <strong>An NDA</strong> defines obligations not to disclose confidential information; its actual limits depend on the agreement's wording and the applicable law.</p>
+<h3>Editorial clarification 04 — IP ownership</h3>
+<p>The claim that “IP in a service company always belongs to the <strong>customer</strong>” describes a common business arrangement, not a universal legal rule. Ownership, assignments, licences, background IP, foreground IP and rights of reuse depend on the contract and applicable law. These provisions must be read in MSA, SOW and IP clauses rather than inferred from the mere fact of outsourcing.</p>
+<h2>7. The lecturer's career perspective</h2>
+<p>The lecture offers a personal perspective: it is helpful first to acquire experience on real service projects, observe strong and weak processes, and learn to work with customers and risks. Then, once an idea and sufficient resources are available, one can move toward developing a proprietary product.</p>
+<p>This is the lecturer's career advice, not a single universally required path.</p>
+<h2>8. Review questions</h2>
+<ol>
+<li>What distinguishes embedded software from an arbitrary desktop or web application?</li>
+<li>When might bare-metal/HAL be preferable to an OS-based stack?</li>
+<li>Why can a software defect in an embedded system become a hardware or safety problem?</li>
+<li>How does functional safety differ from cybersecurity?</li>
+<li>Why does an idea alone not constitute technology?</li>
+<li>What does a product company sell, and what does a service company sell?</li>
+<li>Why cannot IP ownership be established from the word “outsourcing” alone?</li>
+<li>What obligations can an NDA actually impose on an engineer?</li>
+</ol>
+<h2>9. Short exercise</h2>
+<p>Describe one embedded-system idea in two arrangements:</p>
+<ul>
+<li><strong>Product:</strong> you fund and sell the product yourself.</li>
+<li><strong>Service:</strong> a customer brings the same need and you sell engineering services to meet it.</li>
+</ul>
+<p>For each arrangement, identify the owner of the idea, who bears the risk, the funding source, the expected outcome and the principal IP/NDA questions.</p>
+<h2>10. Transition to 2 September 2026</h2>
+<p>Once an embedded system and two business models have been defined, the next logical question is: who turns the idea into a physical product? The next session moves from the abstract model to the <strong>engineering</strong> team—firmware, hardware, mechanics, architecture, management and the physical supply chain.</p>
+<h2>Verified references</h2>
+<ul>
+<li>ISO 26262-3:2018, Concept phase / HARA: <a href="https://www.iso.org/standard/68385.html">https://www.iso.org/standard/68385.html</a></li>
+<li>ISO/SAE 21434:2021, Road vehicles — Cybersecurity engineering: <a href="https://www.iso.org/standard/70918.html">https://www.iso.org/standard/70918.html</a></li>
+<li>AUTOSAR Classic Platform: <a href="https://www.autosar.org/standards/classic-platform">https://www.autosar.org/standards/classic-platform</a></li>
+</ul>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Teaching</b><p style="margin-top:8px">Author teaching materials by Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">About the author →</a></div>
+<div class="footer-links"><b>Course</b><a href="index.html">Course overview</a><a href="lecture-01.html">Lecture 01</a><a href="lecture-02.html">Lecture 02</a><a href="lecture-03.html">Lecture 03</a><a href="lecture-01.html">Lecture 04</a></div>
+<div class="footer-links"><b>Context</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in Power Engineering</a><a href="../../teaching.html">All teaching materials</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Privacy</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../assets/js/locale.js"></script><script defer src="../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

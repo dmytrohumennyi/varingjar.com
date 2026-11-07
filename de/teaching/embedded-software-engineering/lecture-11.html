@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="de";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-11.html","uk":"../../../uk/teaching/embedded-software-engineering/lecture-11.html","de":"lecture-11.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Verhandlungen nach dem Erstkontakt: Discovery, Partnerschaft und Projektübergang — Væringjar II</title><meta content="Von der Konferenznachbereitung über Follow-up, Teamrollen und interaktive Präsentation zur technischen Bedarfsklärung und einem belastbaren Proposal." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-11.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-11.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-11.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-11.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-11.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Verhandlungen nach dem Erstkontakt: Discovery, Partnerschaft und Projektübergang" property="og:title"/><meta content="Kundengespräche als Rollenspiel, zielgerichtete Präsentation, Teamrollen, RFI, Delivery-Planung und geistiges Eigentum." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-11.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Verhandlungen nach dem Erstkontakt: Discovery, Partnerschaft und Projektübergang" name="twitter:title"/><meta content="Kundengespräche als Rollenspiel, zielgerichtete Präsentation, Teamrollen, RFI, Delivery-Planung und geistiges Eigentum." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/><style id="lecture11-contrast-correction">
+/* Session 11 only: correct the light-theme course context contrast without affecting frozen lectures. */
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 {
+  background: #ebebeb !important;
+  border-color: #bdbdbd !important;
+}
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 .course-breadcrumb,
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 .course-context-nav a,
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 .course-context-nav span {
+  color: #252525 !important;
+}
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 .course-context-nav a,
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 .course-context-nav span {
+  border-color: #a8a8a8 !important;
+}
+:root[data-theme="light"] body.strict-template-v1 main > .course-context-v3 .course-context-nav .current {
+  color: #111 !important; background: #fff !important; font-weight: 700;
+}
+</style>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Modell</a><a href="../../research.html">Evidenz</a><a href="../../implementation.html">Implementierung</a><a class="active" href="../../teaching.html">Lehre</a><a href="../../collaboration.html">Mitwirken</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-11.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../../uk/teaching/embedded-software-engineering/lecture-11.html?lang=uk" hreflang="uk" lang="uk">UA</a><a aria-current="page" class="active" data-lang="de" href="lecture-11.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Lehre / Einheit 11 · 14.10.2026</div><h1>Verhandlungen nach dem Erstkontakt: Discovery, Partnerschaft und Projektübergang</h1><p class="lead reader-lead">Kundengespräche als Rollenspiel, zielgerichtete Präsentation, Teamrollen, RFI, Delivery-Planung und geistiges Eigentum.</p><div class="reader-badges"><span>14.10.2026</span><span>Session 11 / 11</span><span>01:38:33</span><span>Praktische Einheit</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Kursübersicht →</a><a class="btn btn-primary" href="#full-notes">Vollständige Notizen ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODUL 03 · MARKT &amp; KUNDE / 11 · 14.10.2026</div><div class="course-context-nav"><a class="previous" href="lecture-10.html">Vorherige · 10</a><span class="current">11</span><span class="next">RFI und Planung (geplant)</span></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Kurschronologie</div><h2>Analyse der Praxis</h2><p class="reader-intro">Kundengespräche als Rollenspiel, zielgerichtete Präsentation, Teamrollen, RFI, Delivery-Planung und geistiges Eigentum.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Follow-up und Terminvereinbarung</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Vier Rollen und Kooperationsmodelle</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Discovery: vom Interesse zum Bedarf</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>RFI, Delivery-Planung und IP</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Vollständige Unterrichtsnotizen</div><h2>Vollständige Unterrichtsnotizen</h2><p class="lecture-notes-intro">Redigierte Notizen zur Einheit vom 14. Oktober. Beide Szenarien sind Rollenspiele; das vollständige Rohtranskript wird wegen sensibler und ungeprüfter Angaben nicht veröffentlicht.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R11-2026-10-14.md">Vollständige ukrainische Quellnotiz →</a></div><article class="lecture-article lecture-notes-content" lang="de"><h1>Einheit 11. Verhandlungen nach dem Erstkontakt: Discovery, Partnerschaft und Übergang zum Projekt</h1>
+<blockquote>
+<p><strong>14. Oktober 2026 · Praktische Einheit 4 · 1 Std. 38 Min. 33 Sek.</strong> Grundlage ist das automatische Transkript <code>IgorSikorskyKPI_P4_14102026.mp4.md</code>. Dies ist ein redigiertes Lehrskript, keine wörtliche Abschrift. Unternehmen, Personen, Ergebnisse und Verhandlungen in beiden Szenarien sind <strong>Rollenspiele im Unterricht</strong>. Die genannten kommerziellen Kennzahlen und technischen Fähigkeiten wurden nicht unabhängig überprüft. Details eines fiktiven Verteidigungsprodukts sowie das vollständige Rohtranskript werden nicht öffentlich bereitgestellt.</p>
+</blockquote>
+<h2>Stellung im Kurs: Conversion üben, nicht nur eindrucksvoll präsentieren</h2>
+<p>In Einheit 10 wurden der Kontakt nach einer Fachveranstaltung, das Follow-up und die Vorbereitung des ersten inhaltlichen Gesprächs behandelt. Einheit 11, vom Dozenten als elfte Einheit in der Chronologie und vierte praktische Einheit bezeichnet, führte diese Übung fort. Ziel war, einen potenziellen Kunden von der Bekanntschaft zu einem <strong>konkreten Bedarf und einem vereinbarten nächsten Schritt</strong> zu führen, statt lediglich Unternehmensfolien zu zeigen.</p>
+<p>Zu Beginn waren noch studentische Artefakte offen, darunter Landingpages, Präsentationen und Aufgaben aus den vorherigen Themen. Ihre Prüfung und Korrektur gehörte zur Praxis. Die zentrale Methode war ein moderiertes Rollenspiel mit Unterbrechungen, Feedback und erneuten Versuchen. Ergebnis war die Vorbereitung auf RFI, Planung und Proposal – kein unterzeichneter Vertrag.</p>
+<h2>1. Follow-up: von der schriftlichen Absprache zur Kalendereinladung</h2>
+<p>Nach einer Fachveranstaltung nimmt das Team Kontakt zu einem fiktiven Engineering Manager namens Otto auf. Die E-Mail soll sich auf das frühere Gespräch beziehen, konkrete Zeitvorschläge enthalten und dem Empfänger die Möglichkeit lassen, eine Alternative vorzuschlagen. Ein Termin ist erst dann vereinbart, wenn die Gegenseite den Zeitpunkt bestätigt, nicht bereits bei einseitiger Auswahl eines Slots.</p>
+<p>Der Dozent wies auf unnötigen Nachrichtenaustausch hin: Nach der Einigung muss man normalerweise keine zusätzliche E-Mail mit „den Link schicken wir später“ verfassen. Besser ist ein Kalendereintrag mit Teilnehmenden, Zeitzone, Thema und Meeting-Link. Die Einladung muss dem vereinbarten Zweck entsprechen. <strong>Die Kalendereinladung setzt eine Absprache operativ um; sie ersetzt die Absprache nicht.</strong></p>
+<h2>2. Wer teilnimmt und warum sich die Interessen unterscheiden</h2>
+<p>Im ersten Szenario wählte das Team vier Rollen: Engagement Manager, Partnership Manager, Delivery Manager und Engineering/Technical Lead. Jede beantwortet andere Fragen; eine große Delegation ohne Rollenerklärung kann den Kunden irritieren.</p>
+<table>
+<thead>
+<tr>
+<th>Rolle</th>
+<th>Zentrale Frage</th>
+<th>Typisches Risiko</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Engagement</td>
+<td>Entsteht eine reale Geschäftschance?</td>
+<td>Discovery in aggressiven Verkauf verwandeln</td>
+</tr>
+<tr>
+<td>Partnership</td>
+<td>Sind langfristige Kooperation und geteilte Chancen/Risiken sinnvoll?</td>
+<td>Konflikt mit einem kurzfristigen Servicevertrag</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>Ist die Leistung termin-, budget- und qualitätsgerecht lieferbar?</td>
+<td>Zu früher Einstieg in Vertragsgrenzen</td>
+</tr>
+<tr>
+<td>Engineering Lead</td>
+<td>Ist der technische Weg machbar und ist die Expertise vorhanden?</td>
+<td>Implementierungsdetails behandeln, bevor der Bedarf klar ist</td>
+</tr>
+</tbody>
+</table>
+<p>Die Übung unterscheidet <strong>den Verkauf einer Engineering-Dienstleistung</strong> von <strong>gemeinsamer Produktentwicklung</strong>. Das sind unterschiedliche Geschäftsmodelle, deren Ziele konkurrieren können. Engagement möchte zeitnah bezahlte Arbeit gewinnen, Partnership bewertet die langfristige Kooperation und Delivery kontrolliert die Machbarkeit der Zusagen. Das Team sollte seine Position vor dem Gespräch abstimmen, statt diese Interessenkonflikte zu verstecken.</p>
+<h2>3. Eine Vorstellungsrunde schafft Vertrauen</h2>
+<p>Der Kunde kennt nach der Veranstaltung nur ein Mitglied des Teams. Daher sollen alle Beteiligten kurz Name, Rolle, Verantwortungsbereich und gegebenenfalls eine relevante Stärke nennen. Übergaben sollen natürlich und knapp sein. Klare Zuständigkeiten sind wichtiger als beeindruckende Titel.</p>
+<p>Im Rollenspiel unterbrach der Dozent langatmige Danksagungen, sachfremde Erklärungen und unsichere Selbstdarstellung. Die richtige Lehre ist, <strong>kurz, selbstbewusst und wahrheitsgemäß</strong> zu sprechen. Professionelles Auftreten rechtfertigt weder erfundene Berufserfahrung, Kunden oder Erfolge noch das Verbergen wesentlicher Risiken.</p>
+<h2>4. Eine Agenda schützt das Ziel des Gesprächs</h2>
+<p>Vor den Folien sollte das Team erklären, warum das Gespräch stattfindet, was herausgefunden werden soll, wie die Zeit aufgeteilt wird und welches Ergebnis angestrebt wird. Ein möglicher Ablauf: Kennenlernen → kurze Unternehmensvorstellung → Interessen des Kunden → relevantes technisches Beispiel → Fragen und nächste Schritte.</p>
+<p>Im zweiten studentischen Szenario fehlte zunächst eine Agenda. Der Dozent sprach das sofort an: Ohne vereinbartes Ziel kann eine Präsentation zu einem Monolog werden. Eindrucksvolle Grafiken oder ein Motto gleichen eine schwache Agenda nicht aus.</p>
+<h2>5. Warum eine allgemeine Unternehmenspräsentation scheitert</h2>
+<p>Das erste Team hatte eine umfangreiche Präsentation über ein fiktives Embedded-Unternehmen vorbereitet: internationale Büros, Mitarbeitendenzahlen, Kundenmarken, Technologien, Hardware-Plattformen, Tests und Produktlebenszyklus. Als Übungsvortrag war der Inhalt vorbereitet, doch anschließend blieb unklar, <strong>was genau diesem Otto angeboten wurde</strong>: Dienstleistung, Produkt oder gemeinsame Entwicklung.</p>
+<p>Vor einer zielgerichteten Präsentation sollten die Notizen von der Veranstaltung, Website, Produkte, Kunden, Stellenanzeigen, öffentlich sichtbare Initiativen und berufliche Profile relevanter Personen geprüft werden. Diese Quellen liefern Hypothesen, keine Gewissheit. Die Vermutung über den Kundenbedarf muss durch eine Frage überprüft werden. Jedes Logo, jede Partnerschaft, Kundenstatistik und technische Behauptung auf Folien benötigt eine wahrheitsgemäße Grundlage und eine Freigabe zur Offenlegung.</p>
+<h2>6. Eine Präsentation muss wechselseitige Discovery ermöglichen</h2>
+<p>Beim ersten Versuch sprach der Student überwiegend selbst und ließ dem Kunden wenig Gelegenheit zu antworten. Der Dozent zeigte, wie man <strong>den Ablauf der Folien mit einer passenden Frage unterbricht</strong>, die Antwort aufnimmt und den Gesprächsverlauf verändert.</p>
+<p>Wenn eine Folie Hardware-, Software- und Infrastrukturkompetenz zeigt, sollte man fragen, welcher Bereich dem Interesse des Kunden am nächsten liegt. Ist die Antwort Software, folgt die Vertiefung auf der Ebene von Firmware, HAL, Middleware, Architektur oder Anwendung. Erst danach wird die Domäne eingegrenzt. Das ist schrittweise Bedarfsqualifizierung, kein vorweggenommenes Erraten der Anforderungen.</p>
+<h2>7. Vom breiten Interesse zur konkreten Anfrage</h2>
+<p>Im ersten Szenario konkretisierte der fiktive Kunde sein Interesse schrittweise: Software Engineering → Anwendungsebene → Automotive-Parksysteme → Schwierigkeiten bei verdeckten Hindernissen. Dies ist <strong>ein Beispiel dialogischer Qualifizierung</strong>, kein echter Auftrag und keine verifizierte technische Anforderung.</p>
+<p>An diesem Punkt verändert sich die Funktion der Präsentation: Sie ist keine Liste der Fähigkeiten mehr, sondern ein Instrument zur Ermittlung eines konkreten Problems. Danach wird dieses Problem in den Worten des Kunden festgehalten und nach Randbedingungen, Eingabedaten, Abnahmekriterien und offenen Fragen gefragt. Vor technischer Discovery sollte das Team keine Lösung zusagen.</p>
+<h2>8. Engagement orchestriert; Fachleute liefern den Inhalt</h2>
+<p>Der Dozent verglich den Engagement Manager mit einem Dirigenten: Er bestimmt den Gesprächsrhythmus, übergibt an passende Fachleute und beobachtet die Reaktion des Kunden. Technical Lead liefert die technische Tiefe; Partnership behandelt das Kooperationsmodell; Delivery bewertet die Machbarkeit. Eine Person sollte nicht für sämtliche Fachgebiete sprechen.</p>
+<p>Zeigt der Kunde Interesse an technischen Fragen, wird der Engineering Lead einbezogen. Geht es um Phasen, Termine oder Vertragsmodelle, übernimmt Delivery. Das Timing ist wichtig: Eine zu frühe Diskussion von Vertragsgrenzen kann produktive Discovery unterbrechen. Beim Proposal dürfen diese Grenzen aber keinesfalls fehlen.</p>
+<h2>9. Feedback durch Fragen bestätigen, nicht aus Mimik ableiten</h2>
+<p>Der Dozent machte auf nonverbale Reaktionen aufmerksam: Aufmerksamkeit, Ablenkung oder besonderes Interesse an einer Folie. Solche Hinweise können weiterführende Fragen anstoßen, sind aber kein verlässlicher Nachweis eines Bedarfs. Bestätigt wird dieser durch eine ausdrückliche Antwort, abgestimmte Gesprächsnotizen oder eine tatsächliche Anfrage des Kunden.</p>
+<p>Nach jedem inhaltlichen Abschnitt sind Fragen sinnvoll wie „Was davon ist für Sie besonders relevant?“, „Wo liegt derzeit die größte Schwierigkeit?“ oder „Welche Randbedingung ist entscheidend?“. Antworten gehören ins Meeting-Protokoll; unbestätigte Annahmen werden ausdrücklich als Annahmen markiert.</p>
+<h2>10. Richtiger Abschluss des ersten Szenarios: RFI und weiterer Discovery-Schritt</h2>
+<p>Am Ende des ersten Szenarios erklärte der fiktive Kunde sich bereit, seine Erwartungen an eine Softwarekomponente zu beschreiben und eine weitere technische Diskussion zu erwägen. Im Gespräch wurden <strong>RFI und RFC</strong> genannt. RFI bedeutet üblicherweise Request for Information; RFC hat je nach Prozess unterschiedliche Bedeutungen (beispielsweise Request for Change). In realen Projekten müssen Dokumenttyp und Zweck daher ausdrücklich geklärt werden. RFC ist kein universeller Begriff für eine technische Anfrage.</p>
+<p>Statt blind zu verkaufen, kann das Team eine kurze Problembeschreibung anfordern, die Machbarkeit prüfen, einen vorläufigen Scope vorbereiten und ein weiteres Gespräch organisieren. Das ist noch kein Vertrag, aber <strong>ein überprüfbarer nächster Schritt mit Verantwortlichen und erwartetem Ergebnis</strong>.</p>
+<h2>11. Delivery übernimmt: von der Idee zum Plan und Proposal</h2>
+<p>Wenn der Kunde nach Projektphasen fragt, stellt der Delivery Manager die nötigen Rollen zusammen – abhängig vom Problem etwa Embedded Software, Hardware, QA und Engineering-Leitung. Das Ergebnis sollte keine allgemeine Zusage „wir schaffen das“, sondern ein machbarer erster Plan sein.</p>
+<p>Der Dozent nannte ausdrücklich die Artefakte: <strong>Teamzusammensetzung, Arbeitspakete, Gantt-Diagramm, Phasen, Liefergegenstände, Risiken und Kostenschätzung</strong>. Annahmen, Abhängigkeiten und Abnahmekriterien sollten ebenfalls sichtbar sein. Fixed Price und Time &amp; Materials setzen unterschiedliche Klarheit über Scope sowie Änderungs- und Risikomanagement voraus. Das Geschäftsmodell richtet sich nach der Unsicherheit, nicht nach Gewohnheit.</p>
+<h2>12. Zweites Rollenspiel: ein starkes Produkt verfehlt das Kerngeschäft</h2>
+<p>Ein weiteres Team stellte ein fiktives Technologieunternehmen mit ausgeprägter Spezialisierung und Demonstrationsprodukt vor. Die Präsentation begann mit einem Motto, jedoch ohne ausreichende Teamvorstellung und klare Agenda. Der Dozent stoppte die Übung, gab gezieltes Feedback und verlangte eine erneute Vorstellung.</p>
+<p>Das zentrale Problem zeigte sich später: Die Produktgeschichte passte kaum zum Kerngeschäft des fiktiven Kunden, der industrielle Automatisierung betrieb. Die Formulierung <strong>core business</strong> war ein Anlass, den Werbemonolog zu beenden und zu fragen, ob in anderen Geschäftsbereichen eine Zusammenarbeit möglich wäre. Es handelt sich um ein fiktives Beispiel; die Leistungsangaben der Beteiligten gelten nicht als überprüfte Tatsachen.</p>
+<h2>13. Ein angrenzendes Geschäft als Einstieg – ohne erfundene Passung</h2>
+<p>Nach einer Rückfrage erwähnte der fiktive Kunde einen weiteren Geschäftsbereich mit Bedarf an intelligenten Softwarekomponenten. Das Team erkannte, dass ein Teil der eigenen Kompetenzen womöglich dorthin übertragbar wäre. Dies rechtfertigte die Diskussion eines separaten Termins und eines zukünftigen Proposals.</p>
+<p>Die Lehre lautet: <strong>Mangelnde Passung zum Kerngeschäft bedeutet nicht zwangsläufig, dass es keine Chance gibt</strong>. Verwandte Technologie belegt allerdings noch keine Eignung. Anwendungsumfeld, Randbedingungen, Compliance, Zuständigkeiten und die tatsächliche Übertragbarkeit müssen geprüft werden. Das öffentliche Skript enthält bewusst keine operativen Beschreibungen des fiktiven militärischen Einsatzfalls oder Techniken autonomer Zielbekämpfung.</p>
+<h2>14. Partnerschaft, Auftragnehmermodell und geistiges Eigentum</h2>
+<p>Zum Ende des zweiten Szenarios wurde darüber diskutiert, ob das Unternehmen lediglich als Engineering-Dienstleister auftreten oder eine Partnerschaft anstreben sollte. Die Studierenden setzten sich dafür ein, Rechte an bereits bestehenden Entwicklungen zu behalten, statt sämtliches geistiges Eigentum automatisch auf den Kunden zu übertragen.</p>
+<p>Entscheidend ist die Unterscheidung zwischen <strong>Background IP</strong> – Technologien und Ergebnissen, die vor der Zusammenarbeit vorhanden waren – und <strong>Foreground IP</strong>, den im neuen Projekt entstehenden Ergebnissen. Verträge müssen Eigentum, Lizenzen, Wiederverwendung, Offenlegung unter NDA und weitere Pflichten festhalten. In regulierten oder verteidigungsbezogenen Bereichen sind zudem Export-, Vertrags- und Rechtsvorgaben gesondert zu prüfen. Aus dem Rollenspiel folgt kein allgemeines rechtliches Verbot bestimmter Partnerschaftsmodelle.</p>
+<h2>15. Verhandlungen mit überprüfbaren Artefakten beenden</h2>
+<p>In beiden Szenarien wird Erfolg nicht an der Anzahl der Folien oder der Eloquenz gemessen. Entscheidend sind eine dokumentierte <strong>Problemstellung, Ansprechperson, bekannte Anforderungen, offene Annahmen, Verantwortliche, nächster Kontakttermin und Proposal-Format</strong>. So lässt sich der Discovery-Kontext an Delivery übergeben.</p>
+<p>Erreichte Ergebnisse und nur diskutierte Möglichkeiten sind klar zu trennen: Bereitschaft zu einem weiteren Gespräch ist kein gewonnener Auftrag; ein studentisches Gantt-Diagramm ist keine freigegebene Projekt-Baseline; ein fiktives Produkt ist kein Nachweis technischer Lieferfähigkeit.</p>
+<h2>16. Praktische Artefakte für das studentische Team</h2>
+<p>Nach dem Rollenspiel sollte das Team die folgenden Unterlagen zur Besprechung in der nächsten Einheit vorbereiten:</p>
+<ul>
+<li><strong>Meeting Brief:</strong> Ziel, Rollen, Agenda, Anfangsfragen und gewünschter Ausgang.</li>
+<li><strong>Account Research:</strong> kurze öffentliche Fakten über den potenziellen Kunden, davon getrennte Hypothesen.</li>
+<li><strong>Discovery Log:</strong> Kundenfragen und Antworten, Prioritäten, Risiken, offene Punkte und Belege der Aussagen.</li>
+<li><strong>Tailored Deck:</strong> kurze Vorstellung, passende Stärken, ein bis zwei Fälle, Kooperationsmodelle und nächster Schritt.</li>
+<li><strong>Mini-Proposal:</strong> Problem, Scope, Annahmen, Ergebnisse, Phasen, Team, Risiken und Abnahmekriterien.</li>
+<li><strong>Delivery Draft:</strong> erste Work Breakdown Structure, Terminabhängigkeiten, Gantt-Diagramm und grober Kostenansatz.</li>
+</ul>
+<p>Dies sind <strong>Aufgaben und Bewertungskriterien</strong>, keine Behauptung, dass alle Teams sie bereits bis zum Ende der Aufnahme erledigt hatten.</p>
+<h2>17. Bewertungskriterien für die Praxis</h2>
+<p>Eine überzeugende Leistung zeigt fünf Fähigkeiten: die Präsentation auf die jeweilige Ansprechperson zuschneiden, Vorstellungen und Übergaben diszipliniert gestalten, offene und präzisierende Fragen stellen, Service-, Produkt- und Partnerschaftsmodelle unterscheiden und das Gesprächsergebnis in ein überprüfbares Artefakt überführen.</p>
+<p>Zusätzlich zählen Faktenintegrität und Vertraulichkeit. Im Unterricht genannte Namen, Kennzahlen, Verträge oder Produkte dürfen ohne Prüfung nicht als echte Erfolgsgeschichten beworben werden. Technische Details eines fiktiven Verteidigungsszenarios sind für das hier vermittelte Engineering-Business-Verfahren nicht erforderlich.</p>
+<h2>Fragen zur Selbstkontrolle</h2>
+<ul>
+<li>Wie unterscheidet sich ein vereinbarter Termin von einer lediglich verschickten Kalendereinladung?</li>
+<li>Warum können Engagement und Partnership im selben Fall unterschiedliche Geschäftsmodelle bevorzugen?</li>
+<li>Wie erklärt man die Rollen ohne übermäßige Titel und langes Vorstellen?</li>
+<li>Welche Frage führt vom breiten Interesse zur Ebene von Firmware, HAL, Middleware oder Anwendung?</li>
+<li>Warum ist die Reaktion auf eine Folie nur ein Hinweis und kein Bedarfsnachweis?</li>
+<li>Welche Informationen müssen vor einem Lösungsvorschlag festgehalten werden?</li>
+<li>Wann spricht der Technical Lead und wann übernimmt Delivery?</li>
+<li>Welche Elemente des Proposals sollten nach einem RFI noch vor dem Vertragsabschluss vorliegen?</li>
+<li>Was unterscheidet Background IP von Foreground IP?</li>
+<li>Wie verhindert man, dass ein Unterrichtsszenario als verifizierter Kundenfall erscheint?</li>
+</ul>
+<h2>Was als Nächstes angekündigt wurde</h2>
+<p>Zum Ende kündigte der Dozent für die folgende Woche eine weitere Simulation mit RFI und RFC an: Er würde vorübergehend die Rolle des Delivery Managers übernehmen, während die Studierenden Projektrollen, Phasen, Gantt-Diagramm, Risiken, Kostenschätzung und ein kurzes Proposal für den fiktiven Kunden ausarbeiten. Das ist <strong>ein Plan</strong>, keine bereits durchgeführte Einheit oder ein fertiges Ergebnis. Jira/Backlog und eigentliche Implementierung können nach Vereinbarung der Bedingungen folgen.</p>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Lehre</b><p style="margin-top:8px">Lehrmaterialien von Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">Über den Autor →</a></div>
+<div class="footer-links"><b>Kurs</b><a href="index.html">Kursübersicht</a><a href="lecture-09.html">Einheit 09</a><a href="lecture-10.html">Einheit 10</a><a href="lecture-11.html">Einheit 11</a></div>
+<div class="footer-links"><b>Kontext</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in der Energietechnik</a><a href="../../teaching.html">Alle Lehrmaterialien</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Datenschutz</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+
+<html lang="uk"><head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="uk";var TARGETS={"en":"../../../../research/experiments/exp-02-graph-reconfiguration/index.html","uk":"index.html","de":"../../../../de/research/experiments/exp-02-graph-reconfiguration/index.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Графова реконфігурація — EXP-02 · Væringjar II</title>
+<meta content="Interactive Væringjar II experiment prototype: stable-state transition matrices, graph pruning after irreversible damage, path search and UML супервізорy logic." name="description"/>
+<link href="../../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/>
+<link href="../../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/><link href="../../../assets/css/exp-02.css?v=20260904-layout3" rel="stylesheet"/>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link href="../../../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/uk/research/experiments/exp-02-graph-reconfiguration/index.html" rel="canonical"/><meta content="Væringjar II" property="og:site_name"/><meta content="Графова реконфігурація — EXP-02 · Væringjar II" property="og:title"/><meta content="Interactive Væringjar II experiment prototype: stable-state transition matrices, graph pruning after irreversible damage, path search and UML супервізорy logic." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/uk/research/experiments/exp-02-graph-reconfiguration/index.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Графова реконфігурація — EXP-02 · Væringjar II" name="twitter:title"/><meta content="Interactive Væringjar II experiment prototype: stable-state transition matrices, graph pruning after irreversible damage, path search and UML супервізорy logic." name="twitter:description"/><link href="https://varingjar.com/research/experiments/exp-02-graph-reconfiguration/index.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/research/experiments/exp-02-graph-reconfiguration/index.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/research/experiments/exp-02-graph-reconfiguration/index.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/research/experiments/exp-02-graph-reconfiguration/index.html" hreflang="x-default" rel="alternate"/><link href="../../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="exp02-page reader-page strict-template-v1 strict-template-v2" data-exp02="" data-scenario="data/scenario.json">
+<header class="site-header"><nav aria-label="Primary navigation" class="nav"><a class="brand" href="../../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a><button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button><div class="nav-links"><a href="../../../programme.html">Модель</a><a class="active" href="../../../research.html">Докази</a><a href="../../../implementation.html">Реалізація</a><a href="../../../teaching.html">Навчання</a><a href="../../../collaboration.html">Співпраця</a></div><div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../../research/experiments/exp-02-graph-reconfiguration/index.html?lang=en" hreflang="en" lang="en">EN</a><a aria-current="page" class="active" data-lang="uk" href="index.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../../../de/research/experiments/exp-02-graph-reconfiguration/index.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header>
+<main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Дослідження / EXP-02</div><h1>Графова реконфігурація після відмови</h1><p class="lead reader-lead">Інтерактивний прототип: пошкодження змінює граф допустимих станів, а відновлення стає задачею пошуку шляху, а не повернення до номінальної конфігурації.</p><div class="reader-badges"><span>EXP-02</span><span>інтерактивний прототип</span></div><div class="hero-actions"><a class="btn btn-ghost" href="../../../research.html">Бібліотека досліджень →</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Експеримент стисло</div><h2>Експеримент стисло</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Формальний об’єкт</h3><p>Вузли — це стабільні робочі стани для поточного вектора залишкових ресурсів, а не довільні мітки конфігурацій.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>Пошкодження</h3><p>Синтетичний сценарій назавжди втрачає актуатор A2. Номінальний вузол стає недоступним у графі після відмови.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>Допустимість</h3><p>A(ρ) задає, чи дозволений прямий перехід. C(ρ) містить нормовану вартість переходу: час, енергію, ризик перехідного процесу і додаткову деградацію.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>Пошук</h3><p>Від сертифікованого стану V1 графовий пошук мінімізує вартість шляху, а кінцева корисність Φ входить у критерій J(v).</p></article><article class="reader-card"><span class="reader-num">05</span><h3>Обраний маршрут</h3><p>Прототип обчислює qf → V1 → V2 → V4. V4 — найкращий безпечно досяжний кінцевий стан, а не початковий номінальний стан.</p></article><article class="reader-card"><span class="reader-num">06</span><h3>Результат</h3><p>Для заданих синтетичних ваг V4 має Φ=0.84, вартість шляху 0.36 та J=0.72. Експеримент демонструє структуру рішення, а не фізичну валідацію.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">МОДЕЛЬ / ТРАСА</div><h2>Формальний слід</h2><div class="reader-copy"><div class="equation-panel"><div class="equation math-formal">\[
+\rho_d \Rightarrow G(\rho_d) \Rightarrow A(\rho_d),C(\rho_d)
+\Rightarrow \pi^*=(V_1,V_2,V_4) \Rightarrow V_4.
+\]</div></div></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">АРТЕФАКТИ</div><h2>Докази та відтворюваність</h2><p class="reader-intro">Сирі дані, код і аудиторські артефакти доступні для відтворення та незалежної перевірки.</p><div class="reader-links"><a class="reader-link" href="data/scenario.json"><b>Сценарій</b><span>Синтетичні дані станів, корисності та переходів.</span></a><a class="reader-link" href="../../../architecture.html"><b>Архітектура</b><span>Як граф вписується в поточну концепцію.</span></a><a class="reader-link" href="../../../evolution.html"><b>Еволюція моделі</b><span>Чому одноетапний вибір у графі перетворився на задачу траєкторії.</span></a></div></div></section></main>
+<footer class="site-footer"><div class="container footer-grid"><div><strong>VÆRINGJAR II</strong><p>Незалежна дослідницька програма з керування, орієнтованого на живучість.</p><a class="footer-about" href="../../../about.html">Про автора →</a></div><div><span>АВТОР</span><b>Dmytro Humennyi · Дмитро Гуменний</b></div><div><span>EXPERIMENT</span><b>EXP-02 · GRAPH RECONFIGURATION</b></div></div><a class="footer-privacy" href="../../../privacy.html">Конфіденційність</a></footer>
+<script id="exp02-scenario" type="application/json">{
+  "id": "EXP-02",
+  "title": "Graph-Based Post-Failure Reconfiguration",
+  "status": "interactive prototype",
+  "model": {
+    "description": "Illustrative stable-state graph. Values are prototype scenario data, not measured plant data.",
+    "lambda": 0.35,
+    "cost_weights": {
+      "time": 0.35,
+      "energy": 0.2,
+      "risk": 0.3,
+      "degradation": 0.15
+    }
+  },
+  "resources": {
+    "labels": [
+      "ACT-A1",
+      "ACT-A2",
+      "SENSING",
+      "COMPUTE"
+    ],
+    "nominal": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "damaged": [
+      1.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "event": "ACT-A2 irreversible loss"
+  },
+  "states": [
+    {
+      "id": "V0",
+      "label": "NOMINAL FULL",
+      "short": "Nominal",
+      "utility": 0.96,
+      "x": 125,
+      "y": 120,
+      "feasible": {
+        "nominal": true,
+        "damaged": false
+      },
+      "note": "Full mission set; requires both actuators."
+    },
+    {
+      "id": "V1",
+      "label": "DAMAGE CAPTURE",
+      "short": "Capture",
+      "utility": 0.52,
+      "x": 165,
+      "y": 330,
+      "feasible": {
+        "nominal": true,
+        "damaged": true
+      },
+      "note": "Certified post-fault capture state; safe but low mission value."
+    },
+    {
+      "id": "V2",
+      "label": "REDUCED BANDWIDTH",
+      "short": "Reduced BW",
+      "utility": 0.69,
+      "x": 390,
+      "y": 220,
+      "feasible": {
+        "nominal": true,
+        "damaged": true
+      },
+      "note": "Single-actuator control with reduced dynamic envelope."
+    },
+    {
+      "id": "V3",
+      "label": "OBSERVER ASSISTED",
+      "short": "Observer",
+      "utility": 0.61,
+      "x": 390,
+      "y": 420,
+      "feasible": {
+        "nominal": true,
+        "damaged": true
+      },
+      "note": "Estimator-supported control with tighter safety margins."
+    },
+    {
+      "id": "V4",
+      "label": "MISSION ESSENTIAL",
+      "short": "Mission",
+      "utility": 0.84,
+      "x": 670,
+      "y": 210,
+      "feasible": {
+        "nominal": true,
+        "damaged": true
+      },
+      "note": "Resources reassigned to the highest-priority mission functions."
+    },
+    {
+      "id": "V5",
+      "label": "SAFE HOLD",
+      "short": "Safe hold",
+      "utility": 0.39,
+      "x": 675,
+      "y": 425,
+      "feasible": {
+        "nominal": true,
+        "damaged": true
+      },
+      "note": "Stabilisation and containment only."
+    },
+    {
+      "id": "V6",
+      "label": "SAFE SHUTDOWN",
+      "short": "Shutdown",
+      "utility": 0.08,
+      "x": 925,
+      "y": 320,
+      "feasible": {
+        "nominal": true,
+        "damaged": true
+      },
+      "note": "Terminal safe state; mission abandoned."
+    }
+  ],
+  "edges": [
+    {
+      "from": "V0",
+      "to": "V1",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.16,
+        "energy": 0.12,
+        "risk": 0.05,
+        "degradation": 0.03
+      },
+      "duration_s": 0.31,
+      "cost": 0.0995
+    },
+    {
+      "from": "V0",
+      "to": "V2",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.18,
+        "energy": 0.16,
+        "risk": 0.07,
+        "degradation": 0.04
+      },
+      "duration_s": 0.38,
+      "cost": 0.122
+    },
+    {
+      "from": "V0",
+      "to": "V3",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.24,
+        "energy": 0.17,
+        "risk": 0.08,
+        "degradation": 0.05
+      },
+      "duration_s": 0.46,
+      "cost": 0.1495
+    },
+    {
+      "from": "V0",
+      "to": "V5",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.13,
+        "energy": 0.09,
+        "risk": 0.04,
+        "degradation": 0.02
+      },
+      "duration_s": 0.25,
+      "cost": 0.0785
+    },
+    {
+      "from": "V0",
+      "to": "V6",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.1,
+        "energy": 0.05,
+        "risk": 0.02,
+        "degradation": 0.01
+      },
+      "duration_s": 0.18,
+      "cost": 0.0525
+    },
+    {
+      "from": "V1",
+      "to": "V0",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.3,
+        "energy": 0.24,
+        "risk": 0.13,
+        "degradation": 0.07
+      },
+      "duration_s": 0.66,
+      "cost": 0.2025
+    },
+    {
+      "from": "V1",
+      "to": "V2",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.25,
+        "energy": 0.2,
+        "risk": 0.1,
+        "degradation": 0.05
+      },
+      "duration_s": 0.42,
+      "cost": 0.165
+    },
+    {
+      "from": "V1",
+      "to": "V3",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.38,
+        "energy": 0.24,
+        "risk": 0.2,
+        "degradation": 0.08
+      },
+      "duration_s": 0.68,
+      "cost": 0.253
+    },
+    {
+      "from": "V1",
+      "to": "V5",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.18,
+        "energy": 0.1,
+        "risk": 0.06,
+        "degradation": 0.03
+      },
+      "duration_s": 0.34,
+      "cost": 0.1055
+    },
+    {
+      "from": "V1",
+      "to": "V6",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.15,
+        "energy": 0.07,
+        "risk": 0.04,
+        "degradation": 0.02
+      },
+      "duration_s": 0.28,
+      "cost": 0.0815
+    },
+    {
+      "from": "V2",
+      "to": "V0",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.25,
+        "energy": 0.19,
+        "risk": 0.09,
+        "degradation": 0.05
+      },
+      "duration_s": 0.51,
+      "cost": 0.16
+    },
+    {
+      "from": "V2",
+      "to": "V1",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.19,
+        "energy": 0.15,
+        "risk": 0.08,
+        "degradation": 0.04
+      },
+      "duration_s": 0.36,
+      "cost": 0.1265
+    },
+    {
+      "from": "V2",
+      "to": "V4",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.35,
+        "energy": 0.18,
+        "risk": 0.08,
+        "degradation": 0.06
+      },
+      "duration_s": 0.75,
+      "cost": 0.1915
+    },
+    {
+      "from": "V2",
+      "to": "V5",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.16,
+        "energy": 0.1,
+        "risk": 0.05,
+        "degradation": 0.03
+      },
+      "duration_s": 0.29,
+      "cost": 0.0955
+    },
+    {
+      "from": "V2",
+      "to": "V6",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.13,
+        "energy": 0.07,
+        "risk": 0.03,
+        "degradation": 0.02
+      },
+      "duration_s": 0.24,
+      "cost": 0.0715
+    },
+    {
+      "from": "V3",
+      "to": "V0",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.31,
+        "energy": 0.23,
+        "risk": 0.12,
+        "degradation": 0.06
+      },
+      "duration_s": 0.61,
+      "cost": 0.1995
+    },
+    {
+      "from": "V3",
+      "to": "V2",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.23,
+        "energy": 0.16,
+        "risk": 0.09,
+        "degradation": 0.04
+      },
+      "duration_s": 0.43,
+      "cost": 0.1455
+    },
+    {
+      "from": "V3",
+      "to": "V4",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.42,
+        "energy": 0.2,
+        "risk": 0.13,
+        "degradation": 0.07
+      },
+      "duration_s": 0.84,
+      "cost": 0.2365
+    },
+    {
+      "from": "V3",
+      "to": "V5",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.16,
+        "energy": 0.09,
+        "risk": 0.05,
+        "degradation": 0.03
+      },
+      "duration_s": 0.31,
+      "cost": 0.0935
+    },
+    {
+      "from": "V3",
+      "to": "V6",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.13,
+        "energy": 0.06,
+        "risk": 0.03,
+        "degradation": 0.02
+      },
+      "duration_s": 0.25,
+      "cost": 0.0695
+    },
+    {
+      "from": "V4",
+      "to": "V2",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.3,
+        "energy": 0.18,
+        "risk": 0.11,
+        "degradation": 0.06
+      },
+      "duration_s": 0.61,
+      "cost": 0.183
+    },
+    {
+      "from": "V4",
+      "to": "V5",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.14,
+        "energy": 0.09,
+        "risk": 0.04,
+        "degradation": 0.02
+      },
+      "duration_s": 0.27,
+      "cost": 0.082
+    },
+    {
+      "from": "V4",
+      "to": "V6",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.12,
+        "energy": 0.06,
+        "risk": 0.03,
+        "degradation": 0.02
+      },
+      "duration_s": 0.22,
+      "cost": 0.066
+    },
+    {
+      "from": "V5",
+      "to": "V4",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.29,
+        "energy": 0.16,
+        "risk": 0.1,
+        "degradation": 0.05
+      },
+      "duration_s": 0.59,
+      "cost": 0.171
+    },
+    {
+      "from": "V5",
+      "to": "V6",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.1,
+        "energy": 0.05,
+        "risk": 0.02,
+        "degradation": 0.01
+      },
+      "duration_s": 0.19,
+      "cost": 0.0525
+    }
+  ],
+  "post_damage": {
+    "transient": "q_f",
+    "capture": "V1",
+    "target": "V4",
+    "expected_path": [
+      "V1",
+      "V2",
+      "V4"
+    ]
+  }
+}</script>
+<script src="../../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/exp-02.js"></script>
+<script src="../../../../assets/js/locale.js"></script><script defer src="../../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="en";var TARGETS={"en":"lecture-03.html","uk":"../../uk/teaching/embedded-software-engineering/lecture-03.html","de":"../../de/teaching/embedded-software-engineering/lecture-03.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>From an Unknown Company to a Lead — Væringjar II</title><meta content="Trust, referrals, public evidence, technical champions and events create the conditions for a potential customer to start a real conversation." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20260928-scientific-v3" rel="stylesheet"/>
+<link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-03.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-03.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-03.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-03.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-03.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="From an Unknown Company to a Lead — Væringjar II" property="og:title"/><meta content="Конспект лекції 3 авторського курсу Інженерія програмного забезпечення вбудованих систем: як сервісна компанія перетворює цільову компанію на лід." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/teaching/embedded-software-engineering/lecture-03.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="From an Unknown Company to a Lead — Væringjar II" name="twitter:title"/><meta content="Конспект лекції 3 авторського курсу Інженерія програмного забезпечення вбудованих систем: як сервісна компанія перетворює цільову компанію на лід." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Framework</a><a href="../../research.html">Evidence</a><a href="../../implementation.html">Build</a><a class="active" href="../../teaching.html">Teaching</a><a href="../../collaboration.html">Collaborate</a></div>
+<div aria-label="Language" class="lang-switch"><a aria-current="page" class="active" data-lang="en" href="lecture-03.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../uk/teaching/embedded-software-engineering/lecture-03.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../de/teaching/embedded-software-engineering/lecture-03.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Teaching / Lecture 03 · 08.09.2026</div><h1>From an Unknown Company to a Lead</h1><p class="lead reader-lead">Trust, referrals, public evidence, technical champions and events create the conditions for a potential customer to start a real conversation.</p><div class="reader-badges"><span>08.09.2026</span><span>session 03 / 06</span><span>frozen 28.09.2026</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Course overview →</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / <b>MODULE 03</b> · MARKET &amp; CUSTOMER / 03 · 08.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-02.html">Previous · Engineering Team and the Physical Delivery Chain</a><span class="current">Current · 03</span><a class="next" href="lecture-03.html">Next · From Lead to Formal Pre-Sale</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Key ideas</div><h2>Key ideas</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Pain before pitch</h3><p>Understand the customer problem before selling your preferred technology.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>Trust compounds</h3><p>Good delivery creates referrals and lowers the friction of the next introduction.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>Website is evidence</h3><p>After meeting you, the lead checks whether your public footprint supports your claims.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>Events are research too</h3><p>Bring back market trends and pain points, not only contacts.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">Takeaway</div><h2>Practical takeaway</h2><div class="reader-copy"><p class="reader-takeaway">The first commercial objective is not a sale; it is enough trust and relevance to earn a follow-up meeting.</p></div></div></section><section class="reader-section section-tight next-lecture-section"><div class="container"><div class="next-lecture-card"><div class="section-eyebrow">Next time</div><h2>04 — From Lead to Formal Pre-Sale</h2><p>Initial and technical follow-ups turn interest into structured information exchange: RFI, RFQ, course-local RFC and the first Proposal baseline.</p></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Reconstructed &amp; frozen notes</div><h2>Full lecture notes</h2><p class="lecture-notes-intro">The complete English academic notes follow the Ukrainian source, retaining the original argument, engineering examples, terminology, diagrams, tasks and editorial qualifications. The original transcripts remain available separately in Ukrainian.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="source-notes/R03-vid-nevidomoi-kompanii-do-lida.md">Open source Markdown →</a> <a class="btn btn-ghost" href="source-transcripts/2026-09-08.md">Raw transcript →</a></div><article class="lecture-article lecture-notes-content" lang="en"><h1>Lecture 03. From an Unknown Company to a Sales Lead</h1>
+<blockquote>
+<p><strong>Chronology:</strong> 8 September 2026 · third session. Primary source: <a href="source-transcripts/2026-09-08.md">the complete transcript</a>. Turning point of the course: from “who can perform the work?” to “how will a potential customer learn that we exist?”</p>
+</blockquote>
+<h2>1. Initial situation: there is a customer need, but no collaboration yet</h2>
+<p>The lecture starts with two companies that have not signed a contract. The customer has an idea, problem or product requirement but lacks capacity, expertise, time or technical resources. The service provider has engineering capability, but cannot assume that its particular technology stack is necessarily what the customer needs.</p>
+<p>The lecture's central principle:</p>
+<blockquote>
+<p>Do not sell your technology as an answer before you understand the customer's problem.</p>
+</blockquote>
+<p>In pre-sales, first identify the pain point, and only then introduce relevant experience, a team or a possible solution direction.</p>
+<h2>2. Trust as the first engineering-business asset</h2>
+<p>The strongest channel considered in the lecture is a recommendation based on previous successful work. The analogy of a trusted repair technician or garage is intentionally simple: someone who has received a good outcome transfers some of that trust when recommending the provider to another customer.</p>
+<p>Business-to-business relationships work in much the same way:</p>
+<pre><code class="language-text">successful delivery
+      ↓
+personal trust in specific people
+      ↓
+people moving between companies / new roles
+      ↓
+new introduction
+      ↓
+first contact with a new business opportunity
+</code></pre>
+<p>A crucial detail is that the company's reputation and the reputation of particular engineering leaders reinforce each other.</p>
+<h2>3. Without a referral: make the company visible</h2>
+<p>The lecture identifies several channels.</p>
+<h3>3.1. Paid visibility / advertising</h3>
+<p>Advertising need not bring a <strong>customer</strong> through a direct click. Another purpose is brand recall: the name becomes familiar, so a subsequent meeting at an event does not begin entirely “from zero”.</p>
+<p>Practical lesson: advertising should target regions and audiences where actual buyer-side demand exists, not merely generate impressions.</p>
+<h3>3.2. The website as an evidence layer</h3>
+<p>After an initial encounter, a prospective customer checks:</p>
+<ul>
+<li>who you are;</li>
+<li>which industries you understand;</li>
+<li>which case studies you can present;</li>
+<li>whether there is evidence of sustained operations;</li>
+<li>which services and competencies you claim;</li>
+<li>whether your public footprint matches what you just said in person.</li>
+</ul>
+<p>In this model, the website is not a brochure created for attractive design; it is a body of evidence supporting the first contact.</p>
+<h3>3.3. LinkedIn / technical content</h3>
+<p>Regular technical content shows that the company and its specialists are consistently engaged with a topic rather than mentioning it incidentally at a meeting. Especially valuable are materials that connect a technology to a business outcome or genuine engineering pain.</p>
+<h2>4. Technical champions</h2>
+<p>The lecture introduces the champion: a visible technical professional whom a company may send to a conference, industry event or initial <strong>customer</strong> meeting.</p>
+<p>A champion needs to combine:</p>
+<ul>
+<li>sufficient technical depth;</li>
+<li>the ability to communicate clearly;</li>
+<li>a public professional footprint;</li>
+<li>audience trust;</li>
+<li>the discipline to listen to the customer rather than indiscriminately “sell everything”.</li>
+</ul>
+<p>This is not necessarily the company's strongest narrow specialist. Selecting the speaker is a distinct optimization problem: topic × audience × speaker × commercial objective.</p>
+<h2>5. Exhibitions and conferences as lead-generation engines</h2>
+<p>The lecture distinguishes several approaches to participation:</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>What we do</th>
+<th>Advantage</th>
+<th>Risk / cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visitor / “hunting on foot”</td>
+<td>Visit booths and meet people</td>
+<td>Lowest cost; active outreach</td>
+<td>We must initiate contact ourselves</td>
+</tr>
+<tr>
+<td>Booth / exhibition</td>
+<td>Bring people to our own booth</td>
+<td>Opportunity to demonstrate a product</td>
+<td>High preparation effort and cost</td>
+</tr>
+<tr>
+<td>Combination</td>
+<td>Own booth plus active outreach</td>
+<td>Broadest coverage</td>
+<td>Largest team and logistics demand</td>
+</tr>
+<tr>
+<td>Speaker</td>
+<td>Give a talk on a relevant topic</td>
+<td>Authority and inbound interest</td>
+<td>Hard to obtain a slot; considerable preparation</td>
+</tr>
+</tbody>
+</table>
+<p>The lecture particularly emphasizes that a trip begins long before boarding a plane. Preparation includes a website, <strong>technical</strong> content, business cards and digital contacts, a target-company list, suitable case studies, demos, presentation materials and defined delegation roles.</p>
+<h2>6. A minimal cross-functional event team</h2>
+<p>The lecturer describes a model in which multiple functions work together at an event:</p>
+<ul>
+<li>marketing / engagement opens the contact and maintains the business framing;</li>
+<li>delivery or business leadership understands what the company can realistically promise;</li>
+<li>a technical champion or architect identifies engineering pain points and sustains a deeper technical conversation.</li>
+</ul>
+<p>As such a team works together repeatedly, it becomes faster at handing a contact from small talk to technical follow-up.</p>
+<h2>7. The main objective on-site: discovery, not a pitch</h2>
+<p>At an event it is not enough to explain “how great we are”. A more useful cycle is:</p>
+<pre><code class="language-text">observe
+   ↓
+ask a specific question
+   ↓
+identify pain / bottleneck / trend
+   ↓
+present relevant evidence
+   ↓
+agree on follow-up
+</code></pre>
+<p>A successful first conversation does not mean a contract. In the context of this course, a lead is a contact with enough mutual interest to justify a subsequent discussion.</p>
+<h2>8. What to bring home besides business cards</h2>
+<p>The lecture adds a second source of event value: market intelligence. The team should return knowing:</p>
+<ul>
+<li>which topics occurred repeatedly;</li>
+<li>which pain points appear across companies;</li>
+<li>which technologies are becoming mainstream;</li>
+<li>which solutions have become commoditized;</li>
+<li>where customers encounter obstacles;</li>
+<li>what competing companies are demonstrating.</li>
+</ul>
+<p>An event is therefore both a lead-generation channel and a form of field-based market research.</p>
+<h2>9. Editorial note — numbers and anecdotal claims</h2>
+<p>The transcript includes specific assessments of channel effectiveness, “top-three” claims and examples drawn from the lecturer's personal experience. The notes treat these as the lecturer's practical observations, not as statistically established universal conversion coefficients. Any individual company should calculate its conversion rates using its own CRM analytics.</p>
+<h2>10. Review questions</h2>
+<ol>
+<li>Why must discovery of the pain point precede a technology pitch?</li>
+<li>How does a referral transfer trust between companies?</li>
+<li>Why is a website important even after a face-to-face introduction?</li>
+<li>What distinguishes a technical champion from an ordinary senior engineer?</li>
+<li>Which four event-participation formats are discussed in the lecture?</li>
+<li>Why is a conference also a source of market intelligence?</li>
+<li>What minimum outcome makes the initial conversation successful?</li>
+<li>What materials should be prepared before travelling?</li>
+</ol>
+<h2>11. Practical checklist: “we leave tomorrow”</h2>
+<ul>
+<li>A 30-second explanation of who we are and what we do;</li>
+<li>two or three clearly defined domain strengths;</li>
+<li>three relevant case studies;</li>
+<li>one demo or visual story, when useful;</li>
+<li>a website landing page consistent with the spoken pitch;</li>
+<li>a working QR code / business card;</li>
+<li>a list of target companies and people;</li>
+<li>roles in the delegation;</li>
+<li>a method for recording contacts and next actions;</li>
+<li>a rule for follow-up after the event.</li>
+</ul>
+<h2>12. Transition to 15 September 2026</h2>
+<p>Once a contact has been made, the harder task is turning attention into technical <strong>trust</strong> and a formal pre-sales process. The next session examines conference dynamics in more detail, initial and follow-up meetings, prospect research and the first formal requests: RFI, RFQ and RFC.</p>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Teaching</b><p style="margin-top:8px">Author teaching materials by Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">About the author →</a></div>
+<div class="footer-links"><b>Course</b><a href="index.html">Course overview</a><a href="lecture-01.html">Lecture 01</a><a href="lecture-02.html">Lecture 02</a><a href="lecture-03.html">Lecture 03</a><a href="lecture-03.html">Lecture 04</a></div>
+<div class="footer-links"><b>Context</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in Power Engineering</a><a href="../../teaching.html">All teaching materials</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Privacy</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../assets/js/locale.js"></script><script defer src="../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="580" viewBox="0 0 720 580">
+  <defs>
+    <marker id="arrow1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#000"/></marker>
+    <pattern id="hatch1" patternUnits="userSpaceOnUse" width="6" height="6"><path d="M0,6 L6,0" stroke="#666" stroke-width="0.5"/></pattern>
+  </defs>
+  <rect width="720" height="580" fill="white"/>
+  <text x="360" y="25" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Abstraction Hierarchy for System Survivability</text>
+  
+  <rect x="160" y="45" width="400" height="85" fill="white" stroke="#000" stroke-width="2"/>
+  <rect x="160" y="45" width="400" height="25" fill="#E8E8E8" stroke="#000" stroke-width="2"/>
+  <text x="360" y="63" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">MISSION LAYER</text>
+  <text x="175" y="88" font-family="Arial" font-size="10">Objective function: Φ(t) = Σᵢ wᵢ · φᵢ(t), where φᵢ ∈ {0, 1}</text>
+  <text x="175" y="103" font-family="Arial" font-size="10">Modes: NOMINAL → DEGRADED → LIMP_HOME → SAFE_STOP</text>
+  <text x="175" y="118" font-family="Arial" font-size="10">Transition criterion: Φ(t) &lt; Φ_threshold(mode)</text>
+  
+  <rect x="120" y="155" width="480" height="95" fill="white" stroke="#000" stroke-width="2"/>
+  <rect x="120" y="155" width="480" height="25" fill="#E8E8E8" stroke="#000" stroke-width="2"/>
+  <text x="360" y="173" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">FUNCTION LAYER</text>
+  <rect x="135" y="190" width="105" height="50" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="187" y="210" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">F₁: Autopilot</text>
+  <text x="187" y="225" text-anchor="middle" font-family="Arial" font-size="8">ASIL D | w₁=1.0</text>
+  <text x="187" y="237" text-anchor="middle" font-family="Arial" font-size="8">[ACTIVE/STANDBY]</text>
+  <rect x="255" y="190" width="105" height="50" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="307" y="210" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">F₂: ADAS</text>
+  <text x="307" y="225" text-anchor="middle" font-family="Arial" font-size="8">ASIL B | w₂=0.7</text>
+  <text x="307" y="237" text-anchor="middle" font-family="Arial" font-size="8">[ACTIVE/DEGRADED]</text>
+  <rect x="375" y="190" width="105" height="50" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="427" y="210" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">F₃: Stability</text>
+  <text x="427" y="225" text-anchor="middle" font-family="Arial" font-size="8">ASIL C | w₃=0.9</text>
+  <text x="427" y="237" text-anchor="middle" font-family="Arial" font-size="8">[ACTIVE/FAILED]</text>
+  <rect x="495" y="190" width="90" height="50" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="540" y="210" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">F₄: Basic</text>
+  <text x="540" y="225" text-anchor="middle" font-family="Arial" font-size="8">QM | w₄=0.3</text>
+  <text x="540" y="237" text-anchor="middle" font-family="Arial" font-size="8">[ALWAYS ON]</text>
+  
+  <rect x="80" y="275" width="560" height="95" fill="white" stroke="#000" stroke-width="2"/>
+  <rect x="80" y="275" width="560" height="25" fill="#E8E8E8" stroke="#000" stroke-width="2"/>
+  <text x="360" y="293" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">SERVICE LAYER (BSW/RTE)</text>
+  <rect x="95" y="310" width="80" height="50" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="135" y="330" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">RTE</text>
+  <text x="135" y="345" text-anchor="middle" font-family="Arial" font-size="8">Config: A/B/C</text>
+  <rect x="190" y="310" width="80" height="50" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="230" y="330" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">COM</text>
+  <text x="230" y="345" text-anchor="middle" font-family="Arial" font-size="8">Routing: 1/2/3</text>
+  <rect x="285" y="310" width="80" height="50" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="325" y="330" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">OS</text>
+  <text x="325" y="345" text-anchor="middle" font-family="Arial" font-size="8">Tasks: Full/Min</text>
+  <rect x="380" y="310" width="80" height="50" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="420" y="330" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">WdgM</text>
+  <text x="420" y="345" text-anchor="middle" font-family="Arial" font-size="8">Mode: N/D/S</text>
+  <rect x="475" y="310" width="80" height="50" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="515" y="330" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">NvM</text>
+  <text x="515" y="345" text-anchor="middle" font-family="Arial" font-size="8">State Save</text>
+  <rect x="555" y="310" width="70" height="50" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="590" y="330" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">DEM</text>
+  <text x="590" y="345" text-anchor="middle" font-family="Arial" font-size="8">Logging</text>
+  
+  <rect x="40" y="395" width="640" height="100" fill="white" stroke="#000" stroke-width="2"/>
+  <rect x="40" y="395" width="640" height="25" fill="#E8E8E8" stroke="#000" stroke-width="2"/>
+  <text x="360" y="413" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">RESOURCE LAYER (Hardware)</text>
+  <rect x="55" y="430" width="90" height="55" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="100" y="450" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">ECU₁</text>
+  <text x="100" y="465" text-anchor="middle" font-family="Arial" font-size="8">x₁(t) ∈ H</text>
+  <text x="100" y="478" text-anchor="middle" font-family="Arial" font-size="8">ρ₁ = 0.95</text>
+  <rect x="160" y="430" width="90" height="55" fill="url(#hatch1)" stroke="#000" stroke-width="1"/>
+  <text x="205" y="450" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">ECU₂</text>
+  <text x="205" y="465" text-anchor="middle" font-family="Arial" font-size="8">x₂(t) ∈ D</text>
+  <text x="205" y="478" text-anchor="middle" font-family="Arial" font-size="8">ρ₂ = 0.43</text>
+  <rect x="265" y="430" width="90" height="55" fill="#333" stroke="#000" stroke-width="1"/>
+  <text x="310" y="450" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="white">ECU₃</text>
+  <text x="310" y="465" text-anchor="middle" font-family="Arial" font-size="8" fill="white">x₃(t) ∈ F</text>
+  <text x="310" y="478" text-anchor="middle" font-family="Arial" font-size="8" fill="white">ρ₃ = 0.00</text>
+  <rect x="370" y="430" width="90" height="55" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="415" y="450" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">Sensors₁₋₄</text>
+  <text x="415" y="465" text-anchor="middle" font-family="Arial" font-size="8">3/4 active</text>
+  <text x="415" y="478" text-anchor="middle" font-family="Arial" font-size="8">ρ_s = 0.75</text>
+  <rect x="475" y="430" width="90" height="55" fill="url(#hatch1)" stroke="#000" stroke-width="1"/>
+  <text x="520" y="450" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">Actuators₁₋₂</text>
+  <text x="520" y="465" text-anchor="middle" font-family="Arial" font-size="8">1/2 degraded</text>
+  <text x="520" y="478" text-anchor="middle" font-family="Arial" font-size="8">ρ_a = 0.60</text>
+  <rect x="580" y="430" width="85" height="55" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="622" y="450" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold">Network</text>
+  <text x="622" y="465" text-anchor="middle" font-family="Arial" font-size="8">CAN: OK</text>
+  <text x="622" y="478" text-anchor="middle" font-family="Arial" font-size="8">ρ_n = 0.98</text>
+  
+  <line x1="360" y1="130" x2="360" y2="150" stroke="#000" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="360" y1="250" x2="360" y2="270" stroke="#000" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="360" y1="370" x2="360" y2="390" stroke="#000" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <path d="M 690 310 L 690 90 L 565 90" fill="none" stroke="#000" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arrow1)"/>
+  <text x="695" y="200" font-family="Arial" font-size="9" transform="rotate(90, 695, 200)">Feedback: S(t), ρᵢ(t)</text>
+  
+  <rect x="40" y="510" width="300" height="60" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="50" y="528" font-family="Arial" font-size="10" font-weight="bold">Resource States:</text>
+  <rect x="50" y="535" width="20" height="12" fill="white" stroke="#000"/>
+  <text x="75" y="545" font-family="Arial" font-size="9">H - Healthy</text>
+  <rect x="150" y="535" width="20" height="12" fill="url(#hatch1)" stroke="#000"/>
+  <text x="175" y="545" font-family="Arial" font-size="9">D - Degraded</text>
+  <rect x="255" y="535" width="20" height="12" fill="#333" stroke="#000"/>
+  <text x="280" y="545" font-family="Arial" font-size="9">F - Failed</text>
+  <text x="50" y="562" font-family="Arial" font-size="9">ρᵢ ∈ [0,1] — resource operability coefficient</text>
+  
+  <rect x="360" y="510" width="320" height="60" fill="white" stroke="#000" stroke-width="1"/>
+  <text x="370" y="528" font-family="Arial" font-size="10" font-weight="bold">Survivability Function:</text>
+  <text x="370" y="548" font-family="Arial" font-size="10" font-style="italic">S(t) = Σⱼ wⱼ · fⱼ(ρ₁...ρₙ) · δⱼ(t)</text>
+  <text x="370" y="565" font-family="Arial" font-size="9">δⱼ(t) ∈ {0,1} — function Fⱼ activation state</text>
+</svg>

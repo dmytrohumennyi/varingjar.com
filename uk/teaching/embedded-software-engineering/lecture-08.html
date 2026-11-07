@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="uk";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-08.html","uk":"lecture-08.html","de":"../../../de/teaching/embedded-software-engineering/lecture-08.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Практика: аудит бізнес-артефактів та структура технічного proposal — Væringjar II</title><meta content="Практичний аудит командних матеріалів, корпоративних ролей і логіки proposal: вимоги, архітектура, PoC, MVP, верифікація та план доставки." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-08.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-08.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-08.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-08.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-08.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Практика: аудит бізнес-артефактів та структура технічного proposal" property="og:title"/><meta content="Практичний аудит командних матеріалів, корпоративних ролей і логіки proposal: вимоги, архітектура, PoC, MVP, верифікація та план доставки." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-08.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Практика: аудит бізнес-артефактів та структура технічного proposal" name="twitter:title"/><meta content="Практичний аудит командних матеріалів, корпоративних ролей і логіки proposal: вимоги, архітектура, PoC, MVP, верифікація та план доставки." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Модель</a><a href="../../research.html">Докази</a><a href="../../implementation.html">Реалізація</a><a class="active" href="../../teaching.html">Навчання</a><a href="../../collaboration.html">Співпраця</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-08.html?lang=en" hreflang="en" lang="en">EN</a><a aria-current="page" class="active" data-lang="uk" href="lecture-08.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../../de/teaching/embedded-software-engineering/lecture-08.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Навчання / Заняття 08 · 30.09.2026</div><h1>Практика: аудит бізнес-артефактів та структура технічного proposal</h1><p class="lead reader-lead">Практичний аудит командних матеріалів, корпоративних ролей і логіки proposal: вимоги, архітектура, PoC, MVP, верифікація та план доставки.</p><div class="reader-badges"><span>30.09.2026</span><span>Session 08 / 09</span><span>01:16:22</span><span>Practice</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Огляд курсу →</a><a class="btn btn-primary" href="#full-notes">Повний український конспект ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODULE 05 · CLIENT ENGAGEMENT / 08 · 30.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-07.html">Попереднє · 07</a><span class="current">08</span><a class="next" href="lecture-09.html">Наступне · 09</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Хронологія курсу</div><h2>Інженерний конспект</h2><p class="reader-intro">Практичний аудит командних матеріалів, корпоративних ролей і логіки proposal: вимоги, архітектура, PoC, MVP, верифікація та план доставки.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Перевірити узгодженість артефактів</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Розвести ролі в організації</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Описати технічний proposal</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>Запланувати PoC, MVP та V&amp;V</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Повний український конспект</div><h2>Повний український конспект</h2><p class="lecture-notes-intro">Конспект підготовлений за оригінальним транскриптом; редакційні моделі позначено окремо.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R08-2026-09-30.md">Конспект Markdown →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-30.md">Сирий транскрипт →</a></div><article class="lecture-article lecture-notes-content" lang="uk"><h1>Заняття 08. Практика: аудит бізнес-артефактів та структура технічного proposal</h1>
+<blockquote>
+<p><strong>30 вересня 2026 · практичне заняття · 1 год 16 хв 22 с.</strong> Джерело: транскрипт P3. Через повітряну тривогу та неповний склад груп заняття частково перейшло у демонстрацію та індивідуальний розбір. Плани повторної практики в джерелі є пропозиціями, а не підтвердженими подіями.</p>
+</blockquote>
+<h2>Місце заняття в логіці курсу</h2>
+<p>29 вересня команди отримали завдання створити корпоративну айдентику, персональні картки й one-pager. <strong>30 вересня настав момент ревізії</strong>: чи витримали артефакти єдині вимоги і чи можна з їхньою допомогою почати технічну співпрацю. Друга частина показує, що буде після конференції: <strong>request → technical proposal → перевірка концепції → staged delivery</strong>.</p>
+<h2>1. Ревізія командних візитівок: операційні дефекти</h2>
+<p>Викладач переглядає матеріали двох команд. Позитивний результат: <strong>єдина палітра, логотип, ролі, корпоративні контакти, двосторонній макет, QR</strong>. Помилки, які виявляються вже під час простого аудиту: прізвище перед ім'ям в англомовному записі; різні кольорові системи візитівки й one-pager; різні домени на картках і постері; некоректний логотип заявленого партнера; неправильна іконка платформи; відсутній спосіб зв'язку в one-pager.</p>
+<p>Ці помилки не слід виправдовувати тим, що дизайн є навчальним: вони відтворюють типові <strong>інтеграційні дефекти</strong>, коли два артефакти створено незалежно, але вони повинні описувати <strong>один і той самий продукт / компанію</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Перевірка</th>
+<th>Дефект</th>
+<th>Наслідок</th>
+<th>Приймальна умова</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Назви й домени</td>
+<td><code>.ua</code> на постері, <code>.com</code> на картці</td>
+<td>Неможливо зрозуміти, яка контактна адреса канонічна</td>
+<td>Одна узгоджена доменна ідентичність</td>
+</tr>
+<tr>
+<td>Візуальна система</td>
+<td>Різні палітри або логотипи</td>
+<td>Бренд виглядає зібраним із фрагментів</td>
+<td>Один дизайн-контракт</td>
+</tr>
+<tr>
+<td>Ролі</td>
+<td>Lead без зрозумілої команди</td>
+<td>Невідповідність заявленої ієрархії реальній</td>
+<td>Ролі відповідають організації</td>
+</tr>
+<tr>
+<td>Кейси</td>
+<td>Неправильний знак партнера</td>
+<td>Ризик хибної презентації</td>
+<td>Перевірені і дозволені референси</td>
+</tr>
+<tr>
+<td>Технічна ілюстрація</td>
+<td>Fixed-wing підписаний квадрокоптером</td>
+<td>Сумнів щодо експертності</td>
+<td>Зображення відповідає твердженню</td>
+</tr>
+<tr>
+<td>Контакт</td>
+<td>Сайт є, пошти/телефона немає</td>
+<td>Зацікавлений лід не може швидко звернутися</td>
+<td>Прямий канал комунікації</td>
+</tr>
+</tbody>
+</table>
+<h2>2. Хто є хто в інженерній компанії</h2>
+<p>На прикладі студентських ролей розбирається <strong>типова, але не універсальна</strong> корпоративна ієрархія:</p>
+<p><strong>Власники → C-level → директори напрямів → менеджери → інженери та спеціалісти.</strong></p>
+<p><strong>Власник</strong> володіє компанією; <strong>CEO</strong> управляє нею за визначеними корпоративними повноваженнями; <strong>CTO/CFO</strong> відповідають за відповідні напрями; <strong>директор</strong> веде великий напрям і може мати делегований бюджет; <strong>engineering/project/technical manager</strong> організує виконання та ескалацію; <strong>engineer/lead</strong> створює технічний результат. Формальні повноваження й бюджети залежать від конкретної організації, юридичної форми та політик — схема є навчальним прикладом, а не законодавчим правилом.</p>
+<p>Senior, Middle, Junior, Trainee — класи кваліфікації, що застосовуються у кадрових та компенсаційних процесах; вони <strong>не еквівалентні</strong> управлінським посадам і не визначають самостійно право витрачати бюджет. <strong>Lead Engineer</strong> має відповідати за технічну координацію і зазвичай передбачає командну функцію, яку потрібно пояснити на макеті організації.</p>
+<h2>3. Чому one-pager повинен мати доказову структуру</h2>
+<p>Розбір студентських one-pagers показує сильні сторони: зрозумілий embedded-профіль, ECU/ADAS/verification як компетенції, пояснення ролей і невеликих виробничих можливостей. Водночас сторінка може бути <strong>занадто текстовою</strong>, без достатніх технічних образів. Інша проблема — розмитий перелік сервісів: automotive ECU і зарядні станції можуть бути обидва доречні, але їх слід розвести як напрямки і пояснити зв'язок із компетенцією команди.</p>
+<p><strong>Контрольне питання:</strong> коли потенційний замовник зупиняється біля стенду, чи може він назвати спеціалізацію команди за 10 секунд? Якщо ні, потрібні перегляд ієрархії інформації і чіткіший зв’язок між технічним візуалом та ціннісною пропозицією.</p>
+<h2>4. Від RFI / RFQ / RFC до proposal</h2>
+<p>Після знайомства на виставці й follow-up майбутній замовник може надіслати:</p>
+<ul>
+<li><strong>RFI — Request for Information:</strong> запит про компетенції, досвід, інструменти, ресурси, спроможність компанії.</li>
+<li><strong>RFQ — Request for Quotation:</strong> запит на оцінку вартості, цінові припущення, ліцензії, обладнання й витрати.</li>
+<li><strong>RFC — Request for Clarification:</strong> у цьому <strong>курсовому сценарії</strong> уточнення способу вирішення технічної проблеми; відповіддю стає proposal. Абревіатура RFC у різних галузях має інші значення; її потрібно тлумачити за контекстом конкретного замовника.</li>
+</ul>
+<p><strong>Proposal — це не просто прайс.</strong> Це одночасно інженерна модель рішення, спосіб верифікації, план виконання, команда і комерційна рамка. У записі викладач показує анонімізований реальний приклад пропозиції для ECU Switching System, роботу над яким почали після серії технічних зустрічей. Факти й числові приклади подаються як <strong>ретроспективний досвід викладача</strong>, а не норматив для будь-якого проєкту.</p>
+<h2>5. Структура сильної технічної пропозиції</h2>
+<ol>
+<li><strong>Executive Summary.</strong> Навіщо потрібен проєкт, яка цінність, які стадії, орієнтовний час і бюджет, модель співпраці.</li>
+<li><strong>Glossary / Abbreviations.</strong> Спільна мова для інженерів, закупівель і менеджменту.</li>
+<li><strong>Introduction &amp; communication history.</strong> Контекст, предмет, узгодження і припущення.</li>
+<li><strong>Requirements baseline.</strong> Отримані документи, референси, список вимог і невизначеностей.</li>
+<li><strong>High-level architecture.</strong> Склад системи, інтерфейси, шляхи даних, живлення, керування.</li>
+<li><strong>Detailed design hypotheses.</strong> Потенційні модулі, компоненти, конструктивні схеми, залежності.</li>
+<li><strong>Validation / Verification.</strong> Як доведемо коректність роботи рішення.</li>
+<li><strong>Stages, deliverables &amp; schedule.</strong> PoC, корисний мінімальний виріб, документація, віхи та Gantt.</li>
+<li><strong>Team and resources.</strong> Інженерні ролі, зайнятість, послідовність роботи.</li>
+<li><strong>Commercial framework.</strong> Fixed Price чи Time &amp; Material, винятки та припущення.</li>
+<li><strong>Appendices &amp; version history.</strong> Детальні креслення, великі таблиці, контроль змін між ревізіями.</li>
+</ol>
+<p>Це <strong>приклад інженерної структури</strong>; інший клієнт може вимагати іншого порядку. Викладач наголошує, що Executive Summary читатиме насамперед керівництво, тоді як технічні експерти перевірятимуть схеми, гіпотези й методи тестування. У наведеному 40-сторінковому прикладі суттєвий обсяг займає технічна архітектура та деталізація модулів.</p>
+<h2>6. Архітектура до контракту: довести, що команда розуміє проблему</h2>
+<p>На етапі proposal ще немає фінального продукту. Але <strong>модульна структура, ескізи в CAD, блок-схема, інтерфейси та частина фізичних доказів</strong> дають змогу замовнику оцінити реалістичність рішення. Візуалізація тут працює разом із технічним змістом: фото відповідає на питання «яким це буде», а схема — «як воно функціонує».</p>
+<p>У демонстрації ECU Switcher викладач згадує <strong>PoC на evaluation board</strong>, UART-комунікації, дослідну макетну конфігурацію та тепловізійне спостереження. Це приклад раннього зниження інженерного ризику, а не доказ повної відповідності готового пристрою всім вимогам. Жоден клієнтський конфіденційний файл або комерційна цифра з цього прикладу <strong>не переноситься</strong> до відкритих матеріалів.</p>
+<h2>7. PoC → MVP → документація і повторюваність</h2>
+<p><strong>PoC</strong> перевіряє ризикову технічну гіпотезу. <strong>MVP</strong> забезпечує мінімальний практично корисний функціонал і має визначені критерії приймання. <strong>Виробнича документація</strong> дає можливість повторити збірку, тестування та підтримку рішення. Між стадіями потрібні явні виходи: акт демонстрації або протокол PoC; перелік прийнятих функцій MVP; комплект вихідних файлів і виробничих інструкцій.</p>
+<p>Ілюстративна схема оцінювання (не статистична формула): <strong>E = Σ(rᵢ × tᵢ)</strong>, де <strong>E</strong> — оцінені людино-години, <strong>rᵢ</strong> — кількість спеціалістів у ролі i, <strong>tᵢ</strong> — оцінена зайнятість одного спеціаліста цієї ролі. Це проста перевірка ресурсного плану; фінансова оцінка потребує ставок, резервів, матеріалів і припущень.</p>
+<h2>8. Комерційна модель і контроль версій</h2>
+<p>У прикладі обрано <strong>Time &amp; Material</strong>, оскільки предмет роботи був інноваційним, а обсяг не повністю передбачуваним. Така модель <strong>не усуває обов'язку</strong> відстежувати бюджет, тривалість, зміни, ризики та погоджувати обсяг. Пропозиція може пройти кілька ревізій, тому після першого обговорення варто вести <strong>version/change log</strong>: версія, дата, зміни, автор, рішення замовника.</p>
+<h2>9. Завдання студенту та критерії приймання</h2>
+<ol>
+<li>Провести аудит усіх карток і one-pager за таблицею дефектів.</li>
+<li>Зробити коротку <strong>організаційну схему</strong> з відповідальностями й пояснити роль кожного учасника.</li>
+<li>Визначити одну клієнтську проблему, яку може вирішити компанія; відокремити потребу від бажаної технології.</li>
+<li>Побудувати зміст майбутнього proposal на основі цього запиту.</li>
+<li>Вибрати найбільш ризикову гіпотезу та визначити <strong>мінімальний PoC</strong>, який її перевірить.</li>
+<li>Підготувати власні перевірювані референси й не видавати рольові вигадки за реальні партнерства.</li>
+</ol>
+<p><strong>Результат:</strong> команда готова до реалістичної симуляції зустрічі із замовником. Наступне заняття відтворює сам контакт, заперечення й домовленість про follow-up; технічний proposal стане завданням наступного етапу.</p>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Викладання</b><p style="margin-top:8px">Авторські навчальні матеріали Дмитра Гуменного.</p><a class="footer-about" href="../../about.html">Про автора →</a></div>
+<div class="footer-links"><b>Курс</b><a href="index.html">Огляд курсу</a><a href="lecture-01.html">Лекція 01</a><a href="lecture-02.html">Лекція 02</a><a href="lecture-03.html">Лекція 03</a><a href="lecture-06.html">Лекція 04</a><a href="lecture-09.html">Session 09</a><a href="lecture-08.html">Session 08</a><a href="lecture-07.html">Session 07</a></div>
+<div class="footer-links"><b>Контекст</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">КПІ · кафедра ІПЗЕ</a><a href="../../teaching.html">Усі навчальні матеріали</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Конфіденційність</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="en";var TARGETS={"en":"lecture-04.html","uk":"../../uk/teaching/embedded-software-engineering/lecture-04.html","de":"../../de/teaching/embedded-software-engineering/lecture-04.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>From Lead to Formal Pre-Sale — Væringjar II</title><meta content="Initial and technical follow-ups turn interest into structured information exchange: RFI, RFQ, course-local RFC and the first Proposal baseline." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20260928-scientific-v3" rel="stylesheet"/>
+<link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-04.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-04.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-04.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-04.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-04.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="From Lead to Client: RFI, RFC, RFQ and Proposal — Væringjar II" property="og:title"/><meta content="Lecture 4 of Embedded Software Engineering: initial meetings, RFI/RFQ/RFC, proposal structure, versioning, resources, timeline and risk." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/teaching/embedded-software-engineering/lecture-04.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="From Lead to Client: RFI, RFC, RFQ and Proposal — Væringjar II" name="twitter:title"/><meta content="Lecture 4 of Embedded Software Engineering: initial meetings, RFI/RFQ/RFC, proposal structure, versioning, resources, timeline and risk." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Framework</a><a href="../../research.html">Evidence</a><a href="../../implementation.html">Build</a><a class="active" href="../../teaching.html">Teaching</a><a href="../../collaboration.html">Collaborate</a></div>
+<div aria-label="Language" class="lang-switch"><a aria-current="page" class="active" data-lang="en" href="lecture-04.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../uk/teaching/embedded-software-engineering/lecture-04.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../de/teaching/embedded-software-engineering/lecture-04.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Teaching / Lecture 04 · 15.09.2026</div><h1>From Lead to Formal Pre-Sale</h1><p class="lead reader-lead">Initial and technical follow-ups turn interest into structured information exchange: RFI, RFQ, course-local RFC and the first Proposal baseline.</p><div class="reader-badges"><span>15.09.2026</span><span>session 04 / 06</span><span>frozen 28.09.2026</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Course overview →</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / <b>MODULE 03</b> · MARKET &amp; CUSTOMER / 04 · 15.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-03.html">Previous · From an Unknown Company to a Lead</a><span class="current">Current · 04</span><a class="next" href="lecture-05.html">Next · Proposal, Standards and Commercial Model</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Key ideas</div><h2>Key ideas</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Research the people</h3><p>Prepare for the actual participants, not an abstract company logo.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>Cases must be relevant</h3><p>A few matched case studies beat a giant generic portfolio.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>RFI ≠ RFQ</h3><p>Capability evidence and commercial estimation answer different questions.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>Proposal integrates evidence</h3><p>Meetings, requests, research, assumptions and estimates become one controlled artifact.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">Takeaway</div><h2>Practical takeaway</h2><div class="reader-copy"><p class="reader-takeaway">Pre-sale becomes engineering when claims, questions, assumptions, estimates and versions are traceable.</p></div></div></section><section class="reader-section section-tight next-lecture-section"><div class="container"><div class="next-lecture-card"><div class="section-eyebrow">Next time</div><h2>05 — Proposal, Standards and Commercial Model</h2><p>Reference documents, conformity constraints, V&amp;V, resources and pricing models turn a technical idea into a proposal that can actually be negotiated.</p></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Reconstructed &amp; frozen notes</div><h2>Full lecture notes</h2><p class="lecture-notes-intro">The complete English academic notes follow the Ukrainian source, retaining the original argument, engineering examples, terminology, diagrams, tasks and editorial qualifications. The original transcripts remain available separately in Ukrainian.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="source-notes/R04-vid-lida-do-kliienta-rfi-rfc-rfq-proposal.md">Open source Markdown →</a> <a class="btn btn-ghost" href="source-transcripts/2026-09-15.md">Raw transcript →</a></div><article class="lecture-article lecture-notes-content" lang="en"><h1>Lecture 04. From a Lead to Formalized Pre-Sales</h1>
+<blockquote>
+<p><strong>Chronology:</strong> 15 September 2026 · fourth session. Primary source: <a href="source-transcripts/2026-09-15.md">the complete transcript</a>. Starting point: a contact obtained via a referral, event or content. Objective: move the lead toward a technical follow-up and the first formal pre-sales deliverables.</p>
+</blockquote>
+<h2>1. An event is the beginning, not the end, of the funnel</h2>
+<p>This session continues the conference topic, now treating it as a managed business-development system rather than mere networking.</p>
+<p>The underlying sequence:</p>
+<pre><code class="language-text">visibility / event
+      ↓
+first contact
+      ↓
+lead
+      ↓
+initial meeting
+      ↓
+identified pain point
+      ↓
+technical follow-up
+      ↓
+formal information exchange
+</code></pre>
+<p>A successful trip is measured not by the number of business cards handed out, but by contacts that lead to a specific next action.</p>
+<h2>2. A speaker is part of a campaign, not an isolated person on stage</h2>
+<p>The lecture makes an important point: a speaking slot works only when combined with preparation before the event and action afterwards.</p>
+<h3>Before the event</h3>
+<ul>
+<li>Choose a topic for its relevance to the business objective;</li>
+<li>prepare the speaker;</li>
+<li>publish announcements;</li>
+<li>identify target companies and people;</li>
+<li>prepare supporting staff and case materials.</li>
+</ul>
+<h3>During the event</h3>
+<ul>
+<li>The speaker attracts attention and establishes authority;</li>
+<li>the team works across the venue, makes contacts and listens for pain points;</li>
+<li>contacts and their context are recorded immediately.</li>
+</ul>
+<h3>After the event</h3>
+<ul>
+<li>Conduct prompt follow-up;</li>
+<li>propose a specific next conversation;</li>
+<li>classify contacts, leads and opportunities internally.</li>
+</ul>
+<h2>3. Initial meeting: a customer assesses actual people, not only the company</h2>
+<p>Before the first substantial discussion, the team must do its homework: understand the prospective customer's profile, products, publicly documented technical areas and the roles of meeting participants.</p>
+<p>In the lecture, the provider's presentation is divided into three broad parts:</p>
+<ol>
+<li><strong>Who we are:</strong> scale, geography, industries and delivery capability.</li>
+<li><strong>Why we can be trusted:</strong> case studies, processes, and relevant standards or certifications.</li>
+<li><strong>What similar work we have done:</strong> a small selection of case studies tailored to this particular audience.</li>
+</ol>
+<p>A crucial rule is not to dump the entire portfolio on the customer. The chosen case studies must fit their context.</p>
+<h2>4. From presentation to discovery</h2>
+<p>The presentation only opens the door. The actual value appears when the provider begins asking concrete questions and demonstrates domain competence.</p>
+<pre><code class="language-text">company story
+   ↓
+relevant cases
+   ↓
+technical questions
+   ↓
+pain point
+   ↓
+"we should talk about this separately"
+</code></pre>
+<p>The lecture metaphorically describes this as “putting a bandage exactly where it hurts”: the aim is not to solve the entire problem in the first meeting, but to demonstrate that you recognize the pain and possess the relevant skills.</p>
+<h2>5. Technical follow-up</h2>
+<p>Bring people who can speak knowledgeably about the specific technical domain to the next meeting. Continuity of faces is important: key participants from the initial encounter should not disappear entirely, forcing <strong>trust</strong> to be built from scratch.</p>
+<p>The follow-up objectives in this course are to:</p>
+<ul>
+<li>clarify the customer's pain;</li>
+<li>demonstrate technical depth;</li>
+<li>understand the boundaries;</li>
+<li>avoid designing an entire product for free;</li>
+<li>move to a structured exchange of information.</li>
+</ul>
+<h2>6. RFI — Request for Information</h2>
+<p>An RFI is a request used by a prospective customer to evaluate a provider's capabilities. Its format may be as simple as a spreadsheet containing questions and columns for answers and evidence.</p>
+<p>Common question groups include:</p>
+<ul>
+<li>company profile;</li>
+<li>relevant domains;</li>
+<li>engineering roles and capacity;</li>
+<li>tools;</li>
+<li>languages and technology stack;</li>
+<li>quality, safety and security processes;</li>
+<li>experience with standards and frameworks;</li>
+<li>laboratories, equipment and manufacturing capability;</li>
+<li>references or case descriptions approved for disclosure.</li>
+</ul>
+<p>In major procurement processes several vendors often receive the same RFI, so the answers should be comparable, evidence-based and free of marketing fog.</p>
+<h2>7. RFQ — Request for Quotation</h2>
+<p>An RFQ requests more than a description of capability: it seeks an <strong>estimate</strong> of cost, scope and delivery time. This is more complex in embedded systems than merely counting engineer-hours, since it may involve:</p>
+<ul>
+<li>engineering effort;</li>
+<li>components;</li>
+<li>PCB and mechanical fabrication;</li>
+<li>assembly;</li>
+<li>test equipment;</li>
+<li>prototypes and redesign cycles;</li>
+<li>external laboratories;</li>
+<li>shipping and customs;</li>
+<li>samples and activities related to certification.</li>
+</ul>
+<p>If an RFQ arrives before the technical problem has been defined adequately, estimation may be coarse or highly dependent on assumptions. That uncertainty must be made explicit.</p>
+<h2>8. RFC in this course</h2>
+<p>The lecture uses RFC to mean Request for Clarification—a structured request to clarify the proposed solution or problem statement.</p>
+<h3>Editorial clarification 01 — acronym policy</h3>
+<p>RFC does not have a single universal meaning in B2B procurement. In software <strong>engineering</strong> it often means Request for Comments, and individual companies may use other meanings. The course documents must therefore spell it out at first mention: RFC (Request for Clarification — terminology used in this course).</p>
+<h2>9. The proposal integrates earlier knowledge</h2>
+<p>A proposal should not appear out of thin air. It consolidates information already obtained from meetings, RFI, RFQ, RFC and the provider's own analysis.</p>
+<pre><code class="language-text">meetings ─┐
+RFI ──────┤
+RFQ ──────┼──→ Proposal
+RFC ──────┤
+research ─┘
+</code></pre>
+<p>An initial proposal outline at this stage contains:</p>
+<ul>
+<li>executive / solution summary;</li>
+<li>understanding of the problem;</li>
+<li>assumptions and open questions;</li>
+<li>high-level architecture or approach;</li>
+<li>engineering workstreams;</li>
+<li>verification and validation intentions;</li>
+<li>team and resources;</li>
+<li>schedule and estimate;</li>
+<li>risks and dependencies;</li>
+<li>commercial model.</li>
+</ul>
+<p>A fuller treatment of standards, commercial models and risk allocation follows in the next session.</p>
+<h2>10. Version control for pre-sales documents</h2>
+<p>The lecture recommends managing a proposal like any other controlled engineering artifact. A practical structure is:</p>
+<pre><code class="language-text">0.1 → 0.2 → 0.3  internal drafts
+          ↓
+        1.0      external release
+          ↓ client feedback
+        1.1 → 1.2 internal work
+          ↓
+        2.0      next external release
+</code></pre>
+<p>The version number alone is not what matters. It must be clear:</p>
+<ul>
+<li>when the version was issued;</li>
+<li>who authored or owns it;</li>
+<li>what its revision history is;</li>
+<li>what changed following customer feedback;</li>
+<li>which exact version forms the basis for an estimate or decision.</li>
+</ul>
+<h2>11. Do not give away all the engineering before signing a contract</h2>
+<p>Pre-sales engineering has limits. The more finished design details a provider discloses, the more unpaid engineering it may surrender before any commercial decision.</p>
+<p>An internal review should therefore ask:</p>
+<ul>
+<li>is the evidence sufficient to demonstrate capability?</li>
+<li>has the proposal turned into a free detailed design?</li>
+<li>are assumptions visible?</li>
+<li>is the estimate traceable?</li>
+<li>can the promises realistically be delivered?</li>
+</ul>
+<h2>12. Review questions</h2>
+<ol>
+<li>How does a lead differ from an accidental contact?</li>
+<li>What is the purpose of an initial meeting?</li>
+<li>Why must case studies be tailored to the customer?</li>
+<li>How does an RFI differ from an RFQ?</li>
+<li>Why does an embedded-project estimate include more than engineer-hours?</li>
+<li>Why should RFC be expanded explicitly in each specific process?</li>
+<li>What does a proposal consolidate from the preceding stages?</li>
+<li>Why do pre-sales documents need version control?</li>
+<li>Where is the boundary between demonstrating competence and providing engineering work for free?</li>
+</ol>
+<h2>13. Deliverable comparison table</h2>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>Primary question</th>
+<th>Provider's output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial meeting</td>
+<td>“Does it make sense to continue talking?”</td>
+<td>trust + a next meeting</td>
+</tr>
+<tr>
+<td>Technical follow-up</td>
+<td>“Do they understand our problem?”</td>
+<td>clarified pain + technical credibility</td>
+</tr>
+<tr>
+<td>RFI</td>
+<td>“Who are you, and what can you actually do?”</td>
+<td>structured evidence of capability</td>
+</tr>
+<tr>
+<td>RFQ</td>
+<td>“How much might it cost, and how long might it take?”</td>
+<td>estimate + explicit assumptions</td>
+</tr>
+<tr>
+<td>RFC (course usage)</td>
+<td>“What exactly is meant?”</td>
+<td>clarified scope and inputs for a solution</td>
+</tr>
+<tr>
+<td>Proposal</td>
+<td>“How do you propose to accomplish it?”</td>
+<td>integrated technical and commercial approach</td>
+</tr>
+</tbody>
+</table>
+<h2>14. Transition to 16 September 2026</h2>
+<p>The next step is turning the proposal into a mature engineering and commercial document: which standards and reference documents apply, how certification and conformity constraints affect the work, how to choose between <strong>Time &amp; Materials</strong> and Fixed Price, and who actually bears each risk.</p>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Teaching</b><p style="margin-top:8px">Author teaching materials by Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">About the author →</a></div>
+<div class="footer-links"><b>Course</b><a href="index.html">Course overview</a><a href="lecture-01.html">Lecture 01</a><a href="lecture-02.html">Lecture 02</a><a href="lecture-03.html">Lecture 03</a><a href="lecture-04.html">Lecture 04</a></div>
+<div class="footer-links"><b>Context</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in Power Engineering</a><a href="../../teaching.html">All teaching materials</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Privacy</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../assets/js/locale.js"></script><script defer src="../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

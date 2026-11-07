@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="de";var TARGETS={"en":"../../implementation/validation-limits.html","uk":"../../uk/implementation/validation-limits.html","de":"validation-limits.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Was muss vor der nächsten Stufe nachgewiesen sein? — Væringjar II</title>
+<meta content="Die Implementierung muss innerhalb definierter Fehlergrenzen zum mathematischen Golden Model bleiben." name="description"/>
+<link href="../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/>
+<link href="../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<script>
+window.MathJax = window.MathJax || {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link href="../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/de/implementation/validation-limits.html" rel="canonical"/><meta content="Væringjar II" property="og:site_name"/><meta content="Was muss vor der nächsten Stufe nachgewiesen sein? — Væringjar II" property="og:title"/><meta content="Die Implementierung muss innerhalb definierter Fehlergrenzen zum mathematischen Golden Model bleiben." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/de/implementation/validation-limits.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Was muss vor der nächsten Stufe nachgewiesen sein? — Væringjar II" name="twitter:title"/><meta content="Die Implementierung muss innerhalb definierter Fehlergrenzen zum mathematischen Golden Model bleiben." name="twitter:description"/><link href="../assets/css/modular-reading.css?v=20260928-scientific-v3" rel="stylesheet"/><link href="https://varingjar.com/implementation/validation-limits.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/implementation/validation-limits.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/implementation/validation-limits.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/implementation/validation-limits.html" hreflang="x-default" rel="alternate"/><link href="../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../assets/js/wide-view.js?v=20261021-wide-v2"></script></head>
+<body class="site-page strict-template-v1 strict-template-v2 modular-ui module-reader-page">
+<header class="site-header"><nav aria-label="Primary navigation" class="nav"><a class="brand" href="../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a><button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button><div class="nav-links"><a href="../programme.html">Modell</a><a href="../research.html">Evidenz</a><a class="active" href="../implementation.html">Implementierung</a><a href="../teaching.html">Lehre</a><a href="../collaboration.html">Mitwirken</a></div><div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../implementation/validation-limits.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../uk/implementation/validation-limits.html?lang=uk" hreflang="uk" lang="uk">UA</a><a aria-current="page" class="active" data-lang="de" href="validation-limits.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header>
+<main class="module-reader"><section class="module-reader-hero"><div class="container reading-width"><a class="module-back" href="../implementation.html">Zur Übersicht →</a><div class="eyebrow">Modul 04 / 04</div><h1>Was muss vor der nächsten Stufe nachgewiesen sein?</h1><p class="lead">Die Implementierung muss innerhalb definierter Fehlergrenzen zum mathematischen Golden Model bleiben.</p></div></section><nav aria-label="Module navigation" class="module-local-nav"><div class="container reading-width"><a class="module-mini" href="runtime-questions.html"><span>01</span><b>Vier Laufzeitfragen.</b></a><a class="module-mini" href="software-reference.html"><span>02</span><b>Referenzsoftware: C++-Kern → ROS 2.</b></a><a class="module-mini" href="hardware-path.html"><span>03</span><b>Geplanter Hardwarepfad: RISC-V → SoC IP.</b></a><a class="module-mini active" href="validation-limits.html"><span>04</span><b>Was muss vor der nächsten Stufe nachgewiesen sein?</b></a></div></nav><div class="module-content"><section class="section-tight"><details class="content-fold"><summary><span>Verifikations-Gates.</span><small>Abschnitt öffnen</small></summary><div class="content-fold-body"><div class="container"><div class="eyebrow">Evidenz-Gate</div><h2 style="margin-top:14px">Was muss vor der nächsten Stufe nachgewiesen sein?</h2><div class="reader-grid">
+<div class="reader-card"><span class="reader-num">01</span><h3>Numerische Äquivalenz</h3><p>Die Implementierung muss innerhalb definierter Fehlergrenzen zum mathematischen Golden Model bleiben.</p></div>
+<div class="reader-card"><span class="reader-num">02</span><h3>Fehlerreaktion</h3><p>Bekannte Degradationsklassen müssen erwartete Zustandsübergänge und Fallback-Verhalten erzeugen.</p></div>
+<div class="reader-card"><span class="reader-num">03</span><h3>Timing</h3><p>Entscheidung, Validierung, Umschalten und Rollback werden getrennt vermessen.</p></div>
+<div class="reader-card"><span class="reader-num">04</span><h3>Physische Validierung</h3><p>Aussagen bleiben begrenzt, bis HIL- und beschädigte-Strecke-Experimente das erwartete Verhalten reproduzieren.</p></div>
+</div></div></div></details></section><section class="section-tight"><div class="container">
+<div class="eyebrow">Skalierbarkeit</div>
+<h2 style="margin-top:14px">Rechenstruktur pro Schritt.</h2>
+<div class="tech-table-wrap" style="margin-top:18px"><table class="compact-table">
+<thead><tr><th>Komponente</th><th>Zeit</th><th>Speicher</th></tr></thead><tbody>
+<tr><td>Zustandsschätzung</td><td>\(\mathcal O(n^3)\)</td><td>\(\mathcal O(n^2)\)</td></tr>
+<tr><td>Indikatorberechnung</td><td>\(\mathcal O(r)\)</td><td>\(\mathcal O(r)\)</td></tr>
+<tr><td>Regimeklassifikation</td><td>\(\mathcal O(1)\)</td><td>\(\mathcal O(1)\)</td></tr>
+<tr><td>Regelberechnung</td><td>\(\mathcal O(nm)\)</td><td>\(\mathcal O(nm)\)</td></tr>
+<tr><td>Degradationsupdate</td><td>\(\mathcal O(r)\)</td><td>\(\mathcal O(r)\)</td></tr>
+<tr><td><b>Gesamt</b></td><td><b>\(\mathcal O(n^3+r)\)</b></td><td><b>\(\mathcal O(n^2+r)\)</b></td></tr>
+</tbody></table></div>
+</div></section><section class="section-tight"><div class="container">
+<div class="eyebrow">Evidenzgrenze</div>
+<h2 style="margin-top:14px">Was noch nicht nachgewiesen ist.</h2>
+<div class="paper-limit" style="margin-top:18px">
+<div><b>Streckentreue</b><span>Die berichtete Vergleichsstudie verwendet für Parameterstudien eine vereinfachte skalare Strecke.</span></div>
+<div><b>Abdeckung des Fehlermodells</b><span>Die Degradationsgesetze setzen bekannte Fehlermechanismen und parametrisierte Verläufe voraus.</span></div>
+<div><b>Physische Validierung</b><span>Hardware-in-the-Loop-/repräsentative Streckenvalidierung bleibt ein erforderlicher nächster Schritt.</span></div>
+</div>
+</div></section><section class="section-tight"><div class="container cta"><div><div class="eyebrow">Offene Zusammenarbeit</div><h3 style="font-size:30px;margin-top:12px">Forschung in testbare Technologie überführen.</h3><p>Beiträge zur C++-/ROS-2-Referenzimplementierung, Testinfrastruktur und zum explorativen RISC-V-/SoC-Engineering sind willkommen. Diese Arbeit dient dem Technologieaufbau und ist kein kommerzielles Angebot.</p></div><a class="btn btn-primary" href="../collaboration.html">Zusammenarbeit →</a></div></section></div><section class="module-nextprev"><div class="container reading-width"><a class="module-prev" href="hardware-path.html">← Zurück<b>Geplanter Hardwarepfad: RISC-V → SoC IP.</b></a><a class="module-next" href="../implementation.html">Zur Übersicht →</a></div></section></main>
+<footer class="site-footer">
+<div class="container footer-grid">
+<div>
+<strong>VÆRINGJAR II</strong>
+<p>Unabhängiges Forschungsprogramm für überlebensfähigkeitsorientierte Regelung.</p>
+<a class="footer-about" href="../about.html">Über den Autor →</a></div>
+<div>
+<span>AUTOR</span>
+<b style="display:block;margin-top:6px">Dmytro Humennyi · Дмитро Гуменний</b>
+</div>
+<div>
+<span>KONTAKT</span>
+<b style="display:block;margin-top:6px">dhumennyi@edu.kpi.ua</b>
+</div>
+</div>
+<a class="footer-privacy" href="../privacy.html">Datenschutz</a></footer>
+<script src="../assets/js/site.js?v=20261014-theme-v710"></script>
+<script src="../../assets/js/locale.js"></script><script defer src="../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

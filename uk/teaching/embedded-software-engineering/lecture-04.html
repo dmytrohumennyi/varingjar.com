@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="uk";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-04.html","uk":"lecture-04.html","de":"../../../de/teaching/embedded-software-engineering/lecture-04.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Від ліда до формалізованого pre-sale — Væringjar II</title><meta content="Initial і technical follow-ups перетворюють інтерес на структурований обмін: RFI, RFQ, course-local RFC та перший Proposal baseline." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20260928-scientific-v3" rel="stylesheet"/>
+<link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-04.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-04.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-04.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-04.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-04.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Від ліда до клієнта: RFI, RFC, RFQ і Proposal — Væringjar II" property="og:title"/><meta content="Конспект лекції 3 авторського курсу Інженерія програмного забезпечення вбудованих систем: як сервісна компанія перетворює цільову компанію на лід." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-04.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Від ліда до клієнта: RFI, RFC, RFQ і Proposal — Væringjar II" name="twitter:title"/><meta content="Конспект лекції 3 авторського курсу Інженерія програмного забезпечення вбудованих систем: як сервісна компанія перетворює цільову компанію на лід." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Модель</a><a href="../../research.html">Докази</a><a href="../../implementation.html">Реалізація</a><a class="active" href="../../teaching.html">Навчання</a><a href="../../collaboration.html">Співпраця</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-04.html?lang=en" hreflang="en" lang="en">EN</a><a aria-current="page" class="active" data-lang="uk" href="lecture-04.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../../de/teaching/embedded-software-engineering/lecture-04.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Викладання / Лекція 04 · 15.09.2026</div><h1>Від ліда до формалізованого pre-sale</h1><p class="lead reader-lead">Initial і technical follow-ups перетворюють інтерес на структурований обмін: RFI, RFQ, course-local RFC та перший Proposal baseline.</p><div class="reader-badges"><span>15.09.2026</span><span>заняття 04 / 06</span><span>заморожено 28.09.2026</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Огляд курсу →</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / <b>MODULE 03</b> · РИНОК &amp; КЛІЄНТ / 04 · 15.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-03.html">Попередня · Від невідомої компанії до ліда</a><span class="current">Зараз · 04</span><a class="next" href="lecture-05.html">Далі · Proposal, стандарти та комерційна модель</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Ключові ідеї</div><h2>Ключові ідеї</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Досліджуйте людей</h3><p>Готуйтеся до конкретних учасників, а не до абстрактного логотипа компанії.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>Cases мають бути релевантні</h3><p>Кілька влучних кейсів кращі за величезне generic portfolio.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>RFI ≠ RFQ</h3><p>Capability evidence і commercial estimation відповідають на різні питання.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>Proposal інтегрує evidence</h3><p>Meetings, requests, research, assumptions та estimates стають одним керованим артефактом.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">Висновок</div><h2>Практичний висновок</h2><div class="reader-copy"><p class="reader-takeaway">Pre-sale стає engineering тоді, коли claims, questions, assumptions, estimates і versions простежуються.</p></div></div></section><section class="reader-section section-tight next-lecture-section"><div class="container"><div class="next-lecture-card"><div class="section-eyebrow">Далі</div><h2>05 — Proposal, стандарти та комерційна модель</h2><p>Reference documents, conformity constraints, V&amp;V, ресурси й pricing models перетворюють технічну ідею на Proposal, який реально можна погоджувати.</p></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Реконструйований та заморожений матеріал</div><h2>Повний конспект лекції</h2><p class="lecture-notes-intro">Конспект перебудовано з первинного українського транскрипту. Редакторські виправлення та зовнішні доповнення всередині матеріалу позначені явно.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R04-vid-lida-do-kliienta-rfi-rfc-rfq-proposal.md">Відкрити Markdown →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-15.md">Сирий транскрипт →</a></div><article class="lecture-article lecture-notes-content" lang="uk"><h1>Лекція 04. Від ліда до формалізованого pre-sale</h1>
+<blockquote>
+<p><strong>Хронологія:</strong> 15.09.2026 · четверте заняття.<br/>
+<strong>Первинне джерело:</strong> <a href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-15.md">повний транскрипт</a>.<br/>
+<strong>Попередня точка:</strong> маємо контакт після referral/event/content.<br/>
+<strong>Мета заняття:</strong> довести lead до технічного follow-up і перших формальних pre-sale артефактів.</p>
+</blockquote>
+<h2>1. Event — не фінал, а початок funnel</h2>
+<p>На цьому занятті тема конференцій продовжується вже як <strong>керована business-development система</strong>, а не просто networking.</p>
+<p>Логіка:</p>
+<pre><code class="language-text">visibility / event
+      ↓
+first contact
+      ↓
+lead
+      ↓
+initial meeting
+      ↓
+identified pain point
+      ↓
+technical follow-up
+      ↓
+formal information exchange
+</code></pre>
+<p>Успішна поїздка вимірюється не кількістю розданих business cards, а тим, чи з'явилися контакти з конкретним next action.</p>
+<h2>2. Speaker як частина кампанії, а не окрема людина на сцені</h2>
+<p>У лекції важливо підкреслено: speaking slot працює лише разом із підготовкою до і після події.</p>
+<h3>До події</h3>
+<ul>
+<li>вибрати тему за business relevance;</li>
+<li>підготувати speaker-а;</li>
+<li>публікувати анонси;</li>
+<li>визначити target companies/people;</li>
+<li>підготувати supporting team і case materials.</li>
+</ul>
+<h3>Під час події</h3>
+<ul>
+<li>speaker створює attention і authority;</li>
+<li>команда працює в залі, знайомиться, слухає pain points;</li>
+<li>контакти одразу фіксуються разом з контекстом.</li>
+</ul>
+<h3>Після події</h3>
+<ul>
+<li>швидкий follow-up;</li>
+<li>конкретна пропозиція наступної розмови;</li>
+<li>внутрішня класифікація contact/lead/opportunity.</li>
+</ul>
+<h2>3. Initial meeting: клієнт оцінює не тільки компанію, а конкретних людей</h2>
+<p>До першої серйозної розмови команда має зробити домашню роботу: зрозуміти company profile, продукти, публічні технічні напрями і ролі учасників зустрічі.</p>
+<p>У лекції презентація provider-а умовно складається з трьох блоків:</p>
+<ol>
+<li><strong>Хто ми:</strong> масштаб, географія, індустрії, delivery capability.</li>
+<li><strong>Чому нам можна довіряти:</strong> кейси, процеси, стандарти/сертифікації там, де вони релевантні.</li>
+<li><strong>Що ми вже робили схожого:</strong> невеликий набір case studies, підібраний під конкретного співрозмовника.</li>
+</ol>
+<p>Важливе правило: не вивалювати на клієнта весь портфель. Case studies мають відповідати його контексту.</p>
+<h2>4. Перехід від presentation до discovery</h2>
+<p>Презентація лише відкриває двері. Основна цінність з'являється, коли provider переходить до <strong>конкретних запитань</strong> і показує domain competence.</p>
+<pre><code class="language-text">company story
+   ↓
+relevant cases
+   ↓
+technical questions
+   ↓
+pain point
+   ↓
+"we should talk about this separately"
+</code></pre>
+<p>У лекції це метафорично названо «дати пластир на місце, де болить»: не вирішити все на першій зустрічі, а показати, що проблема розпізнана і у вас є релевантна компетенція.</p>
+<h2>5. Technical follow-up</h2>
+<p>На наступну зустріч варто приводити людей, які можуть говорити про конкретний technical domain. Важливо зберігати <strong>continuity of faces</strong>: ключові люди першого контакту не повинні повністю зникнути, інакше довіру доводиться будувати заново.</p>
+<p>Мета follow-up у логіці курсу:</p>
+<ul>
+<li>уточнити pain;</li>
+<li>показати technical depth;</li>
+<li>зрозуміти boundaries;</li>
+<li>не «безкоштовно спроєктувати весь продукт»;</li>
+<li>перейти до структурованого обміну інформацією.</li>
+</ul>
+<h2>6. RFI — Request for Information</h2>
+<p>RFI — запит, за допомогою якого потенційний клієнт перевіряє provider capability. Формат може бути дуже простим: spreadsheet із питаннями й колонкою answer/evidence.</p>
+<p>Типові групи питань:</p>
+<ul>
+<li>company profile;</li>
+<li>relevant domains;</li>
+<li>engineering roles і capacity;</li>
+<li>tools;</li>
+<li>languages/technology stack;</li>
+<li>quality/safety/security processes;</li>
+<li>standards/framework experience;</li>
+<li>laboratories / equipment / manufacturing capability;</li>
+<li>references або allowed case descriptions.</li>
+</ul>
+<p>У великих закупівлях однаковий RFI часто отримують кілька vendors, тому відповідь має бути <strong>порівнюваною, доказовою і без маркетингового туману</strong>.</p>
+<h2>7. RFQ — Request for Quotation</h2>
+<p>RFQ просить вже не тільки описати capability, а оцінити <strong>вартість/обсяг/термін</strong>. В embedded це складніше, ніж «кількість engineer-hours», бо можуть входити:</p>
+<ul>
+<li>engineering effort;</li>
+<li>components;</li>
+<li>PCB/mechanical fabrication;</li>
+<li>assembly;</li>
+<li>test equipment;</li>
+<li>prototypes/re-spins;</li>
+<li>external labs;</li>
+<li>shipment/customs;</li>
+<li>certification-related samples/activities.</li>
+</ul>
+<p>Якщо RFQ приходить до достатньої technical definition, estimation може бути грубим або сильно залежати від assumptions. Це треба явно показувати.</p>
+<h2>8. RFC у цьому курсі</h2>
+<p>На лекції RFC використовується як <strong>Request for Clarification</strong> — структурований запит на уточнення solution/problem statement.</p>
+<h3>Редакторське уточнення 01 — acronym policy</h3>
+<p><code>RFC</code> не має одного універсального B2B procurement meaning. У software world воно часто означає <em>Request for Comments</em>; в окремих компаніях може використовуватись інакше. Тому в документах курсу слід писати повну форму при першій появі: <strong>RFC (Request for Clarification — course terminology)</strong>.</p>
+<h2>9. Proposal як інтеграція попередніх знань</h2>
+<p>Proposal не повинен виникати з повітря. Він збирає те, що вже відомо з meetings, RFI/RFQ/RFC та власного analysis.</p>
+<pre><code class="language-text">meetings ─┐
+RFI ──────┤
+RFQ ──────┼──→ Proposal
+RFC ──────┤
+research ─┘
+</code></pre>
+<p>Перший каркас Proposal, який формується на цій стадії:</p>
+<ul>
+<li>executive/solution summary;</li>
+<li>problem understanding;</li>
+<li>assumptions і open questions;</li>
+<li>high-level architecture/approach;</li>
+<li>engineering workstreams;</li>
+<li>verification/validation intent;</li>
+<li>team/resources;</li>
+<li>schedule/estimate;</li>
+<li>risks/dependencies;</li>
+<li>commercial model.</li>
+</ul>
+<p>Повний розбір standards, commercial model та risk allocation переходить у наступне заняття.</p>
+<h2>10. Version control для pre-sale documents</h2>
+<p>Лекція рекомендує ставитися до Proposal як до керованого engineering artifact. Практична схема:</p>
+<pre><code class="language-text">0.1 → 0.2 → 0.3  internal drafts
+          ↓
+        1.0      external release
+          ↓ client feedback
+        1.1 → 1.2 internal work
+          ↓
+        2.0      next external release
+</code></pre>
+<p>Номер версії сам по собі не головне. Головне — щоб було видно:</p>
+<ul>
+<li>дату;</li>
+<li>author/owner;</li>
+<li>change history;</li>
+<li>що змінилося після client feedback;</li>
+<li>яка саме версія є basis for estimate/decision.</li>
+</ul>
+<h2>11. Не віддати весь engineering без контракту</h2>
+<p>Pre-sale engineering має межу. Чим більше provider розкриває готових design details, тим більше безоплатної роботи він віддає до комерційного рішення.</p>
+<p>Тому потрібен internal review:</p>
+<ul>
+<li>чи достатньо evidence, щоб показати capability;</li>
+<li>чи не перетворився Proposal у фактично безкоштовний detailed design;</li>
+<li>чи assumptions видимі;</li>
+<li>чи estimation traceable;</li>
+<li>чи promises реально deliverable.</li>
+</ul>
+<h2>12. Контрольні запитання</h2>
+<ol>
+<li>Чим lead відрізняється від випадкового контакту?</li>
+<li>Яка мета initial meeting?</li>
+<li>Чому case studies треба підбирати під конкретного клієнта?</li>
+<li>Чим RFI відрізняється від RFQ?</li>
+<li>Чому estimation embedded-проєкту включає більше, ніж engineer-hours?</li>
+<li>Чому треба розшифровувати RFC у кожному конкретному процесі?</li>
+<li>Що Proposal інтегрує з попередніх етапів?</li>
+<li>Навіщо pre-sale document version control?</li>
+<li>Де проходить межа між доказом capability і безкоштовним engineering?</li>
+</ol>
+<h2>13. Таблиця артефактів</h2>
+<table>
+<thead>
+<tr>
+<th>Артефакт</th>
+<th>Основне питання</th>
+<th>Вихід provider-а</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial meeting</td>
+<td>«Чи є сенс говорити далі?»</td>
+<td>trust + next meeting</td>
+</tr>
+<tr>
+<td>Technical follow-up</td>
+<td>«Чи розуміють вони нашу проблему?»</td>
+<td>clarified pain + technical credibility</td>
+</tr>
+<tr>
+<td>RFI</td>
+<td>«Хто ви і що реально вмієте?»</td>
+<td>structured capability evidence</td>
+</tr>
+<tr>
+<td>RFQ</td>
+<td>«Скільки це може коштувати/тривати?»</td>
+<td>estimate + assumptions</td>
+</tr>
+<tr>
+<td>RFC (course)</td>
+<td>«Що саме мається на увазі?»</td>
+<td>clarified scope/solution inputs</td>
+</tr>
+<tr>
+<td>Proposal</td>
+<td>«Як ви пропонуєте це зробити?»</td>
+<td>integrated technical/commercial view</td>
+</tr>
+</tbody>
+</table>
+<h2>14. Місток до 16.09.2026</h2>
+<p>Наступний крок — зробити Proposal дорослим engineering/commercial документом: <strong>які standards і reference documents потрібні, як впливають certification/conformity constraints, як обрати T&amp;M або Fixed Price і хто реально несе які ризики.</strong></p>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Викладання</b><p style="margin-top:8px">Авторські навчальні матеріали Дмитра Гуменного.</p><a class="footer-about" href="../../about.html">Про автора →</a></div>
+<div class="footer-links"><b>Курс</b><a href="index.html">Огляд курсу</a><a href="lecture-01.html">Лекція 01</a><a href="lecture-02.html">Лекція 02</a><a href="lecture-03.html">Лекція 03</a><a href="lecture-04.html">Лекція 04</a></div>
+<div class="footer-links"><b>Контекст</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">КПІ · кафедра ІПЗЕ</a><a href="../../teaching.html">Усі навчальні матеріали</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Конфіденційність</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

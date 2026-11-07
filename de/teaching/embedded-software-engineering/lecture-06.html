@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="de";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-06.html","uk":"../../../uk/teaching/embedded-software-engineering/lecture-06.html","de":"lecture-06.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Vom Vertrag zu Anforderungen und erster Architektur — Væringjar II</title><meta content="Der Kurs wechselt von Pre-Sales zu Delivery: Staffing Lead Time, Discovery, Business Decomposition, User Needs, System Requirements und erste Architekturskizze." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20260928-scientific-v3" rel="stylesheet"/>
+<link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-06.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-06.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-06.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-06.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-06.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Vom Lead zum Kunden: RFI, RFC, RFQ und Proposal — Væringjar II" property="og:title"/><meta content="Vorlesung 4 zu Embedded Software Engineering: Initial Meeting, RFI/RFQ/RFC, Proposal, Ressourcen, Zeitplan und Risiken." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-06.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Vom Lead zum Kunden: RFI, RFC, RFQ und Proposal — Væringjar II" name="twitter:title"/><meta content="Vorlesung 4 zu Embedded Software Engineering: Initial Meeting, RFI/RFQ/RFC, Proposal, Ressourcen, Zeitplan und Risiken." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Modell</a><a href="../../research.html">Evidenz</a><a href="../../implementation.html">Implementierung</a><a class="active" href="../../teaching.html">Lehre</a><a href="../../collaboration.html">Mitwirken</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-06.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../../uk/teaching/embedded-software-engineering/lecture-06.html?lang=uk" hreflang="uk" lang="uk">UA</a><a aria-current="page" class="active" data-lang="de" href="lecture-06.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Lehre / Vorlesung 06 · 22.09.2026</div><h1>Vom Vertrag zu Anforderungen und erster Architektur</h1><p class="lead reader-lead">Der Kurs wechselt von Pre-Sales zu Delivery: Staffing Lead Time, Discovery, Business Decomposition, User Needs, System Requirements und erste Architekturskizze.</p><div class="reader-badges"><span>22.09.2026</span><span>Sitzung 06 / 06</span><span>eingefroren 28.09.2026</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Kursübersicht →</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / <b>MODULE 05</b> · REQUIREMENTS &amp; ARCHITECTURE / 06 · 22.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-05.html">Zurück · Proposal, Standards und Geschäftsmodell</a><span class="current">Aktuell · 06</span><a class="next" href="#forecast">Als Nächstes · Forecast</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Kernideen</div><h2>Kernideen</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Vertrag erzeugt kein Team</h3><p>Staffing Lead Time und Voraussetzungen müssen vor dem Startversprechen sichtbar sein.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>Zuerst dekomponieren</h3><p>Customer Speech vor Requirements in Domains/Komponenten zerlegen.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>Need ≠ Solution</h3><p>ROS 2, YOLO oder LiDAR sind Kandidaten, bis Requirements sie begründen.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>Traceability treibt das V-Modell</h3><p>Needs fließen in System-/Komponentenanforderungen und zurück zu Verification Evidence.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">Kernaussage</div><h2>Praktische Kernaussage</h2><div class="reader-copy"><p class="reader-takeaway">Delivery beginnt mit Traceability vom unvollkommenen Customer Statement zum testbaren Systemmodell – nicht mit dem Coden der ersten plausiblen Idee.</p></div></div></section><section class="reader-section section-tight next-lecture-section" id="forecast"><div class="container"><div class="next-lecture-card"><div class="section-eyebrow">Prognose</div><h2>Nächste 1–2 Sitzungen</h2><p>Das eingefrorene Skript vom 22. September enthält eine Prognose für die nächsten 1–2 Sitzungen. Sie bleibt Prognose, bis ein neues Primärtranskript vorliegt.</p></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Rekonstruiertes &amp; eingefrorenes Material</div><h2>Vollständiges Vorlesungsskript</h2><p class="lecture-notes-intro">Aus dem primären ukrainischen Transkript rekonstruiert. Redaktionelle Korrekturen und externe Ergänzungen sind im Material ausdrücklich markiert.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R06-vid-kontraktu-do-vymoh-ta-arkhitektury.md">Quell-Markdown öffnen →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-22.md">Ukrainisches Rohtranskript →</a></div><article class="lecture-article lecture-notes-content" lang="de"><h1>Vom Vertrag zu Anforderungen und erster Architektur</h1>
+<blockquote>
+<p>Chronologie: 22. September 2026 · sechste Veranstaltung. Primärquelle: <a href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-22.md">vollständiges Transkript</a>. Übergang: Die Pre-Sales-Phase endet; die Aufgaben der studentischen Teams verlagern sich von Vertrieb und Engagement zum Systems Engineering.</p>
+</blockquote>
+<h2>1. Wann ein Lead im Kursmodell zum Kunden wird</h2>
+<p>Die Vorlesung zieht eine didaktische Grenze: Solange es um Gespräche, RFI, RFQ, RFC und Angebote geht, besteht ein Lead oder eine Geschäftschance. Sobald rechtliche Dokumente und kommerzielle Ausgangsbedingungen vereinbart sind, beginnt die Kunden- beziehungsweise Projektbeziehung.</p>
+<h3>Redaktionelle Präzisierung 01</h3>
+<p>In tatsächlichen CRM-, Buchhaltungs- und Vertragsprozessen können Lead, Opportunity, Prospect, Customer und Client unterschiedlich abgegrenzt sein. Ebenso muss einen Vertrag nicht zwingend eine Führungskraft des C-Levels unterzeichnen: Die Zeichnungsberechtigung bestimmt das jeweilige Unternehmen. „Unterschriebene Vereinbarung → Kunde“ ist in diesem Kurs ein hilfreiches Lehrmodell, keine universelle rechtliche Definition.</p>
+<h2>2. Personalvorlauf bereits im Angebot berücksichtigen</h2>
+<p>Ein unterzeichneter Vertrag erzeugt nicht augenblicklich ein Team. Hardware-, Firmware- und Systemrollen können lange Rekrutierungs- und Einarbeitungszeiten benötigen. Vor Projektbeginn sind deshalb zu dokumentieren:</p>
+<ul>
+<li>der frühestmögliche Starttermin;</li>
+<li>Annahmen zur Personalbesetzung;</li>
+<li>welche Personen bereits verfügbar sind;</li>
+<li>welche Rollen noch besetzt oder zugewiesen werden müssen;</li>
+<li>Abhängigkeiten von Kundenzugang, Hardware, Benutzerkonten und Dokumenten;</li>
+<li>was geschieht, wenn diese Voraussetzungen verspätet vorliegen.</li>
+</ul>
+<p>Praktischer Grundsatz: Keinen Projektstart für Montag versprechen, wenn am Donnerstag das Team noch gar nicht existiert.</p>
+<h2>3. Das Kernteam bereits während des Pre-Sales aufbauen</h2>
+<p>Für Kontinuität sorgen am besten jene Personen, die sich bereits in der Pre-Sales-Phase mit der Problemstellung befasst haben:</p>
+<ul>
+<li>Architekt / Systemingenieur;</li>
+<li>Technical Lead oder mehrere Technical Leads;</li>
+<li>Engineering- / Delivery-Manager;</li>
+<li>Domänenexperten.</li>
+</ul>
+<p>Diese Rollen bilden den Kern. Anschließend wird das Team passend zum tatsächlichen Umfang erweitert.</p>
+<pre>Pre-Sales-Kernteam
+          ↓
+Vertrag
+          ↓
+bestehendes Kernteam + neu zugewiesene Fachkräfte
+          ↓
+Delivery-Team
+</pre>
+<h2>4. Eine wichtige Realität: Discovery nach Vertragsabschluss kann die Lage verändern</h2>
+<p>Die Vorlesung beschreibt Situationen, in denen ein Kunde vor Vertragsabschluss einen Teil des Kontexts zurückhält oder die Pre-Sales-Aufgabe zur Bewertung der Kompetenz nutzt. Die tatsächlichen ersten Eingaben der Lieferphase können daher von der ursprünglichen Problembeschreibung abweichen.</p>
+<p>Die richtige Reaktion ist weder gekränkt zu sein noch einen veralteten Angebotsentwurf einfach zu implementieren. Stattdessen müssen Umfang, Annahmen und Lücken neu abgestimmt werden.</p>
+<p>Das ist ein weiterer Grund für Rückverfolgbarkeit und Änderungssteuerung.</p>
+<h2>5. Lehrfall: Roboter zur automatisierten Prüfung von Leiterplatten</h2>
+<p>Der Kundeninput wird in der Vorlesung absichtlich als lange, teilweise strukturierte mündliche Beschreibung gegeben. Das Systemkonzept umfasst:</p>
+<ul>
+<li>einen handelsüblichen Roboterarm mit sechs Freiheitsgraden;</li>
+<li>einen kundenspezifischen Endeffektor;</li>
+<li>drei Methoden zur Objektinteraktion: elektromagnetische Aufnahme, mechanischer Greifer und Kontaktprüfmatrix;</li>
+<li>automatische Werkzeugwahl und Ausrichtung;</li>
+<li>Steuerung und Rechentechnik;</li>
+<li>maschinelles Sehen / Computer Vision;</li>
+<li>Netzwerkkommunikation;</li>
+<li>Integration von ROS 2;</li>
+<li>Berichte und Cloud-Speicherung;</li>
+<li>Betrieb in der Nähe von Menschen.</li>
+</ul>
+<p>Es geht nicht um die Auswahl einer bestimmten Robotermarke. Der Lehrfall zeigt, wie aus einer mündlichen Kundenbeschreibung eine technisch bearbeitbare Struktur abgeleitet wird.</p>
+<h2>6. Business-Analyse: zuerst zerlegen, nicht Anforderungen erfinden</h2>
+<p>Ein Business- oder Systemanalyst sollte nicht sofort beginnen, „Anforderungen zu erfinden“. Zunächst ist die Eingabe in logische Domänen und Komponenten zu zerlegen.</p>
+<p>Beispiel für die in der Vorlesung entwickelte Zerlegung:</p>
+<pre>Kundenaussage
+          ↓
+1. Roboterarm 2. Endeffektor 3. Sensorik / Bildverarbeitung 4. Steuerung 5. Kommunikation 6. Funktionale Sicherheit 7. Prüfung / Berichterstattung / Cloud
+</pre>
+<p>So entsteht eine Karte, auf deren Grundlage Fragen gestellt und Informationslücken sichtbar gemacht werden können.</p>
+<h2>7. Von Themenblöcken zu User Stories</h2>
+<p>Nach der Zerlegung führt die Vorlesung User Stories ein, die das System aus Sicht eines Akteurs oder einer Rolle beschreiben.</p>
+<p>Eine übliche Form lautet:</p>
+<pre>Als &lt;Rolle&gt; möchte ich &lt;Fähigkeit&gt;, damit &lt;Nutzen / Ergebnis&gt; entsteht.
+</pre>
+<p>Ein Beispiel nahe der Vorlesung:</p>
+<blockquote>
+<p>Als Bediener möchte ich das benötigte Werkzeug des Endeffektors auswählen und aktivieren, damit der Roboter verschiedene Objekttypen ohne manuelle Umrüstung handhaben kann.</p>
+</blockquote>
+<h3>Redaktionelle Präzisierung 02 — Akteur und Komponente</h3>
+<p>Im Transkript wird gelegentlich eine Komponente oder ein Steuerungssubsystem als „Benutzer“ beschrieben. Zur Modellierung von Interaktionen kann das hilfreich sein. Im klassischen agilen Verständnis erfasst eine User Story jedoch üblicherweise die Bedürfnisse eines Akteurs oder Stakeholders. Komponentenverhalten wird später in System-, Software-, Hardware- oder Schnittstellenanforderungen präzisiert.</p>
+<h2>8. Vom Benutzerbedarf zu technischen Anforderungen</h2>
+<p>Der Kurs entwickelt folgende Rückverfolgbarkeitskette:</p>
+<pre>Kundenbedarf / mündliche Aussage
+          ↓
+geschäftliche Zerlegung
+          ↓
+User Stories / Stakeholder-Bedürfnisse
+          ↓
+Systemanforderungen
+          ↓
+Hardware- / Software- / Firmware- / Mechanik- / Schnittstellenanforderungen
+          ↓
+Architektur / Komponentenbeschreibung
+          ↓
+Implementierung
+          ↓
+Verifikation und Validierung
+</pre>
+<p>Dies ist die zentrale Engineering-Idee der Veranstaltung: Jede untergeordnete Ebene muss erklären, welche übergeordnete Anforderung sie erfüllt.</p>
+<h2>9. Merkmale einer guten Anforderung</h2>
+<p>Die Vorlesung legt mehrere wichtige Regeln fest, die erhalten bleiben müssen.</p>
+<h3>Atomar</h3>
+<p>Eine Anforderung beschreibt genau einen verifizierbaren Bedarf, statt mehrere voneinander unabhängige Bedingungen in einem langen Satz zu bündeln.</p>
+<h3>Eindeutig</h3>
+<p>Wörter wie „ausreichend“, „schnell“, „bequem“ oder „zuverlässig“ sind ohne Quantifizierung oder Abnahmekriterium zu vermeiden.</p>
+<h3>Prüfbar / verifizierbar</h3>
+<p>Es muss klar sein, wie die Erfüllung einer Anforderung nachgewiesen werden kann.</p>
+<h3>Identifizierbar und rückverfolgbar</h3>
+<p>Jede Anforderung benötigt eine Kennung, Versions- beziehungsweise Änderungshistorie sowie einen Bezug zur übergeordneten Anforderung und zum Verifikationsnachweis.</p>
+<h3>Widerspruchsfrei</h3>
+<p>Die Gesamtheit der Anforderungen darf keine versteckten Widersprüche enthalten.</p>
+<h3>Beispiel</h3>
+<p>Schwache Formulierung:</p>
+<blockquote>
+<p>Der Roboter muss das Werkzeug sehr genau positionieren.</p>
+</blockquote>
+<p>Bessere Formulierung:</p>
+<blockquote>
+<p>SYS-POS-001: Der Roboter muss den aktiven Werkzeugmittelpunkt unter der definierten Prüflast mit einer Abweichung von höchstens ±0,2 mm von der befohlenen kartesischen Position positionieren.</p>
+</blockquote>
+<p>Prüfbedingungen, Bezugskoordinatensystem und Messverfahren müssen noch festgelegt werden. Gerade diese Präzisierungen machen die Anforderung professionell einsetzbar.</p>
+<h2>10. Systemanforderungen gegenüber Komponentenanforderungen</h2>
+<p>Die Vorlesung trennt zu Recht folgende Ebenen:</p>
+<h3>Systemanforderung</h3>
+<p>Beschreibt Verhalten oder Eigenschaften des Gesamtsystems oder das Zusammenwirken wesentlicher Komponenten.</p>
+<h3>Hardware-, Software-, Firmware- oder Mechanikanforderung</h3>
+<p>Ordnet einen Teil des Systemverhaltens einer bestimmten Ingenieurdisziplin oder Komponente zu.</p>
+<p>Beispiel:</p>
+<pre>SYS-COM-001: Robotersteuerung und Endeffektorsteuerung müssen Befehls- und Statusdaten über das definierte Systemnetz austauschen.
+          ↓
+Zuordnung zu HW-COM-..., SW-COM-... und IF-COM-...
+</pre>
+<h2>11. Redaktionelle Präzisierung — ROS 2, YOLO und Safety</h2>
+<p>Der Lehrfall nennt ROS 2, YOLO, Kamera, LiDAR und RADAR als mögliche Lösungsbestandteile. Sie dürfen nicht allein deshalb zu Anforderungen werden, weil sie in Discovery-Gesprächen erwähnt wurden.</p>
+<ul>
+<li>ROS 2 ist eine Technologie- oder Plattformentscheidung. Zunächst müssen Interaktions- und Einsatzanforderungen geklärt, erst danach Lösungen gewählt werden.</li>
+<li>YOLO ist eine Familie von Objekterkennungsmodellen, nicht automatisch das beste Verfahren zur Klassifizierung oder Leiterplattenprüfung.</li>
+<li>LiDAR, RADAR und Kameras sind mögliche Sensortechnologien, aber keine allgemeingültige Antwort auf Fragen der funktionalen Sicherheit.</li>
+<li>Die Sicherheitsarchitektur einer Roboterzelle muss aus Risikobeurteilung, Betriebsarten und anwendbaren Normen abgeleitet werden. Die Sensorwahl folgt der Analyse statt einer ungeprüften Vorannahme.</li>
+</ul>
+<p>Dies ist eine Kerndisziplin des Requirements Engineerings: Bedarf nicht mit einer vorschnell gewählten Lösung verwechseln.</p>
+<h2>12. Erste Architekturskizze</h2>
+<p>Sobald Systemanforderungen und wesentliche Komponenten erkennbar werden, kann eine erste Topologie oder Architekturdarstellung entstehen.</p>
+<p>Das didaktische Fallschema:</p>
+<pre>Übergeordneter Testrechner → Berichte / Speicherung und Vision / Wahrnehmung → Systemnetz → Robotersteuerung + Endeffektorsteuerung → Roboterarm + Werkzeugrotation / Greifer / Magnet / Kontaktmatrix → mechanische Kopplung
+</pre>
+<p>Es handelt sich noch nicht um eine Detailarchitektur. Die Skizze soll vielmehr Lücken offenlegen: Schnittstellen, Verantwortlichkeiten, Versorgung, Zeitverhalten, Sicherheitsgrenzen, Datenflüsse und mechanische Kopplung.</p>
+<h2>13. Das V-Modell beschreibt Rückverfolgbarkeit, nicht nur den Buchstaben V</h2>
+<p>In der Vorlesung führen Anforderungen zur Implementierung und anschließend zurück zur Verifikation.</p>
+<pre>Bedürfnisse ↔ Validierung; Systemanforderungen ↔ Systemtest; Komponentenanforderungen ↔ Integrationstest; Entwurf / Architektur ↔ Komponentenprüfung; Implementierung am unteren Verbindungspunkt.
+</pre>
+<p>Entscheidend ist, dass der Testnachweis zu der Ebene gehört, auf der die betreffende Anforderung verifiziert werden soll.</p>
+<h2>14. Praktische Teamaufgabe</h2>
+<p>Am Ende wird das erste umfangreichere Praxisszenario definiert. Die Teams sollen wie kleine Dienstleistungsunternehmen handeln.</p>
+<p>In der nächsten Phase sollen sie:</p>
+<ol>
+<li>Teams bilden;</li>
+<li>anfängliche Rollen in Engagement, Geschäftsführung, technischer Leitung und Management vergeben;</li>
+<li>eine Firmenidentität entwickeln;</li>
+<li>Visitenkarten und digitale Kontaktdaten vorbereiten;</li>
+<li>eine öffentlich nutzbare Unternehmensvorstellung oder Landing-Materialien erarbeiten;</li>
+<li>so handeln, als würden sie morgen zu einer Branchenkonferenz abreisen;</li>
+<li>den Dozenten als potenziellen Lead ansprechen und ein Folgegespräch vereinbaren;</li>
+<li>danach Gespräche → RFI/RFQ/RFC → Proposal → Zerlegung → Anforderungen bearbeiten.</li>
+</ol>
+<p>Damit prüft der erste Leistungsnachweis nicht ein isoliertes Thema, sondern den gesamten seit dem 1. September behandelten Weg.</p>
+<h2>15. Kontrollfragen</h2>
+<ol>
+<li>Weshalb muss der Vorlauf für die Personalbesetzung vor Vertragsbeginn berücksichtigt werden?</li>
+<li>Was ist zu tun, wenn der tatsächliche Umfang nach Vertragsabschluss von der Pre-Sales-Darstellung abweicht?</li>
+<li>Warum beginnt Business-Analyse mit Zerlegung statt mit der Formulierung von Anforderungen?</li>
+<li>Worin unterscheiden sich Stakeholder-Bedürfnisse, User Stories und Systemanforderungen?</li>
+<li>Was macht eine Anforderung atomar?</li>
+<li>Warum ist eine Anforderung schwach, wenn kein Verifikationsverfahren angegeben wird?</li>
+<li>Warum darf eine genannte Technologie nicht automatisch zur Anforderung werden?</li>
+<li>Welche Lücken soll das erste Architekturdiagramm sichtbar machen?</li>
+<li>Wie verknüpft das V-Modell Anforderungen mit Testnachweisen?</li>
+<li>Welche Arbeitsprodukte soll jede studentische „Firma“ vor der ersten Übung vorbereiten?</li>
+</ol>
+<h2>16. Ausblick auf die nächsten ein bis zwei Veranstaltungen — Stand 22. September 2026</h2>
+<h3>Voraussichtliche Sitzung 07 — praktische Lead-Generierung und Simulation eines Erstgesprächs</h3>
+<p>Die Hausaufgabe weist bereits die nächste Richtung: Teams stellen ihre „Firmen“ vor, führen ein Erstgespräch, vereinbaren einen Folgetermin und dokumentieren Discovery-Fragen. Erwartete Ergebnisse sind Unternehmens-One-Pager, Rollenkarte, Kontaktkarte oder QR-Code, zwei bis drei Fallstudien oder Kompetenznachweise und eine Frageliste für den Lead.</p>
+<h3>Voraussichtliche Sitzung 08 — vom Folgegespräch zu RFI/Proposal und Anforderungsbasis</h3>
+<p>Nach der Simulation des Lead-Prozesses folgt logisch ein konkreter Kundenfall: RFI oder Problembeschreibung erhalten und beantworten, Annahmen und offene Fragen bestimmen, ein Grobangebot ausarbeiten und die erste Rückverfolgbarkeitskette von Bedarf über System- bis zu zugeordneten Komponentenanforderungen erstellen.</p>
+<p>Wichtig: Das ist eine Prognose, keine eingefrorene Behauptung über den tatsächlichen weiteren Verlauf. Wenn eine neue Aufzeichnung vorliegt, wird die wirkliche Veranstaltung als neuer Inhalt hinzugefügt. Die Prognose wird nicht nachträglich umgeschrieben.</p>
+<h2>Geprüfte Referenzen</h2>
+<ul>
+<li>ROS-2-Dokumentation: <a href="https://docs.ros.org/en/jazzy/">https://docs.ros.org/en/jazzy/</a></li>
+<li>AUTOSAR Classic Platform (Beispiel einer Schichtenarchitektur): <a href="https://www.autosar.org/standards/classic-platform">https://www.autosar.org/standards/classic-platform</a></li>
+<li>ISO 26262-3:2018 (Beispiel für formale Konzept- und HARA-Arbeit im Automotive-Bereich): <a href="https://www.iso.org/standard/68385.html">https://www.iso.org/standard/68385.html</a></li>
+</ul>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Lehre</b><p style="margin-top:8px">Lehrmaterialien von Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">Über den Autor →</a></div>
+<div class="footer-links"><b>Kurs</b><a href="index.html">Kursübersicht</a><a href="lecture-01.html">Vorlesung 01</a><a href="lecture-02.html">Vorlesung 02</a><a href="lecture-03.html">Vorlesung 03</a><a href="lecture-06.html">Vorlesung 04</a></div>
+<div class="footer-links"><b>Kontext</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in der Energietechnik</a><a href="../../teaching.html">Alle Lehrmaterialien</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Datenschutz</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

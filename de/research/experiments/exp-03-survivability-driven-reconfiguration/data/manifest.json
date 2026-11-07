@@ -1,0 +1,199 @@
+{
+  "experiment": "EXP-03",
+  "title": "Survivability-driven structural reconfiguration after irreversible resource loss",
+  "config": {
+    "dt": 0.01,
+    "t_end": 16.0,
+    "fault_motor_time": 5.0,
+    "fault_encoder_time": 12.0,
+    "A": 0.9,
+    "x0": 0.2,
+    "disturbance": 0.02,
+    "phi_min": 0.65
+  },
+  "resources": [
+    "motor_a",
+    "motor_b",
+    "encoder",
+    "imu",
+    "can1",
+    "can2"
+  ],
+  "rho0": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "weights": [
+    0.45,
+    0.3,
+    0.15,
+    0.1
+  ],
+  "function_thresholds": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+  ],
+  "phi_min": 0.65,
+  "configurations": {
+    "c0": {
+      "label": "NOMINAL",
+      "actuator": 0,
+      "sensor": 2,
+      "network": 4,
+      "activation": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "gain": 0.8,
+      "safe_stop": false
+    },
+    "c1": {
+      "label": "BACKUP_ACTUATOR",
+      "actuator": 1,
+      "sensor": 2,
+      "network": 4,
+      "activation": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "gain": 0.8,
+      "safe_stop": false
+    },
+    "c2": {
+      "label": "BACKUP_SENSOR",
+      "actuator": 0,
+      "sensor": 3,
+      "network": 4,
+      "activation": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "gain": 0.8,
+      "safe_stop": false
+    },
+    "c3": {
+      "label": "LIMP_HOME",
+      "actuator": 1,
+      "sensor": 3,
+      "network": 5,
+      "activation": [
+        1.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "gain": 0.8,
+      "safe_stop": false
+    },
+    "c4": {
+      "label": "SAFE_STOP",
+      "actuator": null,
+      "sensor": 3,
+      "network": 5,
+      "activation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "gain": 0.0,
+      "safe_stop": true
+    }
+  },
+  "faults": [
+    {
+      "time_s": 5.0,
+      "resource_index": 0,
+      "resource": "motor_a",
+      "equation": "rho_plus = sat_[0,1](rho_minus - eta*D)",
+      "eta": 1.0,
+      "damage_rule": "D = rho_minus"
+    },
+    {
+      "time_s": 12.0,
+      "resource_index": 2,
+      "resource": "encoder",
+      "equation": "rho_plus = sat_[0,1](rho_minus - eta*D)",
+      "eta": 1.0,
+      "damage_rule": "D = rho_minus"
+    }
+  ],
+  "controlled_factor": "structural reconfiguration enabled vs disabled",
+  "held_constant": [
+    "plant model",
+    "initial resource vector",
+    "fault schedule",
+    "disturbance",
+    "K=0.8 for c0,c1,c2,c3",
+    "function thresholds",
+    "mission weights",
+    "Phi_min"
+  ],
+  "transition_graph": {
+    "c0": [
+      "c1",
+      "c2",
+      "c3",
+      "c4"
+    ],
+    "c1": [
+      "c3",
+      "c4"
+    ],
+    "c2": [
+      "c3",
+      "c4"
+    ],
+    "c3": [
+      "c4"
+    ],
+    "c4": []
+  },
+  "selector": {
+    "objective": "maximize S(c,rho)",
+    "constraints": [
+      "Phi(c,rho) >= Phi_min",
+      "|A - b(c,rho)K(c)| < 1"
+    ],
+    "candidate_set": "directed successors TRANSITION_GRAPH[current]",
+    "fallback": "SAFE_STOP if feasible set is empty"
+  },
+  "supervisor": {
+    "frequency_hz": 100,
+    "dt_s": 0.01,
+    "protocol": [
+      "ANALYZE",
+      "SELECT",
+      "APPLY",
+      "VERIFY"
+    ],
+    "one_phase_per_cycle": true
+  },
+  "plotting_contract": {
+    "plotter_reads_only": [
+      "CSV logs",
+      "manifest.json"
+    ],
+    "plotter_imports_model": false,
+    "plotter_imports_selector": false,
+    "plotter_imports_experiment": false
+  },
+  "no_continuous_degradation": true,
+  "no_repair": true,
+  "no_noise": true,
+  "no_transition_score": true,
+  "no_risk_weight": true,
+  "no_gain_scheduling": true
+}

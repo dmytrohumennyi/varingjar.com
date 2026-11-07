@@ -1,0 +1,532 @@
+{
+  "id": "EXP-02",
+  "title": "Graph-Based Post-Failure Reconfiguration",
+  "status": "interactive prototype",
+  "model": {
+    "description": "Illustrative stable-state graph. Values are prototype scenario data, not measured plant data.",
+    "lambda": 0.35,
+    "cost_weights": {
+      "time": 0.35,
+      "energy": 0.2,
+      "risk": 0.3,
+      "degradation": 0.15
+    }
+  },
+  "resources": {
+    "labels": [
+      "ACT-A1",
+      "ACT-A2",
+      "SENSING",
+      "COMPUTE"
+    ],
+    "nominal": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "damaged": [
+      1.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "event": "ACT-A2 irreversible loss"
+  },
+  "states": [
+    {
+      "id": "V0",
+      "label": "NOMINAL FULL",
+      "short": "Nominal",
+      "utility": 0.96,
+      "x": 125,
+      "y": 120,
+      "feasible": {
+        "nominal": true,
+        "damaged": false
+      },
+      "note": "Full mission set; requires both actuators."
+    },
+    {
+      "id": "V1",
+      "label": "DAMAGE CAPTURE",
+      "short": "Capture",
+      "utility": 0.52,
+      "x": 165,
+      "y": 330,
+      "feasible": {
+        "nominal": true,
+        "damaged": true
+      },
+      "note": "Certified post-fault capture state; safe but low mission value."
+    },
+    {
+      "id": "V2",
+      "label": "REDUCED BANDWIDTH",
+      "short": "Reduced BW",
+      "utility": 0.69,
+      "x": 390,
+      "y": 220,
+      "feasible": {
+        "nominal": true,
+        "damaged": true
+      },
+      "note": "Single-actuator control with reduced dynamic envelope."
+    },
+    {
+      "id": "V3",
+      "label": "OBSERVER ASSISTED",
+      "short": "Observer",
+      "utility": 0.61,
+      "x": 390,
+      "y": 420,
+      "feasible": {
+        "nominal": true,
+        "damaged": true
+      },
+      "note": "Estimator-supported control with tighter safety margins."
+    },
+    {
+      "id": "V4",
+      "label": "MISSION ESSENTIAL",
+      "short": "Mission",
+      "utility": 0.84,
+      "x": 670,
+      "y": 210,
+      "feasible": {
+        "nominal": true,
+        "damaged": true
+      },
+      "note": "Resources reassigned to the highest-priority mission functions."
+    },
+    {
+      "id": "V5",
+      "label": "SAFE HOLD",
+      "short": "Safe hold",
+      "utility": 0.39,
+      "x": 675,
+      "y": 425,
+      "feasible": {
+        "nominal": true,
+        "damaged": true
+      },
+      "note": "Stabilisation and containment only."
+    },
+    {
+      "id": "V6",
+      "label": "SAFE SHUTDOWN",
+      "short": "Shutdown",
+      "utility": 0.08,
+      "x": 925,
+      "y": 320,
+      "feasible": {
+        "nominal": true,
+        "damaged": true
+      },
+      "note": "Terminal safe state; mission abandoned."
+    }
+  ],
+  "edges": [
+    {
+      "from": "V0",
+      "to": "V1",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.16,
+        "energy": 0.12,
+        "risk": 0.05,
+        "degradation": 0.03
+      },
+      "duration_s": 0.31,
+      "cost": 0.0995
+    },
+    {
+      "from": "V0",
+      "to": "V2",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.18,
+        "energy": 0.16,
+        "risk": 0.07,
+        "degradation": 0.04
+      },
+      "duration_s": 0.38,
+      "cost": 0.122
+    },
+    {
+      "from": "V0",
+      "to": "V3",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.24,
+        "energy": 0.17,
+        "risk": 0.08,
+        "degradation": 0.05
+      },
+      "duration_s": 0.46,
+      "cost": 0.1495
+    },
+    {
+      "from": "V0",
+      "to": "V5",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.13,
+        "energy": 0.09,
+        "risk": 0.04,
+        "degradation": 0.02
+      },
+      "duration_s": 0.25,
+      "cost": 0.0785
+    },
+    {
+      "from": "V0",
+      "to": "V6",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.1,
+        "energy": 0.05,
+        "risk": 0.02,
+        "degradation": 0.01
+      },
+      "duration_s": 0.18,
+      "cost": 0.0525
+    },
+    {
+      "from": "V1",
+      "to": "V0",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.3,
+        "energy": 0.24,
+        "risk": 0.13,
+        "degradation": 0.07
+      },
+      "duration_s": 0.66,
+      "cost": 0.2025
+    },
+    {
+      "from": "V1",
+      "to": "V2",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.25,
+        "energy": 0.2,
+        "risk": 0.1,
+        "degradation": 0.05
+      },
+      "duration_s": 0.42,
+      "cost": 0.165
+    },
+    {
+      "from": "V1",
+      "to": "V3",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.38,
+        "energy": 0.24,
+        "risk": 0.2,
+        "degradation": 0.08
+      },
+      "duration_s": 0.68,
+      "cost": 0.253
+    },
+    {
+      "from": "V1",
+      "to": "V5",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.18,
+        "energy": 0.1,
+        "risk": 0.06,
+        "degradation": 0.03
+      },
+      "duration_s": 0.34,
+      "cost": 0.1055
+    },
+    {
+      "from": "V1",
+      "to": "V6",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.15,
+        "energy": 0.07,
+        "risk": 0.04,
+        "degradation": 0.02
+      },
+      "duration_s": 0.28,
+      "cost": 0.0815
+    },
+    {
+      "from": "V2",
+      "to": "V0",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.25,
+        "energy": 0.19,
+        "risk": 0.09,
+        "degradation": 0.05
+      },
+      "duration_s": 0.51,
+      "cost": 0.16
+    },
+    {
+      "from": "V2",
+      "to": "V1",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.19,
+        "energy": 0.15,
+        "risk": 0.08,
+        "degradation": 0.04
+      },
+      "duration_s": 0.36,
+      "cost": 0.1265
+    },
+    {
+      "from": "V2",
+      "to": "V4",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.35,
+        "energy": 0.18,
+        "risk": 0.08,
+        "degradation": 0.06
+      },
+      "duration_s": 0.75,
+      "cost": 0.1915
+    },
+    {
+      "from": "V2",
+      "to": "V5",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.16,
+        "energy": 0.1,
+        "risk": 0.05,
+        "degradation": 0.03
+      },
+      "duration_s": 0.29,
+      "cost": 0.0955
+    },
+    {
+      "from": "V2",
+      "to": "V6",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.13,
+        "energy": 0.07,
+        "risk": 0.03,
+        "degradation": 0.02
+      },
+      "duration_s": 0.24,
+      "cost": 0.0715
+    },
+    {
+      "from": "V3",
+      "to": "V0",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.31,
+        "energy": 0.23,
+        "risk": 0.12,
+        "degradation": 0.06
+      },
+      "duration_s": 0.61,
+      "cost": 0.1995
+    },
+    {
+      "from": "V3",
+      "to": "V2",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.23,
+        "energy": 0.16,
+        "risk": 0.09,
+        "degradation": 0.04
+      },
+      "duration_s": 0.43,
+      "cost": 0.1455
+    },
+    {
+      "from": "V3",
+      "to": "V4",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.42,
+        "energy": 0.2,
+        "risk": 0.13,
+        "degradation": 0.07
+      },
+      "duration_s": 0.84,
+      "cost": 0.2365
+    },
+    {
+      "from": "V3",
+      "to": "V5",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.16,
+        "energy": 0.09,
+        "risk": 0.05,
+        "degradation": 0.03
+      },
+      "duration_s": 0.31,
+      "cost": 0.0935
+    },
+    {
+      "from": "V3",
+      "to": "V6",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.13,
+        "energy": 0.06,
+        "risk": 0.03,
+        "degradation": 0.02
+      },
+      "duration_s": 0.25,
+      "cost": 0.0695
+    },
+    {
+      "from": "V4",
+      "to": "V2",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.3,
+        "energy": 0.18,
+        "risk": 0.11,
+        "degradation": 0.06
+      },
+      "duration_s": 0.61,
+      "cost": 0.183
+    },
+    {
+      "from": "V4",
+      "to": "V5",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.14,
+        "energy": 0.09,
+        "risk": 0.04,
+        "degradation": 0.02
+      },
+      "duration_s": 0.27,
+      "cost": 0.082
+    },
+    {
+      "from": "V4",
+      "to": "V6",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.12,
+        "energy": 0.06,
+        "risk": 0.03,
+        "degradation": 0.02
+      },
+      "duration_s": 0.22,
+      "cost": 0.066
+    },
+    {
+      "from": "V5",
+      "to": "V4",
+      "modes": [
+        "nominal"
+      ],
+      "components": {
+        "time": 0.29,
+        "energy": 0.16,
+        "risk": 0.1,
+        "degradation": 0.05
+      },
+      "duration_s": 0.59,
+      "cost": 0.171
+    },
+    {
+      "from": "V5",
+      "to": "V6",
+      "modes": [
+        "nominal",
+        "damaged"
+      ],
+      "components": {
+        "time": 0.1,
+        "energy": 0.05,
+        "risk": 0.02,
+        "degradation": 0.01
+      },
+      "duration_s": 0.19,
+      "cost": 0.0525
+    }
+  ],
+  "post_damage": {
+    "transient": "q_f",
+    "capture": "V1",
+    "target": "V4",
+    "expected_path": [
+      "V1",
+      "V2",
+      "V4"
+    ]
+  }
+}

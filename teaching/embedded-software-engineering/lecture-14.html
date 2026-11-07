@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="en";var TARGETS={"en":"lecture-14.html","uk":"../../uk/teaching/embedded-software-engineering/lecture-14.html","de":"../../de/teaching/embedded-software-engineering/lecture-14.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>HARA for the PoC, a Hybrid Contract and the First Epic Plan — Væringjar II</title><meta content="What goes into a PoC and how a HARA decides it, Fixed Price for in-house engineering and T&amp;M for vendors, three levels of assembly, and a 29-step EPIC 1 plan with gates G1–G4." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-14.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-14.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-14.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-14.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-14.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="HARA for the PoC, a Hybrid Contract and the First Epic Plan" property="og:title"/><meta content="What goes into a PoC and how a HARA decides it, Fixed Price for in-house engineering and T&amp;M for vendors, three levels of assembly, and a 29-step EPIC 1 plan with gates G1–G4." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/teaching/embedded-software-engineering/lecture-14.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="HARA for the PoC, a Hybrid Contract and the First Epic Plan" name="twitter:title"/><meta content="What goes into a PoC and how a HARA decides it, Fixed Price for in-house engineering and T&amp;M for vendors, three levels of assembly, and a 29-step EPIC 1 plan with gates G1–G4." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/><script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script><style id="lecture-figure-style">.lecture-notes-content figure.lecture-figure{margin:28px 0;padding:0;max-width:100%}.lecture-notes-content figure.lecture-figure a{display:block;border:0;background:#fff;padding:10px;border-radius:6px;border:1px solid rgba(127,127,127,.35)}.lecture-notes-content figure.lecture-figure img{display:block;width:100%;height:auto;margin:0 auto}.lecture-notes-content figure.lecture-figure-small{max-width:560px}.lecture-notes-content figure.lecture-figure-wide{width:min(1180px,calc(100vw - 48px));max-width:none}.lecture-notes-content figure.lecture-figure figcaption{margin-top:10px}.lecture-notes-content .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}@media (max-width:640px){.lecture-notes-content .table-scroll table{min-width:600px;width:600px;max-width:none!important;table-layout:auto}}</style></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Framework</a><a href="../../research.html">Evidence</a><a href="../../implementation.html">Build</a><a class="active" href="../../teaching.html">Teaching</a><a href="../../collaboration.html">Collaborate</a></div>
+<div aria-label="Language" class="lang-switch"><a aria-current="page" class="active" data-lang="en" href="lecture-14.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../uk/teaching/embedded-software-engineering/lecture-14.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../de/teaching/embedded-software-engineering/lecture-14.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Teaching / Session 14 · 28 Oct 2026</div><h1>HARA for the PoC, a Hybrid Contract and the First Epic Plan</h1><p class="lead reader-lead">What goes into a PoC and how a HARA decides it, Fixed Price for in-house engineering and T&amp;M for vendors, three levels of assembly, and a 29-step EPIC 1 plan with gates G1–G4.</p><div class="reader-badges"><span>28.10.2026</span><span>Session 14 / 14</span><span>01:34:00</span><span>Practical session</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Course overview →</a><a class="btn btn-primary" href="#full-notes">Read full notes ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODULE 04 · COMMERCIAL ENGINEERING / 14 · 28.10.2026</div><div class="course-context-nav"><a class="previous" href="lecture-13.html">Previous · 13</a><span class="current">14</span><span class="next">EPIC 2, Gantt chart and team (planned)</span></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Course chronology</div><h2>Engineering notes</h2><p class="reader-intro">What goes into a PoC and how a HARA decides it, Fixed Price for in-house engineering and T&amp;M for vendors, three levels of assembly, and a 29-step EPIC 1 plan with gates G1–G4.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>PoC and HARA</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>In-house FP, vendors T&amp;M</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Assembly in three levels</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>EPIC 1 plan with four gates</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Full session notes</div><h2>Full session notes</h2><p class="lecture-notes-intro">Complete English teaching notes derived from the Ukrainian transcript of 28 October, the lecturer’s draw.io diagram and his Excel plan. Supplier experience is the lecturer’s own practice, given without company names.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="source-notes/R14-2026-10-28.md">Ukrainian source notes →</a> <a class="btn btn-ghost" href="source-transcripts/2026-10-28.md">Original transcript →</a></div><article class="lecture-article lecture-notes-content" lang="en"><h1>Session 14. HARA for the PoC, a hybrid contract and a detailed plan for the first epic</h1>
+<blockquote>
+<p><strong>28 October 2026 · Practical session · 1 h 34 min.</strong> Based on the automatic transcript <code>IgorSikorskyKPI_28102026.mp4</code>, together with the draw.io diagram and Excel plan the lecturer built during the session. This is an edited teaching note, not a verbatim transcript: obvious recognition errors were corrected and terminology was aligned with earlier sessions. Experience with manufacturers and suppliers is <strong>the lecturer’s personal practice</strong>, given without company names. Editorial additions are marked separately.</p>
+</blockquote>
+<h2>0. Organisation</h2>
+<ul>
+<li>The session is recorded; the video and the automatic transcript are available to students for their notes.</li>
+<li>The lecturer uploaded the working diagram file to Google Drive; after the course the materials will be placed on his server with a link on the website.</li>
+<li>A methodological guide is planned as an outcome of the course.</li>
+<li>Safety reminder: in case of an air-raid alert, be careful and look after your own safety.</li>
+</ul>
+<h2>1. Recap: phases, gates and the cone of uncertainty</h2>
+<p>Session 13 described how to present a way of work to the customer: split the project into phases 1, 2, 3 … N, say that you are open to continuing (support, decommissioning, etc.) and honestly show <strong>at least two gates</strong>. A gate is an exit point:</p>
+<ul>
+<li>R&amp;D succeeded — we move on to the PoC;</li>
+<li>it failed — the gate lets you drop out quickly at an early stage with minimal loss of time and money <strong>for both sides</strong>;</li>
+<li>or you find another concept and go back to the start for attempt no. 2, no. 3.</li>
+</ul>
+<p>Depending on the type of project, at least do not forget about R&amp;D and a PoC. R&amp;D checks <strong>technical feasibility</strong> with the current state of science and technology: if the answer is no, you must look for other science or technology or wait until it matures. R&amp;D also <strong>narrows the cone of uncertainty</strong>: the further ahead an event, the more assumptions you make and the harder it is to estimate what you can deliver, what it will cost and how long it will take. This too must be communicated to the customer during R&amp;D.</p>
+<h2>2. What a PoC gives you: the right choice of tools</h2>
+<p>After a successful R&amp;D phase, propose a Proof of Concept to the customer. The focus of a PoC is not on looks or on finishing the product, but on validating your choices:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>What the PoC checks</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Component base</td>
+<td>The chosen chip really works with AI; a DSP processes 10 video streams from 10 cameras in parallel without excessive latency</td>
+</tr>
+<tr>
+<td>Framework</td>
+<td>Whether it offers enough tooling for the task</td>
+</tr>
+<tr>
+<td>Programming language</td>
+<td>Whether it is functionally safe enough and well supported</td>
+</tr>
+<tr>
+<td>Operating system</td>
+<td>Whether a proper compiler exists for it — otherwise you will have to rewrite tonnes of existing code</td>
+</tr>
+</tbody>
+</table></div>
+<p>The risk of skipping a PoC is enormous: you design in a chip, buy it, develop electronics, an enclosure and a cooling system around it — and then it "does not cope". A PoC costs money, but it <strong>removes large future risks in your choice of tools</strong>.</p>
+<h2>3. What exactly goes into the PoC: HARA</h2>
+<p>A project can be large: your own hardware (PCBs), firmware running on it, mechanics (the enclosure) everything is built into, a communication protocol between devices, a desktop part, the cloud. The teaching topology: two physical devices in two enclosures, each with its own electronics, chips and firmware; a protocol between them; one firmware acts as master, and a separate computer works as a gateway that forwards data to and from the cloud.</p>
+<figure class="diagram lecture-figure"><a href="../../assets/img/teaching/embedded-software-engineering/l14-hara-sketch.png"><img src="../../assets/img/teaching/embedded-software-engineering/l14-hara-sketch.png" alt="Topology: two Mech enclosures with HW boards and FW firmware connected by a protocol; one FW linked to a gateway computer and the cloud; next to it a HARA with two risks: ComProt bit losing high 10 7 7 and Thermal management MCU hot medium 5 5 5" loading="lazy"/></a><figcaption class="diagram-note">Fig. 14.1. The teaching topology with a short HARA: bit loss in the communication protocol — high (10 | 7 | 7); MCU overheating in the enclosure — medium (5 | 5 | 5). Lecturer’s diagram (draw.io).</figcaption></figure>
+
+<p>The PoC takes on <strong>the scariest parts</strong> — where you could "hit the post". To find them, run a <strong>HARA — Hazard Analysis and Risk Assessment</strong>. All engineers get together (preferably in person) and analyse what could happen to the system: where you are unsure, what you have never done, where you will be pioneers.</p>
+<p>Example from the session:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Item</th>
+<th>Hazard</th>
+<th>Scores</th>
+<th>Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Communication protocol</td>
+<td>Bit loss; a protocol failure "kills everything"</td>
+<td>severity 10, frequency 7 (statistics and the engineers’ experience), impact 7</td>
+<td><strong>high</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Enclosure thermal management</td>
+<td>The mechanical engineer is not sure the "hot" MCU will not overheat</td>
+<td>5, 5, 5</td>
+<td><strong>medium</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>You take the HARA results to the customer: "Within the PoC we would like to investigate these two questions — they appear to be the most dangerous," and back this up with slides and the table. The customer’s reaction depends on his situation:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Customer</th>
+<th>What he will allow in the PoC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Has financial difficulties</td>
+<td>Only high-level risks</td>
+</tr>
+<tr>
+<td>Balanced</td>
+<td>High and medium</td>
+</tr>
+<tr>
+<td>"Sensible" — wants to proceed without risk</td>
+<td>High, medium and low</td>
+</tr>
+</tbody>
+</table></div>
+<h2>4. What a HARA table looks like</h2>
+<p>The lecturer showed a typical structure for such an analysis (the example he found was, in his words, closer to a TARA — a cybersecurity threat analysis — but the structure is the same):</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identifier</td>
+<td>Hazard number</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>What happened and in which function or component (communication, mechanics…)</td>
+</tr>
+<tr>
+<td>Control</td>
+<td>How the risk will be controlled: automatic correction, operator action, or acceptance of the risk</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>Strength of the impact</td>
+</tr>
+<tr>
+<td>Probability</td>
+<td>Likelihood that it will happen</td>
+</tr>
+<tr>
+<td>Risk level</td>
+<td>Severity × probability; you define your own low / medium / high thresholds</td>
+</tr>
+<tr>
+<td>Action plan</td>
+<td>What we will do to reduce the risk: investigate, change, rebuild — or nothing if the risk is accepted</td>
+</tr>
+</tbody>
+</table></div>
+<p>High risks must be analysed; for medium and low you consciously decide what to do, taking probability into account. Two examples:</p>
+<ul>
+<li><strong>A meteorite strike</strong>: very serious consequences but very low probability — the risk is classified as low.</li>
+<li><strong>A pilot falling asleep at the controls</strong> with the autopilot off: hard working conditions make the probability fairly high, the consequences are serious, so the risk is very high.</li>
+</ul>
+<blockquote>
+<p><strong>Editorial note on the pilot example.</strong> The details the lecturer gave from memory (Air France, flying past Paris "almost to Poland") could not be confirmed. Documented cases in which both pilots fell asleep: Ethiopian Airlines flight ET343 Khartoum–Addis Ababa (August 2022) overflew its destination, and the crew woke up when the autopilot disconnected and sounded an alarm; a Batik Air flight Kendari–Jakarta (January 2024) — according to the Indonesian investigation report both pilots slept for about 28 minutes and the aircraft drifted off course. The point of the example is unchanged: high probability × severe consequences = high risk.</p>
+<p><strong>Editorial note on the method.</strong> The numeric "severity × probability" scoring used by the lecturer is a simplified FMEA-style risk matrix, convenient for internal prioritisation of a PoC. A formal HARA under <strong>ISO 26262-3</strong> classifies each hazardous event by three parameters — <strong>Severity (S0–S3), Exposure (E0–E4) and Controllability (C0–C3)</strong> — and determines <strong>ASIL A–D</strong> or QM. A cybersecurity threat analysis (<strong>TARA</strong>) is described in <strong>ISO/SAE 21434</strong>. If the project falls under these standards, an internal PoC table should not be presented to the customer as a formal HARA or TARA.</p>
+</blockquote>
+<h2>5. What to do with the PoC result</h2>
+<p>The risks identified in the HARA (here, the protocol and enclosure overheating) become <strong>objects of investigation</strong> in the PoC. If the problem is confirmed, it must be solved — at the very least, a way to solve it must be found:</p>
+<ul>
+<li><strong>a solution path is found</strong> — a sufficient condition for moving on;</li>
+<li><strong>no path is found</strong> — we stop the project or repeat the investigation.</li>
+</ul>
+<p>After that, the project proceeds feature by feature until the end.</p>
+<h2>6. A hybrid contract: what we do and what vendors do</h2>
+<p>Session 13 covered Fixed Price, Time &amp; Material, T&amp;M with an upper limit, and combining them by phase. Practice shows one more variant — a split <strong>by responsibility</strong>. Back to the two-device topology.</p>
+<figure class="diagram lecture-figure"><a href="../../assets/img/teaching/embedded-software-engineering/l14-responsibility-split.png"><img src="../../assets/img/teaching/embedded-software-engineering/l14-responsibility-split.png" alt="Top: topology with internet, PC and two enclosures with HW and FW. Bottom: two circled groups — vendors HW manufacturing, sources, Mech manufacturing, Harness manufacturing, Delivery marked T&amp;M; own functions SW dev, Arch dev, manufacturing review and support, legal finance office, assembly marked FP; arrows from legal to each vendor" loading="lazy"/></a><figcaption class="diagram-note">Fig. 14.2. Split of responsibility: left — external vendors (T&amp;M); right — your own engineering service (FP). Blue arrows — legal, which handles claims against each vendor. Lecturer’s diagram (draw.io).</figcaption></figure>
+
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Who</th>
+<th>Functions</th>
+<th>Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Us</strong> (in-house)</td>
+<td>Software development; architecture; manufacturing review and support — technical supervision of production; legal / finance / office management; assembly (see Section 7)</td>
+<td><strong>FP</strong></td>
+</tr>
+<tr>
+<td><strong>Vendors</strong></td>
+<td>Hardware manufacturing; mechanical manufacturing (enclosures); harness manufacturing; component sourcing; delivery</td>
+<td><strong>T&amp;M</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>We will design the mechanics, develop and review the hardware, and our mechanical and electronics engineers will design the harness — but <strong>we will not manufacture</strong>: there is no factory, no competence, no technicians to crimp cables, put them into insulation and route them in cable ducts. Manufacturing goes to external organisations. A <strong>vendor</strong> is another organisation that provides you with a service for money: a factory, a supplier or a carrier.</p>
+<h3>Why pure Fixed Price on everything is shooting yourself in the foot</h3>
+<p>Pure FP on everything means the customer wants to "go to the shop and buy a bucket of potatoes": pay, wait and receive a finished product. But vendors are not under your control: they can change <strong>time, quality and price</strong>. The lecturer described his own practice:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Link</th>
+<th>What happens in practice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Electronics</td>
+<td>Production is usually ordered in China because it is cheaper. Recently manufacturers have been restricting orders from Ukraine: they produce the bare boards but do not populate them. This added another vendor — a component supplier (ICs, transistors, connectors, passives): more money, time and risk</td>
+</tr>
+<tr>
+<td>Mechanics</td>
+<td>Production capacity in Bila Tserkva, Kharkiv and Kyiv; issues with quality and lead times. A former high-quality, punctual manufacturer raised its price one and a half times — and effectively dropped out</td>
+</tr>
+<tr>
+<td>Harnesses</td>
+<td>Made in Kamianets-Podilskyi; quality issues have appeared recently</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>Long and unpredictable delays within Ukraine</td>
+</tr>
+<tr>
+<td>Components</td>
+<td>Can simply disappear from the market; there is a shortage of microcontrollers and microprocessors — they have to be ordered a month or two before they are needed</td>
+</tr>
+</tbody>
+</table></div>
+<p>All these links can "play" at the same time, and the postal service multiplies everything by its own coefficient of delays and price changes. Worst of all, this is a <strong>physical product</strong>. If incoming inspection finds defects, rework immediately doubles the delivery time. If a vendor refuses to rework, legal gets involved — and that is more time again. The lecturer also stressed that a product is rarely made in a single country, so war and restrictions somewhere in the world always affect the supply chain.</p>
+<p>Conclusion: <strong>Fixed Price on the manufacturing part in today’s conditions — not only in Ukraine but in Europe as a whole — means shooting yourself in the foot for any embedded project.</strong></p>
+<h3>When FP on the vendor part is still possible</h3>
+<p>Only if you hold legally confirmed agreements with the carrier, the component supplier and the hardware, mechanics and harness manufacturers. Then, if a vendor delays, your corporate lawyers take it to court and the vendor compensates the losses defined in your FP contract with the customer. But today’s manufacturers know these risks well and will almost certainly not sign such an agreement. And if they do, they will hike the price. You will raise yours, and the customer will either raise the price of his own product or walk away from you.</p>
+<h3>The recommended split</h3>
+<p>Convince the customer to divide the collaboration model into two groups:</p>
+<ul>
+<li><strong>in-house service</strong> — software, architecture, manufacturing review, legal, finance, office management, assembly — at <strong>fixed time and fixed price</strong>;</li>
+<li><strong>component purchasing, electronics, mechanics and harness manufacturing, delivery</strong> — on <strong>time and material</strong>.</li>
+</ul>
+<p>Then, as the saying goes, "the wolves are fed and the goats are intact". Your risk and the project’s risk are "blood brothers": if something fails, both sides suffer. Once you explain this, a customer "in his right mind" will usually meet you halfway. Modern customers are reasonably familiar with this combined model.</p>
+<p>The project now has <strong>two fuses</strong>: this split of responsibility and the gates after risky phases. Together they keep workload and risk in balance for you, the customer and the vendors.</p>
+<h2>7. The assembly dilemma: outsource or keep in-house</h2>
+<figure class="diagram lecture-figure lecture-figure-small"><a href="../../assets/img/teaching/embedded-software-engineering/l14-assembly-levels.png"><img src="../../assets/img/teaching/embedded-software-engineering/l14-assembly-levels.png" alt="Nested Mech and HW rectangles with three assembly blocks: mechanical assembly, board assembly and product assembly" loading="lazy"/></a><figcaption class="diagram-note">Fig. 14.3. Three levels of assembly: mechanics, the printed circuit board (PCBA) and the product as a whole. Lecturer’s diagram (draw.io).</figcaption></figure>
+
+<p><strong>Option 1: the mechanics factory does the assembly.</strong> Suppose a mechanical product consists of about 120 parts: front, base, frame, top cover, internal stiffeners. You send the factory the design documentation, and then the factory’s process engineer and your engineer agree the manufacturing process: bending, laser cutting, milling, etc. Every machine behaves slightly differently: two identical bending machines bend differently, a painting machine gives a slightly different shade. So the engineer and the process engineer must not just exchange a specification but <strong>talk through</strong> what exactly must be done for the product to assemble and work. The lecturer joked about the "goat" (Ukrainian <em>koza</em>) — a KPI nickname for the design note, effectively a specification for a particular factory. After manufacturing, your engineer provides the <strong>assembly documentation</strong> (assembly instructions), and the factory assembles the product.</p>
+<ul>
+<li>Pro: you receive a finished mechanical product.</li>
+<li>Con: the price rises substantially — for the manufacturer this means extra obligations, people and an assembly shop it may not have.</li>
+</ul>
+<p><strong>But assembly has three levels:</strong></p>
+<ol>
+<li><strong>Mechanical assembly</strong> — from individual doors, frames, etc.</li>
+<li><strong>Board assembly</strong> — components from the supplier are soldered onto the bare PCB to produce a <strong>PCBA</strong> (PCB assembly).</li>
+<li><strong>Product assembly</strong> — the PCBA is installed in the mechanics; after that, firmware is loaded into the finished product.</li>
+</ol>
+<p>This multi-stage nature is what led the lecturer to create <strong>his own assembly role</strong> — a separate assembly shop. It is staffed by a <strong>technician</strong> with two competences: mechanical assembly and PCBA assembly/soldering. "If a function is used twice, it makes sense to make it a function of its own."</p>
+<p>If the technician has a proper workplace, storage and adequate tools — so that he feels comfortable and not like "a white crow in an IT office" — he can also take over <strong>manufacturing a large share of the harnesses</strong>: buy connectors, wire and insulation and build the harnesses to your design. So an in-house assembly role:</p>
+<ul>
+<li>substantially reduces the risk of errors during mechanical assembly;</li>
+<li>opens the possibility of bringing harness manufacturing in-house.</li>
+</ul>
+<p>Why do software students need this? Because you develop a <strong>system</strong>: software is embedded in a chip, the chip in a board, the board in an enclosure. None of you is likely to supervise production personally, but understanding how this process is built is very important.</p>
+<h2>8. Example: two devices and an operator workstation</h2>
+<figure class="diagram lecture-figure"><a href="../../assets/img/teaching/embedded-software-engineering/l14-system-topology.png"><img src="../../assets/img/teaching/embedded-software-engineering/l14-system-topology.png" alt="Teaching project topology: two enclosures with HW and FW linked by radio, one sending data to a PC; operators see a list Item 1, Item 2, Item 3 on the PC" loading="lazy"/></a><figcaption class="diagram-note">Fig. 14.4. The teaching project: device A, device B and a PC with a list of events (Item 1, 2, 3) for the operators. Lecturer’s diagram (draw.io).</figcaption></figure>
+
+<p>A notional customer wants a system of three parts:</p>
+<ul>
+<li><strong>device A</strong> — a real product with a mount, electronics and code; via sensors it detects that it is installed and switched on, and transmits its state over radio;</li>
+<li><strong>device B</strong> — receives that data stream and, once it recognises the relevant event, passes it to the operators’ computer;</li>
+<li><strong>the operators’ computer</strong> shows which action to take now: Item 1, Item 2, Item 3. That is enough: when they see Item 1, the operators perform the corresponding action.</li>
+</ul>
+<p>The customer is in a hurry, so the first step is <strong>detailed planning</strong>. In the lecturer’s experience the best tool for this is Excel.</p>
+<h2>9. A detailed plan for EPIC 1</h2>
+<p>Below is the phase breakdown chart the lecturer built live. Gates G1–G4 sit where the result can stop the project.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Stage</th>
+<th>Gate</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Collect information about the object and environment (≈ R&amp;D)</td>
+<td><strong>G1</strong></td>
+<td>Which radio channels can be used and certified at the operating site; operation in noise; which frequencies are already in use (to avoid interference); temperatures, contamination, power supply. "More questions than answers." Without this there is no subject domain. The environment may be so hostile that the project cannot proceed</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Develop and approve system requirements</td>
+<td><strong>G2</strong></td>
+<td>The system cannot be described without requirements. Until they are approved with the customer, nothing further can be designed — he may want something else</td>
+</tr>
+<tr>
+<td>3</td>
+<td>System architecture description</td>
+<td>—</td>
+<td>Decomposition: which subsystems, hardware, chips. A real view of the project</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Risk analysis (HARA; TARA if needed)</td>
+<td>—</td>
+<td>HARA for functional safety, TARA for cybersecurity</td>
+</tr>
+<tr>
+<td>5</td>
+<td>PoC on the HARA/TARA risks</td>
+<td><strong>G3</strong></td>
+<td>A separate R&amp;D phase is not needed here: stage 1 already is research. The PoC may say "don’t go there" — for example, electromagnetic interference "kills" everything</td>
+</tr>
+<tr>
+<td>6</td>
+<td>MVP</td>
+<td>—</td>
+<td>A minimal function: confirm that devices A and B see each other and light an indicator. No enclosure, "taped on". It sells your service</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Detail the SW, mechanical and HW requirements</td>
+<td>—</td>
+<td>Now it is clear what we are dealing with: requirements, architecture, verified risks and a demo exist</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Estimate HW load (resources needed by the FW)</td>
+<td>—</td>
+<td>Which chip, communication, optics or radio are needed for the firmware to meet the requirements</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Find the component base on the market (HW)</td>
+<td><strong>G4</strong></td>
+<td>Chip, RAM, power components, radio interface — do they really exist and can they be bought. Without procurement there is no further development</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Model / virtualisation: SW mock-up (application)</td>
+<td>—</td>
+<td>Simulators of devices A and B, their mechanics and the radio link. The project without real hardware, before integration. The methodology is your choice (classic approach, TDD)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Hardware development: schematic, PCB, BoM</td>
+<td>—</td>
+<td>In parallel with stage 10. Output: schematic, PCB, 3D model and bill of materials with prices and quantities</td>
+</tr>
+<tr>
+<td>12</td>
+<td>HW review</td>
+<td>—</td>
+<td>Another engineer reviews the hardware. <strong>A mandatory stage</strong></td>
+</tr>
+<tr>
+<td>13</td>
+<td>HW review by FW</td>
+<td>—</td>
+<td>A firmware engineer checks that the functionality will "fit" this hardware</td>
+</tr>
+<tr>
+<td>14</td>
+<td>All hands (HW)</td>
+<td>—</td>
+<td>Meeting with the customer: is this the vision he wants</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Mechanical development (requirements + HW STEP models)</td>
+<td>—</td>
+<td>The mechanical engineer designs the enclosure from the requirements and the board 3D models from the hardware engineer. Nothing has gone to production yet</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Mechanics review by HW</td>
+<td>—</td>
+<td>The hardware engineer reviews the mechanics</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Rework (HW / Mech)</td>
+<td>—</td>
+<td>There will always be some: the board does not fit the enclosure, or fits but overheats</td>
+</tr>
+<tr>
+<td>18</td>
+<td>All hands (HW + Mech)</td>
+<td>—</td>
+<td>A demo for all stakeholders: management, customer, engineers</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Manufacturing (HW and Mech)</td>
+<td>—</td>
+<td>Both parts go to production</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Manufacturing support (HW and Mech)</td>
+<td>—</td>
+<td>A long, murky period of constant communication between engineers and manufacturers</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Procurement and component shipment</td>
+<td>—</td>
+<td>Production time is used to buy standard mechanical parts (bolts, nuts, washers, spring washers, feet, handles) and electronics (e.g. Mouser, DigiKey): purchasing, customs clearance, delivery, storage in the warehouse or office safe. Owned by the <strong>Procurement Manager</strong></td>
+</tr>
+<tr>
+<td>22</td>
+<td>Assembly (Mech)</td>
+<td>—</td>
+<td>Mechanics arrive first; the technician assembles them</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Review (Mech)</td>
+<td>—</td>
+<td>Inspection of the assembled mechanics</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Rework (Mech)</td>
+<td>—</td>
+<td>Plan for it from the start: assembly and rework go together</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Assembly (HW)</td>
+<td>—</td>
+<td>Board assembly</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Review (HW)</td>
+<td>—</td>
+<td>Inspection of the assembled boards</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Rework (HW)</td>
+<td>—</td>
+<td>On the first iteration, errors are fixed on the spot: traces are cut and jumper wires soldered</td>
+</tr>
+<tr>
+<td>28</td>
+<td>FW: finalisation and upload</td>
+<td>—</td>
+<td>Code first written against the model (stage 10) is completed on real hardware</td>
+</tr>
+<tr>
+<td>29</td>
+<td>FW: testing</td>
+<td>—</td>
+<td>Testing on real hardware</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Editorial note.</strong> In the working Excel file, rows 23–24 and 26–27 are labelled "review / Review (Mech)" and "review / Review (HW)". According to the lecturer’s explanation in the session, the sequence is assembly → review → rework, so they are shown here as Review and Rework.</p>
+</blockquote>
+<p><strong>Typical manufacturing lead times</strong> from the lecturer’s experience:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Lead time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mechanics (enclosure the size of a microwave oven)</td>
+<td>10 to 30 days</td>
+</tr>
+<tr>
+<td>Hardware</td>
+<td>3 to 5 weeks</td>
+</tr>
+</tbody>
+</table></div>
+<p>It would be "a sin to stand idle" during this time: that is exactly when you make sure the components and tools are available.</p>
+<h3>One epic is not yet a project</h3>
+<p>Everything described above is one <strong>epic</strong>. In embedded development with mechanics and hardware there is never just one epic — <strong>at least three</strong>. So the plan has been "frozen": the lecturer promised to continue with EPIC 2 next week.</p>
+<h2>Practical takeaways</h2>
+<ul>
+<li>A PoC is an investment that removes the risk of choosing the wrong components, frameworks, language and OS.</li>
+<li>What goes into the PoC is decided by a HARA (and TARA) carried out by the whole engineering team.</li>
+<li>Risk priorities are shown to the customer; he chooses the PoC scope according to his budget and risk appetite.</li>
+<li>A found solution path is a sufficient condition for moving on; if none is found — stop or investigate again.</li>
+<li>Fixed Price suits your own engineering service; manufacturing, purchasing and delivery belong on T&amp;M.</li>
+<li>Assembly has three levels; an in-house assembly technician reduces risk and lets you build harnesses yourself.</li>
+<li>A detailed epic plan is a chain from data collection to firmware testing, with gates wherever the project can stop.</li>
+<li>Manufacturing lead times are used for parallel purchasing and preparation.</li>
+</ul>
+<h2>Self-check questions</h2>
+<ul>
+<li>Which four kinds of choices does a PoC validate?</li>
+<li>How is a HARA carried out, and who should take part?</li>
+<li>Which fields does a HARA table contain?</li>
+<li>How do customers in different financial situations choose the PoC scope?</li>
+<li>How does a simplified severity × probability score differ from the S/E/C → ASIL classification in ISO 26262?</li>
+<li>Why is Fixed Price on the manufacturing part of an embedded project dangerous?</li>
+<li>Under what condition is FP on the vendor part possible, and why do vendors rarely agree?</li>
+<li>What are the three levels of assembly in a physical product?</li>
+<li>Why is an in-house assembly role good for the company?</li>
+<li>Where are gates G1–G4 in the EPIC 1 plan, and why there?</li>
+<li>Why is hardware reviewed twice — by another hardware engineer and by a firmware engineer?</li>
+<li>What does the procurement manager do while production is running?</li>
+</ul>
+<h2>Announced next</h2>
+<p>For next week the lecturer announced: EPIC 2 and further epics, a Gantt chart, forming the team, defining the engineers needed and their profiles, notional hiring, and migrating the plan to Jira. This is an <strong>announced plan</strong>, not sessions that have already taken place.</p>
+<h2>Session materials</h2>
+<ul>
+<li>The draw.io diagram from the session: <a href="source-materials/2026-10-28-hara-responsibility-assembly.drawio">download .drawio</a></li>
+<li>The EPIC 1 Excel plan: <a href="source-materials/2026-10-28-epic1-plan.xlsx">download .xlsx</a></li>
+</ul>
+<h2>Verified links</h2>
+<ul>
+<li>ISO 26262-3:2018, Road vehicles — Functional safety — Part 3: Concept phase: https://www.iso.org/standard/68385.html</li>
+<li>ISO/SAE 21434:2021, Road vehicles — Cybersecurity engineering: https://www.iso.org/standard/70918.html</li>
+<li>Batik Air, both pilots fell asleep (ITV News, 11 March 2024): https://www.itv.com/news/2024-03-11/plane-veered-off-course-after-pilots-fell-asleep-on-flight-report-says</li>
+<li>Ethiopian Airlines ET343 (The Tribune, 19 August 2022): https://www.tribuneindia.com/news/trending/both-pilots-fall-asleep-while-flying-at-37-000-feet-miss-their-landing-423279</li>
+</ul></article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Teaching</b><p style="margin-top:8px">Author teaching materials by Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">About the author →</a></div>
+<div class="footer-links"><b>Course</b><a href="index.html">Course overview</a><a href="lecture-12.html">Session 12</a><a href="lecture-13.html">Session 13</a><a href="lecture-14.html">Session 14</a></div>
+<div class="footer-links"><b>Context</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in Power Engineering</a><a href="../../teaching.html">All teaching materials</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Privacy</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../assets/js/locale.js"></script><script defer src="../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

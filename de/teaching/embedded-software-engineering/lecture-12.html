@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="de";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-12.html","uk":"../../../uk/teaching/embedded-software-engineering/lecture-12.html","de":"lecture-12.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Das Expertengespräch, RFI/RFC/RFQ und das Proposal: vom Unternehmen zum Projekt — Væringjar II</title><meta content="Zweites Follow-up mit Experten, Rollen im Gespräch, RFI mit „doppeltem Boden“, RFC und die Offenlegungstiefe des Proposals, Versionierung, RFQ und Teamschätzung." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-12.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-12.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-12.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-12.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-12.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Das Expertengespräch, RFI/RFC/RFQ und das Proposal: vom Unternehmen zum Projekt" property="og:title"/><meta content="Zweites Follow-up mit Experten, Rollen im Gespräch, RFI, RFC und Proposal, Versionierung des Dokuments, RFQ und Teamschätzung der Anforderungen." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-12.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Das Expertengespräch, RFI/RFC/RFQ und das Proposal: vom Unternehmen zum Projekt" name="twitter:title"/><meta content="Zweites Follow-up mit Experten, Rollen im Gespräch, RFI, RFC und Proposal, Versionierung des Dokuments, RFQ und Teamschätzung der Anforderungen." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/><script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Modell</a><a href="../../research.html">Evidenz</a><a href="../../implementation.html">Implementierung</a><a class="active" href="../../teaching.html">Lehre</a><a href="../../collaboration.html">Mitwirken</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-12.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../../uk/teaching/embedded-software-engineering/lecture-12.html?lang=uk" hreflang="uk" lang="uk">UA</a><a aria-current="page" class="active" data-lang="de" href="lecture-12.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Lehre / Einheit 12 · 20.10.2026</div><h1>Das Expertengespräch, RFI/RFC/RFQ und das Proposal: vom Unternehmen zum Projekt</h1><p class="lead reader-lead">Zweites Follow-up mit Experten, Rollen im Gespräch, RFI, RFC und Proposal, Versionierung des Dokuments, RFQ und Teamschätzung der Anforderungen.</p><div class="reader-badges"><span>20.10.2026</span><span>Einheit 12 / 12</span><span>01:26:48</span><span>Vorlesung</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Kursübersicht →</a><a class="btn btn-primary" href="#full-notes">Vollständige Notizen ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODUL 04 · COMMERCIAL ENGINEERING / 12 · 20.10.2026</div><div class="course-context-nav"><a class="previous" href="lecture-11.html">Vorherige · 11</a><span class="current">12</span><a class="next" href="lecture-13.html">Als Nächstes · 13</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Kurschronologie</div><h2>Ingenieurnotizen</h2><p class="reader-intro">Zweites Follow-up mit Experten, Rollen im Gespräch, RFI, RFC und Proposal, Versionierung des Dokuments, RFQ und Teamschätzung der Anforderungen.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Ein Expertengespräch zum Problem des Kunden</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Rollen: bekanntes Gesicht, Engagement, Experten</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>RFI, RFC, RFQ und Anforderungen</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>Proposal: Tiefe, Versionen, Schätzung</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Vollständige Unterrichtsnotizen</div><h2>Vollständige Unterrichtsnotizen</h2><p class="lecture-notes-intro">Vollständige deutschsprachige Fachmitschrift auf Grundlage des ukrainischen Transkripts vom 20. Oktober. Der Kunde Otto und seine Aufgabe sind ein Unterrichtsszenario; das Beispiel der Industrieanlage enthält keine NDA-geschützten Details.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R12-2026-10-20.md">Ukrainische Originalnotizen →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-10-20.md">Ukrainisches Rohtranskript →</a></div><article class="lecture-article lecture-notes-content" lang="de"><h1>Einheit 12. Das Expertengespräch, RFI/RFC/RFQ und das Proposal: wie aus einem Gespräch über das Unternehmen ein Gespräch über das Projekt wird</h1>
+<blockquote>
+<p><strong>20. Oktober 2026 · Vorlesung 7 · 1 Std. 26 Min. 48 Sek.</strong> Grundlage ist das automatische Transkript <code>IgorSikorskyKPI_L7_20102026.mp4</code>. Dies ist ein redigiertes Lehrskript, keine wörtliche Abschrift: offensichtliche Erkennungsfehler wurden korrigiert und die Terminologie an frühere Einheiten angeglichen. Der Kunde Otto, sein Unternehmen und die technische Aufgabe sind ein <strong>Unterrichtsszenario</strong>. Das Beispiel der Industrieanlage hat der Dozent nur allgemein geschildert, ohne Details, die einer Geheimhaltungsvereinbarung (NDA) unterliegen. Die Einheit wurde durch Luftalarm unterbrochen; auf den Inhalt der Notizen hatte das keinen Einfluss.</p>
+</blockquote>
+<h2>Stellung im Kurs: der letzte Schritt vor einer konkreten Anfrage</h2>
+<p>In den Einheiten 10–11 ging das Team vom Messekontakt bis zum ersten Follow-up: Es stellte das Unternehmen, seine Expertise, Standorte und Werkzeuge vor und erfuhr, wo dem Kunden „der Schuh drückt“. Einheit 12 behandelt das <strong>zweite Follow-up</strong> — ein Expertengespräch, nach dem das Gespräch von „wer wir sind“ zu „welches Projekt wir machen“ wechseln muss. Das wichtigste Ergebnis ist eine formale Anfrage des Kunden: RFI, RFC, RFQ oder gleich Anforderungen.</p>
+<p>Der Dozent betonte, dass alles im Kurs <strong>Empfehlungen aus eigener Erfahrung</strong> und der Erfahrung von Kollegen sind, keine einzig mögliche Vorgehensweise. Sie sollten an den jeweiligen Kunden, Markt und die Unternehmenskultur angepasst werden.</p>
+<h2>0. Organisatorisches: Bewertung und die große selbstständige Aufgabe</h2>
+<ul>
+<li>Die Prüfungsleistung (Zalik) wird mit <strong>60 Punkten oder mehr</strong> automatisch anerkannt; wer darunter bleibt, schreibt eine Abschlussklausur.</li>
+<li>Auch die Anwesenheit bringt Punkte, daher ist die Teilnahme wichtig.</li>
+<li>Nach der zweiten Zwischenbewertung folgt eine große selbstständige Aufgabe — <strong>die Simulation eines Engineering-Unternehmens</strong>: statische Website, simulierte Reise zu einer Konferenz oder Messe, Gewinnung eines Leads, Umwandlung in einen Kunden, Anforderungen, Proposal, Projekt in GitHub oder Jira, Teamzuordnung und Release. Die Arbeit wird von regelmäßigen Treffen begleitet, etwa zweimal pro Woche.</li>
+<li>Die Prüfungsfragen decken den gesamten Kurs ab; die Liste wird vorab bereitgestellt.</li>
+</ul>
+<h2>1. Warum ein zweites Follow-up</h2>
+<p>Das erste Treffen auf der Konferenz schuf eine Bekanntschaft. Das erste Follow-up stellte das Unternehmen breit vor: Jahre am Markt, Engineering-Kapazität, Kompetenzen, Werkzeuge, Standorte, Zertifizierungen. Sein eigentlicher Zweck war zu verstehen, <strong>wo der Kunde Schmerzen hat</strong> und welche „Tablette“ man ihm anbieten sollte.</p>
+<p>Im Unterrichtsszenario möchte der Kunde Otto eine <strong>zerstörungsfreie Diagnose eines Verbrennungsmotors</strong>: ohne den Motor zu zerlegen und ohne menschliches Eingreifen prüfen, ob Nockenwellen, Kipphebel oder Brennraumwände im Zylinderkopf beschädigt sind. Das Zerlegen ist teuer und erfordert sofort Ersatzteile, daher ist der Wert einer Lösung offensichtlich. Das zweite Follow-up ist das Gespräch, in dem das Unternehmen <strong>gezielte Expertise genau für dieses Problem</strong> zeigt. Ideal ist es, Otto bereits in dieser Phase als Kunden zu gewinnen.</p>
+<h2>2. Zerlegung des Problems: wer gehört ins Gespräch</h2>
+<p>Schon eine kurze Problembeschreibung zerfällt sofort in mehrere Fachrichtungen:</p>
+<table>
+<thead>
+<tr>
+<th>Fachrichtung</th>
+<th>Wozu sie für Ottos Aufgabe nötig ist</th>
+<th>Wer sie vertritt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Computer Vision</td>
+<td>Ein Endoskop — eine Miniaturkamera an einem flexiblen Kabel — wird über den Ansaug- oder Abgaskrümmer in den Motor eingeführt</td>
+<td>CV-Architekt oder Lead</td>
+</tr>
+<tr>
+<td>AI / Deep Learning</td>
+<td>Automatische Defekterkennung: Ein großer Bilddatensatz intakter Motoren ist nötig, um Anomalien gegenüber der Norm zu finden</td>
+<td>Experte für maschinelles Lernen</td>
+</tr>
+<tr>
+<td>Robotics</td>
+<td>„Ohne Menschen“ bedeutet, dass ein Mechanismus oder Roboter das Endoskop einführen muss</td>
+<td>Robotics Engineer</td>
+</tr>
+<tr>
+<td>Embedded</td>
+<td>Hardware und Firmware, die Kamera, Antrieb und Verarbeitung zu einem Produkt verbinden</td>
+<td>Embedded-Architekt</td>
+</tr>
+<tr>
+<td>System Engineering</td>
+<td>Vier sehr unterschiedliche Ingenieure müssen auf einen gemeinsamen Nenner gebracht werden</td>
+<td>System Architect</td>
+</tr>
+</tbody>
+</table>
+<p>So kommen fünf starke Fachleute zusammen. Erscheint diese Gruppe aber einfach zum Termin, scheitert er: Otto wird von der Anzahl der Personen überfordert, und unvorbereitete Experten sehen ihn nur schweigend an. Deshalb sind <strong>Hausaufgaben</strong> nötig.</p>
+<h2>3. Hausaufgaben: eine zugeschnittene Präsentation und eine Nachricht an den Kunden</h2>
+<p>Die vorherige Präsentation deckte das gesamte Unternehmen ab: Web, Mobile, Cloud, AI, Embedded, Automotive, Robotics, Fintech, Healthcare, Mining. Jetzt muss sie <strong>auf den erkannten Bedarf zugeschnitten</strong> werden. Die Zahl der Büros und die Größe des Unternehmens spielen keine Rolle mehr. Die Kernbotschaft lautet etwa: „Als Fortsetzung unseres letzten Gesprächs möchten wir unsere Expertise in den Themen zeigen, die aus unserer Sicht gerade für Sie nützlich sind. Wir haben einige Fallbeispiele vorbereitet und möchten hören, wie gut sie zu Ihrem Problem passen.“</p>
+<p><strong>Das erwartete Ergebnis des Gesprächs</strong> ist ein tiefes Verständnis des Problems und möglicher Lösungswege. Es muss genau geklärt werden, was der Kunde bereits hat. Vielleicht sind Hardware, Firmware und Mechanik fertig, und es fehlen nur Ingenieure. Vielleicht gibt es nichts, und dann muss das Proposal die vollständige Vision beschreiben: von der Systemebene bis zur Umsetzung.</p>
+<p>Spielen Sie fair: <strong>Informieren Sie Otto</strong>, dass Sie eine neue Präsentation vorbereiten und Ihre Fachexperten mitbringen. Dann kann er eigene Fachleute mitbringen und Unterlagen vorbereiten, die seinen Bedarf besser erklären. Stimmt der Kunde einem solchen zweiten Termin zu, ist das gegenseitige Interesse bereits vorhanden.</p>
+<h2>4. Die Einladung: Zeitfenster, Kommunikationswerkzeug und Agenda</h2>
+<p>Eine Einladung zum Expertengespräch hat drei Pflichtbestandteile.</p>
+<ol>
+<li><strong>Zeitfenster.</strong> Bieten Sie etwa drei Optionen im Abstand von einem Tag an und verteilen Sie sie auf Morgen, Mittag und Abend. Lassen Sie immer Raum für einen eigenen Terminvorschlag des Kunden.</li>
+<li><strong>Kommunikationswerkzeug.</strong> Das erste Gespräch fand in der für Sie bequemen Umgebung statt, etwa Google Meet. Fragen Sie nun, was der Kunde bevorzugt: Google Meet, Microsoft Teams, Slack oder etwas anderes. Wählt er Teams, organisieren Sie sich so, dass Sie die Einladung dort erzeugen können. Die Anpassung an die Geschäftswerkzeuge des Kunden zeigt Flexibilität und Respekt.</li>
+<li><strong>Agenda.</strong> Die Person muss verstehen, wozu sie eingeladen wird. Nennen Sie fünf bis sechs Punkte, zum Beispiel: kurze Zusammenfassung des Kontexts, Zerlegung der Aufgabe, Fallbeispiele je Fachrichtung, Diskussion des Kundenproblems, nächste Schritte.</li>
+</ol>
+<p>Eine gute Einladung zeigt zugleich Respekt, Flexibilität, eine Investition von Zeit und Geld und ein konkretes Ziel. Genau eine solche Nachricht liest der Kunde als Zeichen für ein gutes Geschäft.</p>
+<h2>5. Ein E-Mail-Thread vom Erstkontakt bis zum Vertrag</h2>
+<p>Die gesamte Kommunikation — die erste E-Mail nach der Konferenz, Vereinbarungen, Einladungen, Präsentationen und Follow-ups — sollte <strong>in einem einzigen E-Mail-Thread</strong> geführt werden. Nach Vertragsunterzeichnung wird dieser Thread geschlossen und ein neuer, technischer Thread begonnen.</p>
+<p>Der Grund ist praktisch: Wenn später Eskalationen auftreten, lassen sich die ursprünglichen Vereinbarungen leicht finden und ihr genauer Wortlaut zeigen. Am Anfang sind beide Seiten sozusagen verliebt, doch Projekte enden manchmal im Konflikt. Damit die „Scheidung“ nach für Sie günstigen und transparenten Regeln verläuft, braucht es <strong>einen unterschriebenen Vertrag und eine dokumentierte Historie der Vereinbarungen</strong>.</p>
+<h2>6. Was ein Expertengespräch kostet</h2>
+<p>Ab diesem Punkt kostet der Pre-Sale echtes Geld. Vier bis fünf hochqualifizierte Architekten und Leads sind die teuersten Menschen im Unternehmen. Sobald sie an einem Termin teilnehmen, muss ihre Zeit bezahlt werden, obwohl es noch kein Projekt gibt. Legen Sie daher vorab fest, <strong>wen genau Sie mitnehmen, wie viele Personen und wie lange das Gespräch dauert</strong>. Es ist eine Investition, die bewusst begrenzt werden muss.</p>
+<h2>7. Rollen im Gespräch: das bekannte Gesicht, Engagement und die Experten</h2>
+<table>
+<thead>
+<tr>
+<th>Rolle</th>
+<th>Funktion im Gespräch</th>
+<th>Was sie nicht tut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bekanntes Gesicht</td>
+<td>Die Person, die Otto auf der Konferenz kennengelernt und ihm die Hand gegeben hat; besitzt ein „Vertrauenskontingent“ und ist bei allen Terminen bis zur Vertragsunterzeichnung dabei</td>
+<td>Steuert den Prozess nicht und muss kein Fachexperte für das Thema sein</td>
+</tr>
+<tr>
+<td>Engagement Manager</td>
+<td>Organisiert alle Follow-ups, Korrespondenz und Einladungen; eröffnet das Gespräch, stellt die Teilnehmenden vor, führt durch die Präsentation, übergibt das Wort und achtet darauf, dass der Kunde nicht isoliert wird</td>
+<td>Schreibt nicht die allererste E-Mail nach der Konferenz — das tut das bekannte Gesicht</td>
+</tr>
+<tr>
+<td>Experten (Architekten, Leads)</td>
+<td>Präsentieren je zwei Fallbeispiele ihrer Fachrichtung, stellen Rückfragen, lesen die Reaktionen des Kunden</td>
+<td>Machen aus dem Vortrag keinen Monolog</td>
+</tr>
+<tr>
+<td>Kunde und seine Leute</td>
+<td>Stellen sich vor, beschreiben das Problem, bringen eigene Unterlagen mit</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Der Dozent nutzte eine Jagdanalogie: Es gibt <strong>Treiber</strong>, die das Wild auf den richtigen Weg lenken, und <strong>Schützen</strong>, die auf ihren Positionen warten. Engagement sind die Treiber; Architekten, Ingenieure und das bekannte Gesicht sind die Schützen. In Unternehmen ist Engagement oft eine eigene Abteilung von Menschen, die stets voller Energie sind und das Kommunikationstempo halten.</p>
+<p><strong>Wer teilt zuerst den Bildschirm?</strong> Wer einlädt. Sie haben das Team zusammengestellt und die Präsentation vorbereitet, also beginnen Sie mit dem Teilen.</p>
+<h2>8. Ablauf des Gesprächs</h2>
+<ol>
+<li><strong>Aufwärmen.</strong> Der Engagement Manager begrüßt Otto, fragt, wie es ihm und seinem Geschäft geht, und stellt einige vorbereitete Fragen, die den Kunden nach seinem Gespür interessieren. Alle Kameras sind eingeschaltet: Otto soll das bekannte Gesicht sehen.</li>
+<li><strong>Vorstellungsrunde.</strong> Ist die Zeit knapp, nennt Engagement rasch alle Teilnehmenden und ihre Rollen. Gibt es mehr Zeit oder ist er sicher, dass sich die Kolleginnen und Kollegen gut präsentieren, stellt sich jede Person selbst vor.</li>
+<li><strong>Vorstellung des Kunden.</strong> Engagement bittet Otto, sich vorzustellen — nicht, weil er unbekannt wäre, sondern als Zeichen des Respekts. Sind Kolleginnen oder Kollegen mitgekommen, stellen auch sie sich vor.</li>
+<li><strong>Einführungsfolien.</strong> Engagement zeigt die Agenda und die Systemzerlegung: Robotics, Computer Vision, AI, Embedded.</li>
+<li><strong>Fallbeispiele der Experten.</strong> Engagement übergibt die Steuerung der Präsentation nacheinander an die Experten: zwei Fälle zu Computer Vision, zwei zu Robotics und so weiter. Nach jedem Block fragt er: „Otto, was meinen Sie? Passt das zu Ihrem Problem?“</li>
+<li><strong>Frage an den Kunden.</strong> Warten Sie nach dem letzten Block nicht darauf, dass der Kunde von selbst zu sprechen beginnt. Fragen Sie direkt: „Erzählen Sie uns bitte, welches Problem Sie haben und was genau Sie lösen wollen. Wir möchten verstehen, wie wir helfen können.“</li>
+<li><strong>Offene Diskussion.</strong> Etwa 10–15 Minuten sprechen die Experten beider Seiten direkt miteinander.</li>
+<li><strong>Zusammenfassung und nächster Schritt.</strong> Engagement fasst das Gespräch zusammen und bietet an, ein Proposal vorzubereiten.</li>
+</ol>
+<p>Der Dozent verglich den Architekten mit einem <strong>Liftführer in einem Hochhaus</strong>: Er fragt, in welches Stockwerk man möchte, und erfährt unterwegs, was auf jeder Etage geschieht. Der Architekt transportiert Informationen zwischen den Ebenen des Systems und zwischen Menschen, hält bei Folien inne, fragt nach, bemerkt eine hochgezogene Augenbraue, einen abgewandten Blick oder den Griff zum Telefon.</p>
+<h2>9. Offene Diskussion mit Dirigent: zweiter Bildschirm und interner Chat</h2>
+<p>Beginnt die offene Diskussion, sollte jedes Mitglied Ihres Teams <strong>zwei Bildschirme</strong> haben: auf einem das Gespräch mit dem Kunden, auf dem anderen den internen Team-Chat. Engagement, die Führungskraft und andere nichttechnische Teilnehmende halten sich aus der Fachdebatte heraus. Sie beobachten und steuern: Gerät ein Ingenieur in einen unnötigen Streit oder setzt den Kunden unter Druck, erscheint im Chat ein kurzes „Stopp“, und der Kollege ändert den Ton.</p>
+<p>Das ist ein Orchester, und der interne Chat ist der Taktstock des Dirigenten. Dem Kunden in dieser Phase offen zu widersprechen ist riskant; Unterstützung und Rückfragen wirken besser.</p>
+<h2>10. Abschluss: die zugesagte Anfrage und der „Hebel“ für Erinnerungen</h2>
+<p>Zum Schluss sagt Engagement etwa: „Die Intensität dieses Gesprächs zeigt, dass wir dieselbe Sprache sprechen und verstehen, wie es geht. Lassen Sie uns ein Proposal für Sie vorbereiten.“ Der Kunde antwortet, dass er ein RFI, RFQ oder RFC schicken wird. Das Team verspricht seinerseits, <strong>die Präsentation als Follow-up zu senden</strong>.</p>
+<p>Dieses Versprechen ist ein Hebel. Vergisst der Kunde die Anfrage, wird die E-Mail mit der Präsentation zu einem weiteren natürlichen Anlass zur Erinnerung: „Hier ist die zugesagte Präsentation; wir warten auf das RFI.“ Oft hat der Kunde das Anfragedokument noch gar nicht geschrieben: Im Gespräch sagt er das nicht, verwendet aber einen oder zwei Tage auf eine Tabelle mit Fragen. Nach einigen Erinnerungen kommt die Anfrage in der Regel.</p>
+<p><strong>Die entscheidende Veränderung nach diesem Gespräch:</strong> Davor ging es um Kompetenzen, das Unternehmen, das Team — um alles außer dem Projekt. Danach dreht sich das gesamte Gespräch um das Projekt, das den Kunden interessiert.</p>
+<h2>11. Was der Kunde schicken kann: „fragen“ oder „sagen“</h2>
+<table>
+<thead>
+<tr>
+<th>Was eingeht</th>
+<th>Modus</th>
+<th>Bedeutung</th>
+<th>Antwort des Unternehmens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RFI — Request for Information</td>
+<td>Kunde fragt</td>
+<td>Will Ihre Fähigkeiten an einer internen Kompetenzskala messen</td>
+<td>Ausgefüllter Antwortbogen</td>
+</tr>
+<tr>
+<td>RFC — Request for Clarification (Kursbegriff)</td>
+<td>Kunde fragt</td>
+<td>Bittet, Ihre Vision einer Lösung seines Problems zu beschreiben</td>
+<td>Proposal</td>
+</tr>
+<tr>
+<td>RFQ — Request for Quotation</td>
+<td>Kunde fragt</td>
+<td>Will Dauer und Kosten wissen</td>
+<td>Zeit- und Kostenschätzung mit Annahmen</td>
+</tr>
+<tr>
+<td>User Stories</td>
+<td>Kunde sagt</td>
+<td>Beschreibt erwartetes Verhalten aus Nutzersicht</td>
+<td>Analyse, Klärung, Schätzung</td>
+</tr>
+<tr>
+<td>Anforderungen (System, Hardware, Software)</td>
+<td>Kunde sagt</td>
+<td>Weiß, was er will; erwartet eine Schätzung</td>
+<td>Teamschätzung jeder Anforderung und ein RFQ</td>
+</tr>
+</tbody>
+</table>
+<p>Wie in Einheit 04 bedeutet <strong>RFC hier Request for Clarification in der Terminologie des Kurses</strong>. In der allgemeinen Beschaffungspraxis heißt eine Anfrage „beschreiben Sie Ihre Lösung“ eher RFP (Request for Proposal), während RFC in der Softwaretechnik meist Request for Comments bedeutet. Im realen Prozess sollte der Dokumentname daher bei der ersten Verwendung ausgeschrieben werden.</p>
+<h2>12. RFI: eine Fragentabelle mit „doppeltem Boden“</h2>
+<p>Ein typisches RFI ist eine Excel-Tabelle: eine Spalte mit Fragen, eine zweite für Antworten. Beispiele aus der Vorlesung:</p>
+<ul>
+<li>Verfügen Sie über Kompetenz in Model-Based Development? Nachfrage: Welche Werkzeuge nutzen Sie für modellbasierte Entwicklung und für modellbasiertes Testen? Mögliche Antwort: MATLAB/Simulink, OpenModelica; für das Testen Simulink Test, für Modell- und Codeabdeckung Simulink Coverage.</li>
+<li>Haben Sie Expertise im Embedded Engineering? Nachfrage: Mit welchen Mikrocontrollern arbeiten Sie? Antwort ist eine Liste von Familien, etwa STM32 (STMicroelectronics), NXP, Xilinx (heute AMD).</li>
+<li>Haben Sie Erfahrung mit System on Chip (SoC)?</li>
+<li>Ist Ihr Unternehmen oder sind die im Projekt eingesetzten Ingenieure nach einer Norm für funktionale Sicherheit zertifiziert? Wenn ja, nach welcher?</li>
+</ul>
+<p>Nachfragen müssen nicht beantwortet werden, wenn die Hauptfrage mit „nein“ beantwortet wurde. Ein RFI umfasst eine bis 10–20 Seiten. Solche Fragebögen haben oft einen <strong>„doppelten Boden“</strong>: Dieselbe Frage taucht an anderer Stelle aus einem anderen Blickwinkel wieder auf, um die Konsistenz zu prüfen. Ihre Antworten dürfen sich daher nicht widersprechen.</p>
+<p>Rechnen Sie damit, dass der Kunde Ihre Antworten nach einer eigenen Vorlage auswertet, möglicherweise mit AI, und Ihre technologische Eignung bewertet. Das ist kein Grund zu beschönigen: <strong>Unwahrheiten kommen früher oder später ans Licht</strong>. Erfüllen Sie die Anforderungen nicht, ist es schlicht nicht Ihr Kunde.</p>
+<h2>13. RFC und Proposal: wie viel man offenlegt</h2>
+<p>Manchmal erkennt der Kunde nach dem Gespräch, dass Sie den Prozess besser verstehen als er. Dann schickt er weder Anforderungen noch User Stories, sondern nur ein kurzes RFC aus zwei Sätzen: „Hallo. Könnten Sie bitte in Word, Markdown oder einem anderen Format Ihre Vision einer Lösung unseres im Gespräch besprochenen Problems beschreiben?“</p>
+<p>Die Antwort auf ein RFC ist <strong>ein Proposal</strong>, dessen Struktur in früheren Einheiten behandelt wurde: Summary, Architectural View, Design View, Umsetzungsplan, Risiken, kommerzieller Teil. Der Umfang reicht von zwei bis hundert Seiten; das umfangreichste Proposal in der Praxis des Dozenten hatte etwa hundert Seiten. Architekten schreiben es, und das Team investiert eigene Zeit. Ein RFC direkt nach dem Gespräch ist ein sehr gutes Zeichen: Der Kunde weiß nicht, wie er die Aufgabe lösen soll, und möchte, dass Sie Kreativität zeigen.</p>
+<p><strong>Die Gefahr</strong>, die einer der Studierenden in der Einheit treffend benannte: Das Team erstellt unentgeltlich ein Dokument, das das Problem faktisch löst, und der Kunde bedankt sich und verschwindet. Der Dozent gab ein Beispiel aus seiner Praxis (ohne Details wegen einer NDA). Ein großes Werk hatte eine Anlage mit einer gefährlichen Leckage, die nicht direkt gemessen werden konnte. Benötigt wurde ein mathematisches und rechnergestütztes Modell der Leckage in die Umgebung. Im Proposal beschrieb der Dozent ein Verfahren zur Bestimmung der Leckagemenge auf Grundlage von MATLAB/Simulink-Modellierung und analytischen Berechnungen. Danach bedankte sich der Kunde und verschwand: Die eigenen Ingenieure hatten genug, um die Lösung selbst umzusetzen.</p>
+<table>
+<thead>
+<tr>
+<th>Art der Komplexität</th>
+<th>Merkmale</th>
+<th>Wie das Proposal zu schreiben ist</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Technologisch (wissenschaftlich, mathematisch) bei einfacher Umsetzung</td>
+<td>Die Idee ist schwierig, die Umsetzung einfach — im Beispiel hätte eine Armbanduhr genügt, um das Öffnen der Notventile zu messen</td>
+<td>Allgemein und vorsichtig: Kompetenz zeigen, ohne die Methode offenzulegen</td>
+</tr>
+<tr>
+<td>Technisch (komplexe Umsetzung)</td>
+<td>Mechanik, Elektronik, Firmware, Desktop, Cloud, AI; Teams werden lange gebraucht</td>
+<td>Detailliert: explizite Risiken, Zeitpuffer für implizite Risiken, Analyse — das beweist Expertise</td>
+</tr>
+</tbody>
+</table>
+<p>Die Grenze zwischen „zu wenig“ und „zu viel“ ist sehr schmal. Zu wenig, und der Kunde glaubt nicht, dass Sie es schaffen. Zu viel, und er macht es selbst.</p>
+<h2>14. Format und Versionierung des Proposals</h2>
+<p>Traditionell wird ein Proposal in einem Textverarbeitungsprogramm (Microsoft Word, LibreOffice, OpenOffice) geschrieben, weil es Text, Abbildungen, Formeln und Tabellen verbindet. Pflichtattribute eines solchen Dokuments:</p>
+<ul>
+<li><strong>Autor</strong> — die Person, die die erste Fassung erstellt hat; sie bleibt dauerhaft Autor;</li>
+<li><strong>Last changed by</strong> — wer die letzten Änderungen vorgenommen hat;</li>
+<li><strong>Änderungshistorie</strong> am Anfang des Dokuments — was sich zwischen Release-Versionen und in welchen Abschnitten geändert hat.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Ereignis</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Erste interne Reviews durch Kollegen</td>
+<td>0.1, 0.2 … 0.7</td>
+</tr>
+<tr>
+<td>Erste Übermittlung an den Kunden</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Interne Überarbeitung nach Kundenkommentaren</td>
+<td>1.1, 1.2 …</td>
+</tr>
+<tr>
+<td>Zweite Übermittlung an den Kunden</td>
+<td>2.0</td>
+</tr>
+</tbody>
+</table>
+<p>Die Zahl vor dem Punkt ist die Release-Nummer für den Kunden; die Zahl nach dem Punkt zählt interne Iterationen. Wie oft das Dokument auch intern hin- und hergeht — die erste versandte Fassung ist immer 1.0.</p>
+<p>Der Dozent bevorzugt <strong>Excel</strong>: Jeder Reiter dient als eigener Abschnitt (Einleitung, Architektur usw.), die Daten sind strukturiert, und der finanzielle Teil — Menge, Dauer und Kosten — lässt sich direkt im Dokument für beide Seiten transparent berechnen. Im AI-Zeitalter hat sich <strong>Markdown</strong> verbreitet: Es ist ein bequemes Format für die Zusammenarbeit von Menschen und Sprachmodellen, und kleine moderne Unternehmen akzeptieren es gern. Große konservative Unternehmen haben eigene Regeln zum AI-Einsatz; mit ihnen arbeitet man anfangs besser klassisch in Word oder Excel und schlägt Markdown später vor, wenn diese Praxis dort besteht.</p>
+<h2>15. RFQ: Teil des ersten Proposals und vierteljährliche Anfrage</h2>
+<p>Das erste Proposal enthält immer einen kommerziellen Teil: Menge und Preis — die Kosten der Ingenieurzeit und der Materialressourcen. Zu Beginn ist das RFQ daher eng mit dem RFC verbunden.</p>
+<p>Ein eigenständiges Dokument wird das RFQ <strong>nach Projektstart</strong>: Etwa einmal pro Quartal bittet der Kunde um eine Schätzung der Kosten für das nächste Quartal. Dann gibt es bereits Jira, ein GitHub Project oder ein anderes Tracking-Werkzeug, doch die Prognose künftiger Kosten wird weiterhin als Dokument erstellt. Sie umfasst Engineering-Leistungen, Material und Nebenkosten wie Kurier- und Postdienste.</p>
+<p>Ein weiterer häufiger Weg: Der Kunde liest Ihr Proposal iterativ und schickt Kommentare zurück („diesen Teil bitte anders formulieren“). Faktisch baut er die Architektur des künftigen Systems auf Ihre Kosten. Das ist ein geschickter Ansatz, doch nach der Erfahrung des Dozenten münden solche Geschichten meist in einen Vertrag.</p>
+<h2>16. Der beste Fall: Anforderungen und eine Teamschätzung</h2>
+<p>Weiß der Kunde genau, was er will, schickt er <strong>Anforderungen auf drei Ebenen</strong>: System Requirements (wie sich das System verhält), Software Requirements und Hardware Requirements. Dann wird von Ihnen bereits in der ersten Phase ein RFQ erwartet.</p>
+<p>Eine einzelne Person kann nicht das ganze System schätzen. Das Team muss zusammenkommen; jedes Mitglied schätzt einzelne Features oder Anforderungen und beschreibt, wie es die Umsetzung sieht. Die Liste der erwarteten Dauern wird zur Antwort auf das RFQ, etwa: „Funktion X — 2 bis 10 Tage bei einem Tagessatz von 400 US-Dollar für einen Ingenieur einer bestimmten Stufe“ (der Satz ist illustrativ). So sieht der Kunde, um welche Summen es geht.</p>
+<h2>17. Probleme, die die Schätzung mit sich bringt</h2>
+<p>Die Schätzphase bringt interne Probleme mit sich — sie werden Thema der nächsten Einheiten:</p>
+<ol>
+<li><strong>Niemand, der schätzen kann.</strong> Im „goldenen Zeitalter“ der ukrainischen IT (etwa 2016–2018, vor COVID-19) hielten Unternehmen Ingenieure in einem „Pool“ auf der Bench, bereit für neue Projekte. Heute ist diese Praxis fast verschwunden.</li>
+<li><strong>Externe Experten einbinden.</strong> Eine bekannte Fachperson aus einem anderen Unternehmen kann helfen, muss aber bezahlt werden; ein Vergütungsmodell ist nötig.</li>
+<li><strong>Freelancing</strong> als Ressourcenquelle und seine Risiken.</li>
+<li><strong>Verantwortung für die Schätzung.</strong> Ein externer Experte kann eine Aufgabe unterschätzen, weil er sie nicht selbst ausführt. Wie erhält man eine durchdachte Schätzung, und wie bringt man die Schätzenden ins Projekt?</li>
+<li><strong>Kosten von Engineering und Produkt.</strong> Im Embedded-Bereich kommen zur Ingenieurzeit Mechanik, Leiterplattenentwicklung, Bauteilbeschaffung, Bestückung, Validierung und Verifikation, Logistik und Zollabwicklung hinzu.</li>
+<li><strong>Risikoanalyse</strong> verspäteter Lieferung für beide Seiten.</li>
+<li><strong>Fixed Price oder Time &amp; Material</strong> in der heutigen europäischen Embedded-Praxis.</li>
+</ol>
+<h2>Praktische Schlussfolgerungen</h2>
+<ul>
+<li>Das zweite Follow-up wird für das konkrete Problem des Kunden vorbereitet, nicht für ein allgemeines Unternehmensprofil.</li>
+<li>Die Einladung enthält mehrere Zeitfenster, die Wahl des Kommunikationswerkzeugs und eine Agenda.</li>
+<li>Die gesamte Kommunikation vor dem Vertrag läuft in einem E-Mail-Thread.</li>
+<li>Das bekannte Gesicht ist immer dabei, Engagement leitet, Experten zeigen Fallbeispiele und stellen Fragen.</li>
+<li>Ziel des Gesprächs ist ein RFI, RFC, RFQ oder Anforderungen; ohne sie ist weitere Arbeit Zeit- und Geldverschwendung.</li>
+<li>Antworten auf ein RFI müssen ehrlich und untereinander konsistent sein.</li>
+<li>Die Detailtiefe eines Proposals hängt davon ab, wo die Komplexität liegt: in der Technologie oder in der technischen Umsetzung.</li>
+<li>Ein Proposal hat einen Autor, eine Änderungshistorie und eine klare Versionsnummerierung.</li>
+</ul>
+<h2>Fragen zur Selbstkontrolle</h2>
+<ul>
+<li>Worin unterscheidet sich das zweite Follow-up vom ersten in Ziel und Präsentationsinhalt?</li>
+<li>Welche Fachleute sollten für die zerstörungsfreie Motordiagnose eingebunden werden, und warum nicht alle auf einmal?</li>
+<li>Was muss eine Einladung zu einem Expertengespräch enthalten?</li>
+<li>Warum sollte die gesamte Korrespondenz vor dem Vertrag in einem E-Mail-Thread geführt werden?</li>
+<li>Welche Rolle hat das bekannte Gesicht, und warum schreibt gerade diese Person die allererste E-Mail?</li>
+<li>Wer teilt zuerst den Bildschirm, und wer eröffnet das Gespräch?</li>
+<li>Wozu braucht das Team während der offenen Diskussion einen zweiten Bildschirm und einen internen Chat?</li>
+<li>Wie unterscheidet sich der Modus „Kunde fragt“ vom Modus „Kunde sagt“?</li>
+<li>Was ist der „doppelte Boden“ in einem RFI, und wie vermeidet man widersprüchliche Antworten?</li>
+<li>Wann sollte ein Proposal allgemein und wann möglichst detailliert geschrieben werden?</li>
+<li>Wie ändert sich die Versionsnummer des Proposals zwischen internen Reviews und Übermittlungen an den Kunden?</li>
+<li>Warum existiert das RFQ nach Projektstart getrennt vom RFC?</li>
+</ul>
+<h2>Was als Nächstes angekündigt wurde</h2>
+<p>Der Dozent kündigte für die folgenden Einheiten an: Personalressourcen für Schätzungen bei leerem „Pool“, Vergütung externer Experten, Freelancing, Verantwortung für Schätzungen, Kostenanalyse von Engineering und Hardware, Risikoanalyse sowie einen Vergleich von Fixed Price und Time &amp; Material. Danach geht der Kurs zu Vertragsabschluss, User Stories und internen Anforderungen, Teamzerlegung, Personalgewinnung und der Festlegung von Managementrollen über. Eigene Praxiseinheiten sind dem Schreiben eines Proposals und dem Ausfüllen eines RFI gewidmet. Das ist <strong>ein angekündigter Plan</strong>, keine bereits durchgeführten Einheiten.</p>
+<h2>Geprüfte Quellen</h2>
+<ul>
+<li>ISO/IEC/IEEE 29148:2018, Systems and software engineering — Requirements engineering: https://www.iso.org/standard/72089.html</li>
+<li>Simulink Test (MathWorks): https://www.mathworks.com/products/simulink-test.html</li>
+<li>Simulink Coverage (MathWorks): https://www.mathworks.com/products/simulink-coverage.html</li>
+<li>OpenModelica: https://openmodelica.org/</li>
+</ul></article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Lehre</b><p style="margin-top:8px">Lehrmaterialien von Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">Über den Autor →</a></div>
+<div class="footer-links"><b>Kurs</b><a href="index.html">Kursübersicht</a><a href="lecture-10.html">Einheit 10</a><a href="lecture-11.html">Einheit 11</a><a href="lecture-12.html">Einheit 12</a></div>
+<div class="footer-links"><b>Kontext</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in der Energietechnik</a><a href="../../teaching.html">Alle Lehrmaterialien</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Datenschutz</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

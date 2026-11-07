@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="de";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-13.html","uk":"../../../uk/teaching/embedded-software-engineering/lecture-13.html","de":"lecture-13.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Ein Way of Work für den Kunden: Phasen, Gates und Preismodelle — Væringjar II</title><meta content="R&amp;D, PoC, MVP und Arbeitspakete mit Gates, der Unsicherheitskegel, eine grobe Zeitachse, Fixed Price gegenüber Time &amp; Material, T&amp;M mit Obergrenze und kombinierte Modelle." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-13.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-13.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-13.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-13.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-13.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Ein Way of Work für den Kunden: Phasen, Gates und Preismodelle" property="og:title"/><meta content="R&amp;D, PoC, MVP und Arbeitspakete mit Gates, der Unsicherheitskegel, eine grobe Zeitachse, Fixed Price gegenüber Time &amp; Material, T&amp;M mit Obergrenze und kombinierte Modelle." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-13.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Ein Way of Work für den Kunden: Phasen, Gates und Preismodelle" name="twitter:title"/><meta content="R&amp;D, PoC, MVP und Arbeitspakete mit Gates, der Unsicherheitskegel, eine grobe Zeitachse, Fixed Price gegenüber Time &amp; Material, T&amp;M mit Obergrenze und kombinierte Modelle." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/><script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script><style id="lecture-figure-style">.lecture-notes-content figure.lecture-figure{margin:28px 0;padding:0;max-width:100%}.lecture-notes-content figure.lecture-figure a{display:block;border:0;background:#fff;padding:10px;border-radius:6px;border:1px solid rgba(127,127,127,.35)}.lecture-notes-content figure.lecture-figure img{display:block;width:100%;height:auto;margin:0 auto}.lecture-notes-content figure.lecture-figure-small{max-width:560px}.lecture-notes-content figure.lecture-figure-wide{width:min(1180px,calc(100vw - 48px));max-width:none}.lecture-notes-content figure.lecture-figure figcaption{margin-top:10px}.lecture-notes-content .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}@media (max-width:640px){.lecture-notes-content .table-scroll table{min-width:600px;width:600px;max-width:none!important;table-layout:auto}}</style></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Modell</a><a href="../../research.html">Evidenz</a><a href="../../implementation.html">Implementierung</a><a class="active" href="../../teaching.html">Lehre</a><a href="../../collaboration.html">Mitwirken</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-13.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../../uk/teaching/embedded-software-engineering/lecture-13.html?lang=uk" hreflang="uk" lang="uk">UA</a><a aria-current="page" class="active" data-lang="de" href="lecture-13.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Lehre / Einheit 13 · 27.10.2026</div><h1>Ein Way of Work für den Kunden: Phasen, Gates und Preismodelle</h1><p class="lead reader-lead">R&amp;D, PoC, MVP und Arbeitspakete mit Gates, der Unsicherheitskegel, eine grobe Zeitachse, Fixed Price gegenüber Time &amp; Material, T&amp;M mit Obergrenze und kombinierte Modelle.</p><div class="reader-badges"><span>27.10.2026</span><span>Einheit 13 / 14</span><span>01:26:07</span><span>Vorlesung</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Kursübersicht →</a><a class="btn btn-primary" href="#full-notes">Vollständige Notizen ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODUL 04 · COMMERCIAL ENGINEERING / 13 · 27.10.2026</div><div class="course-context-nav"><a class="previous" href="lecture-12.html">Vorherige · 12</a><span class="current">13</span><a class="next" href="lecture-14.html">Als Nächstes · 14</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Kurschronologie</div><h2>Ingenieurnotizen</h2><p class="reader-intro">R&amp;D, PoC, MVP und Arbeitspakete mit Gates, der Unsicherheitskegel, eine grobe Zeitachse, Fixed Price gegenüber Time &amp; Material, T&amp;M mit Obergrenze und kombinierte Modelle.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Phasen und ihre Ergebnisse</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Gates und Unsicherheitskegel</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>FP, T&amp;M und T&amp;M mit Obergrenze</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>Kombinierte Modelle nach Phase und Funktion</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Vollständige Unterrichtsnotizen</div><h2>Vollständige Unterrichtsnotizen</h2><p class="lecture-notes-intro">Vollständige deutschsprachige Fachmitschrift auf Grundlage des ukrainischen Transkripts vom 27. Oktober und des draw.io-Diagramms des Dozenten. Alle Beträge und Dauern sind illustrativ.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R13-2026-10-27.md">Ukrainische Originalnotizen →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-10-27.md">Ukrainisches Rohtranskript →</a></div><article class="lecture-article lecture-notes-content" lang="de"><h1>Einheit 13. Ein Way of Work für den Kunden: Phasen, Gates, Unsicherheitskegel und Preismodelle</h1>
+<blockquote>
+<p><strong>27. Oktober 2026 · Vorlesung 8 · 1 Std. 26 Min. 07 Sek.</strong> Grundlage sind das automatische Transkript <code>IgorSikotskyKPI_L8_27102026.mp4</code> und das draw.io-Diagramm, das der Dozent während der Einheit gezeichnet hat. Dies ist ein redigiertes Lehrskript, keine wörtliche Abschrift: offensichtliche Erkennungsfehler wurden korrigiert und die Terminologie an frühere Einheiten angeglichen. Alle Beträge und Dauern sind eine <strong>Lehrillustration</strong> zum Vergleich der Modelle, keine Marktpreise. Redaktionelle Ergänzungen sind gesondert gekennzeichnet.</p>
+</blockquote>
+<h2>Stellung im Kurs: Der Lead ist Kunde geworden — wie geht es weiter</h2>
+<p>Nach dem ersten Follow-up direkt nach der Konferenz und dem zweiten, dem Expertengespräch (Einheit 12), stimmt der Lead einer Zusammenarbeit zu: „Ich sehe, dass Sie unser Problem verstehen, versuchen wir es.“ In diesem Moment ist der Kunde oft etwas ratlos: Er weiß nicht, womit er anfangen soll — „alles auf einmal essen oder Stück für Stück“. Genau deshalb sucht er einen Auftragnehmer: Sie haben Expertise, Personal und Erfahrung, also können Sie eher den richtigen Input geben, als er ihn erraten kann.</p>
+<p>Darum wird <strong>das Kooperationsmodell Teil des Proposals</strong>: wie Sie den Kunden vom ersten bis zum letzten Tag durch das Projekt führen, was er erhält und was es kostet. Die Einheit betrachtet dieses Modell in zwei Dimensionen — <strong>Zeit</strong> (Phasen) und <strong>Geld</strong> (Preismodelle).</p>
+<h2>1. Die Kontaktperson auf Unternehmensseite</h2>
+<p>Der Kunde will mit Sicherheit wissen, mit wem er künftig spricht. Es ist sinnvoll, den Kontakt schon im Proposal zu benennen:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Projektgröße</th>
+<th>Wer wird Kontaktperson</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lang, verzweigt, mehrere Teams und Rollen</td>
+<td>Ein fester Manager (PM); bei Bedarf weitere Rollen: Scrum Master, Agile Coach usw.</td>
+</tr>
+<tr>
+<td>Kompakt, bis etwa 10 Personen im Team</td>
+<td>Ein Tech Lead, technischer Manager oder Architekt, der technische Fragen und Teamführung zugleich abdeckt</td>
+</tr>
+<tr>
+<td>Ein kurzer, separater Arbeitsstrang</td>
+<td>Der für diesen Strang verantwortliche Architekt oder Tech Lead</td>
+</tr>
+</tbody>
+</table></div>
+<h2>2. Projektphasen und ihre Ergebnisse</h2>
+<p>Der Dozent hat die gesamte Zeitachse in typische Phasen zerlegt. Für jede Phase muss dem Kunden klar beschrieben werden, was der <strong>Auslöser</strong> ist und was das <strong>Ergebnis</strong> (Outcome) — was er nach Abschluss konkret mitnimmt.</p>
+<figure class="diagram lecture-figure lecture-figure-wide"><a href="../../../assets/img/teaching/embedded-software-engineering/l13-way-of-work.png"><img src="../../../assets/img/teaching/embedded-software-engineering/l13-way-of-work.png" alt="Way-of-Work-Diagramm: R&amp;D, PoC, MVP, Arbeitspakete und Abschluss auf einer Zeitachse, Gates G1 und G2, ein STOP-Ausgang und die Phasendauern" loading="lazy"/></a><figcaption class="diagram-note">Abb. 13.1. Der Way of Work auf der Zeitachse: R&amp;D → G1 → PoC → G2 → MVP → Arbeitspakete → Abschluss. STOP ist nach jeder Phase möglich. Diagramm des Dozenten aus der Einheit (draw.io; Beschriftung ukrainisch).</figcaption></figure>
+
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Phase</th>
+<th>Ergebnis für den Kunden</th>
+<th>Gate nach der Phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>R&amp;D</strong> (Research and Development)</td>
+<td>Technische Machbarkeit: ja oder nein, eventuell mit kurzem Kommentar wie „ja, wenn wir diesen Ansatz verwenden“; ein engerer Unsicherheitskegel</td>
+<td><strong>G1</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>PoC</strong> (Proof of Concept)</td>
+<td>Hypothesen mit realen Komponenten und Lösungen geprüft; eine vorzeigbare Demo</td>
+<td><strong>G2</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>MVP</strong></td>
+<td>Feature 1: minimale Abhängigkeiten von anderen Features und echter Nutzen für den Kunden</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4…N</td>
+<td><strong>Arbeitspakete</strong> (Working Packages, WP 1 … WP n)</td>
+<td>Schrittweiser Zuwachs an Produktnutzen, Feature für Feature</td>
+<td>—</td>
+</tr>
+<tr>
+<td>N+1</td>
+<td><strong>Abschluss</strong></td>
+<td>Übergabe der Artefakte und Archivierung des Projekts</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>R&amp;D: Ist es überhaupt möglich</h3>
+<p>Das Standardergebnis von R&amp;D ist die <strong>technische Machbarkeit</strong>: Lässt sich die Idee beim heutigen Stand von Wissenschaft und Technik umsetzen? Die Antwort kann sehr kurz sein: „Ja, das geht“ oder „Nein, unter keinen Umständen“. Das zweite Ergebnis ist ein <strong>engerer Unsicherheitskegel</strong> (siehe Abschnitt 4).</p>
+<h3>PoC: „auf dem Knie zusammengelötet“</h3>
+<p>Der Dozent unterschied zwei Projekttypen:</p>
+<ul>
+<li><strong>innovative</strong> — mit hohem Anteil an Mathematik, Wissenschaft und Suche; sie haben meist sowohl R&amp;D als auch einen PoC;</li>
+<li><strong>technologische</strong> — mit geringerem wissenschaftlichem Anteil, aber voller fertiger Komponenten und Frameworks; sie haben <strong>fast immer einen PoC</strong>.</li>
+</ul>
+<p>Der Kern eines PoC ist nicht nur zu prüfen, dass etwas funktionieren <em>könnte</em> (wie bei der Recherche), sondern <strong>etwas zu bauen, das tatsächlich funktioniert</strong>. Beispiel: Es soll geprüft werden, ob zwei Geräte über einen optischen Kanal Daten austauschen können. Man baut zwei primitive Versuchsaufbauten, bestückt sie mit <strong>den Schlüsselkomponenten, die im Endprodukt eingesetzt werden sollen</strong>, schreibt ein einfaches Kommunikationsprotokoll und sieht nach, ob es funktioniert. <strong>Ein PoC hat keine Features</strong> — geprüft wird nur die Funktionalität.</p>
+<h3>MVP: das erste Feature mit Nutzen</h3>
+<p>Ein MVP (Minimum Viable Product; im Kurs „minimal nützliches Produkt“) ist bereits ein Produkt mit Nutzen, also mit Features. Als Erstes wird ein Feature umgesetzt, das:</p>
+<ol>
+<li>die <strong>wenigsten Abhängigkeiten</strong> von anderen Features hat, also für sich allein bestehen kann;</li>
+<li>einen <strong>minimal ausreichenden Nutzen</strong> für den Kunden bietet, also beginnt, die Investition zurückzuzahlen.</li>
+</ol>
+<p>Der Weg zum MVP ist schwieriger, als es aussieht: Man muss das gesamte Projekt-Ökosystem aufbauen und den <strong>Teamkern</strong> aufstellen. Die Formel des Dozenten: <em>Ökosystem + Teamkern + Ziel = MVP</em>. Ein MVP erzeugt selbst kein Geld, aber es <strong>erzeugt Potenzial</strong> — wie potenzielle Energie in der Physik: Damit fährt der Kunde auf Messen und Konferenzen und sucht Investoren, Abnehmer und Partner.</p>
+<h3>Arbeitspakete und Abschluss</h3>
+<p>Nach dem MVP folgt ein Zyklus von Arbeitspaketen WP 1, WP 2 … WP n: Features werden geschnitten und nacheinander umgesetzt, der Produktnutzen wächst. Die letzte Phase ist der <strong>Abschluss</strong>: Übergabe der Artefakte und Archivierung des Projekts. Support, neue Features oder andere Fortsetzungen sind <strong>Gegenstand künftiger Vereinbarungen</strong> und gehören nicht zum aktuellen Workflow. Sagen Sie dem Kunden offen, dass Sie für eine weitere Zusammenarbeit offen sind, aber Schritt für Schritt vorgehen wollen — „den Borschtsch Löffel für Löffel essen“.</p>
+<h3>Was der Kunde am Ende erhält</h3>
+<p>Das Mindestkriterium für Erfolg ist ein <strong>vollständig fertiges Produkt</strong> in der Form, die der Kunde von Anfang an wollte. Das vollständige Ergebnis ist breiter: Der Kunde wird alle während der Arbeit entstandenen Artefakte haben wollen, um das Produkt zu reproduzieren oder die Entwicklung fortzusetzen — mit Ihnen oder mit einem anderen Team:</p>
+<ul>
+<li>das Produkt und seine technische Dokumentation;</li>
+<li>die Entwicklungsdokumentation, die zur Fortsetzung ohne Sie nötig ist.</li>
+</ul>
+<h2>3. Gates: Bedingungen für den Übergang zwischen Phasen</h2>
+<p>Nach R&amp;D und nach dem PoC stehen <strong>Gates</strong> (G1, G2). Ein Gate ist eine Übergangsbedingung mit <strong>drei gültigen Ergebnissen</strong>:</p>
+<ol>
+<li><strong>Bestanden</strong> — weiter zur nächsten Phase.</li>
+<li><strong>Nicht bestanden, weitersuchen</strong> — eine weitere Recherche-Runde oder ein PoC mit anderen Komponenten, sofern der Kunde Zeit und Geld investieren will. Ein PoC-Ergebnis kann so vernichtend sein, dass es das Projekt ganz an den Anfang zurückwirft und eine Neubewertung der gesamten Recherche erzwingt.</li>
+<li><strong>Nicht bestanden, Stopp</strong> — ein harter Stopp: Wir steigen aus dem Projekt aus.</li>
+</ol>
+<p>Nach dem MVP gibt es keine Gates mehr; ab dann folgt eine Abfolge von Features. Trotzdem <strong>kann der Kunde nach jeder Phase aufhören</strong> — es ist sein Geld und sein finanzielles Recht.</p>
+<p>So erklärt — R&amp;D, PoC, zwei Gates, MVP, Feature-Zyklus und Abschluss — ist der Workflow für den Kunden kein „dunkler Wald“ mehr. Er sieht, dass Sie professionell mit Risiken umgehen und sie steuern. Deshalb lohnt es sich, dieses Schema <strong>bereits im ersten Gespräch zum Proposal</strong> zu zeigen.</p>
+<h2>4. Der Unsicherheitskegel</h2>
+<figure class="diagram lecture-figure lecture-figure-small"><a href="../../../assets/img/teaching/embedded-software-engineering/l13-cone-of-uncertainty.png"><img src="../../../assets/img/teaching/embedded-software-engineering/l13-cone-of-uncertainty.png" alt="Skizze des Unsicherheitskegels: Ein Beobachter blickt entlang der Zeitachse, die Schätzspanne wird mit der Entfernung breiter" loading="lazy"/></a><figcaption class="diagram-note">Abb. 13.2. Der Unsicherheitskegel: Je weiter ein Ereignis entfernt ist, desto breiter die Schätzspanne. Skizze des Dozenten (draw.io).</figcaption></figure>
+
+<p>Stellen Sie sich vor, Sie stehen auf der Zeitachse und blicken in die Zukunft. Einen Monat voraus sehen Sie recht klar, wie das Projekt läuft und was es kostet — die Unsicherheitsspanne ist klein. Vier Monate voraus ist sie deutlich breiter: Sie treffen mehr <strong>Annahmen</strong>. Je weiter voraus, desto geringer die Genauigkeit der Schätzung — für Zeit wie für Geld.</p>
+<p>R&amp;D erlaubt es, die Spitze des Kegels nach vorn zu „verschieben“: Sie haben einen Teil des Weges zurückgelegt, Ihr Wissen über das Projekt ist gewachsen, und nun bauen Sie den Kegel von einem neuen Punkt aus — mit kleinerem Fehler bei dem, was das Projekt am Ende kosten wird.</p>
+<blockquote>
+<p><strong>Redaktionelle Anmerkung.</strong> Das Konzept geht auf Barry Boehm (1981) zurück; der Name „Cone of Uncertainty“ wurde von Steve McConnell bekannt gemacht. In der klassischen Darstellung kann eine Schätzung in der frühen Konzeptphase etwa um den Faktor 0,25 bis 4 vom tatsächlichen Wert abweichen, und der Kegel verengt sich nur, wenn das Team Entscheidungen trifft, die Unsicherheit beseitigen. „Von selbst“ mit der Zeit verengt er sich nicht — genau deshalb sind R&amp;D und PoC so wertvoll.</p>
+</blockquote>
+<h2>5. Eine grobe Zeitachse für den Kunden</h2>
+<p>Als Nächstes werden ungefähre Zeitrahmen über die Phasen gelegt. Der Dozent hat sie vorerst nominell gesetzt; woher solche Schätzungen kommen, behandelt der Kurs gesondert.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Dauer</th>
+<th>Kumuliert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R&amp;D</td>
+<td>1 Monat</td>
+<td>1 Monat</td>
+</tr>
+<tr>
+<td>PoC</td>
+<td>3 Monate (wenn das Gate bestanden ist)</td>
+<td>4 Monate</td>
+</tr>
+<tr>
+<td>MVP</td>
+<td>0,5 Monate (≈ 2 Wochen)</td>
+<td>4,5 Monate — der erste Nutzen, der sich schon verkaufen lässt</td>
+</tr>
+<tr>
+<td>Arbeitspakete (alle Features)</td>
+<td>7 Monate</td>
+<td>11,5 Monate</td>
+</tr>
+<tr>
+<td>Abschluss (Übergabe der Artefakte)</td>
+<td>0,5 Monate</td>
+<td>12 Monate</td>
+</tr>
+</tbody>
+</table></div>
+<p>Wichtig ist <strong>direkte Kommunikation</strong>: Der Kunde muss akzeptieren, dass <strong>Gates alle Regeln ändern</strong> und den ganzen Plan revidieren können. Ihre Aufgabe ist es, ihn von jedem Übergang zu überzeugen, aber nie zu täuschen. Detaillierte Feature-Schätzungen können auf Wunsch gesondert geliefert werden; der Dozent rät, sich abzusichern und in dieser Phase nicht zu sehr ins Detail zu gehen.</p>
+<h2>6. Der Preis: Fixed Price, Time &amp; Material und T&amp;M „mit Deckel“</h2>
+<p>Der Kunde versteht jetzt, <em>was</em> er <em>wann</em> bekommt. Als Nächstes muss er wissen, <em>wie viel</em> es kostet. Derselbe Way of Work lässt sich mit mehreren Modellen beschreiben.</p>
+<figure class="diagram lecture-figure lecture-figure-wide"><a href="../../../assets/img/teaching/embedded-software-engineering/l13-pricing-models.png"><img src="../../../assets/img/teaching/embedded-software-engineering/l13-pricing-models.png" alt="Drei Preisbahnen unter derselben Zeitachse: Fixed Price, Time and Material mit 30-Prozent-Deckel und einfaches Time and Material; Marker des kombinierten Modells FP, FP, T&amp;M mit Deckel, T&amp;M mit Deckel, FP" loading="lazy"/></a><figcaption class="diagram-note">Abb. 13.3. Dieselbe Zeitachse in drei Preismodellen. Die Rauten zwischen den Bahnen markieren das kombinierte Modell: FP für R&amp;D und PoC, T&amp;M^ für MVP und Arbeitspakete, FP für den Abschluss. Diagramm des Dozenten (draw.io).</figcaption></figure>
+
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Fixed Price (FP)</th>
+<th>T&amp;M mit Obergrenze (T&amp;M^)</th>
+<th>Kombiniertes Modell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R&amp;D</td>
+<td>100K</td>
+<td>60K ± 30 %</td>
+<td>FP</td>
+</tr>
+<tr>
+<td>PoC</td>
+<td>150K</td>
+<td>100K</td>
+<td>FP</td>
+</tr>
+<tr>
+<td>MVP</td>
+<td>50K</td>
+<td>40K</td>
+<td>T&amp;M^</td>
+</tr>
+<tr>
+<td>Arbeitspakete</td>
+<td>400K</td>
+<td>300K</td>
+<td>T&amp;M^</td>
+</tr>
+<tr>
+<td>Abschluss</td>
+<td>5K</td>
+<td>5K</td>
+<td>FP</td>
+</tr>
+<tr>
+<td><strong>Summe</strong></td>
+<td><strong>705K</strong></td>
+<td><strong>505K</strong> (Schätzung)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p>Die Beträge sind illustrativ; in der Einheit nannte der Dozent sie abwechselnd in Dollar und Euro. Der Abschluss ist fast zum Versandpreis angesetzt — als „riesiger Rabatt“ zur Transparenz.</p>
+<h3>Warum der Preis für dieselbe Arbeit so unterschiedlich ist</h3>
+<p>Der zentrale Unterschied zwischen den Modellen ist, <strong>wer das Risiko trägt</strong>.</p>
+<ul>
+<li><strong>Fixed Price</strong>: Das Risiko liegt beim Auftragnehmer. Wir haben geplant, wir stellen das Team zusammen, wir sind verantwortlich für Ingenieure, Management, Lieferung, Lieferanten, Fabriken und jede Verzögerung — den Kunden betrifft das nicht. Er zahlt 100K und wartet einen Monat. Verfehlen wir das Ziel — Vertragsstrafen. <strong>Genau diese Verantwortung bezahlt die Differenz</strong>: im R&amp;D-Beispiel 40K (100K gegenüber 60K).</li>
+<li><strong>Time &amp; Material</strong>: Der Kunde bezahlt tatsächlich aufgewendete Zeit und Material; das Risiko einer Unterschätzung liegt bei ihm.</li>
+</ul>
+<p>Der Dozent verriet ein „Geheimnis“ des Dienstleistungsgeschäfts: Der Ingenieur bekommt <strong>dasselbe Gehalt</strong>, unabhängig vom Vertragsmodell — nur die <strong>Marge</strong> des Unternehmens unterscheidet sich. Die Marge ist die Differenz zwischen dem, was das Unternehmen dem Ingenieur zahlt, und dem, was es dem Kunden für dessen Zeit berechnet. Daraus werden Büros, Verwaltung, Juristen, Finanzabteilung und Serviceabteilungen finanziert — Dutzende, Hunderte und Tausende Menschen, die Projekte begleiten. Im Beispiel liegen die echten Ingenieurskosten für R&amp;D bei etwa 10–30K; unter T&amp;M verlangt das Unternehmen 60K, unter FP 100K, und ein Teil dieser Differenz existiert genau dafür, Risiken abzudecken, wenn etwas schiefgeht.</p>
+<h3>Welche Risiken beim Auftragnehmer unter T&amp;M bleiben</h3>
+<p>Dieses Thema wurde mit den Studierenden diskutiert:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Szenario</th>
+<th>Wessen Risiko unter T&amp;M</th>
+<th>Folge für den Auftragnehmer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ein Schlüsselingenieur erkrankt, das Team verpasst Termine</td>
+<td>Das des Kunden</td>
+<td>Kein direkter Verlust</td>
+</tr>
+<tr>
+<td>Eine schlechte Schätzung lässt die Projektkosten steigen</td>
+<td>Bis zu einem gewissen Punkt das des Kunden; der Auftragnehmer verdient sogar mehr</td>
+<td>Steigen die Kosten um ein Vielfaches, geht der Kunde, und das Unternehmen <strong>verliert den erwarteten Gewinn</strong></td>
+</tr>
+<tr>
+<td>Das Team löst die Aufgabe nicht</td>
+<td>Zunächst das des Kunden</td>
+<td>Der Kunde geht und kommt nie wieder — ein <strong>Reputationsschaden</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Das Reputationsrisiko schmerzt am meisten bei großen Kunden (Beispiele aus der Vorlesung: Volkswagen-Konzern, SpaceX): Scheitert man an einem 100-Tausend-Projekt, kann man auf einer schwarzen Liste landen und dauerhaft deutlich mehr Geld verlieren.</p>
+<p>Unter <strong>Fixed Price</strong> trifft ein Scheitern das Unternehmen mit allen drei Schlägen zugleich:</p>
+<ol>
+<li>entgangener Gewinn;</li>
+<li>Reputationsverlust;</li>
+<li>eine vertragliche <strong>Strafe</strong> — meist ein Mehrfaches des Phasenwerts (Illustration des Dozenten: etwa 400K Strafe für eine Phase im Wert von 100K).</li>
+</ol>
+<p>Deshalb kann FP bis zu doppelt so teuer sein wie T&amp;M, und man sollte es <strong>nur wählen, wenn man absolut sicher ist</strong>, was man tut.</p>
+<h3>Zwei Arten von T&amp;M</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Modell</th>
+<th>Was der Auftragnehmer verspricht</th>
+<th>Verantwortung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T&amp;M</strong> (ohne Grenze)</td>
+<td>Eine Schätzung der Phase, z. B. 60K</td>
+<td>Keine: „Wir haben 60K geschätzt, nicht getroffen — sorry“</td>
+</tr>
+<tr>
+<td><strong>T&amp;M^</strong> („mit Deckel“, Obergrenze)</td>
+<td>Die Schätzung plus Toleranz für Marktschwankungen; in der Praxis des Dozenten <strong>±30 %</strong></td>
+<td>Reputationsbezogen: Sie verpflichten sich, innerhalb der Toleranz zu bleiben</td>
+</tr>
+</tbody>
+</table></div>
+<p>Die Logik von T&amp;M^: „Nach unserer Schätzung kostet die R&amp;D-Phase 60K; es können 10K oder 60K werden, aber der Markt ist instabil, also planen wir 30 % Fehlertoleranz ein und bleiben sicher in diesem Korridor.“</p>
+<blockquote>
+<p><strong>Redaktionelle Anmerkung.</strong> International heißt dieses Modell <em>Capped T&amp;M</em> oder <em>T&amp;M mit Not-to-Exceed-Grenze (NTE)</em>. Die genaue Toleranz ist Vereinbarungssache; 30 % sind die persönliche Praxis des Dozenten.</p>
+</blockquote>
+<h2>7. Ein kombiniertes Modell nach Phasen</h2>
+<p>Die Modelle müssen nicht auf das ganze Projekt auf einmal angewendet werden. Der Dozent schlug vor, <strong>das Modell an das Risiko jeder Phase anzupassen</strong>:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Modell</th>
+<th>Warum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R&amp;D</td>
+<td>FP</td>
+<td>Die Phase endet mit einem Gate, das gut schützt</td>
+</tr>
+<tr>
+<td>PoC</td>
+<td>FP</td>
+<td>Ein PoC ist an sich riskant — die Hypothese kann scheitern. Aber am Ende steht ein Gate, also ist <strong>jedes Ergebnis ein Erfolg</strong>: „Es hat nicht funktioniert“ ist auch eine Antwort. Man kann sogar versuchen, den Kunden zur oberen Kostengrenze zu bewegen, falls er mitgeht</td>
+</tr>
+<tr>
+<td>MVP</td>
+<td>T&amp;M^</td>
+<td>Ein Embedded-Projekt: viele Abhängigkeiten von fremder Fertigung und von Postdiensten mit riesigen Verzögerungen</td>
+</tr>
+<tr>
+<td>Arbeitspakete</td>
+<td>T&amp;M^</td>
+<td>Dasselbe Abhängigkeitsgewirr</td>
+</tr>
+<tr>
+<td>Abschluss</td>
+<td>FP</td>
+<td>Die Artefakte gehören Ihnen; Sie wissen sicher, dass sie vorliegen</td>
+</tr>
+</tbody>
+</table></div>
+<p>Das Ergebnis ist ein „schlaues“ Modell: FP, wo Gates Sie schützen; T&amp;M^, wo viel Unsicherheit herrscht; FP am Ausgang, wo alles unter Ihrer Kontrolle ist.</p>
+<h2>8. Wenn der Kunde überall auf Fixed Price besteht</h2>
+<p>Manchmal will der Kunde FP für alles, und ohne Flexibilität verlieren Sie ihn. Eine zweite Ebene des Ausgleichs ist, <strong>eine Phase nach Funktionen aufzuteilen</strong>. Der Dozent nahm die MVP-Phase und schaute „unter die Haube“.</p>
+<p><strong>MVP-Ziel im Lehrbeispiel:</strong> beide Seiten des Kommunikationswegs zwischen zwei Geräten A und B umsetzen. Jedes hat eigene Elektronik, ein Gehäuse und Firmware; die Daten laufen über eine Funkverbindung. Das erste MVP muss die Verbindung zwischen diesen beiden Geräten herstellen.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l13-mvp-fp-tm-split.png"><img src="../../../assets/img/teaching/embedded-software-engineering/l13-mvp-fp-tm-split.png" alt="Handgezeichnetes Diagramm: der MVP-Block mit dem Ziel „beide Seiten des Kommunikationswegs zwischen den Geräten A und B umsetzen“; eine Rollenliste HW, Mech, FW, Arch (sys), Procurement, gruppiert in Engineering, Supply und Manufacturing; Engineering als FP umkreist, Supply und Manufacturing als T&amp;M" loading="lazy"/></a><figcaption class="diagram-note">Abb. 13.4. Was unter der Haube des MVP steckt: Engineering (HW, Mech, FW, Systemarchitekt) — FP; Supply (Kaufen, Versenden, Lagern) und Manufacturing (HW, Mech, Montage) — T&amp;M. Diagramm des Dozenten (draw.io).</figcaption></figure>
+
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Gruppe</th>
+<th>Rollen und Funktionen</th>
+<th>Modell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Engineering</strong></td>
+<td>Hardware (Elektronik), Mechanik (Gehäuse für beide Geräte), Firmware (Mikrocontroller auf beiden Seiten und das Protokoll), Systemarchitekt (verbindet HW, Mech und SW: wie es aussieht und zusammenwirkt)</td>
+<td><strong>FP</strong></td>
+</tr>
+<tr>
+<td><strong>Supply</strong></td>
+<td>Procurement Manager: Einkauf, Versand, Lagerung, Umgang mit Postdiensten</td>
+<td><strong>T&amp;M</strong></td>
+</tr>
+<tr>
+<td><strong>Manufacturing</strong></td>
+<td>Elektronikfertigung, mechanische Fertigung, Montage</td>
+<td><strong>T&amp;M</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Die Erklärung an den Kunden lautet etwa: „Da du unbedingt Fixed Price willst, kommen wir dir entgegen: das gesamte <strong>Engineering</strong> ist Fixed Price. Preis und Zeitplan des Engineering-Teils sind genau so, wie wir es jetzt vereinbaren; überschreiten wir sie, zahlen wir aus eigener Tasche. Supply und Manufacturing laufen auf Time and Material.“ Der Grund ist einfach: Das Unternehmen <strong>fertigt nicht selbst</strong>; es entwickelt und übernimmt die Fertigungskontrolle. Die Elektronik fertigt etwa ein chinesischer Auftragnehmer, die Mechanik Werke in Bila Zerkwa, Charkiw und Luzk, die Endmontage noch ein anderes Werk. Das Unternehmen übergibt die Zeichnungen, sein Ingenieur übernimmt die technische Aufsicht. Diese Lieferanten können ihre Preise ändern, und dafür will das Unternehmen keine Verantwortung tragen.</p>
+<h2>Praktische Schlussfolgerungen</h2>
+<ul>
+<li>Ein Kooperationsmodell ist Pflichtbestandteil des Proposals: Der Kunde muss Phasen, Auslöser und Ergebnisse sehen.</li>
+<li>R&amp;D beantwortet „Ist es möglich“, der PoC „Funktioniert es mit realen Komponenten“, das MVP „Gibt es einen ersten Nutzen“.</li>
+<li>Gates nach R&amp;D und PoC haben drei gültige Ergebnisse: weiter, erneut suchen, Stopp.</li>
+<li>Der Kunde kann nach jeder Phase aufhören; alles nach dem Abschluss ist Gegenstand neuer Vereinbarungen.</li>
+<li>Der Unterschied zwischen FP und T&amp;M ist die Risikoverteilung; der FP-Preis enthält die Kosten dieses Risikos.</li>
+<li>Unter T&amp;M riskiert der Auftragnehmer weiterhin entgangenen Gewinn und Reputation; unter FP kommt eine Strafe hinzu.</li>
+<li>T&amp;M^ mit Toleranz (z. B. ±30 %) ist ein Kompromiss zwischen Flexibilität und Verantwortung.</li>
+<li>Modelle lassen sich nach Phasen (FP–FP–T&amp;M^–T&amp;M^–FP) und nach Funktionen (Engineering FP, Beschaffung und Fertigung T&amp;M) mischen.</li>
+</ul>
+<h2>Fragen zur Selbstkontrolle</h2>
+<ul>
+<li>Warum braucht der Kunde schon im Proposal ein Kooperationsmodell?</li>
+<li>Wer sollte in einem kompakten bzw. einem verzweigten Projekt Kontaktperson sein?</li>
+<li>Wie unterscheidet sich das Ergebnis von R&amp;D von dem eines PoC?</li>
+<li>Wie unterscheiden sich innovative und technologische Projekte hinsichtlich R&amp;D und PoC?</li>
+<li>Welche zwei Bedingungen muss das erste MVP-Feature erfüllen?</li>
+<li>Welche drei Ergebnisse sind an einem Gate möglich?</li>
+<li>Was ist der Unsicherheitskegel, und wie beeinflusst R&amp;D ihn?</li>
+<li>Warum ist Fixed Price bei gleichem Umfang teurer als Time &amp; Material?</li>
+<li>Welche Risiken verbleiben unter T&amp;M beim Auftragnehmer?</li>
+<li>Wie unterscheidet sich T&amp;M von T&amp;M mit Obergrenze?</li>
+<li>Warum kann ein PoC zum Festpreis übernommen werden, obwohl die Hypothese scheitern kann?</li>
+<li>Wie lässt sich eine Phase aufteilen, um einem Kunden entgegenzukommen, der überall FP will?</li>
+</ul>
+<h2>Angekündigt</h2>
+<p>Der Dozent kündigte an, „in die Rechtecke hineinzusteigen“: woher die Phasendauern (1, 3, 0,5, 7 Monate) kommen und warum die ersten beiden Phasen Fixed Price sein können, die dritte und vierte aber nicht. Ein Teil davon wurde bereits in der nächsten Einheit am 28. Oktober behandelt. Dies ist ein <strong>angekündigter Plan</strong>.</p>
+<h2>Materialien der Einheit</h2>
+<ul>
+<li>Das draw.io-Diagramm der Einheit: <a href="../../../teaching/embedded-software-engineering/source-materials/2026-10-27-way-of-work-pricing.drawio">.drawio herunterladen</a> (öffnet in diagrams.net / draw.io).</li>
+</ul>
+<h2>Geprüfte Links</h2>
+<ul>
+<li>S. McConnell. The Cone of Uncertainty (Construx, White Paper): https://www.construx.com/wp-content/uploads/2019/02/CxWhitePaper_ConeOfUncertainty.pdf</li>
+</ul></article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Lehre</b><p style="margin-top:8px">Lehrmaterialien von Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">Über den Autor →</a></div>
+<div class="footer-links"><b>Kurs</b><a href="index.html">Kursübersicht</a><a href="lecture-12.html">Einheit 12</a><a href="lecture-13.html">Einheit 13</a><a href="lecture-14.html">Einheit 14</a></div>
+<div class="footer-links"><b>Kontext</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in der Energietechnik</a><a href="../../teaching.html">Alle Lehrmaterialien</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Datenschutz</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

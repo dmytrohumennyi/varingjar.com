@@ -1,0 +1,142 @@
+/* Væringjar II · Research case studies · based on the author's 2026 dissertation §1.2.
+   Local to /research/cases/index.html; deliberately does not change the shared template. */
+body.research-case-page{--case-text:#dfede2;--case-muted:#a5baaa;--case-glow:#98efaf;--case-border:rgba(129,217,151,.24);background:#050b07!important;color:var(--case-text)}
+body.research-case-page .cases-main{position:relative;isolation:isolate;overflow:clip;}
+body.research-case-page .cases-main::before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse 720px 500px at 77% 2%,rgba(45,176,93,.12),transparent 74%),radial-gradient(ellipse 620px 800px at 5% 56%,rgba(26,91,44,.06),transparent);pointer-events:none;}
+body.research-case-page .cases-container{max-width:1160px;width:calc(100% - 64px);margin-inline:auto;min-width:0;}
+body.research-case-page .cases-intro{padding:67px 0 34px;border-bottom:1px solid var(--case-border);}
+body.research-case-page .cases-back{color:#a0d8af;font:600 13px/1.4 var(--science-sans);text-decoration:none;display:inline-block;margin-bottom:31px}
+body.research-case-page .cases-back:hover{color:#d5ffdf}
+body.research-case-page .cases-kicker, body.research-case-page .case-index{font:700 12px/1.5 var(--science-sans);letter-spacing:.12em;color:#91d6a2!important;text-transform:uppercase;margin:0 0 15px!important;}
+body.research-case-page .cases-intro h1{font:750 clamp(40px,5vw,72px)/1.08 var(--science-sans)!important;letter-spacing:-.046em!important;max-width:840px!important;color:#f2fff4!important;margin:0 0 20px!important;text-wrap:balance;text-transform:none!important;}
+body.research-case-page .cases-lead{font:400 clamp(19px,2vw,24px)/1.5 var(--science-sans)!important;color:#cce7d3!important;max-width:800px;margin:0 0 13px!important;}
+body.research-case-page .cases-context{color:var(--case-muted)!important;font:400 14px/1.6 var(--science-sans)!important;max-width:760px;margin:0 0 34px!important;}
+body.research-case-page .cases-jump{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:940px;}
+body.research-case-page .cases-jump a{display:flex;align-items:center;gap:14px;padding:13px 15px;border:1px solid var(--case-border);background:rgba(33,78,43,.16);font:700 15px/1.4 var(--science-sans);color:#edfff0;text-decoration:none;min-width:0;}
+body.research-case-page .cases-jump a span{font:600 12px/1.2 var(--science-mono);color:#8cbd98}
+body.research-case-page .cases-jump a b{font-weight:400;margin-left:auto;color:#91daa4}
+body.research-case-page .cases-jump a:hover{border-color:var(--case-glow);background:rgba(62,155,89,.15)}
+body.research-case-page .case-story{border-bottom:1px solid var(--case-border);padding:clamp(56px,7vw,99px) 0;scroll-margin-top:90px;}
+body.research-case-page .case-story-grid{display:grid;grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr);gap:clamp(30px,5vw,78px);align-items:start;}
+body.research-case-page .case-story-flipped .case-prose{order:2}
+body.research-case-page .case-story-flipped .case-visual{order:1}
+body.research-case-page .case-prose{min-width:0;}
+body.research-case-page .case-prose h2{font:760 clamp(44px,5vw,70px)/1.03 var(--science-sans)!important;letter-spacing:-.05em;color:#f2fff4!important;margin:0 0 10px!important;text-transform:none!important;}
+body.research-case-page .case-prose h3{font:650 clamp(20px,2.3vw,28px)/1.25 var(--science-sans)!important;letter-spacing:-.03em;color:#bef1cd!important;max-width:26ch;margin:0 0 24px!important;text-transform:none!important;}
+body.research-case-page .case-prose>p:not(.case-index){font:400 16px/1.78 var(--science-sans)!important;color:#ceded1!important;margin:0 0 16px!important;max-width:66ch;}
+body.research-case-page .case-visual{display:grid;gap:14px;min-width:0;align-self:start}
+body.research-case-page .case-media{margin:0;background:#09120b;border:1px solid var(--case-border);border-radius:3px;overflow:hidden;}
+body.research-case-page .case-media img{display:block;width:100%;height:auto;object-fit:contain;max-height:none;border:0;}
+body.research-case-page .case-media-photo img{aspect-ratio:1.56;object-fit:cover;object-position:center;background:#080c0a}
+body.research-case-page #apollo .case-media-photo img{aspect-ratio:1.12;object-fit:contain}
+body.research-case-page .case-media-diagram img,body.research-case-page .case-media-figure img{background:#fff;padding:6px}
+body.research-case-page .case-media figcaption{font:400 12px/1.55 var(--science-sans);color:#abcab4;padding:11px 15px;}
+body.research-case-page .case-media figcaption a{display:inline-block;margin-left:8px;color:#b0f2c4;text-decoration:underline;text-underline-offset:3px}
+body.research-case-page .case-insight{background:linear-gradient(105deg,rgba(48,125,69,.13),rgba(8,22,11,.7));border-left:2px solid #95e6a9;padding:16px 20px;margin:28px 0 21px;max-width:630px;}
+body.research-case-page .case-insight span{font:700 12px/1.4 var(--science-sans);letter-spacing:.08em;text-transform:uppercase;color:#a6f2b8;}
+body.research-case-page .case-insight p{font:450 15px/1.65 var(--science-sans)!important;color:#d7ebdb!important;margin:8px 0 0!important;}
+body.research-case-page .cases-original{font:400 14px/1.6 var(--science-sans);border-top:1px solid var(--case-border);padding-top:12px;color:#a8c2ae;}
+body.research-case-page .cases-original summary{cursor:pointer;display:flex;gap:14px;justify-content:space-between;align-items:center;color:#add7b9;font-weight:600;list-style:none;padding:7px 0;}
+body.research-case-page .cases-original summary::-webkit-details-marker{display:none}
+body.research-case-page .cases-original summary span{font:500 21px/1 var(--science-sans)}
+body.research-case-page .cases-original[open] summary span{transform:rotate(45deg)}
+body.research-case-page .cases-original-body{border-top:1px dashed var(--case-border);padding:18px 0 4px;color:#bccdbf}
+body.research-case-page .cases-original-body p{font:400 14px/1.72 var(--science-sans)!important;margin:0 0 16px!important;}
+body.research-case-page .case-predictive{min-height:350px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:radial-gradient(ellipse at center,rgba(64,207,115,.12),transparent 65%),linear-gradient(155deg,#09190f,#040d07);border:1px solid var(--case-border);padding:36px 30px;text-align:center;position:relative;overflow:hidden;}
+body.research-case-page .case-predictive>span{font:600 13px/1 var(--science-mono);color:#87bf98;letter-spacing:.16em;margin:0 0 16px}
+body.research-case-page .case-predictive strong{font:750 clamp(16px,2vw,22px)/1.3 var(--science-sans);color:#dcffe5;letter-spacing:.05em;position:relative;z-index:1;}
+body.research-case-page .case-predictive em{font:400 28px/1.5 var(--science-sans);color:#65d389;font-style:normal;}
+body.research-case-page .prediction-orbit{position:absolute;border-radius:50%;border:1px solid rgba(116,207,142,.13);width:310px;height:310px;transform:rotate(-18deg);pointer-events:none}
+body.research-case-page .prediction-orbit i{position:absolute;inset:35px;border:1px dashed rgba(116,207,142,.12);border-radius:50%;}
+body.research-case-page .prediction-orbit i:nth-child(2){inset:71px}
+body.research-case-page .prediction-orbit i:nth-child(3){inset:106px}
+body.research-case-page .cases-synthesis{padding:85px 0;background:linear-gradient(130deg,rgba(32,77,44,.2),rgba(4,12,7,.05));}
+body.research-case-page .cases-summary-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:50px;align-items:center;}
+body.research-case-page .cases-synthesis h2{font:750 clamp(32px,3.4vw,48px)/1.13 var(--science-sans)!important;letter-spacing:-.035em;color:#effff3!important;margin:0 0 18px!important;}
+body.research-case-page .cases-synthesis p:not(.cases-kicker){font:400 16px/1.76 var(--science-sans)!important;color:#c6dacb!important;}
+body.research-case-page .cases-next{display:inline-flex;margin-top:14px;padding:12px 18px;border:1px solid #8bd8a1;color:#caf8d5;font:700 14px/1.3 var(--science-sans);text-decoration:none}
+body.research-case-page .cases-next:hover{background:rgba(109,234,139,.12)}
+body.research-case-page .cases-sources{padding:55px 0 86px;background:#030805;border-top:1px solid var(--case-border)}
+body.research-case-page .cases-sources h2{font:750 28px/1.25 var(--science-sans)!important;color:#e5ffea!important;margin:0 0 14px!important;}
+body.research-case-page .cases-sources p{font:400 14px/1.7 var(--science-sans)!important;color:#a9c2af!important;max-width:820px;}
+body.research-case-page .cases-sources ol{list-style:none;margin:18px 0 25px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px;}
+body.research-case-page .cases-sources li{font:400 14px/1.6 var(--science-sans);border-top:1px solid rgba(99,163,116,.13);padding:9px 0;}
+body.research-case-page .cases-sources li a{color:#bae9c7;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere;}
+body.research-case-page .cases-sources .cases-credit-note{border-left:2px solid rgba(123,211,148,.65);padding-left:17px;}
+body.research-case-page .cases-main a:focus-visible,body.research-case-page .cases-main summary:focus-visible{outline:2px solid #b3ffd0;outline-offset:4px;}
+@media(max-width:900px){body.research-case-page .cases-intro{padding:46px 0 27px}body.research-case-page .case-story-grid,body.research-case-page .cases-summary-grid{grid-template-columns:minmax(0,1fr);gap:28px}body.research-case-page .case-story-flipped .case-prose,body.research-case-page .case-story-flipped .case-visual{order:initial}body.research-case-page .cases-jump{grid-template-columns:repeat(2,minmax(0,1fr))}body.research-case-page .case-media-photo img{max-height:430px}body.research-case-page .case-story{padding:48px 0}}
+@media(max-width:600px){body.research-case-page .cases-container{width:calc(100% - 36px)}body.research-case-page .cases-intro{padding:35px 0 22px}body.research-case-page .cases-intro h1{font-size:clamp(38px,10vw,55px)!important}body.research-case-page .cases-jump a{gap:8px;font-size:13px;padding:12px 9px}body.research-case-page .cases-sources ol{grid-template-columns:1fr}body.research-case-page .case-media figcaption{font-size:12px}}
+
+/* CASES-02 / editorial opening: case studies are the substance, not an oversized generic hero. */
+body.research-case-page .cases-intro.cases-intro-editorial{
+  padding:25px 0 20px;
+  background:none;
+  border-bottom:1px solid var(--case-border);
+}
+body.research-case-page .cases-intro-editorial .cases-container{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 36px;align-items:start;}
+body.research-case-page .cases-intro-editorial .cases-back{grid-column:1/-1;margin:0 0 14px!important;font-size:13px;}
+body.research-case-page .cases-intro-editorial .cases-kicker{grid-column:1/-1;font-size:11px;letter-spacing:.07em;margin:0 0 7px!important;}
+body.research-case-page .cases-intro-editorial h1{grid-column:1;grid-row:3/5;font-size:clamp(30px,3.35vw,49px)!important;line-height:1.13!important;letter-spacing:-.035em!important;margin:0 0 16px!important;max-width:560px!important;text-wrap:balance;}
+body.research-case-page .cases-intro-editorial .cases-lead{grid-column:2;grid-row:3;font-size:clamp(15px,1.25vw,18px)!important;line-height:1.57!important;margin:2px 0 8px!important;max-width:560px;}
+body.research-case-page .cases-intro-editorial .cases-context{grid-column:2;grid-row:4;font-size:12px!important;line-height:1.52!important;margin:0 0 14px!important;max-width:560px;}
+body.research-case-page .cases-intro-editorial .cases-jump{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:0;max-width:none;border-top:1px solid rgba(129,217,151,.15);padding-top:11px;}
+body.research-case-page .cases-intro-editorial .cases-jump a{background:none;border:0;border-radius:0;padding:5px 19px 5px 0;margin-right:18px;color:#c2edcf;font:600 14px/1.4 var(--science-sans);text-decoration:underline;text-decoration-color:rgba(137,229,170,.35);text-underline-offset:5px;gap:8px;min-height:30px;}
+body.research-case-page .cases-intro-editorial .cases-jump a:hover{background:none;border:0;text-decoration-color:#a2efb8;color:#f2fff4;}
+body.research-case-page .cases-intro-editorial .cases-jump a b{font-size:13px;margin-left:2px;}
+@media(max-width:820px){
+ body.research-case-page .cases-intro.cases-intro-editorial{padding:22px 0 18px;}
+ body.research-case-page .cases-intro-editorial .cases-container{display:block;}
+ body.research-case-page .cases-intro-editorial .cases-kicker{margin-bottom:7px!important;}
+ body.research-case-page .cases-intro-editorial h1{font-size:clamp(30px,6vw,43px)!important;max-width:700px!important;margin-bottom:12px!important;}
+ body.research-case-page .cases-intro-editorial .cases-lead{font-size:16px!important;max-width:670px;}
+ body.research-case-page .cases-intro-editorial .cases-context{margin-bottom:13px!important;}
+ body.research-case-page .cases-intro-editorial .cases-jump{padding-top:9px;}
+}
+
+/* 2026-10-28 (rev.) · media evidence and the seven further missions.
+   Colours come only from the page tokens (--case-*), so both themes stay legible.
+   Plain: rules and type carry the structure; no tinted panels, no coloured labels. */
+body.research-case-page{--case-head:#f2fff4;--case-faint:rgba(129,217,151,.12)}
+:root[data-theme="light"] body.research-case-page{--case-head:#141414;--case-faint:rgba(0,0,0,.08)}
+body.research-case-page .cases-jump{grid-template-columns:repeat(5,minmax(0,1fr));max-width:1160px}
+
+/* media evidence list (under every case) */
+body.research-case-page .case-evidence{margin:6px 0 22px;max-width:66ch;border-top:1px solid var(--case-border);padding-top:14px}
+body.research-case-page .case-evidence-title{display:block;font:700 12px/1.4 var(--science-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--case-head)!important;margin-bottom:8px}
+body.research-case-page .case-evidence ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+body.research-case-page .case-evidence li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:12px;font:400 15px/1.55 var(--science-sans);color:var(--case-text)}
+body.research-case-page .case-evidence .media-type{font:600 11px/2 var(--science-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--case-muted)!important}
+body.research-case-page .case-evidence a{color:var(--case-text)!important;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--case-border);overflow-wrap:anywhere}
+body.research-case-page .case-evidence a:hover{color:var(--case-head)!important;text-decoration-color:currentColor}
+body.research-case-page .case-evidence-more{display:inline-block;margin-top:12px;font:600 14px/1.4 var(--science-sans);color:var(--case-text)!important;text-decoration:underline!important;text-underline-offset:3px}
+
+/* the seven further missions */
+body.research-case-page .cases-more{border-bottom:1px solid var(--case-border);padding:clamp(56px,7vw,96px) 0;scroll-margin-top:90px}
+:root[data-theme="light"] body.research-case-page .cases-more{background:#f7f7f7!important;border-color:#d6d6d6!important}
+body.research-case-page .cases-more h2{font:750 clamp(34px,4vw,54px)/1.08 var(--science-sans)!important;letter-spacing:-.04em;color:var(--case-head)!important;margin:0 0 18px!important;max-width:920px;text-transform:none!important}
+body.research-case-page .cases-more-lead{font:400 clamp(17px,1.6vw,20px)/1.6 var(--science-sans)!important;color:var(--case-text)!important;max-width:820px;margin:0!important}
+body.research-case-page .cases-more-head{margin:clamp(48px,6vw,72px) 0 0;padding-top:22px;border-top:2px solid var(--case-head);display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:8px 48px;align-items:baseline;scroll-margin-top:90px}
+body.research-case-page .cases-more-head h3{font:750 clamp(24px,2.4vw,32px)/1.15 var(--science-sans)!important;letter-spacing:-.03em;color:var(--case-head)!important;margin:0!important;text-transform:none!important}
+body.research-case-page .cases-more-head p{font:400 17px/1.6 var(--science-sans)!important;color:var(--case-muted)!important;margin:0!important;max-width:60ch}
+body.research-case-page .cases-more-list{display:grid}
+body.research-case-page .case-mini{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:16px 48px;padding:34px 0;border-bottom:1px solid var(--case-border);scroll-margin-top:90px;background:none!important}
+body.research-case-page .case-mini:last-child{border-bottom:0}
+body.research-case-page .case-mini-id{align-self:start;position:sticky;top:96px}
+body.research-case-page .case-mini-kicker{font:600 12px/1.4 var(--science-mono)!important;letter-spacing:.08em;text-transform:uppercase;color:var(--case-muted)!important;margin:0 0 8px!important}
+body.research-case-page .case-mini h4{font:760 clamp(30px,3vw,42px)/1.05 var(--science-sans)!important;letter-spacing:-.04em;color:var(--case-head)!important;margin:0 0 14px!important;text-transform:none!important}
+body.research-case-page .case-mini-outcome{display:inline-block;margin:0!important;padding:4px 10px;border:1px solid var(--case-head);font:600 12px/1.4 var(--science-mono)!important;letter-spacing:.06em;text-transform:uppercase;color:var(--case-head)!important}
+body.research-case-page .case-lost .case-mini-outcome{border-style:dashed;color:var(--case-muted)!important;border-color:var(--case-muted)}
+body.research-case-page .case-mini-body{min-width:0;max-width:72ch}
+body.research-case-page .case-mini h5{font:650 clamp(20px,2vw,26px)/1.3 var(--science-sans)!important;letter-spacing:-.02em;color:var(--case-head)!important;margin:0 0 14px!important;text-transform:none!important}
+body.research-case-page .case-mini-body>p{font:400 16px/1.75 var(--science-sans)!important;color:var(--case-text)!important;margin:0 0 14px!important}
+body.research-case-page .case-mini .case-mini-insight{border-left:2px solid var(--case-head);padding:2px 0 2px 16px;margin:18px 0!important}
+body.research-case-page .case-mini .case-mini-insight b{color:var(--case-head)!important;font-weight:700}
+body.research-case-page .case-mini .case-evidence{margin:18px 0 0;max-width:none}
+:root[data-theme="light"] body.research-case-page .case-mini-body>p{color:#2e2e2e!important}
+
+@media(max-width:900px){
+  body.research-case-page .cases-jump{grid-template-columns:repeat(2,minmax(0,1fr))}
+  body.research-case-page .cases-more-head,body.research-case-page .case-mini{grid-template-columns:1fr;gap:10px}
+  body.research-case-page .case-mini-id{position:static}
+  body.research-case-page .case-evidence li{grid-template-columns:1fr;gap:0}
+}

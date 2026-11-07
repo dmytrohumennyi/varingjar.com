@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="de";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-03.html","uk":"../../../uk/teaching/embedded-software-engineering/lecture-03.html","de":"lecture-03.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Vom unbekannten Unternehmen zum Lead — Væringjar II</title><meta content="Vertrauen, Empfehlungen, öffentliche Belege, Technical Champions und Events schaffen die Basis für ein echtes Kundengespräch." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20260928-scientific-v3" rel="stylesheet"/>
+<link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-03.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-03.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-03.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-03.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-03.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Vom unbekannten Unternehmen zum Lead — Væringjar II" property="og:title"/><meta content="Kurzfassung der dritten Vorlesung des Autorenkurses Embedded Software Engineering: Kundenproblem, Vertrauen, Lead-Entwicklung und technische Glaubwürdigkeit." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-03.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Vom unbekannten Unternehmen zum Lead — Væringjar II" name="twitter:title"/><meta content="Kurzfassung der dritten Vorlesung des Autorenkurses Embedded Software Engineering: Kundenproblem, Vertrauen, Lead-Entwicklung und technische Glaubwürdigkeit." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Modell</a><a href="../../research.html">Evidenz</a><a href="../../implementation.html">Implementierung</a><a class="active" href="../../teaching.html">Lehre</a><a href="../../collaboration.html">Mitwirken</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-03.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../../uk/teaching/embedded-software-engineering/lecture-03.html?lang=uk" hreflang="uk" lang="uk">UA</a><a aria-current="page" class="active" data-lang="de" href="lecture-03.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Lehre / Vorlesung 03 · 08.09.2026</div><h1>Vom unbekannten Unternehmen zum Lead</h1><p class="lead reader-lead">Vertrauen, Empfehlungen, öffentliche Belege, Technical Champions und Events schaffen die Basis für ein echtes Kundengespräch.</p><div class="reader-badges"><span>08.09.2026</span><span>Sitzung 03 / 06</span><span>eingefroren 28.09.2026</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Kursübersicht →</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / <b>MODULE 03</b> · MARKT &amp; KUNDE / 03 · 08.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-02.html">Zurück · Engineering-Team und physische Delivery-Kette</a><span class="current">Aktuell · 03</span><a class="next" href="lecture-03.html">Als Nächstes · Vom Lead zum formalisierten Pre-Sales</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Kernideen</div><h2>Kernideen</h2><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Pain vor Pitch</h3><p>Zuerst das Kundenproblem verstehen, erst dann Technologie verkaufen.</p></article><article class="reader-card"><span class="reader-num">02</span><h3>Vertrauen akkumuliert</h3><p>Gute Delivery erzeugt Empfehlungen und erleichtert die nächste Einführung.</p></article><article class="reader-card"><span class="reader-num">03</span><h3>Website als Evidenz</h3><p>Nach dem Treffen prüft der Lead, ob der öffentliche Footprint die Aussagen stützt.</p></article><article class="reader-card"><span class="reader-num">04</span><h3>Events sind auch Research</h3><p>Nicht nur Kontakte, sondern Trends und Pain Points mitbringen.</p></article></div></div></section><section class="reader-section section-tight"><div class="container"><div class="eyebrow">Kernaussage</div><h2>Praktische Kernaussage</h2><div class="reader-copy"><p class="reader-takeaway">Das erste kommerzielle Ziel ist nicht der Verkauf, sondern genug Vertrauen und Relevanz für ein Follow-up-Meeting.</p></div></div></section><section class="reader-section section-tight next-lecture-section"><div class="container"><div class="next-lecture-card"><div class="section-eyebrow">Als Nächstes</div><h2>04 — Vom Lead zum formalisierten Pre-Sales</h2><p>Initial- und technische Follow-ups verwandeln Interesse in strukturierten Austausch: RFI, RFQ, kurslokales RFC und erste Proposal-Baseline.</p></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Rekonstruiertes &amp; eingefrorenes Material</div><h2>Vollständiges Vorlesungsskript</h2><p class="lecture-notes-intro">Aus dem primären ukrainischen Transkript rekonstruiert. Redaktionelle Korrekturen und externe Ergänzungen sind im Material ausdrücklich markiert.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R03-vid-nevidomoi-kompanii-do-lida.md">Quell-Markdown öffnen →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-08.md">Ukrainisches Rohtranskript →</a></div><article class="lecture-article lecture-notes-content" lang="de"><h1>Vom unbekannten Unternehmen zum Lead</h1>
+<blockquote>
+<p>Chronologie: 8. September 2026 · dritte Veranstaltung. Primärquelle: <a href="../../../teaching/embedded-software-engineering/source-transcripts/2026-09-08.md">vollständiges Transkript</a>. Wendepunkt des Kurses: von „Wer kann die Arbeit ausführen?“ zu „Wie erfährt ein potenzieller Kunde überhaupt von uns?“.</p>
+</blockquote>
+<h2>1. Ausgangslage: Ein Kundenbedarf besteht, aber noch keine Zusammenarbeit</h2>
+<p>Die Vorlesung beginnt mit zwei Firmen, die noch keinen Vertrag geschlossen haben. Der Kunde besitzt eine Idee, ein Problem oder eine Produktanforderung, aber ihm fehlen Kapazität, Fachwissen, Zeit oder technische Ressourcen. Der Dienstleister verfügt über Ingenieurkompetenz, darf jedoch nicht einfach annehmen, dass sein bevorzugter Technologie-Stack automatisch zum Kundenbedarf passt.</p>
+<p>Das zentrale Prinzip der Vorlesung:</p>
+<blockquote>
+<p>Verkaufen Sie Ihre Technologie nicht als Antwort, bevor Sie das Problem des Kunden verstanden haben.</p>
+</blockquote>
+<p>Im Pre-Sales-Prozess wird zunächst das eigentliche Problem identifiziert; erst danach werden einschlägige Erfahrungen, ein Team oder mögliche Lösungsrichtungen vorgestellt.</p>
+<h2>2. Vertrauen als erstes wirtschaftliches Kapital des Engineerings</h2>
+<p>Als besonders starker Kanal wird die Empfehlung aufgrund früherer erfolgreicher Arbeit beschrieben. Der Vergleich mit einer vertrauenswürdigen Werkstatt ist absichtlich einfach: Wer selbst ein gutes Ergebnis erlebt hat, überträgt beim Weiterempfehlen einen Teil seines Vertrauens auf den Dienstleister.</p>
+<p>Beziehungen zwischen Unternehmen funktionieren ähnlich:</p>
+<pre>Erfolgreiche Lieferung
+          ↓
+persönliches Vertrauen zu konkreten Menschen
+          ↓
+Wechsel dieser Menschen zwischen Firmen und Rollen
+          ↓
+neue Empfehlung
+          ↓
+Erstkontakt zu einer Geschäftsmöglichkeit
+</pre>
+<p>Entscheidend ist das Zusammenspiel zwischen dem Ruf eines Unternehmens und dem persönlichen Ruf seiner Engineering-Führungskräfte.</p>
+<h2>3. Ohne Empfehlung: Das Unternehmen sichtbar machen</h2>
+<p>Die Vorlesung unterscheidet mehrere Kanäle.</p>
+<h3>3.1. Bezahlte Sichtbarkeit und Werbung</h3>
+<p>Werbung muss nicht unmittelbar einen Kundenklick auslösen. Ihr weiteres Ziel ist Wiedererkennung: Der Firmenname ist bereits vertraut, sodass eine spätere Begegnung auf einer Fachveranstaltung nicht bei null beginnt.</p>
+<p>Praktische Lehre: Werbung soll Regionen und Zielgruppen mit tatsächlich vorhandenem Kundenbedarf ansprechen, statt bloß Sichtkontakte zu sammeln.</p>
+<h3>3.2. Die Website als Beweisebene</h3>
+<p>Nach einer ersten Begegnung prüft ein potenzieller Kunde:</p>
+<ul>
+<li>wer Sie sind;</li>
+<li>welche Branchen Sie verstehen;</li>
+<li>welche Fallstudien Sie vorweisen können;</li>
+<li>ob ein fortlaufender Geschäftsbetrieb erkennbar ist;</li>
+<li>welche Leistungen und Kompetenzen Sie beanspruchen;</li>
+<li>ob Ihre öffentliche Präsenz zu den Aussagen des persönlichen Gesprächs passt.</li>
+</ul>
+<p>In diesem Modell ist die Website keine allein auf schöne Gestaltung ausgerichtete Broschüre, sondern eine Sammlung von Belegen für die Glaubwürdigkeit des Erstkontakts.</p>
+<h3>3.3. LinkedIn und technische Inhalte</h3>
+<p>Regelmäßige Fachbeiträge zeigen, dass sich das Unternehmen und seine Fachkräfte kontinuierlich mit einem Thema befassen, anstatt es nur beiläufig in einem Gespräch zu erwähnen. Besonders wertvoll sind Inhalte, die eine Technologie mit einem geschäftlichen Ergebnis oder einem echten Ingenieurproblem verbinden.</p>
+<h2>4. Technische Champions</h2>
+<p>Die Vorlesung führt die Rolle des „Champions“ ein: eine sichtbare technische Fachperson, die ein Unternehmen zu einer Konferenz, Branchenveranstaltung oder einem ersten Kundengespräch entsenden kann.</p>
+<p>Diese Person benötigt eine Kombination aus:</p>
+<ul>
+<li>ausreichender fachlicher Tiefe;</li>
+<li>klarer Kommunikationsfähigkeit;</li>
+<li>öffentlicher beruflicher Präsenz;</li>
+<li>Vertrauen bei der Zielgruppe;</li>
+<li>der Disziplin, dem Kunden zuzuhören, statt wahllos „alles zu verkaufen“.</li>
+</ul>
+<p>Das muss nicht der stärkste enge Spezialist des Unternehmens sein. Die Wahl des Vortragenden ist eine eigene Optimierungsaufgabe: Thema × Zielgruppe × Sprecher × kommerzielles Ziel.</p>
+<h2>5. Messen und Konferenzen als Kanäle zur Lead-Generierung</h2>
+<p>Die Vorlesung unterscheidet mehrere Teilnahmeformen:</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Vorgehen</th>
+<th>Vorteil</th>
+<th>Risiko / Kosten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Besucher / aktive Kontaktaufnahme</td>
+<td>Messestände besuchen und Personen ansprechen</td>
+<td>Niedrigste Kosten; aktives Networking</td>
+<td>Kontakte müssen selbst initiiert werden</td>
+</tr>
+<tr>
+<td>Eigener Messestand</td>
+<td>Menschen an den eigenen Stand bringen</td>
+<td>Möglichkeit, ein Produkt zu demonstrieren</td>
+<td>Hoher Vorbereitungsaufwand und hohe Kosten</td>
+</tr>
+<tr>
+<td>Kombination</td>
+<td>Eigener Stand und aktive Kontaktaufnahme</td>
+<td>Größte Abdeckung</td>
+<td>Höchster Team- und Logistikbedarf</td>
+</tr>
+<tr>
+<td>Vortragender</td>
+<td>Fachvortrag zu einem passenden Thema halten</td>
+<td>Expertise sichtbar machen und eingehendes Interesse gewinnen</td>
+<td>Vortragsplatz schwer zu erhalten; erheblicher Vorbereitungsaufwand</td>
+</tr>
+</tbody>
+</table>
+<p>Besonders betont wird, dass eine Geschäftsreise lange vor dem Abflug beginnt. Zur Vorbereitung gehören Website, Fachinhalte, Visitenkarten und digitale Kontakte, eine Zielfirmenliste, passende Fallstudien, Demos, Präsentationsmaterialien und klar definierte Rollen der Delegation.</p>
+<h2>6. Kleines funktionsübergreifendes Messeteam</h2>
+<p>Der Dozent beschreibt ein Modell, in dem mehrere Funktionen auf einer Veranstaltung zusammenwirken:</p>
+<ul>
+<li>Marketing / Engagement eröffnet den Kontakt und hält das Gespräch im geschäftlichen Rahmen;</li>
+<li>Delivery oder Geschäftsleitung kennt die realistisch erfüllbaren Zusagen des Unternehmens;</li>
+<li>ein technischer Champion oder Architekt erkennt Ingenieurprobleme und vertieft das Fachgespräch.</li>
+</ul>
+<p>Bei wiederholter Zusammenarbeit übergibt ein solches Team Kontakte zunehmend schneller vom Small Talk an das technische Folgegespräch.</p>
+<h2>7. Das eigentliche Ziel vor Ort: Bedarfsermittlung, kein Verkaufsvortrag</h2>
+<p>Es genügt nicht zu erklären, „wie großartig wir sind“. Sinnvoller ist folgender Zyklus:</p>
+<pre>Beobachten
+          ↓
+gezielt fragen
+          ↓
+Problem / Engpass / Trend identifizieren
+          ↓
+einschlägige Belege vorlegen
+          ↓
+Folgegespräch vereinbaren
+</pre>
+<p>Ein gelungenes Erstgespräch bedeutet noch keinen Vertrag. Im Kurskontext ist ein Lead ein Kontakt mit ausreichend gegenseitigem Interesse für ein weiteres Gespräch.</p>
+<h2>8. Was außer Visitenkarten von einer Messe mitzubringen ist</h2>
+<p>Die Vorlesung beschreibt einen zweiten Nutzen von Fachveranstaltungen: Marktinformationen. Nach der Rückkehr sollte das Team wissen:</p>
+<ul>
+<li>welche Themen regelmäßig auftraten;</li>
+<li>welche Probleme sich bei mehreren Unternehmen wiederholen;</li>
+<li>welche Technologien zum Branchenstandard werden;</li>
+<li>welche Lösungen zu austauschbaren Massenleistungen geworden sind;</li>
+<li>an welchen Hindernissen Kunden scheitern;</li>
+<li>was Wettbewerber demonstrieren.</li>
+</ul>
+<p>Eine Messe ist somit gleichzeitig ein Kanal zur Lead-Generierung und eine Form der praktischen Marktforschung.</p>
+<h2>9. Redaktioneller Hinweis zu Zahlen und Anekdoten</h2>
+<p>Das Transkript enthält einzelne Bewertungen der Wirksamkeit von Kanälen, Aussagen über „Top drei“ sowie Beispiele aus persönlicher Erfahrung. Die Notizen behandeln dies als Beobachtungen des Dozenten, nicht als statistisch belegte allgemeine Konversionskoeffizienten. Jedes Unternehmen sollte eigene Konversionsraten anhand seiner CRM-Analysen berechnen.</p>
+<h2>10. Kontrollfragen</h2>
+<ol>
+<li>Warum muss das Kundenproblem vor der Präsentation einer Technologie ermittelt werden?</li>
+<li>Wie überträgt eine Empfehlung Vertrauen zwischen Unternehmen?</li>
+<li>Warum ist eine Website auch nach einer persönlichen Vorstellung wichtig?</li>
+<li>Worin unterscheidet sich ein technischer Champion von einem gewöhnlichen Senior Engineer?</li>
+<li>Welche vier Teilnahmeformate für Fachveranstaltungen wurden besprochen?</li>
+<li>Warum ist eine Konferenz zugleich eine Quelle für Marktinformationen?</li>
+<li>Welches Mindestergebnis macht das Erstgespräch erfolgreich?</li>
+<li>Welche Materialien sollten vor der Reise vorbereitet sein?</li>
+</ol>
+<h2>11. Praktische Checkliste: „Wir reisen morgen ab“</h2>
+<ul>
+<li>Eine Erklärung in 30 Sekunden, wer wir sind und was wir tun;</li>
+<li>zwei oder drei klar definierte fachliche Stärken;</li>
+<li>drei passende Fallstudien;</li>
+<li>eine Demo oder visuelle Darstellung, soweit sinnvoll;</li>
+<li>eine Website-Landingpage, die zu den mündlichen Aussagen passt;</li>
+<li>funktionierender QR-Code / Visitenkarte;</li>
+<li>Liste der Zielunternehmen und Kontaktpersonen;</li>
+<li>Rollenverteilung innerhalb der Delegation;</li>
+<li>Verfahren zur Erfassung von Kontakten und Folgeaktionen;</li>
+<li>Regel zur Nachbereitung der Veranstaltung.</li>
+</ul>
+<h2>12. Übergang zum 15. September 2026</h2>
+<p>Sobald ein Kontakt hergestellt wurde, beginnt die schwierigere Aufgabe: Aufmerksamkeit in fachliches Vertrauen und einen formellen Pre-Sales-Prozess zu verwandeln. Die nächste Veranstaltung behandelt Messeeindrücke ausführlicher, Erst- und Folgegespräche, Recherche zum Kunden sowie die ersten formellen Anfragen RFI, RFQ und RFC.</p>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Lehre</b><p style="margin-top:8px">Lehrmaterialien von Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">Über den Autor →</a></div>
+<div class="footer-links"><b>Kurs</b><a href="index.html">Kursübersicht</a><a href="lecture-01.html">Vorlesung 01</a><a href="lecture-02.html">Vorlesung 02</a><a href="lecture-03.html">Vorlesung 03</a><a href="lecture-03.html">Vorlesung 04</a></div>
+<div class="footer-links"><b>Kontext</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in der Energietechnik</a><a href="../../teaching.html">Alle Lehrmaterialien</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Datenschutz</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

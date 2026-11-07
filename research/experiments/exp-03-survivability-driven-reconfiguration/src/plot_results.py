@@ -1,0 +1,186 @@
+from __future__ import annotations
+
+from pathlib import Path
+import csv
+import json
+import matplotlib.pyplot as plt
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def load_csv(name):
+    with (ROOT / "data" / name).open("r", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def values(rows, key):
+    return [float(r[key]) for r in rows]
+
+
+def main():
+    manifest = json.loads(
+        (ROOT / "data" / "manifest.json").read_text(encoding="utf-8")
+    )
+
+    supervised = load_csv("supervised.csv")
+    baseline = load_csv("baseline_frozen.csv")
+    decisions = load_csv("decisions.csv")
+    events = load_csv("events.csv")
+    sensitivity = load_csv("phi_min_sensitivity.csv")
+
+    out = ROOT / "figures"
+    out.mkdir(exist_ok=True)
+
+    # All time-series points are plotted; no thinning/sampling.
+    t = values(supervised, "time_s")
+
+    fault_times = sorted({
+        float(r["time_s"])
+        for r in events
+        if r["branch"] == "supervised"
+        and r["event"] in ("MOTOR_A_DESTROYED", "ENCODER_DESTROYED")
+    })
+
+    phi_min = float(manifest["phi_min"])
+
+    # Figure 1: only CSV resource columns + event times from events.csv.
+    plt.figure(figsize=(10, 4.8))
+    for key, label in [
+        ("rho_motor_a", "Motor A"),
+        ("rho_motor_b", "Motor B"),
+        ("rho_encoder", "Encoder"),
+        ("rho_imu", "IMU"),
+        ("rho_can1", "CAN1"),
+        ("rho_can2", "CAN2"),
+    ]:
+        plt.plot(t, values(supervised, key), label=label)
+
+    for tf in fault_times:
+        plt.axvline(tf, linestyle="--")
+
+    plt.xlabel("time [s]")
+    plt.ylabel("resource operability")
+    plt.ylim(-0.05, 1.05)
+    plt.title("Resource state from supervised.csv")
+    plt.legend(ncol=3)
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(out / "resources.png", dpi=180)
+    plt.close()
+
+    # Figure 2: configuration trajectory from CSV only.
+    config_ids = list(manifest["configurations"].keys())
+    config_to_y = {cid: i for i, cid in enumerate(config_ids)}
+    y = [config_to_y[r["config"]] for r in supervised]
+
+    plt.figure(figsize=(10, 4.2))
+    plt.step(t, y, where="post")
+
+    for tf in fault_times:
+        plt.axvline(tf, linestyle="--")
+
+    plt.yticks(
+        list(range(len(config_ids))),
+        [
+            f'{cid} {manifest["configurations"][cid]["label"]}'
+            for cid in config_ids
+        ],
+    )
+    plt.xlabel("time [s]")
+    plt.ylabel("verified configuration")
+    plt.title("Configuration trajectory from supervised.csv")
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(out / "configuration.png", dpi=180)
+    plt.close()
+
+    # Figure 3: matched Phi comparison from two CSV logs.
+    plt.figure(figsize=(10, 4.8))
+    plt.plot(t, values(baseline, "Phi"), label="frozen c0")
+    plt.plot(t, values(supervised, "Phi"), label="reconfiguration enabled")
+    plt.axhline(phi_min, linestyle=":", label="Phi_min")
+
+    for tf in fault_times:
+        plt.axvline(tf, linestyle="--")
+
+    plt.xlabel("time [s]")
+    plt.ylabel("mission functionality Phi")
+    plt.ylim(-0.02, 1.05)
+    plt.title("Mission functionality from generated logs")
+    plt.legend()
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(out / "mission_comparison.png", dpi=180)
+    plt.close()
+
+    # Figure 4: matched S comparison.
+    plt.figure(figsize=(10, 4.8))
+    plt.plot(t, values(baseline, "S"), label="frozen c0")
+    plt.plot(t, values(supervised, "S"), label="reconfiguration enabled")
+
+    for tf in fault_times:
+        plt.axvline(tf, linestyle="--")
+
+    plt.xlabel("time [s]")
+    plt.ylabel("survivability S")
+    plt.ylim(-0.02, 1.05)
+    plt.title("Survivability from generated logs")
+    plt.legend()
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(out / "survivability_comparison.png", dpi=180)
+    plt.close()
+
+    # Figure 5: every selector candidate from decisions.csv.
+    labels = [
+        f'{float(r["time_s"]):.2f}s {r["candidate"]}'
+        for r in decisions
+    ]
+    S_values = values(decisions, "S")
+
+    plt.figure(figsize=(10, 4.8))
+    plt.bar(labels, S_values)
+    plt.xlabel("selection event / candidate")
+    plt.ylabel("S(c,rho)")
+    plt.title("Candidate survivability from decisions.csv")
+    plt.xticks(rotation=30, ha="right")
+    plt.grid(axis="y")
+    plt.tight_layout()
+    plt.savefig(out / "candidate_S.png", dpi=180)
+    plt.close()
+
+    # Figure 6: state directly from the two execution logs.
+    plt.figure(figsize=(10, 4.8))
+    plt.plot(t, values(baseline, "x_k"), label="frozen c0")
+    plt.plot(t, values(supervised, "x_k"), label="reconfiguration enabled")
+
+    for tf in fault_times:
+        plt.axvline(tf, linestyle="--")
+
+    plt.xlabel("time [s]")
+    plt.ylabel("plant state x")
+    plt.title("Plant state from generated logs")
+    plt.legend()
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(out / "state_comparison.png", dpi=180)
+    plt.close()
+
+    # Figure 7: declared Phi_min sensitivity generated by experiment.py.
+    x = values(sensitivity, "Phi_min")
+    selected_phi = values(sensitivity, "selected_Phi")
+
+    plt.figure(figsize=(10, 4.8))
+    plt.plot(x, selected_phi)
+    plt.xlabel("Phi_min")
+    plt.ylabel("Phi of selected configuration")
+    plt.title("Threshold sensitivity from phi_min_sensitivity.csv")
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(out / "phi_min_sensitivity.png", dpi=180)
+    plt.close()
+
+
+if __name__ == "__main__":
+    main()

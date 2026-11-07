@@ -1,0 +1,972 @@
+/*
+  Væringjar II — canonical layout contract
+  2026-09-04
+  This file owns only geometry, containment and readable type thresholds.
+  It is loaded last on every rendered page.
+*/
+:root {
+  --content: 1120px;
+  --site-content: 1120px;
+  --site-gutter: 24px;
+  --body-copy: 15px;
+  --meta-copy: 13px;
+  --code-copy: 13px;
+  --formula-copy: 16px;
+}
+
+* { box-sizing: border-box; }
+html, body { width:100%; max-width:100%; margin:0; }
+body { overflow-x:hidden; font-size:16px; }
+
+/* ------------------------------------------------------------------
+   ONE FRAME
+   Every visible content block uses exactly the same left/right lines.
+   ------------------------------------------------------------------ */
+.site-page .container,
+.site-page .nav,
+.exp02-page .container,
+.exp02-page .nav,
+.exp03-page .container,
+.exp03-page .nav,
+.exp01-page .container,
+.exp01-page .nav,
+.exp01-page .wrap {
+  width: min(calc(100% - (2 * var(--site-gutter))), var(--site-content));
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+.site-footer::before {
+  width: min(calc(100% - (2 * var(--site-gutter))), var(--site-content));
+  max-width:none;
+  margin-inline:auto;
+  padding-inline:0;
+}
+
+/* Decorative labels use the same frame; never the viewport edge. */
+.site-page .site-header::after,
+.exp02-page .site-header::after,
+.exp03-page .site-header::after,
+.exp01-page .site-header::after {
+  right: max(var(--site-gutter), calc((100vw - var(--site-content)) / 2));
+}
+.site-page .hero::after,
+.exp02-page .hero::after,
+.exp03-page .hero::after,
+.exp01-page .hero::after {
+  left: max(var(--site-gutter), calc((100vw - var(--site-content)) / 2));
+}
+
+/* Full-width backgrounds may span the viewport; their content may not. */
+.site-page main > section,
+.exp01-page main > section,
+.exp02-page main > section,
+.exp03-page main > section,
+.site-page .signal-strip,
+.site-page .research-library-list,
+.site-page .research-library-head {
+  max-width:100%;
+  overflow-x:clip;
+}
+
+/* ------------------------------------------------------------------
+   CONTAINMENT
+   No child is allowed to make a grid/flex track wider than the frame.
+   ------------------------------------------------------------------ */
+.site-page main *,
+.exp01-page main *,
+.exp02-page main *,
+.exp03-page main * {
+  min-width:0;
+}
+
+img, video, canvas, svg, iframe { max-width:100%; height:auto; }
+figure { max-width:100%; margin-left:0; margin-right:0; }
+
+p, li, dd, dt, figcaption, td, th {
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+a, code { overflow-wrap:anywhere; }
+
+pre {
+  width:100%;
+  max-width:100%;
+  overflow:auto;
+  white-space:pre;
+}
+
+/* Tables stay inside the frame. Wide engineering tables scroll locally. */
+.tech-table-wrap,
+.exp02-matrix-scroll,
+.exp03-matrix-scroll,
+.lecture-article {
+  width:100%;
+  max-width:100%;
+  min-width:0;
+}
+.tech-table-wrap,
+.exp02-matrix-scroll,
+.exp03-matrix-scroll,
+.lecture-article table {
+  overflow-x:auto;
+  overscroll-behavior-inline:contain;
+}
+.lecture-article table { display:block; }
+
+/* ------------------------------------------------------------------
+   READABLE TYPE
+   8–11 px interface text is removed from the desktop templates.
+   ------------------------------------------------------------------ */
+.site-page :is(.small,.eyebrow,.breadcrumb,.status,.stage-status,.source-line,.phase-badge span,.phase-badge b,
+  .profile-kicker,.profile-title,.profile-lines span,.profile-lines b,.impl-chain,.compact-phase span,.compact-phase p,
+  .math-contract small,.math-contract span,.substage-title>span,.substage-title small,.verify-item b,.verify-item span,
+  .hw-block small,.hw-block b,.hw-block span,.research-library-id,.research-library-side,.research-filter,
+  .research-result-count,.roadmap-legend,.roadmap-note,.roadmap-step small,.roadmap-step>span,.teaching-pill,
+  .teaching-panel .meta-row,.teaching-panel .meta-row span:first-child,.course-index,.course-action,.course-entry small,
+  .course-entry a,.material-slot strong,.material-slot span,.lecture-toc b,.lecture-toc a,.lecture-nav a,.publication-note,
+  .collab-role,.collab-lead-card .meta,.collab-status .tag,.collab-audience .num,.collab-audience .tail,
+  .collab-step>span,.collab-note,label,.notice,.site-footer,.footer-links) {
+  font-size:var(--meta-copy) !important;
+  line-height:1.5;
+}
+
+.site-page .nav-links,
+.exp02-page .nav-links,
+.exp03-page .nav-links,
+.exp01-page .nav-links,
+.site-page .brand-copy,
+.exp02-page .brand-copy,
+.exp03-page .brand-copy,
+.exp01-page .brand-copy {
+  font-size:13px;
+}
+.site-page .brand-copy small,
+.exp02-page .brand-copy small,
+.exp03-page .brand-copy small,
+.exp01-page .brand-copy small {
+  font-size:12px;
+}
+
+.site-page :is(p,li,td,th),
+.exp02-page :is(p,li,td,th),
+.exp03-page :is(p,li,td,th),
+.exp01-page :is(p,li,td,th) {
+  font-size:var(--body-copy);
+}
+
+.site-page :is(code,pre),
+.exp01-page :is(code,pre),
+.exp02-page :is(code,pre),
+.exp03-page :is(code,pre) {
+  font-size:var(--code-copy);
+}
+
+/* Supporting copy in cards is smaller than body, but still readable. */
+.site-page :is(.card p,.feature p,.diagram-note,.research-library-main p,.course-card p,.course-entry p,
+  .collab-heading p,.collab-lead-card p,.collab-status p,.collab-audience p,.collab-input-copy p,.collab-step p,.collab-cta p) {
+  font-size:14px !important;
+  line-height:1.58;
+}
+
+/* Lecture notes are reading material, not UI chrome. */
+.site-page .lecture-article :is(p,li) { font-size:16px !important; line-height:1.72; }
+.site-page .lecture-article :is(th,td) { font-size:14px !important; line-height:1.5; }
+.site-page .lecture-article :is(pre,code) { font-size:13px !important; }
+.site-page .lecture-article blockquote p { font-size:14px !important; }
+
+/* EXP supporting text. */
+.exp01-page :is(.label,.figure figcaption,.code-head,footer,.equation .eqno) { font-size:13px !important; }
+.exp01-page :is(.equation-note,.metric small,.timeline-item small) { font-size:14px !important; }
+.exp01-page table { font-size:14px !important; }
+
+.exp02-page :is(.exp02-crumb,.exp02-kicker,.exp02-warning,.exp02-control,.exp02-legend,.exp02-noscript,
+ .exp02-meta-row span,.exp02-meta-row b,.exp02-section-head p,.exp02-model-chain span,.exp02-formula p,
+ .exp02-resource small,.exp02-panel-head b,.exp02-panel-head span,.trace-step small,.trace-step span,
+ .exp02-score-table,.exp02-score-table th,.path-kpi small,.uml-card header,.exp02-takeaway p),
+.exp03-page :is(.exp03-crumb,.exp03-kicker,.exp03-warning,.exp03-control,.exp03-legend,.exp03-noscript,
+ .exp03-meta-row span,.exp03-meta-row b,.exp03-section-head p,.exp03-model-chain span,.exp03-formula p,
+ .exp03-resource small,.exp03-panel-head b,.exp03-panel-head span,.trace-step small,.trace-step span,
+ .exp03-score-table,.exp03-score-table th,.path-kpi small,.uml-card header,.exp03-takeaway p,.exp03-page summary,
+ .exp03-figure figcaption,.exp03-compare-card small,.exp03-compare-card p,.exp03-config-table,.exp03-config-table th,
+ .exp03-config-table td small,.exp03-data-note,.exp03-general-table,.exp03-general-table th,.exp03-publication) {
+  font-size:13px !important;
+  line-height:1.5;
+}
+
+/* ------------------------------------------------------------------
+   MATHEMATICS
+   Equations stay inside their panel. Long expressions scroll locally.
+   ------------------------------------------------------------------ */
+.site-page :is(.equation,.formula,.math-formal),
+.exp01-page .equation,
+.exp02-page :is(.formula,.exp02-equation-big),
+.exp03-page :is(.formula,.exp03-equation-big) {
+  max-width:100%;
+  min-width:0;
+  font-size:var(--formula-copy) !important;
+  line-height:1.55;
+}
+
+.site-page :is(.math-formal,.equation-panel),
+.exp01-page .equation,
+.exp02-page .exp02-formula .formula,
+.exp03-page .exp03-formula .formula {
+  overflow-x:auto;
+  overflow-y:hidden;
+  overscroll-behavior-inline:contain;
+}
+
+mjx-container,
+mjx-container[display="true"] { max-width:100% !important; }
+mjx-container[display="true"] { overflow-x:auto; overflow-y:hidden; padding-bottom:3px; }
+mjx-container svg { max-width:none; }
+
+/* ------------------------------------------------------------------
+   STABLE GRIDS
+   Dense 4–7-column layouts were the main source of visual drift once
+   readable type was restored. Keep desktop compositions deliberate.
+   ------------------------------------------------------------------ */
+.site-page :is(.hero-grid,.split,.arch-preview,.research-grid,.partner-grid,.teaching-intro,.lecture-shell,
+  .collab-leads,.collab-input,.dual-hierarchy,.survivability-grid),
+.exp02-page :is(.exp02-hero-grid,.exp02-section-head,.exp02-two,.exp02-matrix-grid,.exp02-uml-grid),
+.exp03-page :is(.exp03-hero-grid,.exp03-section-head,.exp03-two,.exp03-matrix-grid,.exp03-uml-grid,.exp03-diagram-grid,.exp03-compare) {
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+
+.site-page .hero-grid { grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr); gap:48px; }
+.site-page .arch-preview { grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr); gap:40px; }
+.site-page .split { gap:40px; }
+.site-page .teaching-intro { grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr); gap:32px; }
+.site-page .lecture-shell { grid-template-columns:minmax(0,1fr) 270px; gap:40px; }
+.site-page .collab-input { grid-template-columns:minmax(280px,.75fr) minmax(0,1.25fr); gap:32px; }
+
+.site-page .cards { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.site-page .signal-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.site-page .math-contract-grid,
+.site-page .hw-map,
+.site-page .paper-limit,
+.site-page .collab-audience { grid-template-columns:repeat(3,minmax(0,1fr)); }
+
+.site-page .verification-grid,
+.site-page .evidence-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+
+/* A six-column research lineage was too narrow for readable text. */
+.site-page .research-lineage { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.site-page .lineage-step:nth-child(3n) { border-right:0; }
+.site-page .lineage-step:nth-child(n+4) { border-top:1px solid var(--line); }
+
+/* Roadmap wraps in the frame instead of becoming a horizontal page. */
+.site-page .roadmap-track {
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr)) !important;
+  overflow:visible !important;
+  gap:10px;
+}
+
+/* Action columns wrap naturally instead of forcing width. */
+.site-page :is(.cta,.collab-cta,.course-card,.stage-head),
+.exp02-page .exp02-takeaway,
+.exp03-page .exp03-takeaway { min-width:0; max-width:100%; }
+.site-page .course-card { grid-template-columns:96px minmax(0,1fr) auto; }
+.site-page :is(.status,.stage-status,.course-action) { white-space:normal; }
+
+/* EXP-01 dense content. */
+.exp01-page .grid2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.exp01-page .grid3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.exp01-page .grid4 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.exp01-page .timeline { grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); }
+
+/* EXP-02 / EXP-03 dense content. */
+.exp02-page .exp02-three,
+.exp03-page .exp03-three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.exp02-page .exp02-resources,
+.exp03-page .exp03-resources,
+.exp02-page .exp02-path-summary,
+.exp03-page .exp03-path-summary { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.exp02-page .exp02-trace,
+.exp03-page .exp03-trace { grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
+
+/* Header: readable navigation, and collapse before it becomes cramped. */
+.site-page .nav,
+.exp02-page .nav,
+.exp03-page .nav,
+.exp01-page .nav { gap:22px; min-height:72px; }
+.site-page .nav-links,
+.exp02-page .nav-links,
+.exp03-page .nav-links,
+.exp01-page .nav-links { gap:15px; }
+
+/* Local navigation used by experiment 01. */
+.exp01-page .experiment-subnav {
+  border-bottom:1px solid var(--line);
+  background:rgba(4,6,5,.86);
+}
+.exp01-page .experiment-subnav .container {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+  padding-block:11px;
+}
+.exp01-page .experiment-subnav a {
+  font-size:13px;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.exp01-page .experiment-subnav a:hover { color:var(--green); }
+
+@media (max-width: 1120px) {
+  .site-page .nav-links,
+  .exp02-page .nav-links,
+  .exp03-page .nav-links,
+  .exp01-page .nav-links {
+    display:none;
+    position:absolute;
+    left:0;
+    right:0;
+    top:72px;
+    padding:20px var(--site-gutter);
+    background:#030604;
+    border-bottom:1px solid var(--line-strong);
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .site-page .nav-links.open,
+  .exp02-page .nav-links.open,
+  .exp03-page .nav-links.open,
+  .exp01-page .nav-links.open { display:flex; }
+  .site-page .nav-toggle,
+  .exp02-page .nav-toggle,
+  .exp03-page .nav-toggle,
+  .exp01-page .nav-toggle { display:block; }
+}
+
+@media (max-width: 920px) {
+  .site-page :is(.hero-grid,.split,.arch-preview,.research-grid,.partner-grid,.teaching-intro,.lecture-shell,
+    .collab-leads,.collab-input,.dual-hierarchy,.survivability-grid),
+  .exp01-page :is(.grid2,.grid3,.grid4),
+  .exp02-page :is(.exp02-hero-grid,.exp02-section-head,.exp02-two,.exp02-three,.exp02-matrix-grid,.exp02-uml-grid),
+  .exp03-page :is(.exp03-hero-grid,.exp03-section-head,.exp03-two,.exp03-three,.exp03-matrix-grid,.exp03-uml-grid,.exp03-diagram-grid,.exp03-compare) {
+    grid-template-columns:1fr;
+  }
+
+  .site-page :is(.cards,.math-contract-grid,.hw-map,.paper-limit,.collab-audience),
+  .site-page :is(.verification-grid,.evidence-grid),
+  .exp02-page :is(.exp02-resources,.exp02-path-summary),
+  .exp03-page :is(.exp03-resources,.exp03-path-summary) {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .site-page .research-lineage { grid-template-columns:1fr; }
+  .site-page .lineage-step { min-height:auto; border-right:0; border-bottom:1px solid var(--line); border-top:0 !important; }
+  .site-page .lineage-step:last-child { border-bottom:0; }
+  .site-page .lineage-step::after { display:none; }
+
+  .site-page .lecture-toc { position:static; border-left:0; border-top:1px solid var(--line); padding:18px 0 0; }
+  .site-page .collab-input-copy { position:static; }
+}
+
+@media (max-width: 680px) {
+  :root { --site-gutter:18px; --body-copy:15px; --meta-copy:13px; --formula-copy:15px; }
+  .site-page section,
+  .exp01-page section,
+  .exp02-page section,
+  .exp03-page section { padding-top:58px; padding-bottom:58px; }
+
+  .site-page :is(.cards,.signal-grid,.math-contract-grid,.verification-grid,.hw-map,.evidence-grid,.paper-limit,.collab-audience,.material-grid),
+  .exp02-page :is(.exp02-resources,.exp02-path-summary),
+  .exp03-page :is(.exp03-resources,.exp03-path-summary) { grid-template-columns:1fr; }
+
+  .site-page .course-card { grid-template-columns:1fr; gap:10px; }
+  .site-page .course-action { grid-column:auto; width:max-content; max-width:100%; }
+  .site-page .cta,
+  .site-page .collab-cta,
+  .exp02-page .exp02-takeaway,
+  .exp03-page .exp03-takeaway { grid-template-columns:1fr; gap:20px; }
+
+  .exp01-page .equation { padding:18px; }
+  .exp01-page .equation .eqno { position:static; transform:none; display:block; text-align:right; margin-top:8px; }
+
+  .site-page h1,
+  .exp01-page h1,
+  .exp02-page h1,
+  .exp03-page h1 { font-size:clamp(32px,10vw,46px); }
+}
+
+/* ------------------------------------------------------------------
+   TABLES / LONG TOKENS
+   The previous templates allowed table intrinsic width to escape a grid.
+   On desktop tables now fit the content frame and wrap technical text.
+   ------------------------------------------------------------------ */
+.site-page .tech-table,
+.site-page .compact-table,
+.exp01-page table,
+.exp03-page .exp03-config-table,
+.exp03-page .exp03-general-table {
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  table-layout:fixed;
+}
+.site-page :is(.tech-table,.compact-table) :is(th,td),
+.exp01-page table :is(th,td),
+.exp03-page :is(.exp03-config-table,.exp03-general-table) :is(th,td) {
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+
+/* A technical table should get the full reading width, not half a split. */
+.site-page .split:has(.tech-table-wrap) {
+  grid-template-columns:1fr;
+  gap:26px;
+}
+
+/* Inline identifiers in lecture prose may break; code blocks preserve formatting. */
+.site-page .lecture-article code {
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+.site-page .lecture-article pre code {
+  white-space:pre;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+
+/* SVG labels are part of the content and must remain readable. */
+.exp02-page .graph-node .node-label,
+.exp03-page .graph-node .node-label,
+.exp02-page .graph-transient text,
+.exp03-page .graph-transient text,
+.exp02-page .uml-text,
+.exp03-page .uml-text,
+.exp03-page .exp03-graph-node .node-label,
+.exp03-page .exp03-svg-hot { font-size:12px !important; }
+.exp02-page .graph-node .node-value,
+.exp03-page .graph-node .node-value,
+.exp02-page .uml-small,
+.exp03-page .uml-small,
+.exp03-page .exp03-svg-note { font-size:11px !important; }
+
+/* EXP-01 has an 8-column measurement table. Give it a compact but contained mode. */
+.exp01-page table:not(.compact-table) th,
+.exp01-page table:not(.compact-table) td {
+  font-size:12px !important;
+  padding:8px 5px;
+  text-align:center;
+}
+.exp01-page table:not(.compact-table) th:first-child,
+.exp01-page table:not(.compact-table) td:first-child { text-align:left; }
+
+@media (max-width:680px) {
+  /* Dense scientific tables remain inside a local scroller on narrow screens. */
+  .site-page .tech-table-wrap,
+  .exp01-page .figure,
+  .exp03-page .exp03-panel-body,
+  .site-page .lecture-article { overflow-x:auto; }
+
+  .exp01-page table:not(.compact-table) {
+    min-width:680px !important;
+    table-layout:auto;
+  }
+  .exp03-page .exp03-config-table,
+  .exp03-page .exp03-general-table {
+    min-width:620px !important;
+    table-layout:auto;
+  }
+}
+
+.exp01-page .timeline-item small {
+  display:block;
+  max-width:100%;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+.exp01-page .table-scroll {
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  overscroll-behavior-inline:contain;
+}
+@media (max-width:680px) {
+  .exp01-page .table-scroll table:not(.compact-table) {
+    min-width:680px !important;
+    table-layout:auto;
+  }
+  .exp03-page :is(.exp03-config-table,.exp03-general-table) {
+    display:block;
+    width:100% !important;
+    max-width:100% !important;
+    overflow-x:auto;
+  }
+}
+
+/* Final frame/nav tuning after visual audit at 1440/1180/1024/850. */
+:root { --content:1200px; --site-content:1200px; }
+.site-page .nav-links,
+.exp01-page .nav-links,
+.exp02-page .nav-links,
+.exp03-page .nav-links {
+  font-size:12.5px;
+  gap:12px;
+  white-space:nowrap;
+  flex-wrap:nowrap;
+}
+.site-page .nav-links a,
+.exp01-page .nav-links a,
+.exp02-page .nav-links a,
+.exp03-page .nav-links a { flex:0 0 auto; }
+
+/* Mathematical contract cards need width more than count. */
+.site-page .math-contract-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.site-page :is(.math-contract,.verify-item) .formula {
+  display:block;
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  white-space:nowrap !important;
+  overscroll-behavior-inline:contain;
+  padding-bottom:3px;
+}
+
+@media (max-width:1260px) {
+  .site-page .nav-links,
+  .exp02-page .nav-links,
+  .exp03-page .nav-links,
+  .exp01-page .nav-links { display:none; }
+  .site-page .nav-links.open,
+  .exp02-page .nav-links.open,
+  .exp03-page .nav-links.open,
+  .exp01-page .nav-links.open { display:flex; }
+  .site-page .nav-toggle,
+  .exp02-page .nav-toggle,
+  .exp03-page .nav-toggle,
+  .exp01-page .nav-toggle { display:block; }
+}
+@media (max-width:680px) {
+  .site-page .math-contract-grid { grid-template-columns:1fr; }
+}
+
+/* Metadata label columns were too narrow once type was made readable. */
+.site-page .profile-lines div {
+  grid-template-columns:122px minmax(0,1fr) !important;
+  gap:14px;
+}
+.site-page .teaching-panel .meta-row {
+  grid-template-columns:120px minmax(0,1fr) !important;
+}
+.exp02-page .exp02-meta-row,
+.exp03-page .exp03-meta-row {
+  grid-template-columns:120px minmax(0,1fr);
+}
+
+/* No graph label below the readable utility scale. */
+.exp02-page .graph-node .node-value,
+.exp03-page .graph-node .node-value,
+.exp02-page .uml-small,
+.exp03-page .uml-small,
+.exp03-page .exp03-svg-note { font-size:12px !important; }
+
+@media (max-width:520px) {
+  .site-page .profile-lines div,
+  .site-page .teaching-panel .meta-row,
+  .exp02-page .exp02-meta-row,
+  .exp03-page .exp03-meta-row {
+    grid-template-columns:1fr !important;
+    gap:5px;
+  }
+}
+
+/* Headings may wrap, but never establish a wider intrinsic track. */
+.site-page :is(h1,h2,h3,h4),
+.exp01-page :is(h1,h2,h3,h4),
+.exp02-page :is(h1,h2,h3,h4),
+.exp03-page :is(h1,h2,h3,h4) {
+  max-width:100%;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+
+/* Math inside table cells is locally contained as well. */
+.site-page :is(th,td) mjx-container,
+.exp01-page :is(th,td) mjx-container,
+.exp02-page :is(th,td) mjx-container,
+.exp03-page :is(th,td) mjx-container {
+  max-width:100% !important;
+  overflow-x:auto;
+  overflow-y:hidden;
+}
+
+/* Compact metric/result rows must wrap within their card. */
+.exp01-page .result,
+.exp01-page .formal-sequence,
+.exp01-page .kpi-line { max-width:100%; min-width:0; }
+.exp01-page .kpi-line span {
+  max-width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+}
+
+/* Research evolution readability */
+.site-page :is(.evolution-node span,.evolution-mini span,.research-evolution-callout p,.paradigm-panel li){font-size:14px!important;line-height:1.55}
+.site-page .evolution-node small{font-size:12px!important}
+
+
+/* === Væringjar readability pass · 2026-09-13 === */
+.reader-page .reader-hero{padding-top:78px;padding-bottom:44px}
+.reader-page .reader-hero h1{max-width:19ch;margin-top:14px}
+.reader-lead{max-width:72ch!important}
+.reader-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.reader-badges span{border:1px solid var(--line);padding:7px 10px;font:600 11px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:rgba(111,255,126,.018)}
+.reader-section{padding:50px 0;border-top:1px solid var(--line)}
+.reader-section h2{max-width:24ch;margin:12px 0 10px}
+.reader-intro,.reader-copy{max-width:72ch;color:var(--muted);font-size:15px;line-height:1.68}
+.reader-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px;margin-top:24px}
+.reader-card{border:1px solid var(--line);background:rgba(111,255,126,.018);padding:18px;min-width:0}
+.reader-card h3{font-size:17px;line-height:1.28;margin:10px 0 8px;color:var(--text);text-transform:none;letter-spacing:0}
+.reader-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.62;max-width:62ch}
+.reader-num{font:700 11px/1 var(--mono);letter-spacing:.08em;color:var(--phosphor)}
+.reader-takeaway{font-size:18px;line-height:1.6;color:var(--text)}
+.reader-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin-top:20px}
+.reader-link{display:block;border:1px solid var(--line);padding:15px;text-decoration:none!important;min-width:0}
+.reader-link b{display:block;color:var(--text);font-size:13px;margin-bottom:5px}
+.reader-link span{display:block;color:var(--muted);font-size:12px;line-height:1.5}
+
+/* Progressive disclosure: keep the overview visible, make deep material opt-in. */
+details.content-fold{width:min(var(--frame),calc(100% - 64px));margin:0 auto;border:1px solid var(--line);background:rgba(111,255,126,.012)}
+details.content-fold>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:17px 20px;color:var(--text);font-weight:700}
+details.content-fold>summary::-webkit-details-marker{display:none}
+details.content-fold>summary small{font:500 10px/1.2 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+details.content-fold>summary:after{content:'+';color:var(--phosphor);font:500 20px/1 var(--mono)}
+details.content-fold[open]>summary:after{content:'−'}
+.content-fold-body{padding:8px 20px 22px}
+.content-fold-body>.container{width:100%!important;max-width:none!important;padding:0!important;margin:0!important}
+.content-fold-body p,.content-fold-body li{line-height:1.67}
+
+/* Better text measure across the site. */
+.site-page main p,.site-page main li,.reader-page main p,.reader-page main li{line-height:1.66}
+.site-page .copy-stack,.site-page .feature-list{max-width:76ch}
+
+/* German typography: hyphenate linguistically; never split every few characters. */
+html[lang="de"] main :where(p,li,dd,dt,figcaption,h1,h2,h3,h4,summary,span,b,strong){
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  -webkit-hyphens:auto;
+  hyphens:auto;
+}
+html[lang="de"] main :where(code,pre,.equation,.math-formal){-webkit-hyphens:none;hyphens:none;overflow-wrap:anywhere!important}
+html[lang="de"] main a{word-break:normal;overflow-wrap:normal;-webkit-hyphens:auto;hyphens:auto}
+html[lang="de"] .reader-grid{grid-template-columns:repeat(auto-fit,minmax(310px,1fr))}
+html[lang="de"] .site-page :is(.cards,.signal-grid,.math-contract-grid,.hw-map,.paper-limit,.collab-audience,.research-lineage){grid-template-columns:repeat(2,minmax(280px,1fr))}
+html[lang="de"] .site-page .nav-links{gap:11px}
+html[lang="de"] .site-page .nav-links a{font-size:11px;letter-spacing:.015em}
+
+@media(max-width:900px){
+  .reader-grid,.reader-links,html[lang="de"] .reader-grid{grid-template-columns:1fr}
+  html[lang="de"] .site-page :is(.cards,.signal-grid,.math-contract-grid,.hw-map,.paper-limit,.collab-audience,.research-lineage){grid-template-columns:1fr}
+  details.content-fold{width:min(var(--frame),calc(100% - 34px))}
+}
+@media(max-width:620px){
+  .reader-page .reader-hero{padding-top:52px;padding-bottom:32px}
+  .reader-section{padding:36px 0}
+  .reader-card{padding:15px}
+  details.content-fold{width:calc(100% - 24px)}
+  details.content-fold>summary{padding:15px 14px;align-items:flex-start}
+  details.content-fold>summary small{display:none}
+  .content-fold-body{padding:4px 14px 18px}
+}
+
+/* Research library compression */
+.research-roadmap-fold{margin-top:18px!important;margin-bottom:18px!important}
+.research-library-main h2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.research-library-main p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.research-library-row{padding-top:15px!important;padding-bottom:15px!important}
+
+/* ==================================================================
+   Væringjar visual integrity audit · 2026-09-13 r3
+   One geometry contract for EN / UA / DE.
+   ================================================================== */
+
+/* Header: content may be 1200 px, navigation needs a little more air. */
+.site-page .nav,
+.exp01-page .nav,
+.exp02-page .nav,
+.exp03-page .nav {
+  width:min(calc(100% - (2 * var(--site-gutter))),1320px);
+  max-width:none;
+}
+.site-page .brand,
+.exp01-page .brand,
+.exp02-page .brand,
+.exp03-page .brand { flex:0 0 auto; min-width:0; }
+.site-page .brand-copy,
+.exp01-page .brand-copy,
+.exp02-page .brand-copy,
+.exp03-page .brand-copy { min-width:154px; width:154px; overflow-wrap:normal; word-break:normal; }
+
+/* Never squeeze a full desktop menu until the logo becomes a vertical word. */
+@media (max-width:1360px) {
+  .site-page .nav-links,
+  .exp01-page .nav-links,
+  .exp02-page .nav-links,
+  .exp03-page .nav-links {
+    display:none;
+    position:absolute;
+    left:0; right:0; top:72px;
+    padding:20px var(--site-gutter);
+    background:#030604;
+    border-bottom:1px solid var(--line-strong);
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .site-page .nav-links.open,
+  .exp01-page .nav-links.open,
+  .exp02-page .nav-links.open,
+  .exp03-page .nav-links.open { display:flex; }
+  .site-page .nav-toggle,
+  .exp01-page .nav-toggle,
+  .exp02-page .nav-toggle,
+  .exp03-page .nav-toggle { display:block; }
+}
+
+/* Headings: wrap by words, never by arbitrary characters. */
+.site-page :is(h1,h2,h3,h4),
+.exp01-page :is(h1,h2,h3,h4),
+.exp02-page :is(h1,h2,h3,h4),
+.exp03-page :is(h1,h2,h3,h4) {
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+html[lang="de"] :is(h1,h2,h3,h4,p,li,summary,.card b,.card span) {
+  -webkit-hyphens:auto;
+  hyphens:auto;
+  word-break:normal !important;
+  overflow-wrap:break-word !important;
+}
+
+/* Progressive disclosure without the giant empty bands created by section padding. */
+.site-page main > section:has(> details.content-fold),
+.exp01-page main > section:has(> details.content-fold),
+.exp02-page main > section:has(> details.content-fold),
+.exp03-page main > section:has(> details.content-fold) {
+  padding:0 !important;
+  overflow:visible;
+}
+details.content-fold {
+  width:100%;
+  max-width:none;
+  margin:0;
+  border:0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:rgba(111,255,126,.010);
+}
+details.content-fold + details.content-fold { border-top:0; }
+details.content-fold > summary {
+  width:min(calc(100% - (2 * var(--site-gutter))),var(--site-content));
+  margin:0 auto;
+  padding:17px 0;
+  min-height:56px;
+  line-height:1.42;
+}
+.content-fold-body {
+  width:min(calc(100% - (2 * var(--site-gutter))),var(--site-content));
+  max-width:none;
+  margin:0 auto;
+  padding:36px 0 48px;
+}
+.content-fold-body > .container { width:100% !important; max-width:none !important; margin:0 !important; padding:0 !important; }
+
+/* Six text columns were visually dense even before German localisation. */
+.site-page .evolution-track { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.site-page .evolution-node:nth-child(3n) { border-right:0; }
+.site-page .evolution-node:nth-child(n+4) { border-top:1px solid var(--line); }
+
+/* All mathematical fragments stay local to their panel/card. */
+.site-page .formula,
+.exp01-page .formula,
+.exp02-page .formula,
+.exp03-page .formula {
+  display:block;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  overflow-x:auto;
+  overflow-y:hidden;
+  white-space:nowrap;
+  overscroll-behavior-inline:contain;
+  scrollbar-width:thin;
+}
+
+/* Reading rhythm: less vertical bulk, same information hierarchy. */
+.site-page .lead { max-width:70ch; }
+.site-page main :is(p,li) { max-width:78ch; }
+.site-page .card p,
+.site-page .feature p,
+.site-page .reader-card p { max-width:60ch; }
+
+/* German navigation can keep normal utility size now that the nav frame is wider. */
+html[lang="de"] .site-page .nav-links a,
+html[lang="de"] .exp01-page .nav-links a,
+html[lang="de"] .exp02-page .nav-links a,
+html[lang="de"] .exp03-page .nav-links a { font-size:12px; letter-spacing:.025em; }
+
+@media (max-width:920px) {
+  .site-page .evolution-track { grid-template-columns:1fr; }
+  .site-page .evolution-node { border-right:0; border-top:0 !important; border-bottom:1px solid var(--line); }
+  .site-page .evolution-node:last-child { border-bottom:0; }
+}
+
+@media (max-width:680px) {
+  :root { --site-gutter:18px; }
+  .site-page section,
+  .exp01-page section,
+  .exp02-page section,
+  .exp03-page section { padding-top:46px; padding-bottom:46px; }
+  .site-page main > section:has(> details.content-fold),
+  .exp01-page main > section:has(> details.content-fold),
+  .exp02-page main > section:has(> details.content-fold),
+  .exp03-page main > section:has(> details.content-fold) { padding:0 !important; }
+  details.content-fold > summary { width:calc(100% - 36px); padding:14px 0; min-height:50px; gap:12px; }
+  details.content-fold > summary small { display:none; }
+  .content-fold-body { width:calc(100% - 36px); padding:26px 0 36px; }
+  .site-page h1 { font-size:clamp(34px,9.3vw,40px) !important; line-height:1.08; }
+  .site-page h2 { font-size:clamp(23px,6.6vw,28px); line-height:1.13; }
+  .site-page h3 { line-height:1.22; }
+  .site-page .site-header::after,
+  .exp01-page .site-header::after,
+  .exp02-page .site-header::after,
+  .exp03-page .site-header::after { display:none; }
+}
+
+/* Final visual-audit fixes: keep metadata readable and long publication titles contained. */
+.site-page .profile-lines div {
+  grid-template-columns: 168px minmax(0, 1fr) !important;
+  gap: 16px !important;
+}
+.site-page .research-library-main h2 {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+@media (max-width: 520px) {
+  .site-page .profile-lines div {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+}
+
+/* Mobile experiment titles: preserve whole technical words instead of character columns. */
+@media (max-width: 680px) {
+  .reader-page h1,
+  .exp01-page h1,
+  .exp02-page h1,
+  .exp03-page h1 {
+    font-size: clamp(29px, 8vw, 34px) !important;
+    line-height: 1.08 !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+}
+
+
+/* Restored full lecture notes — original author material, 2026-09-13 */
+.full-lecture-notes {
+  padding:56px 0 72px;
+  border-top:1px solid var(--line);
+  background:rgba(255,255,255,.008);
+}
+.full-lecture-notes .lecture-notes-shell { max-width:980px; }
+.full-lecture-notes h2 { margin:12px 0 10px; max-width:28ch; }
+.full-lecture-notes .lecture-notes-intro {
+  max-width:74ch;
+  margin:0;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.7;
+}
+.full-lecture-notes .lecture-notes-source { margin:20px 0 34px; }
+.full-lecture-notes .lecture-notes-content {
+  max-width:860px;
+  min-width:0;
+  color:var(--text);
+}
+.full-lecture-notes .lecture-notes-content h3 {
+  margin:42px 0 14px;
+  font-size:24px;
+  line-height:1.22;
+  text-transform:none;
+  letter-spacing:0;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+.full-lecture-notes .lecture-notes-content h4 {
+  margin:30px 0 10px;
+  font-size:19px;
+  line-height:1.3;
+  text-transform:none;
+  letter-spacing:0;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+.full-lecture-notes .lecture-notes-content h5,
+.full-lecture-notes .lecture-notes-content h6 {
+  margin:24px 0 8px;
+  font-size:16px;
+  line-height:1.35;
+  text-transform:none;
+  letter-spacing:0;
+}
+.full-lecture-notes .lecture-notes-content p,
+.full-lecture-notes .lecture-notes-content li {
+  max-width:78ch;
+  font-size:16px !important;
+  line-height:1.72;
+  color:var(--text);
+}
+.full-lecture-notes .lecture-notes-content ul,
+.full-lecture-notes .lecture-notes-content ol { padding-left:1.35rem; margin:12px 0 20px; }
+.full-lecture-notes .lecture-notes-content li + li { margin-top:6px; }
+.full-lecture-notes .lecture-notes-content blockquote {
+  margin:22px 0;
+  padding:4px 0 4px 18px;
+  border-left:2px solid var(--phosphor);
+  color:var(--muted);
+}
+.full-lecture-notes .lecture-notes-content blockquote p { color:var(--muted); }
+.full-lecture-notes .lecture-notes-content hr { border:0; border-top:1px solid var(--line); margin:34px 0; }
+.full-lecture-notes .lecture-notes-content table {
+  display:block;
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  border-collapse:collapse;
+  margin:20px 0 28px;
+  font-size:14px;
+}
+.full-lecture-notes .lecture-notes-content th,
+.full-lecture-notes .lecture-notes-content td {
+  padding:10px 12px;
+  border:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+  min-width:120px;
+}
+.full-lecture-notes .lecture-notes-content th { color:var(--text); background:rgba(111,255,126,.03); }
+.full-lecture-notes .lecture-notes-content pre {
+  max-width:100%;
+  overflow-x:auto;
+  padding:16px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.18);
+}
+.full-lecture-notes .lecture-notes-content code { overflow-wrap:normal; word-break:normal; }
+.full-lecture-notes .lecture-notes-content a { overflow-wrap:anywhere; }
+@media (max-width:680px) {
+  .full-lecture-notes { padding:42px 0 54px; }
+  .full-lecture-notes .lecture-notes-source { margin-bottom:28px; }
+  .full-lecture-notes .lecture-notes-content h3 { margin-top:34px; font-size:22px; }
+  .full-lecture-notes .lecture-notes-content h4 { margin-top:26px; font-size:18px; }
+  .full-lecture-notes .lecture-notes-content p,
+  .full-lecture-notes .lecture-notes-content li { font-size:15px !important; line-height:1.7; }
+}

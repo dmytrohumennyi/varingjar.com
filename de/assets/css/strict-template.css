@@ -1,0 +1,1498 @@
+/*
+ VÆRINGJAR II — STRICT TEMPLATE CONTRACT v3 (revised 2026-10-28)
+ ------------------------------------------------------------------------
+ ROLE. This file is the LAST SHARED stylesheet on every HTML page. It owns geometry,
+ page rhythm, header, typography floors, themes, the canonical reading components, the
+ site navigator and the phone layout. New components must conform to it; do not bypass
+ it with page-specific geometry.
+
+ LOAD ORDER (enforced):
+   site-main.css → site-layout.css → [modular-reading.css] → strict-template.css
+   → page-local file, only where listed:
+       home-first-impression.css   index pages (body.modular-home-page)
+       implementation-evidence.css implementation pages
+       research-cases.css          research/cases (body.research-case-page)
+   Page-local files may only style their own page's components. Shared rules go here.
+
+ COPIES. assets/, uk/assets/ and de/assets/ hold byte-identical copies of this file.
+   Edit one, copy to the other two, then bump ?v= in every HTML link.
+
+ LAYERS (in file order; a later layer wins over an earlier one):
+   v1     1–12  hard frame, header, typography, rhythm, grids, course map, lecture notes,
+                math/tables, folds, footer, mobile
+   NAV-01       header: section links visible ≥1000 px, ☰ below (rev. 2026-10-28)
+   v2           collision / border safety (text never sits on a border)
+   V4           scientific system: readability, proportion, mathematics, timeline, reading map
+   V5 / V5.1    research story, layout hardening
+   THEME-01..11 light / dark palettes, persistent theme control, formula contrast
+   HOME-02..05  one-screen home on desktop
+   TYPE-01..10  readability floors (≥16 px reading text)
+   TILE-01      whole-tile navigation for single-destination cards
+   NAV-02..03   site navigator: search + full site map on every page
+   MOBILE-01..04 phone layout: folded sidebars, one-column home, word wrap, table scroll
+   ABOUT-01     ledger rows on About: certifications (with scans), conferences, N-iX articles
+   CONTACT-01   direct e-mail block on Contact
+
+ RULE CHANGELOG
+   2026-10-30  ABOUT-01 and CONTACT-01 added.
+   2026-10-28  WIDE-VIEW-01 (forced 1024 px desktop viewport + phone notice) RETIRED.
+               The site is responsive; wide-view.js now only clears the old consent.
+   2026-10-28  NAV-01 revised: full menu no longer forbidden below 1500 px; the ☰ drop-down
+               is replaced by the site navigator.
+   2026-10-28  NAV-02/03, MOBILE-01..04, TILE-01 added (moved here from site-nav.css).
+   2026-10-28  Clean-up: duplicate rules, overridden declarations and selectors with no
+               match on the site were removed without visual change (screenshot-verified).
+   2026-10-28  Navigator data (assets/js/site-tree.js, site-search-<lang>.js) is generated
+               from the pages; regenerate it with  python3 tools/build-navigator.py  whenever
+               a page is added, renamed or rewritten.
+*/
+
+:root{
+  --strict-radius:0px;
+}
+
+/* ========== 1. HARD FRAME / CONTAINMENT ========== */
+html,body{width:100%;max-width:100%;margin:0;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+body.strict-template-v1{min-width:0}
+body.strict-template-v1 :where(main,section,article,aside,header,footer,nav,div,figure,details,summary){min-width:0}
+body.strict-template-v1 :where(img,svg,video,canvas,iframe){display:block;max-width:100%;height:auto}
+body.strict-template-v1 .container,
+body.strict-template-v1 .nav,
+body.strict-template-v1 .site-footer::before{
+  width:min(calc(100% - 2 * var(--strict-gutter)),var(--strict-frame))!important;
+  max-width:none!important;
+  margin-inline:auto!important;
+  padding-inline:0!important;
+}
+body.strict-template-v1 main>section{width:100%;max-width:100%;overflow-x:clip}
+body.strict-template-v1 main :where(p,li,dd,dt,figcaption,td,th){overflow-wrap:break-word;word-break:normal}
+body.strict-template-v1 main :where(a,code){overflow-wrap:anywhere}
+
+/* ========== 2. HEADER ========== */
+body.strict-template-v1 .site-header{position:sticky;top:0;z-index:100;}
+body.strict-template-v1 .nav{display:flex!important;align-items:center!important;}
+body.strict-template-v1 .brand{flex:0 0 auto;min-width:0}
+body.strict-template-v1 .brand-mark{flex:0 0 38px}
+body.strict-template-v1 .brand-copy{overflow-wrap:normal!important;word-break:normal!important}
+
+body.strict-template-v1 .lang-switch{margin-left:0!important}
+
+/* ========== 3. TYPOGRAPHY ========== */
+
+body.strict-template-v1 :where(h1,h2,h3,h4){max-width:100%;word-break:normal!important;overflow-wrap:break-word!important;hyphens:auto}
+
+body.strict-template-v1 main :where(p,li){line-height:1.68}
+body.strict-template-v1 .reader-intro,
+body.strict-template-v1 .reader-copy{max-width:var(--strict-reading)!important}
+
+html[lang="de"] body.strict-template-v1 main :where(h1,h2,h3,h4,p,li,dd,dt,figcaption,summary,b,strong,span){
+  word-break:normal!important;overflow-wrap:break-word!important;-webkit-hyphens:auto;hyphens:auto
+}
+html[lang="de"] body.strict-template-v1 main :where(code,pre,.formula,.equation,.math-formal){hyphens:none!important;overflow-wrap:anywhere!important}
+
+/* ========== 4. VERTICAL RHYTHM ========== */
+
+body.strict-template-v1 .page-hero,
+body.strict-template-v1 .reader-hero{padding-block:72px 54px!important}
+body.strict-template-v1 .reader-section{border-top:1px solid var(--line)}
+body.strict-template-v1 .reader-section h2{margin:10px 0 12px!important}
+body.strict-template-v1 .reader-badges{margin-top:20px;gap:8px}
+body.strict-template-v1 .hero-actions{margin-top:22px;padding-top:0!important}
+
+/* ========== 5. CANONICAL CARD GRIDS ========== */
+body.strict-template-v1 :where(.reader-grid,.cards,.about-grid-v3){
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:var(--strict-gap)!important;margin-top:24px
+}
+body.strict-template-v1 :where(.reader-card,.card,.about-card-v3){
+  min-width:0!important;padding:var(--strict-card-pad)!important;border:1px solid var(--line)!important;background:rgba(111,255,126,.012)!important
+}
+body.strict-template-v1 .reader-card h3{margin:10px 0 8px!important;text-transform:none!important;letter-spacing:0!important}
+body.strict-template-v1 .reader-card p{font-size:14px!important;line-height:1.62!important;max-width:62ch!important}
+
+@media(max-width:980px){body.strict-template-v1 :where(.reader-grid,.cards,.about-grid-v3){grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:680px){body.strict-template-v1 :where(.reader-grid,.cards,.about-grid-v3){grid-template-columns:1fr!important}}
+
+/* Buttons are atomic navigation controls; their labels never split. */
+body.strict-template-v1 .btn{width:max-content;max-width:100%;white-space:nowrap}
+
+/* ========== 6. COURSE MAP — FIXED CONTRACT ========== */
+body.strict-template-v1 .course-map-section-v3{padding-block:56px!important}
+body.strict-template-v1 .course-map-v3{margin:0!important;border:1px solid var(--line-strong)!important;background:rgba(111,255,126,.010)!important}
+body.strict-template-v1 .course-map-head{
+  display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:24px!important;align-items:end!important;
+  padding:22px 24px!important;border-bottom:1px solid var(--line)!important
+}
+body.strict-template-v1 .course-map-head p{max-width:68ch!important;margin:6px 0 0!important;font-size:14px!important;line-height:1.55!important;color:var(--muted)!important}
+body.strict-template-v1 .course-map-status{align-self:start;white-space:nowrap;font-size:11px!important;letter-spacing:.08em;text-transform:uppercase;color:var(--phosphor)}
+body.strict-template-v1 .module-rail{
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important;padding:16px!important
+}
+body.strict-template-v1 .module-tile{
+  display:flex!important;flex-direction:column!important;min-width:0!important;
+  border:1px solid var(--line)!important;background:rgba(255,255,255,.006)!important
+}
+body.strict-template-v1 .module-tile:last-child{border-right:1px solid var(--line)!important}
+body.strict-template-v1 .module-tile .module-no{display:block!important;margin:0 0 12px!important;font-size:11px!important;line-height:1!important;letter-spacing:.1em!important;color:rgba(111,255,126,.58)!important}
+body.strict-template-v1 .module-tile b{display:block!important;margin:0 0 9px!important;font-size:15px!important;line-height:1.3!important;color:var(--white)!important;text-transform:none!important}
+body.strict-template-v1 .module-tile>span:not(.module-no){display:block!important;margin-top:auto!important;font-size:12px!important;line-height:1.5!important;color:var(--muted)!important}
+body.strict-template-v1 .module-tile.is-current{border-color:var(--phosphor)!important;background:rgba(111,255,126,.045)!important;box-shadow:inset 0 3px 0 var(--phosphor)!important}
+
+body.strict-template-v1 .module-tile.is-planned{opacity:.72}
+
+@media(max-width:900px){
+  body.strict-template-v1 .course-map-head{grid-template-columns:1fr!important;align-items:start!important}
+  body.strict-template-v1 .course-map-status{white-space:normal}
+  body.strict-template-v1 .module-rail{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:620px){
+  body.strict-template-v1 .module-rail{grid-template-columns:1fr!important;padding:12px!important}
+  body.strict-template-v1 .module-tile{min-height:0!important;padding:16px!important}
+  body.strict-template-v1 .course-map-head{padding:18px 16px!important}
+}
+
+/* ========== 7. COURSE ARCHIVE / LECTURE CONTEXT ========== */
+body.strict-template-v1 .course-archive{display:grid!important;gap:10px!important;margin-top:24px!important}
+body.strict-template-v1 .course-module-group{border:1px solid var(--line)!important;background:rgba(111,255,126,.006)!important}
+body.strict-template-v1 .course-module-group>summary{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:18px!important;align-items:center!important;padding:16px 18px!important}
+body.strict-template-v1 .lecture-list-v3{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+body.strict-template-v1 .lecture-item-v3{display:grid!important;grid-template-columns:46px minmax(0,1fr) auto!important;gap:12px!important;align-items:center!important;min-width:0!important;padding:14px 16px!important}
+body.strict-template-v1 .course-context-v3{padding:18px 0!important;border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
+body.strict-template-v1 .course-context-inner{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:20px!important;align-items:center!important}
+body.strict-template-v1 .course-context-nav{display:flex!important;gap:8px!important;flex-wrap:wrap!important;justify-content:flex-end!important}
+
+@media(max-width:760px){
+ body.strict-template-v1 .lecture-list-v3{grid-template-columns:1fr!important}
+ body.strict-template-v1 .lecture-item-v3{grid-template-columns:40px minmax(0,1fr)!important;border-right:0!important}
+ body.strict-template-v1 .lecture-item-v3 a{grid-column:2}
+ body.strict-template-v1 .course-context-inner{grid-template-columns:1fr!important}
+ body.strict-template-v1 .course-context-nav{justify-content:flex-start!important}
+}
+
+/* ========== 8. LECTURE NOTES ========== */
+body.strict-template-v1 .full-lecture-notes{padding-block:var(--strict-section)!important;border-top:1px solid var(--line)!important}
+body.strict-template-v1 .lecture-notes-shell{max-width:var(--strict-frame)!important}
+body.strict-template-v1 .lecture-notes-intro{max-width:var(--strict-reading)!important;color:var(--muted)}
+body.strict-template-v1 .lecture-notes-source{margin:18px 0 30px!important}
+body.strict-template-v1 .lecture-article{margin:0!important;overflow:visible!important}
+
+body.strict-template-v1 .lecture-article h3{margin:34px 0 14px!important;font-size:21px!important;text-transform:none!important}
+body.strict-template-v1 .lecture-article h4{margin:26px 0 12px!important;font-size:17px!important;text-transform:none!important}
+body.strict-template-v1 .lecture-article pre,
+body.strict-template-v1 .lecture-article table{max-width:100%!important;overflow-x:auto!important}
+
+/* ========== 9. MATH / TABLES / CODE ========== */
+body.strict-template-v1 :where(pre,.formula,.equation,.math-formal,mjx-container[display="true"]){max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important}
+body.strict-template-v1 :where(table){max-width:100%}
+body.strict-template-v1 .tech-table-wrap,
+body.strict-template-v1 .exp02-matrix-scroll,
+body.strict-template-v1 .exp03-matrix-scroll{max-width:100%!important;overflow-x:auto!important}
+
+/* ========== 10. FOLDS ========== */
+body.strict-template-v1 details.content-fold{width:100%!important;max-width:none!important;margin:0!important;border-left:0!important;border-right:0!important}
+body.strict-template-v1 details.content-fold>summary,
+body.strict-template-v1 .content-fold-body{width:min(calc(100% - 2 * var(--strict-gutter)),var(--strict-frame))!important;margin-inline:auto!important}
+body.strict-template-v1 details.content-fold>summary{padding:16px 0!important;min-height:54px!important}
+body.strict-template-v1 .content-fold-body{padding:34px 0 46px!important}
+
+/* ========== 11. FOOTER ========== */
+body.strict-template-v1 .site-footer{overflow-x:hidden}
+body.strict-template-v1 .footer-grid{display:grid!important;grid-template-columns:1.3fr 1fr 1fr!important;gap:28px!important}
+@media(max-width:760px){body.strict-template-v1 .footer-grid{grid-template-columns:1fr!important}}
+
+/* ========== 12. MOBILE ========== */
+@media(max-width:680px){
+ :root{--strict-section:44px;--strict-section-tight:34px;--strict-card-pad:16px}
+ body.strict-template-v1 .page-hero,body.strict-template-v1 .reader-hero{padding-block:48px 36px!important}
+ body.strict-template-v1 h1{font-size:clamp(32px,9.4vw,40px)!important;}
+ body.strict-template-v1 h2{font-size:clamp(23px,7vw,29px)!important;max-width:100%!important}
+ body.strict-template-v1 .site-header::after{display:none!important}
+ body.strict-template-v1 .brand-copy{width:142px;min-width:142px;max-width:142px;font-size:12px!important}
+ body.strict-template-v1 .brand-copy small{font-size:10px!important;letter-spacing:.12em!important}
+ body.strict-template-v1 .lang-switch a{min-width:27px!important}
+}
+
+/* ======================================================================
+   STRICT TEMPLATE CONTRACT v2 — COLLISION / BORDER SAFETY
+   2026-09-13
+   Rule: text never sits on a border; navigation never competes for width.
+   ====================================================================== */
+:root{
+  --strict-nav-frame:1480px;
+}
+
+/* Header has its own frame. The reading frame stays 1120px. */
+body.strict-template-v1 .nav{
+  width:min(calc(100% - 2 * var(--strict-gutter)),var(--strict-nav-frame))!important;
+  max-width:none!important;
+  margin-inline:auto!important;
+  padding-inline:0!important;
+  gap:12px!important;
+}
+body.strict-template-v1 .brand-copy{
+  width:154px!important;
+  min-width:154px!important;
+  max-width:154px!important;
+}
+body.strict-template-v1 .nav-links{
+  display:flex!important;
+  flex:0 1 auto!important;
+  margin-left:auto!important;
+  min-width:0!important;
+  align-items:center!important;
+}
+body.strict-template-v1 .nav-links a{
+  flex:0 0 auto!important;
+  white-space:nowrap!important;
+}
+
+body.strict-template-v1 .lang-switch{
+  flex:0 0 auto!important;
+  display:flex!important;
+  gap:4px!important;
+}
+
+/* NAV-01 (rev. 2026-10-28). Section links stay visible from 1000 px.
+   Below 1000 px they are hidden and the ☰ button opens the site navigator (NAV-02);
+   the former drop-down menu and the 1360 / 1499 px breakpoints are retired. */
+@media(max-width:999px){
+  body.strict-template-v1 .nav-links{display:none!important}
+  body.strict-template-v1 .nav-toggle{display:block!important;flex:0 0 auto!important;margin-left:auto!important}
+}
+@media(min-width:1000px){
+  body.strict-template-v1 .nav-toggle{display:none!important}
+  /* neutralise the legacy drop-down geometry still present in site-main.css / site-layout.css */
+  body.strict-template-v1 .nav-links{position:static!important;top:auto!important;width:auto!important;padding:0!important;background:none!important;border:0!important;flex-direction:row!important;align-items:center!important}
+}
+@media(min-width:1000px) and (max-width:1199px){
+  body.strict-template-v1 .brand-copy small{display:none!important}
+}
+
+/* No labels or captions are allowed to float ON a frame line. */
+body.strict-template-v1 .site-header::after,
+body.strict-template-v1 .equation-panel::before,
+body.strict-template-v1 .cta::before,
+body.strict-template-v1 .collab-cta::before{
+  display:none!important;
+  content:none!important;
+}
+
+/* Bordered components own their content. Nothing may escape into the frame. */
+body.strict-template-v1 :where(
+  .reader-card,.card,.about-card-v3,.module-tile,.course-window-card,
+  .course-map-v3,.lecture-item-v3,.author-strip,.notice,.system-card,
+  .equation-panel,.cta,.collab-cta
+){
+  min-width:0!important;
+}
+body.strict-template-v1 :where(
+  .reader-card,.card,.about-card-v3,.module-tile,.course-window-card,
+  .lecture-item-v3,.author-strip,.notice
+){
+  overflow:hidden!important;
+}
+body.strict-template-v1 :where(
+  .reader-card,.card,.about-card-v3,.module-tile,.course-window-card,
+  .lecture-item-v3,.author-strip,.notice
+) :where(h1,h2,h3,h4,p,span,b,strong,small,a,li){
+  max-width:100%!important;
+  min-width:0!important;
+  overflow-wrap:break-word!important;
+  word-break:normal!important;
+}
+
+/* Reserve space for status glyphs rather than placing them over copy. */
+body.strict-template-v1 .module-tile.is-published{padding-right:42px!important}
+body.strict-template-v1 .module-tile.is-published::after{right:14px!important;top:14px!important}
+
+/* Section labels live INSIDE the section, never on its edge. */
+body.strict-template-v1 .eyebrow{
+  display:block!important;
+  max-width:100%!important;
+  margin:0 0 12px!important;
+  line-height:1.45!important;
+  overflow-wrap:break-word!important;
+}
+
+/* Buttons remain atomic; on very narrow screens they may fill the row. */
+@media(max-width:480px){
+  body.strict-template-v1 .btn{
+    width:100%!important;
+    max-width:100%!important;
+    white-space:normal!important;
+    text-align:center!important;
+    overflow-wrap:break-word!important;
+  }
+  body.strict-template-v1 .brand-copy{
+    width:124px!important;
+    min-width:124px!important;
+    max-width:124px!important;
+    font-size:11px!important;
+  }
+  body.strict-template-v1 .brand-copy small{font-size:9px!important}
+  body.strict-template-v1 .nav{gap:8px!important}
+}
+
+/* ======================================================================
+   VÆRINGJAR II — SCIENTIFIC MODULAR SYSTEM v3
+   2026-09-28
+   Global visual layer for every public page. Content is not rewritten.
+   ====================================================================== */
+
+:root{
+  --science-bg-2:#0a1511;
+  --science-panel:#0d1914;
+  --science-panel-2:#101f19;
+  --science-accent-soft:rgba(142,230,167,.10);
+  --science-amber:#e1b96d;
+  --science-red:#8fb69a;
+  --science-grid:rgba(172,224,190,.035);
+  --science-shadow:0 24px 70px rgba(0,0,0,.28);
+  --science-radius:10px;
+  --science-sans:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif;
+  --science-mono:"DejaVu Sans Mono","Liberation Mono","Courier New",ui-monospace,monospace;
+}
+
+/* --- Reset the former terminal aesthetic. --- */
+html{background:var(--science-bg)!important}
+body.strict-template-v1{
+  font-family:var(--science-sans)!important;
+  -webkit-font-smoothing:antialiased!important;
+  text-rendering:optimizeLegibility!important;
+}
+body.strict-template-v1::before,
+body.strict-template-v1::after{display:none!important}
+body.strict-template-v1 h1::after{content:none!important;animation:none!important}
+body.strict-template-v1 .site-header::after,
+body.strict-template-v1 .site-footer::before,
+body.strict-template-v1 .system-card::before,
+body.strict-template-v1 .equation-panel::before,
+body.strict-template-v1 .cta::before,
+body.strict-template-v1 .notice::before,
+body.strict-template-v1 .breadcrumb::before,
+body.strict-template-v1 .partner-type::before,
+body.strict-template-v1 .diagram-note::before{content:none!important}
+
+body.strict-template-v1 :where(h1,h2,h3,h4,h5,h6){
+  font-family:var(--science-sans)!important;
+  text-transform:none!important;
+  letter-spacing:-.025em!important;
+  color:var(--science-ink)!important;
+  text-shadow:none!important;
+}
+body.strict-template-v1 h1{font-weight:660!important;}
+body.strict-template-v1 h2{font-weight:640!important;}
+body.strict-template-v1 h3{font-weight:640!important;line-height:1.22!important}
+body.strict-template-v1 :where(p,li){color:var(--science-text)}
+body.strict-template-v1 :where(code,kbd,samp,.equation,.math-formal,.module-index,.reader-num,.card-num,.module-no,.status,.tag,.eyebrow,.section-eyebrow){font-family:var(--science-mono)!important}
+
+/* --- Header: one navigation system everywhere. --- */
+body.strict-template-v1 .site-header{
+  backdrop-filter:blur(16px) saturate(120%);
+}
+body.strict-template-v1 .nav{min-height:72px!important}
+body.strict-template-v1 .brand{gap:11px!important;letter-spacing:0!important}
+body.strict-template-v1 .brand-mark{width:38px!important;height:38px!important;flex-basis:38px!important}
+body.strict-template-v1 .brand-copy{
+  font-family:var(--science-sans)!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  letter-spacing:.04em!important;
+  text-transform:none!important;
+}
+body.strict-template-v1 .brand-copy small{
+  font-family:var(--science-mono)!important;
+  margin-top:4px!important;
+  font-size:9px!important;
+  letter-spacing:.06em!important;
+  color:var(--science-muted)!important;
+}
+body.strict-template-v1 .nav-links{gap:5px!important}
+body.strict-template-v1 .nav-links a{
+  padding:8px 10px!important;
+  border-radius:7px!important;
+  font-family:var(--science-sans)!important;
+  font-weight:570!important;
+  text-transform:none!important;
+  color:#a8bdaf!important;
+}
+body.strict-template-v1 .nav-links a::before,
+body.strict-template-v1 .nav-links a::after{content:none!important}
+body.strict-template-v1 .nav-links a:hover,
+body.strict-template-v1 .nav-links a.active{background:var(--science-accent-soft)!important;color:var(--science-ink)!important;text-shadow:none!important}
+body.strict-template-v1 .nav-links a.active{box-shadow:inset 0 -1px 0 rgba(142,230,167,.72)}
+body.strict-template-v1 .lang-switch{padding-left:8px!important;border-left:1px solid var(--science-line)!important}
+body.strict-template-v1 .lang-switch a{border:0!important;border-radius:6px!important;font-family:var(--science-mono)!important;color:var(--science-muted)!important}
+body.strict-template-v1 .lang-switch a.active{background:rgba(255,255,255,.055)!important;color:var(--science-ink)!important}
+body.strict-template-v1 .nav-toggle{border:1px solid var(--science-line-strong)!important;border-radius:8px!important;background:rgba(255,255,255,.025)!important;color:var(--science-ink)!important}
+
+/* --- Scientific page field / geometry. --- */
+body.strict-template-v1 main{counter-reset:science-section;overflow:clip}
+body.strict-template-v1 main>section{
+  position:relative;
+  border-top:1px solid var(--science-line)!important;
+}
+body.strict-template-v1 main>section:first-child{border-top:0!important}
+body.strict-template-v1 main>section:not(.page-hero):not(.reader-hero):not(.module-hub-hero):not(.module-reader-hero):not(.research-focus-hero):not(.home-hero):not(.research-method-trace):not(.scientific-section-map){counter-increment:science-section}
+body.strict-template-v1 main>section:not(.page-hero):not(.reader-hero):not(.module-hub-hero):not(.module-reader-hero):not(.research-focus-hero):not(.home-hero):not(.research-method-trace):not(.scientific-section-map)::before{
+  content:counter(science-section,decimal-leading-zero);
+  position:absolute;
+  left:max(var(--strict-gutter),calc((100vw - var(--strict-frame))/2));
+  top:20px;
+  font:600 10px/1 var(--science-mono);
+  letter-spacing:.08em;
+  color:rgba(142,230,167,.34);
+  pointer-events:none;
+}
+body.strict-template-v1 .container{position:relative}
+body.strict-template-v1 :where(section,.page-hero,.reader-hero,.module-hub-hero,.module-reader-hero,.research-focus-hero,.home-hero){background:transparent!important}
+body.strict-template-v1 :where(.page-hero,.reader-hero,.module-hub-hero,.module-reader-hero,.research-focus-hero,.home-hero,.hero){
+  position:relative;
+  border-bottom:1px solid var(--science-line)!important;
+  background:
+    linear-gradient(var(--science-grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--science-grid) 1px,transparent 1px)!important;
+  background-size:36px 36px!important;
+  overflow:hidden!important;
+}
+body.strict-template-v1 :where(.page-hero,.reader-hero,.module-hub-hero,.module-reader-hero,.research-focus-hero,.home-hero,.hero)::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  pointer-events:none!important;
+  background:linear-gradient(90deg,var(--science-bg) 0%,rgba(7,16,13,.62) 42%,rgba(7,16,13,.18) 100%)!important;
+}
+body.strict-template-v1 :where(.page-hero,.reader-hero,.module-hub-hero,.module-reader-hero,.research-focus-hero,.home-hero,.hero)>.container,
+body.strict-template-v1 .hero>.container{position:relative;z-index:1}
+body.strict-template-v1 .eyebrow,
+body.strict-template-v1 .section-eyebrow{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  color:var(--science-accent)!important;
+  font-size:10px!important;
+  font-weight:650!important;
+  letter-spacing:.08em!important;
+  text-transform:uppercase!important;
+  text-shadow:none!important;
+}
+body.strict-template-v1 .eyebrow::before,
+body.strict-template-v1 .section-eyebrow::before{
+  content:""!important;
+  width:22px;height:1px;background:currentColor;opacity:.62
+}
+body.strict-template-v1 .lead{color:#b8cdc0!important;}
+
+/* --- One modular reading grammar for all card families. --- */
+body.strict-template-v1 :where(.card,.reader-card,.module-card,.research-card,.partner,.home-route,.research-route,.course-window-card,.module-tile,.about-card-v3,.evidence-card,.collab-lead-card,.system-card,.equation-panel,.diagram,.paradigm-panel,.math-contract){
+  border:1px solid var(--science-line)!important;
+  border-radius:var(--science-radius)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,.006))!important;
+  box-shadow:none!important;
+}
+body.strict-template-v1 :where(.card,.reader-card,.module-card,.research-card,.partner,.home-route,.research-route,.course-window-card,.module-tile,.about-card-v3,.evidence-card,.collab-lead-card):hover{
+  transform:translateY(-1px)!important;
+  border-color:rgba(142,230,167,.48)!important;
+  background:linear-gradient(180deg,rgba(142,230,167,.045),rgba(255,255,255,.008))!important;
+  box-shadow:0 12px 36px rgba(0,0,0,.18)!important;
+  text-shadow:none!important;
+}
+body.strict-template-v1 :where(.card,.reader-card,.module-card,.research-card,.partner,.home-route,.research-route,.about-card-v3)::after{content:none!important}
+body.strict-template-v1 :where(.reader-num,.card-num,.module-index,.module-no,.research-library-id){color:var(--science-accent)!important;text-shadow:none!important}
+body.strict-template-v1 :where(.card-link,.reader-link,.module-open,.module-back){color:var(--science-accent)!important;font-weight:650!important;text-transform:none!important;letter-spacing:0!important}
+body.strict-template-v1 :where(.status,.tag,.reader-badges span,.home-concepts span){
+  border:1px solid var(--science-line)!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.018)!important;
+  color:#a8beb0!important;
+  text-transform:none!important;
+  letter-spacing:0!important;
+}
+body.strict-template-v1 .tag::before{content:none!important}
+
+/* --- Buttons: calm, technical, non-console. --- */
+body.strict-template-v1 .btn,
+body.strict-template-v1 .nav-cta{
+  border:1px solid var(--science-line-strong)!important;
+  border-radius:8px!important;
+  font-family:var(--science-sans)!important;
+  font-size:12px!important;
+  text-transform:none!important;
+  letter-spacing:0!important;
+  box-shadow:none!important;
+}
+body.strict-template-v1 .btn::before,
+body.strict-template-v1 .btn::after,
+body.strict-template-v1 .nav-cta::before,
+body.strict-template-v1 .nav-cta::after{content:none!important}
+
+body.strict-template-v1 .btn-ghost{background:rgba(255,255,255,.018)!important;color:var(--science-ink)!important}
+
+/* --- Scientific modules generated from actual page sections. --- */
+.scientific-section-map{
+  border-top:0!important;
+}
+.scientific-section-map .scientific-map-head{
+  display:flex;justify-content:space-between;gap:20px;align-items:end;}
+
+.scientific-section-map .scientific-map-head span{font:500 10px var(--science-mono);}
+.scientific-map-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+.scientific-map-link{
+  display:grid;gap:10px;align-items:start;
+  border:1px solid var(--science-line);border-radius:8px;
+  background:rgba(255,255,255,.008);color:var(--science-text)
+}
+.scientific-map-link:hover{color:var(--science-ink);text-shadow:none}
+.scientific-map-link small{font:600 10px/1.4 var(--science-mono);color:var(--science-accent)}
+.scientific-map-link b{font-weight:600;color:inherit}
+
+/* --- Research identity: hypothesis → evidence → revision. --- */
+.research-method-trace{
+  border-top:0!important;
+}
+.research-method-trace .trace-label{font:600 10px var(--science-mono);letter-spacing:.08em;text-transform:uppercase;}
+.research-method-trace .trace-grid{border-radius:10px;}
+
+.research-method-trace .trace-step small{display:block;margin-bottom:8px;font:600 9px var(--science-mono);}
+
+.research-method-trace .trace-step::after{content:"";position:absolute;right:-4px;top:50%;width:7px;height:7px;margin-top:-3px;border-radius:50%;z-index:2}
+.research-method-trace .trace-step:last-child::after{display:none}
+
+/* --- Equations, figures and evidence are focal, not decorative. --- */
+body.strict-template-v1 :where(.equation-panel,.math-contract,.paradigm-panel){border-color:rgba(142,230,167,.28)!important;background:linear-gradient(180deg,rgba(142,230,167,.035),rgba(255,255,255,.006))!important}
+body.strict-template-v1 .equation{font-family:var(--science-mono)!important;color:#d6f2de!important;text-shadow:none!important;letter-spacing:-.02em!important}
+body.strict-template-v1 :where(mjx-container[display="true"],.formula,.equation,.math-formal){margin-block:18px!important}
+body.strict-template-v1 .diagram{padding:14px!important;background:#0a130f!important}
+body.strict-template-v1 .diagram img{filter:none!important;border-radius:6px!important}
+body.strict-template-v1 .diagram-note{font:500 11px/1.5 var(--science-mono)!important;color:var(--science-muted)!important}
+
+/* --- Tables and long-form reading. --- */
+body.strict-template-v1 table{border-collapse:separate!important;border-spacing:0!important;border:1px solid var(--science-line)!important;border-radius:8px!important;overflow:hidden!important;background:rgba(255,255,255,.006)!important}
+body.strict-template-v1 th{font-family:var(--science-mono)!important;letter-spacing:.05em!important;text-transform:uppercase!important;color:#cfe2d5!important;background:rgba(142,230,167,.045)!important}
+body.strict-template-v1 th,body.strict-template-v1 td{border-color:var(--science-line)!important}
+
+body.strict-template-v1 .lecture-article :where(p,li){font-family:var(--science-sans)!important;color:#cadbce!important}
+body.strict-template-v1 .lecture-article :where(h3,h4){letter-spacing:-.018em!important}
+body.strict-template-v1 .full-lecture-notes{background:rgba(255,255,255,.004)!important}
+
+/* --- Local/module navigation unified. --- */
+body.strict-template-v1 :where(.module-local-nav,.research-subnav,.course-context-v3){background:rgba(8,18,14,.94)!important;border-color:var(--science-line)!important}
+body.strict-template-v1 .module-mini{border-color:var(--science-line)!important;color:var(--science-muted)!important}
+body.strict-template-v1 .module-mini.active{background:rgba(142,230,167,.055)!important;color:var(--science-ink)!important;box-shadow:inset 0 -2px 0 var(--science-accent)!important}
+body.strict-template-v1 .module-mini span{color:rgba(142,230,167,.64)!important}
+body.strict-template-v1 .module-nextprev{border-color:var(--science-line)!important}
+body.strict-template-v1 :where(.module-prev,.module-next){border-color:var(--science-line)!important;border-radius:8px!important;background:rgba(255,255,255,.008)!important;color:var(--science-muted)!important;text-transform:none!important;letter-spacing:0!important}
+body.strict-template-v1 :where(.module-prev,.module-next) b{color:var(--science-ink)!important}
+
+/* --- Research / course / generic grids use the same spacing rhythm. --- */
+body.strict-template-v1 :where(.cards,.reader-grid,.research-grid,.partner-grid,.module-grid,.home-route-grid,.research-route-grid,.evidence-grid,.collab-leads,.verification-grid){gap:12px!important}
+body.strict-template-v1 :where(.reader-card,.research-card,.card,.partner,.home-route,.research-route,.evidence-card,.collab-lead-card){padding:22px!important}
+body.strict-template-v1 .module-card{padding:22px!important}
+
+/* --- Footer becomes editorial, not terminal. --- */
+body.strict-template-v1 .site-footer{background:#050c09!important;border-color:var(--science-line)!important;color:var(--science-muted)!important}
+body.strict-template-v1 .site-footer b{font-family:var(--science-sans)!important;color:var(--science-ink)!important}
+body.strict-template-v1 .footer-links a:hover{color:var(--science-accent)!important;text-shadow:none!important}
+
+/* --- Links / focus. --- */
+body.strict-template-v1 a:hover{text-shadow:none!important}
+
+/* --- Responsive. --- */
+@media(max-width:900px){
+  .scientific-map-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:680px){
+  body.strict-template-v1 h1{max-width:100%!important;line-height:1.04!important}
+  .scientific-section-map{padding:20px 0!important}
+  .scientific-map-grid{grid-template-columns:1fr}
+  .scientific-map-link{min-height:0}
+  .scientific-section-map .scientific-map-head{align-items:start;flex-direction:column;gap:4px}
+  body.strict-template-v1 main>section:not(.page-hero):not(.reader-hero):not(.module-hub-hero):not(.module-reader-hero):not(.research-focus-hero):not(.home-hero):not(.research-method-trace):not(.scientific-section-map)::before{display:none}
+}
+
+/* ========================================================================== */
+/* VÆRINGJAR II — GLOBAL SYSTEM V4 / TERMINATOR SCIENTIFIC HUD                */
+/* 2026-09-28. Site-wide. This block intentionally wins over earlier layers.  */
+/* ========================================================================== */
+:root{
+  --terminator-amber:#9dffb3;
+}
+
+/* --- Readability contract: no tiny primary reading text. --- */
+
+body.strict-template-v1 .nav-links a{letter-spacing:.03em!important}
+body.strict-template-v1 :where(.module-tile b,.course-window-card b,.course-module-group>summary b,.lecture-item-v3 b){font-size:15px!important}
+body.strict-template-v1 :where(.module-tile>span:not(.module-no),.course-map-head p,.course-module-group>summary span){font-size:13.5px!important;line-height:1.55!important}
+
+body.strict-template-v1 .lecture-article{max-width:900px!important}
+
+body.strict-template-v1 .lecture-article blockquote p{font-size:16px!important}
+body.strict-template-v1 .lecture-article table{font-size:14.5px!important}
+body.strict-template-v1 .lecture-toc :where(b,a){font-size:13px!important;line-height:1.45!important}
+
+/* --- Proportion contract: content first, frame second. --- */
+
+body.strict-template-v1 .module-tile{min-height:0!important;padding:16px!important}
+
+body.strict-template-v1 .scientific-map-link{min-height:0!important;padding:11px 12px!important}
+
+/* --- Terminator visual language: sharp HUD, restrained scanlines, green optics. --- */
+
+body.strict-template-v1 main{position:relative;}
+body.strict-template-v1 :where(.card,.reader-card,.module-card,.research-card,.partner,.home-route,.research-route,.about-card-v3,.evidence-card,.collab-lead-card,.course-map-v3,.scientific-map-link,.scientific-math-panel,.trace-grid){
+  border-radius:0!important;border-color:var(--terminator-line)!important;background:linear-gradient(145deg,rgba(114,255,149,.025),rgba(255,255,255,.006))!important;box-shadow:none!important
+}
+body.strict-template-v1 :where(.card,.reader-card,.module-card,.research-card,.partner,.home-route,.research-route,.about-card-v3,.evidence-card,.collab-lead-card){position:relative}
+body.strict-template-v1 :where(.card,.reader-card,.module-card,.research-card,.partner,.home-route,.research-route,.about-card-v3,.evidence-card,.collab-lead-card)::before{
+  content:""!important;position:absolute!important;left:-1px!important;top:-1px!important;width:28px!important;height:2px!important;background:var(--terminator-green)!important;display:block!important;opacity:.85!important
+}
+
+/* --- Global generalized mathematics: required at every information level. --- */
+
+.scientific-math-panel{display:grid;grid-template-columns:minmax(170px,.34fr) minmax(0,1.66fr);gap:24px;align-items:center;}
+
+.scientific-math-formula{overflow-x:auto;}
+
+/* --- Clickable research timeline: Definition → Implementation. --- */
+
+/* --- Reading map is a compact HUD, not a giant frame. --- */
+
+@media(max-width:900px){
+  .scientific-math-panel{grid-template-columns:1fr;gap:14px}
+}
+
+/* V4 readability floor for secondary, but still meaningful, UI text. */
+body.strict-template-v1 main :where(.meta,.tail,.note,.badge,.course-map-status,.course-current-tag,.research-library-id,.module-no,.module-index,.about-fact small,.course-window-card small,.lecture-item-v3 a,.course-context-nav a,.course-context-nav span,.module-mini,.diagram-note,figcaption){font-size:12.5px!important;line-height:1.5!important}
+
+body.strict-template-v1 .site-footer{font-size:13.5px!important}
+body.strict-template-v1 .lang-switch a{font-size:12.5px!important}
+
+/* ========================================================================== */
+/* VÆRINGJAR II — GLOBAL SYSTEM V5 / GREEN TERMINATOR RESEARCH STORY          */
+/* 2026-09-28. This block intentionally wins over all previous visual layers. */
+/* ========================================================================== */
+:root{
+  --strict-frame:1180px;
+  --strict-gutter:clamp(18px,2.5vw,32px);
+  --strict-section:40px;
+  --strict-section-tight:28px;
+  --strict-gap:12px;
+  --strict-card-pad:16px;
+  --strict-reading:78ch;
+  --strict-h1:clamp(46px,5vw,68px);
+  --strict-h2:clamp(31px,3vw,42px);
+  --strict-h3:22px;
+  --terminator-green:#72ff95;
+  --terminator-green-hot:#9dffb3;
+  --terminator-green-soft:rgba(114,255,149,.11);
+  --terminator-line:rgba(114,255,149,.22);
+  --terminator-line-strong:rgba(114,255,149,.46);
+  --terminator-dim:#73967c;
+  --science-bg:#030706;
+  --science-surface:#06100c;
+  --science-surface-2:#09150f;
+  --science-ink:#effff3;
+  --science-text:#d5e8d9;
+  --science-muted:#9bb2a1;
+  --science-accent:var(--terminator-green);
+  --science-line:var(--terminator-line);
+  --science-line-strong:var(--terminator-line-strong);
+  --phosphor:var(--terminator-green);
+  --green:var(--terminator-green);
+  --amber:#b7d9bf;
+  --red:#83a98d;
+  --line:var(--terminator-line);
+  --line-strong:var(--terminator-line-strong);
+  --text:var(--science-text);
+  --muted:var(--science-muted);
+  --white:var(--science-ink);
+  --bg:var(--science-bg);
+}
+
+/* Readability floor: text is a primary research surface, never decoration. */
+body.strict-template-v1{font-size:18px!important;line-height:1.68!important;background:var(--science-bg)!important;color:var(--science-text)!important}
+body.strict-template-v1 main :where(p,li,dd,dt){font-size:17px!important;line-height:1.74!important}
+body.strict-template-v1 h1{font-size:var(--strict-h1)!important;line-height:1.01!important;max-width:20ch!important}
+body.strict-template-v1 h2{font-size:var(--strict-h2)!important;line-height:1.09!important;max-width:32ch!important}
+body.strict-template-v1 h3{font-size:var(--strict-h3)!important}
+body.strict-template-v1 h4{font-size:18px!important}
+body.strict-template-v1 .lead{font-size:clamp(19px,1.65vw,22px)!important;line-height:1.67!important;max-width:72ch!important}
+body.strict-template-v1 :where(.card p,.reader-card p,.research-card p,.partner p,.home-route p,.research-route p,.about-card-v3 p,.module-card p,.collab-lead-card p,.collab-audience p,.collab-step p,.promo-panel p,.author-strip p){font-size:16.5px!important;line-height:1.67!important}
+body.strict-template-v1 :where(.eyebrow,.section-label,.reader-kicker,.module-kicker,.collab-role,.status,.tag){font-size:13px!important;line-height:1.45!important}
+body.strict-template-v1 :where(.card-link,.reader-link,.module-open,.module-back,.btn,.nav-cta){font-size:14px!important}
+body.strict-template-v1 .nav-links a{font-size:13.5px!important}
+body.strict-template-v1 table{font-size:15px!important}
+body.strict-template-v1 th{font-size:13px!important}
+body.strict-template-v1 td{font-size:15px!important;line-height:1.58!important}
+body.strict-template-v1 .lecture-article :where(p,li){font-size:17.5px!important;line-height:1.8!important}
+body.strict-template-v1 main :where(pre,code){font-size:14.5px!important;line-height:1.62!important}
+
+/* Compact composition: remove oversized boxes and dead vertical space. */
+body.strict-template-v1 main>section{padding-block:var(--strict-section)!important}
+body.strict-template-v1 main>section.section-tight{padding-block:var(--strict-section-tight)!important}
+body.strict-template-v1 :where(.page-hero,.reader-hero,.module-hub-hero,.module-reader-hero,.research-focus-hero,.home-hero){padding-block:52px 38px!important}
+body.strict-template-v1 :where(.reader-card,.card,.about-card-v3,.research-card,.partner,.home-route,.research-route,.evidence-card,.collab-lead-card,.module-card){padding:16px 17px!important;min-height:0!important}
+body.strict-template-v1 :where(.next-lecture-card,.promo-panel,.author-strip,.collab-cta,.collab-status){padding:17px 18px!important;min-height:0!important}
+body.strict-template-v1 :where(.equation-panel,.math-contract,.paradigm-panel){padding:18px!important;min-height:0!important}
+
+/* Green / black Terminator HUD. No red decorative state. */
+body.strict-template-v1::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:repeating-linear-gradient(180deg,rgba(145,255,172,.010) 0,rgba(145,255,172,.010) 1px,transparent 1px,transparent 4px);
+  mix-blend-mode:screen;opacity:.26
+}
+body.strict-template-v1 .site-header{
+  background:rgba(2,7,5,.97)!important;border-bottom:1px solid var(--terminator-line-strong)!important;
+  box-shadow:0 8px 30px rgba(0,0,0,.42)!important
+}
+body.strict-template-v1 .site-header::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--terminator-green),transparent);opacity:.9}
+body.strict-template-v1 main{background-image:linear-gradient(rgba(114,255,149,.024) 1px,transparent 1px),linear-gradient(90deg,rgba(114,255,149,.018) 1px,transparent 1px);background-size:48px 48px}
+body.strict-template-v1 :where(.card,.reader-card,.module-card,.research-card,.partner,.home-route,.research-route,.about-card-v3,.evidence-card,.collab-lead-card,.course-map-v3,.scientific-map-link,.scientific-math-panel,.trace-grid,.story-grid article,.researcher-card){
+  border-radius:0!important;border-color:var(--terminator-line)!important;background:linear-gradient(145deg,rgba(114,255,149,.022),rgba(255,255,255,.004))!important;box-shadow:none!important
+}
+body.strict-template-v1 :where(.card,.reader-card,.module-card,.research-card,.partner,.home-route,.research-route,.about-card-v3,.evidence-card,.collab-lead-card,.researcher-card){position:relative}
+body.strict-template-v1 :where(.card,.reader-card,.module-card,.research-card,.partner,.home-route,.research-route,.about-card-v3,.evidence-card,.collab-lead-card,.researcher-card)::before{
+  content:""!important;position:absolute!important;left:-1px!important;top:-1px!important;width:30px!important;height:2px!important;background:var(--terminator-green)!important;display:block!important;opacity:.86!important
+}
+body.strict-template-v1 :where(.btn,.nav-cta,.module-prev,.module-next){border-radius:0!important;border-color:var(--terminator-line-strong)!important;background:rgba(114,255,149,.022)!important;color:var(--science-ink)!important}
+body.strict-template-v1 .btn-primary{background:var(--terminator-green)!important;color:#021006!important;border-color:var(--terminator-green)!important;font-weight:800!important}
+body.strict-template-v1 :where(.reader-num,.card-num,.module-index,.module-no,.research-library-id,.scientific-map-link small){color:var(--terminator-green-hot)!important}
+body.strict-template-v1 :where(a:hover,.card-link:hover,.reader-link:hover,.module-open:hover){color:#fff!important;text-shadow:0 0 12px rgba(114,255,149,.42)!important}
+body.strict-template-v1 :focus-visible{outline:2px solid var(--terminator-green)!important;outline-offset:3px!important;border-radius:0!important}
+
+/* Canonical mathematics with readable fallbacks and explicit symbol decoding. */
+.scientific-math-layer{
+  padding:18px 0!important;border-top:1px solid var(--terminator-line)!important;border-bottom:1px solid var(--terminator-line)!important;
+  background:linear-gradient(90deg,rgba(114,255,149,.045),rgba(114,255,149,.010) 58%,transparent)!important
+}
+.scientific-math-panel{position:relative;padding:18px;border:1px solid var(--terminator-line-strong)!important}
+
+.scientific-math-head{display:flex;justify-content:space-between;align-items:start;gap:22px;margin-bottom:14px}
+.scientific-math-head strong{display:block;margin-bottom:5px;font-size:16px;color:#fff}
+.scientific-math-head p{margin:0!important;max-width:78ch;font-size:14.5px!important;line-height:1.58!important;color:var(--science-muted)!important}
+.math-stage{flex:0 0 auto;border:1px solid var(--terminator-line);padding:6px 8px;font:700 11px/1.3 var(--science-mono);letter-spacing:.05em;color:var(--terminator-green-hot);white-space:nowrap}
+.scientific-math-formulas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.scientific-math-formula{min-width:0;min-height:66px;display:grid;align-items:center;padding:12px 14px;border-left:2px solid var(--terminator-green);background:rgba(0,0,0,.36);font:600 15px/1.5 var(--science-mono);color:#effff3;overflow:hidden;white-space:normal}
+.math-fallback{display:block;overflow-wrap:anywhere}
+.math-tex{display:none;min-width:0;overflow-x:auto;overflow-y:hidden}
+.scientific-math-layer.mathjax-ready .math-fallback{display:none}
+.scientific-math-layer.mathjax-ready .math-tex{display:block}
+.scientific-math-formula mjx-container{margin:0!important;max-width:100%!important;color:#effff3!important;overflow-x:auto!important;overflow-y:hidden!important;font-size:112%!important}
+.scientific-math-legend{margin-top:11px;border-top:1px solid var(--terminator-line);padding-top:10px}
+.scientific-math-legend summary{cursor:pointer;font:700 12px/1.45 var(--science-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--terminator-green-hot)}
+.math-symbol-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin-top:10px}
+.math-symbol{display:grid;grid-template-columns:minmax(72px,.22fr) minmax(0,1fr);gap:10px;align-items:start;padding:7px 0;border-bottom:1px solid rgba(114,255,149,.08)}
+.math-symbol b{font:700 13px/1.5 var(--science-mono);color:#effff3;overflow-wrap:anywhere}
+.math-symbol span{font-size:14.5px;line-height:1.55;color:var(--science-muted)}
+
+/* Clickable research timeline — robust labels, no vertical CURRENT artifact. */
+.research-method-trace{padding:16px 0!important;background:rgba(0,0,0,.23)!important;border-bottom:1px solid var(--terminator-line)!important}
+.research-method-trace .trace-label{margin-bottom:9px!important;font-size:12px!important;color:#c6d9ca!important}
+.research-method-trace .trace-grid{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;overflow:visible!important;border:1px solid var(--terminator-line)!important}
+.research-method-trace .trace-step{display:grid!important;grid-template-columns:auto minmax(0,1fr)!important;grid-template-rows:auto auto!important;column-gap:9px!important;row-gap:3px!important;align-content:center!important;position:relative;min-width:0!important;min-height:76px!important;padding:12px 13px!important;border-right:1px solid var(--terminator-line)!important;border-bottom:0!important;background:rgba(255,255,255,.004)!important;color:var(--science-text)!important;text-decoration:none!important}
+.research-method-trace .trace-step:last-child{border-right:0!important}
+.research-method-trace .trace-step small{grid-row:1/3;align-self:center;font-size:11px!important;color:var(--terminator-green-hot)!important}
+.research-method-trace .trace-step b{min-width:0;font-size:15px!important;line-height:1.28!important;color:#e9f4eb!important;overflow-wrap:normal!important;word-break:normal!important;hyphens:auto}
+.research-method-trace .trace-step em{font:600 10px/1.3 var(--science-mono);font-style:normal;color:var(--terminator-green);white-space:nowrap}
+.research-method-trace .trace-step::after{background:var(--terminator-green)!important;box-shadow:0 0 0 3px var(--science-bg),0 0 12px rgba(114,255,149,.55)!important}
+.research-method-trace .trace-step:hover{background:rgba(114,255,149,.065)!important;color:#fff!important}
+.research-method-trace .trace-step.is-current{background:rgba(114,255,149,.09)!important;box-shadow:inset 0 -2px 0 var(--terminator-green)!important}
+.research-method-trace .trace-step.is-current b{color:#fff!important}
+.research-method-trace .trace-step.is-current::before{content:none!important}
+
+/* Research storytelling bridge: question → evidence → next move. */
+.research-story-bridge{padding:18px 0!important;border-bottom:1px solid var(--terminator-line)!important;background:rgba(3,8,5,.55)!important}
+.story-head{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:9px}
+.story-head span{font:700 12px/1.4 var(--science-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--terminator-green-hot)}
+.story-head b{font:650 12px/1.4 var(--science-mono);color:var(--science-muted)}
+.story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--terminator-line)}
+.story-grid article{min-width:0;padding:13px 14px;border-right:1px solid var(--terminator-line)}
+.story-grid article:last-child{border-right:0}
+.story-grid small{display:block;margin-bottom:6px;font:700 10px/1.3 var(--science-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--terminator-green)}
+.story-grid p{margin:0!important;font-size:15px!important;line-height:1.55!important;color:var(--science-text)!important}
+
+/* Research identity / verified profile links. */
+.researcher-identity{padding:34px 0!important;border-top:1px solid var(--terminator-line)!important}
+.researcher-card{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:24px;align-items:center;padding:19px 20px;border:1px solid var(--terminator-line-strong)}
+.researcher-copy>span{font:700 11px/1.4 var(--science-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--terminator-green)}
+.researcher-copy h2{margin:7px 0 8px!important;font-size:clamp(24px,2.5vw,34px)!important;max-width:none!important}
+.researcher-copy p{margin:0!important;font-size:15.5px!important;line-height:1.6!important;color:var(--science-muted)!important}
+.researcher-links{display:flex;flex-wrap:wrap;gap:7px;justify-content:flex-end}
+.researcher-links a{padding:8px 10px;border:1px solid var(--terminator-line);font:650 12px/1.35 var(--science-mono);color:var(--science-text);text-decoration:none}
+.researcher-links a:hover{border-color:var(--terminator-green);background:rgba(114,255,149,.055);color:#fff}
+
+/* Compact reading map. */
+.scientific-section-map{padding:16px 0!important;background:rgba(0,0,0,.16)!important;border-bottom:1px solid var(--terminator-line)!important}
+.scientific-section-map .scientific-map-head{margin-bottom:9px!important}
+.scientific-section-map .scientific-map-head strong{font-size:15px!important;color:#fff!important}
+.scientific-section-map .scientific-map-head span{font-size:12px!important;color:var(--science-muted)!important}
+.scientific-map-grid{gap:6px!important}
+.scientific-map-link{grid-template-columns:30px minmax(0,1fr)!important;min-height:0!important;padding:10px 11px!important}
+.scientific-map-link b{font-size:14.5px!important;line-height:1.38!important}
+.scientific-map-link:hover{border-color:var(--terminator-line-strong)!important;background:rgba(114,255,149,.050)!important}
+
+@media(max-width:980px){
+  .scientific-math-head{display:grid;grid-template-columns:1fr}
+  .math-stage{width:max-content}
+  .researcher-card{grid-template-columns:1fr}
+  .researcher-links{justify-content:flex-start}
+}
+@media(max-width:900px){
+  .scientific-math-formulas{grid-template-columns:1fr}
+  .math-symbol-grid{grid-template-columns:1fr}
+  .research-method-trace .trace-grid{grid-template-columns:1fr 1fr!important}
+  .research-method-trace .trace-step{border-bottom:1px solid var(--terminator-line)!important}
+  .research-method-trace .trace-step:nth-child(2n){border-right:0!important}
+  .research-method-trace .trace-step:last-child{grid-column:1/-1;border-bottom:0!important}
+  .research-method-trace .trace-step::after{display:none!important}
+  .story-grid{grid-template-columns:1fr}
+  .story-grid article{border-right:0;border-bottom:1px solid var(--terminator-line)}
+  .story-grid article:last-child{border-bottom:0}
+}
+@media(max-width:680px){
+  body.strict-template-v1{font-size:17px!important}
+  body.strict-template-v1 main :where(p,li,dd,dt){font-size:16.5px!important}
+  body.strict-template-v1 .lead{font-size:19px!important}
+  body.strict-template-v1 :where(.page-hero,.reader-hero,.module-hub-hero,.module-reader-hero,.research-focus-hero,.home-hero){padding-block:42px 30px!important}
+  .scientific-math-panel{padding:16px}
+  .scientific-math-formula{font-size:14px;min-height:0}
+  .math-symbol{grid-template-columns:1fr;gap:2px}
+  .research-method-trace .trace-grid{grid-template-columns:1fr!important}
+  .research-method-trace .trace-step{border-right:0!important;border-bottom:1px solid var(--terminator-line)!important;min-height:62px!important}
+  .research-method-trace .trace-step:last-child{border-bottom:0!important}
+  .story-head{display:grid;gap:4px}
+  .researcher-card{padding:16px}
+  .researcher-links a{width:100%;text-align:center}
+}
+
+/* ========================================================================== */
+/* VÆRINGJAR II — V5.1 LAYOUT HARDENING                                      */
+/* Fixes cascade collisions between legacy V4 grids and the V5 mathematics.   */
+/* ========================================================================== */
+
+/* Hero titles must wrap at semantic word boundaries, never by syllable. */
+body.strict-template-v1 :where(.page-hero,.reader-hero,.module-hub-hero,.module-reader-hero,.research-focus-hero,.home-hero) h1,
+body.strict-template-v1 main > section:first-child h1{
+  max-width:28ch!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  -webkit-hyphens:none!important;
+  hyphens:none!important;
+  text-wrap:balance;
+}
+
+/* The canonical mathematics is a vertical narrative: context → equations → symbols.
+   Earlier revisions declared this panel as a two-column grid. Reset it explicitly. */
+body.strict-template-v1 .scientific-math-panel{
+  display:block!important;
+  grid-template-columns:none!important;
+  grid-template-rows:none!important;
+  gap:0!important;
+  align-items:initial!important;
+  min-width:0!important;
+  width:100%!important;
+  padding:20px 22px!important;
+}
+body.strict-template-v1 .scientific-math-head{
+  display:flex!important;
+  justify-content:space-between!important;
+  align-items:flex-start!important;
+  gap:22px!important;
+  min-width:0!important;
+  width:100%!important;
+  margin:0 0 16px!important;
+}
+body.strict-template-v1 .scientific-math-head > div{
+  flex:1 1 720px!important;
+  min-width:280px!important;
+  max-width:880px!important;
+}
+body.strict-template-v1 .scientific-math-head strong{
+  font-size:17px!important;
+  line-height:1.35!important;
+}
+body.strict-template-v1 .scientific-math-head p{
+  max-width:82ch!important;
+  font-size:16px!important;
+  line-height:1.62!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  -webkit-hyphens:none!important;
+  hyphens:none!important;
+}
+body.strict-template-v1 .math-stage{
+  flex:0 0 auto!important;
+  font-size:12px!important;
+  line-height:1.35!important;
+}
+body.strict-template-v1 .scientific-math-formulas{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(320px,1fr))!important;
+  gap:12px!important;
+  width:100%!important;
+  min-width:0!important;
+}
+body.strict-template-v1 .scientific-math-formula{
+  min-width:0!important;
+  min-height:76px!important;
+  padding:14px 16px!important;
+  font-size:16px!important;
+  line-height:1.55!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  white-space:normal!important;
+}
+body.strict-template-v1 .scientific-math-formula .math-fallback{
+  display:block;
+  min-width:max-content;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  white-space:nowrap!important;
+}
+body.strict-template-v1 .scientific-math-legend{
+  width:100%!important;
+  min-width:0!important;
+  margin-top:14px!important;
+  padding-top:12px!important;
+}
+body.strict-template-v1 .scientific-math-legend summary{
+  font-size:13px!important;
+}
+body.strict-template-v1 .math-symbol-grid{
+  grid-template-columns:repeat(2,minmax(320px,1fr))!important;
+  gap:7px 18px!important;
+}
+body.strict-template-v1 .math-symbol{
+  grid-template-columns:minmax(104px,.28fr) minmax(0,1fr)!important;
+  gap:12px!important;
+  min-width:0!important;
+}
+body.strict-template-v1 .math-symbol b{
+  font-size:14px!important;
+  word-break:normal!important;
+  overflow-wrap:break-word!important;
+}
+body.strict-template-v1 .math-symbol span{
+  min-width:0!important;
+  font-size:15.5px!important;
+  line-height:1.58!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  -webkit-hyphens:none!important;
+  hyphens:none!important;
+}
+
+/* Timeline labels are semantic labels, never typographic fragments. */
+body.strict-template-v1 .research-method-trace .trace-step b,
+body.strict-template-v1 .research-method-trace .trace-step em{
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  -webkit-hyphens:none!important;
+  hyphens:none!important;
+}
+
+@media(max-width:980px){
+  body.strict-template-v1 .scientific-math-head{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+  body.strict-template-v1 .scientific-math-head > div{
+    min-width:0!important;
+    max-width:none!important;
+  }
+  body.strict-template-v1 .scientific-math-formulas,
+  body.strict-template-v1 .math-symbol-grid{
+    grid-template-columns:1fr!important;
+  }
+  body.strict-template-v1 .scientific-math-formula .math-fallback{
+    min-width:0!important;
+    white-space:normal!important;
+  }
+}
+@media(max-width:680px){
+  body.strict-template-v1 .scientific-math-panel{padding:17px!important}
+  body.strict-template-v1 .scientific-math-head p{font-size:15.5px!important}
+  body.strict-template-v1 .scientific-math-formula{font-size:14.5px!important;min-height:0!important}
+  body.strict-template-v1 .math-symbol{grid-template-columns:1fr!important;gap:3px!important}
+  body.strict-template-v1 .math-symbol span{font-size:15px!important}
+}
+
+/* THEME-01 — Optional monochrome reading palette.
+   Dark theme is the unchanged default; light overrides are strictly opt-in.
+   Keep this at the END of strict-template.css (its geometry remains canonical). */
+:root[data-theme="light"] {
+  color-scheme:light;
+  --science-bg:#f7f7f7;
+  --science-bg-2:#f2f2f2;
+  --science-panel:#ffffff;
+  --science-panel-2:#eeeeee;
+  --science-ink:#151515;
+  --science-text:#303030;
+  --science-muted:#5b5b5b;
+  --science-line:rgba(24,24,24,.17);
+  --science-line-strong:rgba(24,24,24,.38);
+  --science-accent:#242424;
+  --science-accent-soft:rgba(0,0,0,.075);
+  --science-amber:#434343;
+  --science-red:#343434;
+  --science-grid:rgba(0,0,0,.028);
+  --science-shadow:0 12px 36px rgba(0,0,0,.045);
+  --terminator-green:#323232;
+  --terminator-green-hot:#242424;
+  --terminator-line:rgba(0,0,0,.15);
+  --terminator-line-strong:rgba(0,0,0,.33);
+  --phosphor:#242424;
+  --line:rgba(0,0,0,.17);
+  --line-strong:rgba(0,0,0,.33);
+  --muted:#5b5b5b;
+  --text:#303030;
+  --white:#151515;
+  --bg:#f7f7f7;
+}
+:root[data-theme="light"],
+:root[data-theme="light"] body.strict-template-v1,
+:root[data-theme="light"] body.strict-template-v1.modular-ui,
+:root[data-theme="light"] body.strict-template-v1.research-case-page,
+:root[data-theme="light"] body.strict-template-v1.modular-home-page,
+:root[data-theme="light"] body.strict-template-v1.modular-home-page.strict-template-v1 {
+  background:#f7f7f7!important;
+  color:#303030!important;
+}
+:root[data-theme="light"] body.strict-template-v1 main {
+  color:#303030!important;
+  background-color:#f7f7f7!important;
+  background-image:linear-gradient(rgba(0,0,0,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.018) 1px,transparent 1px)!important;
+}
+:root[data-theme="light"] body.strict-template-v1 main::before,
+:root[data-theme="light"] body.strict-template-v1 .cases-main::before { background:none!important; }
+:root[data-theme="light"] body.strict-template-v1::after {display:none!important}
+:root[data-theme="light"] body.strict-template-v1 :where(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption){color:var(--science-text)!important;text-shadow:none!important}
+:root[data-theme="light"] body.strict-template-v1 :where(h1,h2,h3,h4,h5,h6){color:var(--science-ink)!important}
+:root[data-theme="light"] body.strict-template-v1 :where(a, a:visited){color:#333!important;text-shadow:none!important}
+:root[data-theme="light"] body.strict-template-v1 a:hover{color:#000!important;text-shadow:none!important}
+:root[data-theme="light"] body.strict-template-v1 .site-header,
+:root[data-theme="light"] body.strict-template-v1.modular-ui .site-header {
+  background:rgba(250,250,250,.97)!important;
+  color:#202020!important;
+  border-color:#d4d4d4!important;
+  box-shadow:0 4px 16px rgba(0,0,0,.04)!important;
+}
+:root[data-theme="light"] body.strict-template-v1 .site-header::before{background:#444!important;height:1px!important;opacity:.35!important}
+:root[data-theme="light"] body.strict-template-v1 .nav-links a{color:#333!important}
+:root[data-theme="light"] body.strict-template-v1 .nav-links a:is(:hover,.active){background:#e7e7e7!important;color:#111!important;box-shadow:inset 0 -1px 0 #555!important}
+:root[data-theme="light"] body.strict-template-v1 :where(.brand-copy,.brand-copy small,.lang-switch a,.nav-toggle){color:#202020!important}
+:root[data-theme="light"] body.strict-template-v1 .lang-switch{border-color:#d1d1d1!important}
+:root[data-theme="light"] body.strict-template-v1 .lang-switch a.active{background:#e3e3e3!important;color:#101010!important}
+:root[data-theme="light"] body.strict-template-v1 .nav-toggle{background:#fafafa!important;border-color:#aaa!important}
+:root[data-theme="light"] body.strict-template-v1 .site-footer,
+:root[data-theme="light"] body.strict-template-v1 footer{background:#ededed!important;border-color:#d0d0d0!important;color:#333!important}
+:root[data-theme="light"] body.strict-template-v1 :where(.card,.reader-card,.module-card,.research-card,.partner,.home-route,.research-route,.about-card-v3,.evidence-card,.collab-lead-card,.course-map-v3,.scientific-map-link,.scientific-math-panel,.trace-grid,.story-grid article,.researcher-card,.research-library-row,.equation-panel,.math-contract,.paradigm-panel,.reader-block,.formula-card,.lesson-card,.source-card,.topic-card,.cta,.notice,.hero-card,.case-card) {
+  background:#fff!important;
+  border-color:#d4d4d4!important;
+  color:#252525!important;
+  box-shadow:none!important;
+}
+:root[data-theme="light"] body.strict-template-v1 :where(.card,.reader-card,.module-card,.research-card,.partner,.home-route,.research-route,.about-card-v3,.evidence-card,.collab-lead-card,.researcher-card)::before{background:#333!important}
+:root[data-theme="light"] body.strict-template-v1 :where(.module-reader-hero,.module-hub-hero,.research-focus-hero,.research-hero,.section-intro,.reader-hero,.scientific-math-layer,.timeline-section,.story-section,.research-story-section,.about-hero,.teaching-hero,.course-map-section-v3,.module-content,.module-hub,.module-nextprev,.research-subnav){
+  background:#f7f7f7!important;
+  border-color:#d6d6d6!important;
+  box-shadow:none!important;
+}
+:root[data-theme="light"] body.strict-template-v1 :where(.module-local-nav,.module-mini,.module-mini.active,.module-back,.module-next,.module-prev,.research-library-row,.module-related,.reader-nav,.course-table,.course-map-head,.lecture-index,.trace-line){
+  background:#fafafa!important;border-color:#d0d0d0!important;color:#262626!important;
+}
+:root[data-theme="light"] body.strict-template-v1 :where(.module-index,.reader-num,.card-num,.module-no,.research-library-id,.eyebrow,.section-eyebrow,.module-open,.card-link,.reader-link,.research-section-label,.research-status,.status,.tag){color:#2a2a2a!important}
+:root[data-theme="light"] body.strict-template-v1 :where(.equation,.math-formal,.math-fallback,.scientific-math-formula,.math-stage,.formula,.equation-panel,.math-contract,.paradigm-panel,.code-block,pre,code){color:#181818!important;text-shadow:none!important}
+:root[data-theme="light"] body.strict-template-v1 :where(.scientific-math-formula,.math-formal,.equation,.formula,.math-stage,pre,.code-block){
+  background:#f0f0f0!important;border-color:#bfbfbf!important;
+}
+:root[data-theme="light"] body.strict-template-v1 :where(.scientific-math-head strong,.scientific-math-panel strong,.equation small,.math-formal small,.equation-panel small){color:#333!important}
+:root[data-theme="light"] body.strict-template-v1 :where(.btn,.nav-cta,.module-prev,.module-next,.research-cta,.course-cta){background:#ededed!important;border-color:#aaa!important;color:#202020!important;text-shadow:none!important}
+:root[data-theme="light"] body.strict-template-v1 :where(.btn-primary,.primary-cta){background:#242424!important;color:#fff!important;border-color:#242424!important}
+:root[data-theme="light"] body.strict-template-v1 :where(table, th,td,caption){color:#292929!important;border-color:#d0d0d0!important;background-color:transparent!important}
+:root[data-theme="light"] body.strict-template-v1 :where(thead,th){background:#e9e9e9!important;color:#202020!important}
+:root[data-theme="light"] body.strict-template-v1 :where(tr:nth-child(even)){background:rgba(0,0,0,.028)!important}
+:root[data-theme="light"] body.strict-template-v1 :where(input,textarea,select){background:#fff!important;color:#151515!important;border-color:#aaa!important}
+:root[data-theme="light"] body.strict-template-v1 :where(.diagram,.diagram-block,.svg-frame,.media-frame,.figure-wrap,figure){color:#333!important;border-color:#d0d0d0!important}
+/* Preserve the original scientific figures, author photos and NASA images. */
+:root[data-theme="light"] body.strict-template-v1 :where(img,svg,video,picture){filter:none!important;opacity:1!important}
+
+/* Home: keep the one-screen layout, use monochrome rather than the dark green in-page glow. */
+:root[data-theme="light"] body.strict-template-v1.modular-home-page main.first-home{background:#f7f7f7!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page main.first-home::before{display:none!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page :where(.first-home,.home-first-screen,.home-hero,.home-method,.home-nav,.home-links,.home-route,.home-step,.home-detail,.home-footnote,.home-action,.home-destination,.home-question,.home-stage,.home-visual,.home-art,.home-research,.research-steps){border-color:#cfcfcf!important;color:#2c2c2c!important}
+
+/* Cases: retain their large NASA images, diagrams, excerpts and typography. */
+:root[data-theme="light"] body.research-case-page{
+  --case-text:#242424;--case-muted:#5a5a5a;--case-glow:#323232;--case-border:rgba(0,0,0,.23);
+  background:#f7f7f7!important;color:#252525!important;
+}
+:root[data-theme="light"] body.research-case-page :where(.cases-intro,.case-story,.cases-synthesis,.cases-sources){background:#f7f7f7!important;border-color:#d6d6d6!important}
+:root[data-theme="light"] body.research-case-page :where(.cases-back,.cases-kicker,.case-index,.case-prose h3,.cases-original summary,.cases-original-body,.case-media figcaption,.case-media figcaption a,.cases-sources li a){color:#484848!important}
+:root[data-theme="light"] body.research-case-page :where(.cases-intro h1,.case-prose h2,.cases-synthesis h2,.cases-sources h2,.case-prose h3){color:#191919!important}
+:root[data-theme="light"] body.research-case-page :where(.cases-lead,.cases-context,.case-prose>p,.cases-synthesis p,.cases-sources p,.cases-original-body p,.case-insight p){color:#343434!important}
+:root[data-theme="light"] body.research-case-page .cases-jump a{background:#f1f1f1!important;border-color:#c9c9c9!important;color:#212121!important}
+:root[data-theme="light"] body.research-case-page .cases-jump :where(span,b){color:#555!important}
+:root[data-theme="light"] body.research-case-page .case-media{background:#ededed!important;border-color:#cacaca!important}
+:root[data-theme="light"] body.research-case-page .case-media img{background:transparent!important}
+:root[data-theme="light"] body.research-case-page .case-insight{background:#eaeaea!important;border-left-color:#555!important}
+:root[data-theme="light"] body.research-case-page .case-insight span{color:#333!important}
+:root[data-theme="light"] body.research-case-page .case-predictive{background:#e9e9e9!important;border-color:#bbb!important}
+:root[data-theme="light"] body.research-case-page :where(.case-predictive>span,.case-predictive strong,.case-predictive em){color:#282828!important}
+:root[data-theme="light"] body.research-case-page .prediction-orbit, :root[data-theme="light"] body.research-case-page .prediction-orbit i{border-color:#bcbcbc!important}
+:root[data-theme="light"] body.research-case-page .cases-next{color:#222!important;background:#f0f0f0!important;border-color:#777!important}
+
+/* Implementation, modular reading, other scoped component palettes. */
+:root[data-theme="light"] body.strict-template-v1 :where(.implementation-evidence,.implementation-evidence-intro,.timing-evidence,.impl-grid,.impl-table,.impl-stat,.impl-panel,.implementation-evidence table,.implementation-evidence tr){background:#f7f7f7!important;border-color:#d2d2d2!important}
+:root[data-theme="light"] body.strict-template-v1 :where(.implementation-evidence-intro .lead,.implementation-evidence p,.implementation-evidence .impl-summary,.implementation-evidence strong){color:#303030!important}
+
+/* Control is compact, persistent, keyboard-operable and available beside the language picker. */
+body.strict-template-v1 .theme-toggle {
+  box-sizing:border-box!important;
+  flex:0 0 auto!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:36px!important;
+  height:36px!important;
+  padding:6px!important;
+  margin:0!important;
+  color:var(--science-ink)!important;
+  background:rgba(142,230,167,.045)!important;
+  border:1px solid var(--science-line-strong)!important;
+  border-radius:6px!important;
+  cursor:pointer!important;
+  line-height:1!important;
+  position:relative;
+}
+body.strict-template-v1 .theme-toggle svg{width:20px;height:20px;display:block;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+body.strict-template-v1 .theme-toggle .theme-icon-dark{display:none}
+:root[data-theme="light"] body.strict-template-v1 .theme-toggle .theme-icon-dark{display:block}
+:root[data-theme="light"] body.strict-template-v1 .theme-toggle .theme-icon-light{display:none}
+:root[data-theme="light"] body.strict-template-v1 .theme-toggle{background:#ececec!important;color:#202020!important;border-color:#aaa!important}
+body.strict-template-v1 .theme-toggle:hover{border-color:var(--science-accent)!important}
+body.strict-template-v1 .theme-toggle:focus-visible{outline:2px solid var(--science-accent)!important;outline-offset:3px!important}
+@media(max-width:620px){
+  body.strict-template-v1 .nav{gap:6px!important}
+  body.strict-template-v1 .nav .brand{gap:6px!important;min-width:0!important;flex-shrink:1!important}
+  body.strict-template-v1 .nav .brand-copy{font-size:11px!important;min-width:0!important}
+  body.strict-template-v1 .nav .brand-copy small{display:none!important}
+  body.strict-template-v1 .nav .brand-mark{width:28px!important;height:28px!important;flex-basis:28px!important}
+  body.strict-template-v1 .theme-toggle{width:33px!important;height:33px!important;padding:5px!important}
+  body.strict-template-v1 .lang-switch{padding-left:3px!important}
+  body.strict-template-v1 .lang-switch a{padding-inline:4px!important;min-width:21px!important}
+  body.strict-template-v1 .nav-toggle{padding:6px 8px!important}
+}
+@media(max-width:385px){body.strict-template-v1 .nav .brand-copy{font-size:10px!important;letter-spacing:0!important}}
+@media(prefers-reduced-motion:reduce){body.strict-template-v1 .theme-toggle{transition:none!important}}
+
+/* In light palette only, make the original white emblem legible without changing the asset. */
+:root[data-theme="light"] body.strict-template-v1 .brand-emblem{filter:brightness(0)!important;opacity:.9!important}
+
+/* HOME-05: content-only overrides of the strongly scoped original dark hero CSS. */
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .first-home-hero,
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .first-routes {
+  background:#f7f7f7!important;
+  border-color:#d0d0d0!important;
+}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .first-hero-copy h1,
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .first-routes-title h2 {
+  color:#101010!important;text-shadow:none!important;
+}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page :where(.first-hero-copy .eyebrow,.first-hero-copy .lead,.first-routes-title p,.first-system-figure figcaption,.first-science-line,.science-expression,.science-meaning,.first-routes-kicker,.first-route-no,.first-route-open,.first-route-description,.first-method-head strong,.first-method-head>span,.first-method-no,.first-method-detail,.first-method-arrow,.first-route strong,.first-method-copy strong,.first-more,.first-more a){
+  color:#404040!important;text-shadow:none!important;
+}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .first-main-action{background:#222!important;border-color:#222!important;color:#fff!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .first-secondary-action{background:#f0f0f0!important;border-color:#555!important;color:#252525!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page :where(.first-route,.first-method-link){background:#fff!important;color:#252525!important;border-color:#c7c7c7!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page :where(.first-route strong,.first-method-link strong){color:#222!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page :where(.first-method,.first-system-figure img){border-color:#cfcfcf!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .first-system-figure::before{display:none!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .first-system-figure img{filter:grayscale(1)!important;box-shadow:none!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .site-footer{background:#efefef!important;border-top:1px solid #cecece!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .home-footer-disclosure>summary,
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .site-footer>.footer-privacy{color:#404040!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .home-footer-disclosure[open] .footer-grid{background:#fff!important;border-color:#b8b8b8!important;box-shadow:0 0 0 100vmax rgba(255,255,255,.45)!important}
+
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .first-home-hero::after {display:none!important;content:none!important;background:none!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .first-hero-copy .eyebrow{color:#555!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .first-hero-copy .lead{color:#3e3e3e!important}
+:root[data-theme="light"] body.strict-template-v1.modular-home-page .first-routes-title p{color:#4b4b4b!important}
+
+/* Cases retain their original narrative, with explicit high-contrast reader copy. */
+:root[data-theme="light"] body.strict-template-v1.research-case-page .case-prose>p:not(.case-index),
+:root[data-theme="light"] body.strict-template-v1.research-case-page .cases-synthesis p:not(.cases-kicker){color:#333!important}
+:root[data-theme="light"] body.strict-template-v1.research-case-page .case-insight p,
+:root[data-theme="light"] body.strict-template-v1.research-case-page .cases-sources p,
+:root[data-theme="light"] body.strict-template-v1.research-case-page .cases-original-body p{color:#333!important}
+
+/* THEME-11 / MATH-14: formula contrast is part of the shared template.
+   MathJax CHTML and SVG inherit a legible foreground; monochrome math panels
+   own a light background. Never recolor authored images/diagrams. */
+:root[data-theme="light"] body.strict-template-v1 :is(.scientific-math-formula,.math-formal,.equation,.equation-panel,.formula,.formula-card,.math-contract,.paradigm-panel,.math-symbol,.math-tex,.math-fallback,.math-stage,.lecture-article pre,.lecture-notes-content pre){
+  color:#151515!important;
+  text-shadow:none!important;
+}
+:root[data-theme="light"] body.strict-template-v1 :is(.scientific-math-formula,.math-formal,.equation,.equation-panel,.formula,.formula-card,.math-contract,.paradigm-panel,.math-stage,.lecture-article pre,.lecture-notes-content pre){
+  background-color:#f4f4f4!important;
+  border-color:#bebebe!important;
+}
+:root[data-theme="light"] body.strict-template-v1 :is(.scientific-math-formula,.math-formal,.equation,.equation-panel,.formula,.formula-card,.math-contract,.paradigm-panel,.math-tex,.math-fallback,.lecture-article,.lecture-notes-content) mjx-container,
+:root[data-theme="light"] body.strict-template-v1 mjx-container[jax="SVG"],
+:root[data-theme="light"] body.strict-template-v1 mjx-container[jax="CHTML"],
+:root[data-theme="light"] body.strict-template-v1 mjx-container[display="true"]{
+  color:#151515!important;
+  text-shadow:none!important;
+}
+:root[data-theme="light"] body.strict-template-v1 .scientific-math-formula mjx-container{color:#151515!important}
+:root[data-theme="light"] body.strict-template-v1 :is(.scientific-math-formula,.equation-panel,.math-formal,.lecture-article) mjx-container svg{
+  color:inherit!important;
+}
+:root[data-theme="light"] body.strict-template-v1 :is(.math-symbol b,.scientific-math-formula .math-fallback,.equation code,.formula code,.math-formal code){
+  color:#151515!important;
+}
+/* Distinguish actual MathJax SVG from source illustrations; never use SVG filters. */
+:root[data-theme="light"] body.strict-template-v1 mjx-container[jax="SVG"] svg{fill:currentColor}
+
+/* ========================================================================== */
+/* TYPE-08 / TYPE-09 / TYPE-10 — READABILITY LAYER (rulebook 6.19, v7.16)      */
+/* Two font families only: --science-sans for reading and every UI label,     */
+/* --science-mono only for code, formulas and identifiers such as EXP-01.   */
+/* No visible text below 12px; labels/metadata at least 13px; text contrast   */
+/* at least 4.5:1 in both themes. Theme-neutral rules first, light last.      */
+/* ========================================================================== */
+:root body.strict-template-v1 :is(.eyebrow,.section-eyebrow,.reader-badges span,.status,.tag,.brand-copy small,.lang-switch,.lang-switch a,.course-breadcrumb,.course-map-status,.course-current-tag,.module-no,.trace-label,.trace-step em,.research-section-label,.research-status,.footer-privacy,.footer-about,.btn,.nav-cta,.course-node,.home-footer-disclosure>summary){
+  font-family:var(--science-sans)!important;
+}
+:root body.strict-template-v1 :is(.implementation-evidence,.evidence-table) :is(th,td){font-family:var(--science-sans)!important}
+:root body.strict-template-v1 :is(th,td,summary,summary small,figcaption,.reader-num,.card-num,.module-index,.module-count,.first-route-no,.first-method-no,.researcher-links a,.module-open,.module-back,.module-prev,.module-next,.module-prev b,.module-next b,article small,.story-head span,.story-head b,.story-grid small,.math-stage,.scientific-math-legend summary,.research-route span,.module-related span,.researcher-copy span,.research-document-kicker,.portfolio-kicker,.programme-kicker,.diagram-note,.scientific-map-head span,.trace-step small,.lecture-item-v3 .n,.course-module-group summary span){font-family:var(--science-sans)!important;font-variant-numeric:tabular-nums}
+:root body.strict-template-v1 :is(code,kbd,samp,pre,.research-library-id,.math-symbol b){font-family:var(--science-mono)!important}
+
+/* Size floors. */
+:root body.strict-template-v1 :is(.eyebrow,.section-eyebrow){font-size:13px!important;letter-spacing:.06em!important;font-weight:650!important}
+:root body.strict-template-v1 :is(.reader-badges span,.status,.tag){font-size:13px!important;line-height:1.35!important;padding:5px 11px!important}
+:root body.strict-template-v1 .brand-copy small{font-size:12px!important;letter-spacing:.05em!important;line-height:1.3!important;margin-top:3px!important}
+:root body.strict-template-v1 .lang-switch a{font-size:13px!important;font-weight:600!important}
+:root body.strict-template-v1 :is(.btn,.nav-cta){font-size:14px!important}
+:root body.strict-template-v1 .nav-links a{font-size:14px!important}
+:root body.strict-template-v1 main :is(.meta,.tail,.note,.badge,.course-map-status,.course-current-tag,.research-library-id,.module-no,.module-index,.about-fact small,.course-window-card small,.lecture-item-v3 a,.course-context-nav a,.course-context-nav span,.module-mini,.module-mini span,.diagram-note,figcaption,.course-breadcrumb,.trace-label,.trace-step em,.reader-num,.card-num,.lecture-item-v3 .n,.module-tile span){font-size:13px!important;line-height:1.5!important}
+:root body.strict-template-v1 .site-footer{font-size:14px!important}
+@media(max-width:620px){:root body.strict-template-v1 .nav .brand-copy{font-size:12px!important}}
+
+/* Decorative section counters were unreadable by design (10px, 34% alpha); they carry no meaning. */
+:root body.strict-template-v1 main>section::before{content:none!important}
+
+/* Dark theme contrast corrections. */
+:root body.strict-template-v1 .lang-switch a:not(.active){color:#a9c2b0!important}
+:root body.strict-template-v1 :is(.reader-badges span,.status,.tag){color:#c3d6c8!important;border-color:rgba(159,214,177,.32)!important}
+:root body.strict-template-v1 .brand-copy small{color:#a3bcaa!important}
+:root body.strict-template-v1 .module-count{color:rgba(142,230,167,.42)!important}
+
+/* Footer: About is a primary link in the identity column; Privacy is a centred, quiet last line. */
+:root body.strict-template-v1 footer .footer-about{display:inline-block!important;margin-top:14px!important;font-size:15px!important;font-weight:650!important;color:var(--science-accent)!important;text-decoration:none!important;border-bottom:1px solid currentColor!important;padding-bottom:1px!important}
+:root body.strict-template-v1 .site-footer .footer-about:hover{opacity:.85}
+:root body.strict-template-v1 :is(.site-footer,footer.footer,footer)>.footer-privacy{display:block!important;width:max-content!important;max-width:100%!important;margin:40px auto 0!important;padding:0 0 28px!important;font-size:13px!important;color:var(--science-muted)!important;text-align:center!important;white-space:normal!important}
+:root body.strict-template-v1 footer.footer>.container .footer-about{margin-left:14px!important;margin-top:0!important}
+/* Home keeps its one-screen footer row: credits disclosure + About on the left, Privacy centred. */
+:root body.strict-template-v1.modular-home-page .site-footer{display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important}
+:root body.strict-template-v1.modular-home-page .site-footer>.home-footer-left{grid-column:1;display:flex;align-items:center;gap:20px;flex-wrap:wrap;min-width:0}
+:root body.strict-template-v1.modular-home-page .home-footer-left>.home-footer-disclosure{margin-right:0!important}
+:root body.strict-template-v1.modular-home-page .site-footer .home-footer-about{font-size:13.5px!important;font-weight:650!important;color:var(--science-accent)!important;text-decoration:none!important;border-bottom:1px solid currentColor!important;white-space:nowrap}
+:root body.strict-template-v1.modular-home-page .site-footer>.footer-privacy{grid-column:2;margin:0!important;padding:0!important;font-size:13px!important}
+:root body.strict-template-v1.modular-home-page .home-footer-disclosure>summary{font-size:13px!important}
+
+/* Light theme: shared course/lecture shells and research components. */
+:root[data-theme="light"] body.strict-template-v1 :where(.page-hero,.reader-hero,.module-hub-hero,.module-reader-hero,.research-focus-hero,.home-hero,.hero)::after{background:none!important;content:none!important}
+:root[data-theme="light"] body.strict-template-v1 :is(.reader-badges span,.status,.tag){background:#fff!important;border-color:#b5b5b5!important;color:#2b2b2b!important}
+:root[data-theme="light"] body.strict-template-v1 main>.course-context-v3{background:#ebebeb!important;border-color:#c4c4c4!important}
+:root[data-theme="light"] body.strict-template-v1 .course-context-v3 :is(.course-breadcrumb,.course-breadcrumb b,.course-context-nav a,.course-context-nav span){color:#252525!important}
+:root[data-theme="light"] body.strict-template-v1 .course-context-v3 :is(.course-context-nav a,.course-context-nav span){border-color:#a8a8a8!important;background:#f7f7f7!important}
+:root[data-theme="light"] body.strict-template-v1 .course-context-v3 .course-context-nav .current{color:#111!important;background:#fff!important;font-weight:700!important}
+:root[data-theme="light"] body.strict-template-v1 :is(.lecture-article,.lecture-notes-content) em{color:inherit!important}
+:root[data-theme="light"] body.strict-template-v1 .research-method-trace :is(.trace-label,.trace-step em){color:#444!important}
+:root[data-theme="light"] body.strict-template-v1 .research-method-trace .trace-step b{color:#1b1b1b!important}
+:root[data-theme="light"] body.strict-template-v1 .scientific-map-head strong{color:#1b1b1b!important}
+:root[data-theme="light"] body.strict-template-v1 .module-mini span{color:#444!important}
+
+:root[data-theme="light"] body.strict-template-v1 .implementation-abstraction span{color:#555!important}
+:root[data-theme="light"] body.strict-template-v1 .lang-switch a:not(.active){color:#3d3d3d!important}
+:root[data-theme="light"] body.strict-template-v1 .brand-copy small{color:#3d3d3d!important}
+:root[data-theme="light"] body.strict-template-v1 :is(footer .footer-about,.modular-home-page .site-footer .home-footer-about){color:#111!important}
+:root[data-theme="light"] body.strict-template-v1 :is(.site-footer,footer)>.footer-privacy{color:#4a4a4a!important}
+/* Home one-screen composition: secondary lines reach the 12px/13px floors without changing layout. */
+:root body.strict-template-v1.modular-home-page :is(.first-route-description,.science-meaning){font-size:13px!important}
+:root body.strict-template-v1.modular-home-page :is(.first-method-detail,.first-method-head span,.first-method-copy strong,.first-method-head strong){font-size:12.5px!important}
+:root body.strict-template-v1.modular-home-page :is(.first-route-no,.first-method-no){font-size:12px!important}
+:root body.strict-template-v1.modular-home-page .first-system-figure figcaption span{font-size:13px!important}
+
+/* TYPE-09: remaining secondary labels across research, applications and portfolio pages. */
+:root body.strict-template-v1 :is(.evidence-label,.pub-kind,.portfolio-kicker,.research-document-kicker,.research-skip,.researcher-copy span,.module-related>span,.module-prev,.module-next,.module-prev b,.module-next b,.phase-banner span,.story-grid small,.trace-step small,.scientific-map-link small,summary small,.collab-note,.collab-note b){font-size:13px!important;line-height:1.45!important}
+:root body.strict-template-v1.modular-home-page .first-hero-copy :is(.eyebrow,.eyebrow a){font-size:13px!important}
+:root body.strict-template-v1 .lang-switch a{opacity:1!important}
+:root body.strict-template-v1 :is(.module-tile.is-planned,.lecture-item-v3.is-next){opacity:1!important}
+:root body.strict-template-v1 .module-tile.is-planned :is(span,b){color:#a3bcaa!important}
+:root body.strict-template-v1 .lecture-item-v3.is-next .n{color:#a3bcaa!important}
+/* TYPE-10, light theme: dark legacy panels and pale-green labels become monochrome. */
+:root[data-theme="light"] body.strict-template-v1 :is(.experiment-subnav,.research-lineage,.lineage-step,.layer,.evolution-node,.phase-banner,.collab-note,.research-evolution-callout){background:#f1f1f1!important;border-color:#c9c9c9!important;box-shadow:none!important}
+:root[data-theme="light"] body.strict-template-v1 :is(.experiment-subnav a,.lineage-step small,.lineage-step span,.lineage-step b,.layer strong,.layer,.evolution-node small,.phase-banner span,.phase-banner,.collab-note,.collab-note b,.research-evolution-callout span){color:#262626!important}
+:root[data-theme="light"] body.strict-template-v1 .module-tile.is-planned :is(span,b),
+:root[data-theme="light"] body.strict-template-v1 .lecture-item-v3.is-next .n{color:#4a4a4a!important}
+:root[data-theme="light"] body.strict-template-v1 .module-count{color:rgba(0,0,0,.45)!important}
+
+/* TYPE-01/TYPE-02 for short-form prose: card summaries, case excerpts and notes read at ≥16 px. */
+:root body.strict-template-v1 :is(.reader-card,.module-card,.research-card) p{font-size:16px!important;line-height:1.6!important}
+:root body.strict-template-v1.research-case-page :is(.cases-context,.cases-original-body p,.case-insight p){font-size:16px!important;line-height:1.65!important}
+:root body.strict-template-v1 :is(.programme-qualification,.programme-equation p,.programme-archive-note){font-size:16.5px!important}
+
+/* TIME-04/05 + MATH-11 on opted-in science hubs: labels never overflow their step; formulas stay inside the panel. */
+@media(min-width:1181px){
+  :root body.strict-template-v1 .research-method-trace .trace-step::after{display:none!important}
+  :root body.strict-template-v1 .research-method-trace .trace-step:not(:first-child)::before{content:""!important;display:block!important;position:absolute!important;left:-4px!important;right:auto!important;top:50%!important;width:7px!important;height:7px!important;margin-top:-3px!important;border:0!important;border-radius:50%!important;background:var(--terminator-green)!important;box-shadow:0 0 0 3px var(--science-bg),0 0 12px rgba(114,255,149,.55)!important;opacity:1!important;z-index:2!important}
+  :root[data-theme="light"] body.strict-template-v1 .research-method-trace .trace-step:not(:first-child)::before{background:#333!important;box-shadow:0 0 0 3px #fff!important}
+}
+@media(min-width:901px) and (max-width:1180px){
+  :root body.strict-template-v1 .research-method-trace .trace-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  :root body.strict-template-v1 .research-method-trace .trace-step::after,
+  :root body.strict-template-v1 .research-method-trace .trace-step::before{display:none!important}
+  :root body.strict-template-v1 :is(.scientific-math-formulas,.math-symbol-grid){grid-template-columns:1fr!important}
+}
+@media(min-width:621px) and (max-width:900px){
+  :root body.strict-template-v1.modular-home-page .site-footer{min-height:30px!important;padding-top:4px!important;padding-bottom:4px!important}
+  :root body.strict-template-v1.modular-home-page .first-system-figure figcaption{margin-top:6px!important}
+}
+/* TYPE-01 floor for leads and short notes that legacy rules shrank below 16 px. */
+:root body.strict-template-v1 main :is(.programme-equation p,.programme-equation>p){font-size:16.5px!important}
+:root body.strict-template-v1.research-case-page .cases-lead{font-size:clamp(16.5px,2vw,24px)!important}
+@media(max-width:620px){:root body.strict-template-v1 main .lead{font-size:16.5px!important}}
+:root body.strict-template-v1 .scientific-math-head p{font-size:16px!important}
+
+/* TILE-01 (2026-10-28): a tile with a single destination is clickable anywhere.
+   The tile's own link is stretched over the card, so middle-click, new-tab and keyboard focus keep working. */
+body.strict-template-v1 :is(.reader-card,.lecture-item-v3,.next-lecture-card,.partner):has(a[href]){position:relative;cursor:pointer;transition:border-color .12s linear,background-color .12s linear}
+body.strict-template-v1 .reader-card a.card-link::after,
+body.strict-template-v1 .lecture-item-v3 > a[href]::after,
+body.strict-template-v1 .next-lecture-card > a.card-link::after,
+body.strict-template-v1 .partner > a.card-link::after{content:""!important;position:absolute;inset:0;z-index:2}
+body.strict-template-v1 :is(.reader-card,.next-lecture-card,.partner):has(a[href]):hover{border-color:rgba(114,255,149,.55)!important;background-color:rgba(114,255,149,.035)!important}
+body.strict-template-v1 .lecture-item-v3:has(a[href]):hover{background-color:rgba(114,255,149,.05)}
+body.strict-template-v1 :is(.reader-card,.lecture-item-v3,.next-lecture-card,.partner):has(a[href]:focus-visible){outline:2px solid var(--science-accent,#72ff95);outline-offset:2px}
+body.strict-template-v1 :is(.reader-card,.lecture-item-v3,.next-lecture-card,.partner) a[href]:focus-visible{outline:none}
+:root[data-theme="light"] body.strict-template-v1 :is(.reader-card,.next-lecture-card,.partner):has(a[href]):hover{border-color:#333!important;background-color:#fff!important}
+:root[data-theme="light"] body.strict-template-v1 .lecture-item-v3:has(a[href]):hover{background-color:#f0f0f0}
+
+/* ==========================================================================
+   NAV · MOBILE LAYER — 2026-10-28. Site navigator and phone-first reading.
+   Wins over all earlier layers; page-local stylesheets do not touch .vjn*.
+   ========================================================================== */
+:root{--vjn-bg:#07100b;--vjn-line:rgba(114,255,149,.22);--vjn-text:#e4f9e8;--vjn-muted:#9fbea6;--vjn-accent:#72ff95;--vjn-hover:rgba(114,255,149,.08);--vjn-mark:rgba(114,255,149,.22)}
+:root[data-theme="light"]{--vjn-bg:#ffffff;--vjn-line:rgba(0,0,0,.14);--vjn-text:#151515;--vjn-muted:#5b5b5b;--vjn-accent:#151515;--vjn-hover:#f0f0f0;--vjn-mark:#fff1a8}
+html.vjn-lock,html.vjn-lock body{overflow:hidden}
+
+/* NAV-02 · entry points: search button in the header, ☰ and the / key all open the navigator. */
+.site-header .nav .vjn-open{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 11px;margin:0 6px 0 4px;border:1px solid var(--vjn-line);border-radius:6px;background:transparent;color:inherit;font:600 13px/1 var(--science-sans,system-ui);cursor:pointer;white-space:nowrap}
+.site-header .nav .vjn-open svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.site-header .nav .vjn-open:hover,.site-header .nav .vjn-open:focus-visible{border-color:var(--vjn-accent);outline:none}
+
+/* NAV-03 · navigator panel: search over every page of the language and the full site map. */
+.vjn[hidden]{display:none!important}
+.vjn{position:fixed;inset:0;z-index:2147482000;font-family:var(--science-sans,system-ui)}
+.vjn-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+:root[data-theme="light"] .vjn-backdrop{background:rgba(0,0,0,.28)}
+.vjn-panel{position:absolute;top:0;right:0;bottom:0;width:min(480px,100vw);display:flex;flex-direction:column;background:var(--vjn-bg);color:var(--vjn-text);border-left:1px solid var(--vjn-line);box-shadow:-20px 0 60px rgba(0,0,0,.35);overflow:hidden}
+.vjn-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px 10px}
+.vjn-title{font:700 16px/1.3 var(--science-sans,system-ui);letter-spacing:.01em}
+.vjn-close{appearance:none;width:38px;height:38px;border:1px solid var(--vjn-line);border-radius:6px;background:transparent;color:var(--vjn-text);font-size:16px;cursor:pointer}
+.vjn-close:hover,.vjn-close:focus-visible{border-color:var(--vjn-accent);outline:none}
+.vjn-here{margin:0;padding:0 18px 12px;font-size:13px;line-height:1.5;color:var(--vjn-muted)}
+.vjn-here span:first-child{font-weight:700;color:var(--vjn-text)}
+.vjn-search{display:block;padding:0 18px 12px}
+.vjn-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.vjn-search input{width:100%;box-sizing:border-box;height:46px;padding:0 14px;border:1px solid var(--vjn-line);border-radius:8px;background:transparent;color:var(--vjn-text);font:400 16px/1.2 var(--science-sans,system-ui)}
+.vjn-search input:focus{outline:2px solid var(--vjn-accent);outline-offset:0;border-color:transparent}
+.vjn-results,.vjn-tree{overflow-y:auto;overscroll-behavior:contain;padding:0 10px 10px 18px}
+.vjn-results:empty{display:none}
+.vjn-results{flex:1 1 auto}
+.vjn-tree{flex:1 1 auto;border-top:1px solid var(--vjn-line);padding-top:8px}
+.vjn-tree[hidden]{display:none}
+.vjn-status{margin:2px 0 10px;font-size:13px;color:var(--vjn-muted)}
+.vjn-results ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.vjn-results a{display:grid;gap:3px;padding:10px 10px;border-radius:6px;color:var(--vjn-text);text-decoration:none}
+.vjn-results a:hover,.vjn-results a:focus-visible{background:var(--vjn-hover);outline:none}
+.vjn-r-sec{font:600 11px/1.3 var(--science-mono,monospace);letter-spacing:.06em;text-transform:uppercase;color:var(--vjn-muted)}
+.vjn-r-title{font:650 15px/1.35 var(--science-sans,system-ui)}
+.vjn-r-snip{font-size:13px;line-height:1.5;color:var(--vjn-muted)}
+.vjn-r-snip mark{background:var(--vjn-mark);color:var(--vjn-text);padding:0 1px}
+.vjn-sec{border-bottom:1px solid var(--vjn-line)}
+.vjn-sec>summary{cursor:pointer;padding:12px 4px;font:700 14px/1.3 var(--science-sans,system-ui);letter-spacing:.04em;text-transform:uppercase;list-style-position:inside}
+.vjn-sec>summary:focus-visible{outline:2px solid var(--vjn-accent)}
+.vjn-tree ul{list-style:none;margin:0;padding:0 0 10px}
+.vjn-tree ul ul{padding:0 0 4px 14px;border-left:1px solid var(--vjn-line);margin-left:10px}
+.vjn-tree a{display:block;padding:7px 8px;border-radius:5px;color:var(--vjn-muted);text-decoration:none;font-size:14px;line-height:1.4}
+.vjn-tree a:hover,.vjn-tree a:focus-visible{background:var(--vjn-hover);color:var(--vjn-text);outline:none}
+.vjn-tree a.is-here{color:var(--vjn-text);font-weight:700;box-shadow:inset 2px 0 0 var(--vjn-accent);background:var(--vjn-hover)}
+.vjn-hint{margin:0;padding:10px 18px 14px;font-size:12px;color:var(--vjn-muted);border-top:1px solid var(--vjn-line)}
+
+/* MOBILE-01..04 · phone-sized screens (≤760 px): the article comes first, menus fold,
+   the home screen is one column, long words wrap, wide tables scroll inside themselves. */
+/* MOBILE-01 · section sidebars fold into one button on phones */
+.vjn-side-toggle{display:none}
+@media (max-width:760px){
+  .site-header .nav .vjn-open span{display:none}
+  .site-header .nav .vjn-open{padding:0 9px;margin:0 4px}
+  .vjn-hint{display:none}
+  .vjn-side-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;margin:4px 0 6px;padding:0 14px;border:1px solid var(--vjn-line);border-radius:8px;background:transparent;color:inherit;font:650 14px/1.2 var(--science-sans,system-ui);cursor:pointer}
+  .vjn-side-toggle b{font-weight:400;transition:transform .15s}
+  .research-sidebar.vjn-side-open .vjn-side-toggle b{transform:rotate(180deg)}
+  .research-sidebar:not(.vjn-side-open) :is(.research-skip,.research-tree-title,.research-search-label,.research-tree){display:none!important}
+  .research-sidebar .research-sidebar-inner{padding-top:12px!important;padding-bottom:10px!important}
+
+  /* MOBILE-02 · home: one column, readable first screen */
+  html body.strict-template-v1 .first-hero-grid{grid-template-columns:1fr!important;gap:22px!important}
+  .first-hero-copy .eyebrow{display:block!important;white-space:normal!important}
+  .first-hero-copy .eyebrow>*{display:inline!important}
+  html body.strict-template-v1 .first-home-hero,html body.strict-template-v1 .home-hero.first-home-hero{min-height:0!important;padding-top:28px!important;padding-bottom:28px!important}
+  html body.strict-template-v1 .first-routes-title{display:block!important}
+  html body.strict-template-v1 .first-routes-title .first-evidence{margin-top:8px!important;text-align:left!important}
+  html body.strict-template-v1 .first-routes-grid,html body.strict-template-v1 .first-method-grid{grid-template-columns:1fr!important}
+
+  /* MOBILE-03 · long words (German compounds) wrap instead of being cut off */
+  html body main :is(h1,h2){overflow-wrap:break-word!important;-webkit-hyphens:auto!important;hyphens:auto!important;max-width:100%!important}
+  html body .portfolio-top h1{font-size:clamp(32px,9vw,52px)!important}
+
+  /* MOBILE-04 · wide tables scroll inside themselves, never the page */
+  main table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+@media (prefers-reduced-motion:reduce){.vjn-side-toggle b{transition:none}}
+@media (min-width:1000px) and (max-width:1199px){
+  .site-header .nav .vjn-open span{display:none}
+}
+
+/* ========== ABOUT-01 — ledger rows (About: certifications, industry conferences) ========== */
+body.strict-template-v1 .about-ledger{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--science-line)}
+body.strict-template-v1 .about-ledger li{display:grid;grid-template-columns:140px minmax(0,1fr);gap:20px;padding:18px 0;border-bottom:1px solid var(--science-line)}
+body.strict-template-v1 .about-ledger-tag{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--science-muted);padding-top:4px}
+body.strict-template-v1 .about-ledger b{display:block;color:var(--science-ink);font-size:17px;line-height:1.4}
+body.strict-template-v1 .about-ledger p{color:var(--science-muted);margin:6px 0 0;font-size:16px;line-height:1.6}
+body.strict-template-v1 :is(.about-ledger,.about-ledger-note,.about-card-v3) a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+body.strict-template-v1 .about-ledger-note{margin-top:16px;color:var(--science-muted);font-size:16px}
+@media(max-width:680px){body.strict-template-v1 .about-ledger li{grid-template-columns:1fr;gap:6px}}
+
+/* ========== CONTACT-01 — direct e-mail block (Contact) ========== */
+body.strict-template-v1 .contact-mail-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px}
+body.strict-template-v1 .contact-mail{display:block;border:1px solid var(--science-line);padding:22px;text-decoration:none;color:inherit}
+body.strict-template-v1 .contact-mail small{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--science-muted)}
+body.strict-template-v1 .contact-mail b{display:block;margin-top:10px;font-size:clamp(19px,2.2vw,24px);font-weight:600;color:var(--science-ink);overflow-wrap:anywhere}
+body.strict-template-v1 .contact-mail:hover{border-color:var(--science-accent)}
+body.strict-template-v1 .contact-mail:hover b{color:var(--science-accent)}
+body.strict-template-v1 .contact-mail-note{margin-top:14px;color:var(--science-muted);font-size:16px}
+@media(max-width:680px){body.strict-template-v1 .contact-mail-list{grid-template-columns:1fr}}
+body.strict-template-v1 .about-ledger li.has-scan{grid-template-columns:140px minmax(0,1fr) 96px}
+body.strict-template-v1 .about-ledger-scan{display:block;align-self:start;border:1px solid var(--science-line);text-decoration:none!important;line-height:0}
+body.strict-template-v1 .about-ledger-scan img{width:96px;height:auto}
+body.strict-template-v1 .about-ledger-scan:hover{border-color:var(--science-accent)}
+@media(max-width:680px){body.strict-template-v1 .about-ledger li.has-scan{grid-template-columns:1fr}body.strict-template-v1 .about-ledger-scan{width:max-content;margin-top:6px}}
+body.strict-template-v1 .about-ledger.is-compact li{padding:11px 0}
+body.strict-template-v1 .about-ledger.is-compact b{font-weight:500;font-size:16px}

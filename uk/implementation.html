@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="uk";var TARGETS={"en":"../implementation.html","uk":"implementation.html","de":"../de/implementation.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Спочатку ПЗ. Потім апаратна частина. — Væringjar II</title>
+<meta content="Дорожня карта реалізації Væringjar II: C++, ROS 2, RISC-V та SoC IP." name="description"/>
+<link href="assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/>
+<link href="assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<script>
+window.MathJax = window.MathJax || {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link href="assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/uk/implementation.html" rel="canonical"/><meta content="Væringjar II" property="og:site_name"/><meta content="Спочатку ПЗ. Потім апаратна частина. — Væringjar II" property="og:title"/><meta content="Дорожня карта реалізації Væringjar II: C++, ROS 2, RISC-V та SoC IP." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/uk/implementation.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Спочатку ПЗ. Потім апаратна частина. — Væringjar II" name="twitter:title"/><meta content="Дорожня карта реалізації Væringjar II: C++, ROS 2, RISC-V та SoC IP." name="twitter:description"/><link href="assets/css/modular-reading.css?v=20260928-scientific-v3" rel="stylesheet"/><link href="https://varingjar.com/implementation.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/implementation.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/implementation.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/implementation.html" hreflang="x-default" rel="alternate"/><link href="../assets/css/research-workspace.css?v=20261014-research-wiki-v711" rel="stylesheet"/>
+<link href="assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<link href="../assets/css/implementation-evidence.css?v=20261021-readability-v716" rel="stylesheet"/><script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="assets/js/wide-view.js?v=20261021-wide-v2"></script></head>
+<body class="site-page strict-template-v1 strict-template-v2 modular-ui module-hub-page">
+<header class="site-header"><nav aria-label="Primary navigation" class="nav"><a class="brand" href="index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a><button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button><div class="nav-links"><a href="programme.html">Модель</a><a href="research.html">Докази</a><a class="active" href="implementation.html">Реалізація</a><a href="teaching.html">Навчання</a><a href="collaboration.html">Співпраця</a></div><div aria-label="Language" class="lang-switch"><a data-lang="en" href="../implementation.html?lang=en" hreflang="en" lang="en">EN</a><a aria-current="page" class="active" data-lang="uk" href="implementation.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../de/implementation.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header>
+<!-- RESEARCH-WORKSPACE:START -->
+<div class="research-workspace">
+<aside class="research-sidebar" aria-label="Зміст реалізації"><div class="research-sidebar-inner"><a class="research-skip" href="#science-article">Перейти до статті ↓</a><div class="research-tree-title">Зміст реалізації</div><label class="research-search-label"><span class="sr-only">Знайти розділ…</span><input class="research-tree-search" type="search" placeholder="Знайти розділ…" aria-label="Знайти розділ…"/></label><nav aria-label="Зміст реалізації" class="research-tree"><details open=""><summary>Реалізація</summary><div class="research-tree-group"><a aria-current="page" class="research-tree-link is-active" href="implementation.html">Огляд реалізації</a><a class="research-tree-link" href="implementation/runtime-questions.html">Чотири питання під час виконання</a><a class="research-tree-link" href="implementation/software-reference.html">Референсне ПЗ: C++ → ROS 2</a><a class="research-tree-link" href="implementation/hardware-path.html">Апаратний шлях: RISC-V → SoC IP</a><a class="research-tree-link" href="implementation/validation-limits.html">Що треба довести далі</a></div></details><details open=""><summary>Домени застосування</summary><div class="research-tree-group"><a class="research-tree-link" href="applications.html">Огляд доменів</a><a class="research-tree-link" href="applications/robotics.html">Робототехніка</a><a class="research-tree-link" href="applications/aerospace.html">Аерокосмічна галузь</a><a class="research-tree-link" href="applications/case-criteria.html">Критерії кейсу</a></div></details><details open=""><summary>Суміжні розділи</summary><div class="research-tree-group"><a class="research-tree-link" href="programme.html">Модель →</a><a class="research-tree-link" href="research.html">Докази →</a></div></details></nav></div></aside>
+<!-- RESEARCH-WORKSPACE:MAIN -->
+<main class="modular-main"><section class="module-hub-hero implementation-evidence-intro"><div class="container narrow"><div class="eyebrow">РЕАЛІЗАЦІЯ · ДИСЕРТАЦІЯ, РОЗДІЛ 4</div><h1>Як організовано реконфігурацію системи</h1><p class="lead">Шість модулів ROS2-фреймворку, каталог конфігурацій і три незалежні часові обмеження. Структура та результати аналізу наведені в розділі 4 дисертації.</p></div></section><section aria-labelledby="implementation-architecture-title" class="implementation-evidence"><div class="container narrow">
+<p class="evidence-label">§ 4.2–4.7 · АРХІТЕКТУРА</p>
+<h2 id="implementation-architecture-title">Не лише перемикання. Повний контур керування.</h2>
+<p class="evidence-intro">Система працює з чотирма рівнями абстракції: місія → функція → сервіс → ресурс. Для оцінювання стану, ухвалення рішення, безпечного переходу й контролю стійкості у роботі описано шість модулів.</p>
+<div class="implementation-abstraction"><strong>Місія</strong><span aria-hidden="true"> → </span><strong>Функція</strong><span aria-hidden="true"> → </span><strong>Сервіс</strong><span aria-hidden="true"> → </span><strong>Ресурс</strong></div>
+<div class="evidence-table-wrap"><table class="evidence-table"><thead><tr><th>Модуль</th><th>Відповідальність</th></tr></thead><tbody><tr><th scope="row">HealthMonitor</th><td>Оцінювання стану фізичних ресурсів і вхідних діагностичних даних.</td></tr><tr><th scope="row">DecisionEngine</th><td>Вибір допустимої конфігурації за станом системи та вимогами місії.</td></tr><tr><th scope="row">ReconfigManager</th><td>Організація переходу між конфігураціями, Hot Standby і Rollback.</td></tr><tr><th scope="row">StabilityAnalyzer</th><td>Перевірка умов стійкості конфігурацій і переходів.</td></tr><tr><th scope="row">ConfigStore</th><td>Зберігання каталогу доступних і верифікованих конфігурацій.</td></tr><tr><th scope="row">SafetySupervisor</th><td>Незалежний контроль безпеки та недопустимих режимів.</td></tr></tbody></table></div>
+</div></section>
+<section aria-labelledby="implementation-timing-title" class="implementation-evidence timing-evidence"><div class="container narrow">
+<p class="evidence-label">§ 4.10 · АНАЛІЗ РЕАЛЬНОГО ЧАСУ</p>
+<h2 id="implementation-timing-title">Що показує часовий аналіз</h2>
+<p class="evidence-intro">Функціональна коректність не означає своєчасність. У дисертації перевірено плановість задач, час реакції на одну відмову та допустимість послідовних реконфігурацій.</p>
+<div class="evidence-table-wrap"><table class="evidence-table evidence-timing"><thead><tr><th>Властивість</th><th>Розрахунок / результат</th><th>Інтерпретація</th></tr></thead><tbody><tr><th scope="row">Плановість задач</th><td>U = 0,396; межа 0,735</td><td>Достатня умова плановості виконується для заданого набору задач.</td></tr><tr><th scope="row">Час відгуку</th><td>max R/D = 0,176</td><td>У розрахунковій моделі всі задачі виконують свої терміни.</td></tr><tr><th scope="row">Реакція у DEGRADED</th><td>54,80 мс; вимога 50 мс</td><td>Поточний часовий бюджет вимогу не виконує.</td></tr><tr><th scope="row">Переключення Hot Standby</th><td>35 мс; необхідно ≤ 30,2 мс</td><td>Потрібне скорочення часу переключення, а не послаблення вимоги.</td></tr></tbody></table></div>
+<p class="timing-constraint">Три незалежні умови: виконання термінів задач; наскрізний час реакції; мінімальний інтервал між повторними реконфігураціями (формула 4.106).</p>
+<p class="evidence-source">Джерело: Д. О. Гуменний, дисертація, § 4.2–4.7, § 4.10.3–4.10.6, формули (4.98)–(4.106). Значення стосуються визначеної у дисертації моделі та аналізу; це не характеристика довільного апаратного виробу.</p>
+</div></section><section class="module-hub"><div class="container narrow"><div class="module-hub-head"><div><div class="eyebrow">ДЕТАЛІ ТА НАСТУПНІ КРОКИ</div><h2>Програмний еталон, перевірки й апаратний шлях</h2><p>Пов’язані інженерні матеріали. Заплановані етапи відділено від результатів, описаних у дисертації.</p></div><div class="module-count">04</div></div><div class="module-grid"><a class="module-card" href="implementation/runtime-questions.html"><span class="module-index">01</span><div><h3>Чотири питання під час виконання.</h3><p>Етап 2 починається лише після верифікації програмної моделі відносно математичної специфікації.</p></div><span class="module-open">Відкрити модуль →</span></a><a class="module-card" href="implementation/software-reference.html"><span class="module-index">02</span><div><h3>Референсне ПЗ: ядро C++ → ROS 2.</h3><p>Моделі об’єкта, стану ресурсів, спроможності, рішення, стійкості та реконфігурації не залежать від ROS 2.</p></div><span class="module-open">Відкрити модуль →</span></a><a class="module-card" href="implementation/hardware-path.html"><span class="module-index">03</span><div><h3>Планований апаратний шлях: RISC-V → SoC IP.</h3><p>Обчислення спроможності, стійкості та нагляд за переходами переносяться з референсного ПЗ без зміни інтерфейсів.</p></div><span class="module-open">Відкрити модуль →</span></a><a class="module-card" href="implementation/validation-limits.html"><span class="module-index">04</span><div><h3>Що треба довести до наступного етапу?</h3><p>Реалізація має залишатися в заданих межах похибки відносно математичного еталонної моделі.</p></div><span class="module-open">Відкрити модуль →</span></a></div><div class="module-related"><span>Пов’язані розділи</span><a href="research.html">Докази</a><a href="applications.html">Домени</a></div></div></section></main>
+</div>
+<!-- RESEARCH-WORKSPACE:END -->
+<footer class="site-footer">
+<div class="container footer-grid">
+<div>
+<strong>VÆRINGJAR II</strong>
+<p>Незалежна дослідницька програма з керування, орієнтованого на живучість.</p>
+<a class="footer-about" href="about.html">Про автора →</a></div>
+<div>
+<span>АВТОР</span>
+<b style="display:block;margin-top:6px">Dmytro Humennyi · Дмитро Гуменний</b>
+</div>
+<div>
+<span>КОНТАКТ</span>
+<b style="display:block;margin-top:6px">dhumennyi@edu.kpi.ua</b>
+</div>
+</div>
+<a class="footer-privacy" href="privacy.html">Конфіденційність</a></footer>
+<script src="assets/js/site.js?v=20261014-theme-v710"></script>
+<script src="../assets/js/locale.js"></script><script defer src="../assets/js/research-workspace.js?v=20261014-research-wiki-v711"></script>
+<script defer src="../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="en";var TARGETS={"en":"lecture-08.html","uk":"../../uk/teaching/embedded-software-engineering/lecture-08.html","de":"../../de/teaching/embedded-software-engineering/lecture-08.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Workshop: Business Artifact Review and Engineering Proposal — Væringjar II</title><meta content="Review real student artifacts, map engineering responsibilities and study a technical proposal from requirements and high-level architecture to PoC, MVP, verification and delivery." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-08.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-08.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-08.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-08.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-08.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Workshop: Business Artifact Review and Engineering Proposal" property="og:title"/><meta content="Review real student artifacts, map engineering responsibilities and study a technical proposal from requirements and high-level architecture to PoC, MVP, verification and delivery." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/teaching/embedded-software-engineering/lecture-08.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Workshop: Business Artifact Review and Engineering Proposal" name="twitter:title"/><meta content="Review real student artifacts, map engineering responsibilities and study a technical proposal from requirements and high-level architecture to PoC, MVP, verification and delivery." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Framework</a><a href="../../research.html">Evidence</a><a href="../../implementation.html">Build</a><a class="active" href="../../teaching.html">Teaching</a><a href="../../collaboration.html">Collaborate</a></div>
+<div aria-label="Language" class="lang-switch"><a aria-current="page" class="active" data-lang="en" href="lecture-08.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../uk/teaching/embedded-software-engineering/lecture-08.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../de/teaching/embedded-software-engineering/lecture-08.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Teaching / Session 08 · 30.09.2026</div><h1>Workshop: Business Artifact Review and Engineering Proposal</h1><p class="lead reader-lead">Review real student artifacts, map engineering responsibilities and study a technical proposal from requirements and high-level architecture to PoC, MVP, verification and delivery.</p><div class="reader-badges"><span>30.09.2026</span><span>Session 08 / 09</span><span>01:16:22</span><span>Practice</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Course overview →</a><a class="btn btn-primary" href="#full-notes">Read full English notes ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODULE 05 · CLIENT ENGAGEMENT / 08 · 30.09.2026</div><div class="course-context-nav"><a class="previous" href="lecture-07.html">Previous · 07</a><span class="current">08</span><a class="next" href="lecture-09.html">Next · 09</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Chronological course record</div><h2>Engineering notes</h2><p class="reader-intro">Review real student artifacts, map engineering responsibilities and study a technical proposal from requirements and high-level architecture to PoC, MVP, verification and delivery.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Audit cross-artifact consistency</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Clarify company and team roles</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Structure technical proposal</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>Plan PoC, MVP and V&amp;V</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Full English lecture notes</div><h2>Full English lecture notes</h2><p class="lecture-notes-intro">The complete English academic notes follow the Ukrainian source, retaining the original argument, engineering examples, terminology, diagrams, tasks and editorial qualifications. The original transcripts remain available separately in Ukrainian.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="source-notes/R08-2026-09-30.md">Source Markdown →</a> <a class="btn btn-ghost" href="source-transcripts/2026-09-30.md">Raw transcript →</a></div><article class="lecture-article lecture-notes-content" lang="en"><h1>Session 08. Practical Workshop: Auditing Business Artifacts and Structuring a Technical Proposal</h1>
+<blockquote>
+<p><strong>30 September 2026 · practical session · 1 hour 16 minutes 22 seconds.</strong> Source: transcript P3. Because of air-raid alerts and incomplete attendance, the session partly became a demonstration and individual review. Plans for a repeat workshop mentioned in the source were proposals, not confirmed events.</p>
+</blockquote>
+<h2>The session's place in the course narrative</h2>
+<p>On 29 September, teams were assigned to create a corporate identity, personal contact cards and a <strong>one-pager</strong>. On 30 September, it was time for review: do these artifacts meet consistent requirements and can they actually initiate technical cooperation? The second part illustrates what follows an exhibition: request → technical proposal → proof of concept → staged delivery.</p>
+<h2>1. Reviewing student business cards: operational defects</h2>
+<p>The lecturer reviews materials submitted by two groups. Positive features include a consistent palette, logo, defined roles, corporate contact details, two-sided cards and QR codes. A basic audit nonetheless reveals defects: surname before given name in English; one color system for cards and another for the <strong>one-pager</strong>; mismatched domains on the cards and poster; an incorrect partner logo; an inaccurate illustration of a platform; and missing direct contact information on the one-pager.</p>
+<p>These defects should not be excused simply because the work is educational. They reproduce typical integration failures in which two deliverables are designed independently although both should describe exactly the same product or organization.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Defect</th>
+<th>Consequence</th>
+<th>Acceptance condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Names and domains</td>
+<td>.ua on poster, .com on business card</td>
+<td>No clear canonical contact address</td>
+<td>One consistent domain identity</td>
+</tr>
+<tr>
+<td>Visual identity</td>
+<td>Different color palettes or logos</td>
+<td>The brand appears assembled from unrelated pieces</td>
+<td>One shared design contract</td>
+</tr>
+<tr>
+<td>Roles</td>
+<td>A Lead title without a visible team</td>
+<td>The stated hierarchy does not match reality</td>
+<td>Roles fit the actual organization</td>
+</tr>
+<tr>
+<td>References</td>
+<td>Incorrect logo of a claimed partner</td>
+<td>Risk of misleading representation</td>
+<td>References are verified and authorized</td>
+</tr>
+<tr>
+<td>Technical illustration</td>
+<td>A fixed-wing aircraft labelled with a quadcopter image</td>
+<td>Undermines claims of technical expertise</td>
+<td>The illustration matches the claim</td>
+</tr>
+<tr>
+<td>Contact</td>
+<td>A website is shown but no email or phone number</td>
+<td>An interested lead cannot easily make contact</td>
+<td>A direct communication channel is provided</td>
+</tr>
+</tbody>
+</table>
+<h2>2. Who is who in an engineering company</h2>
+<p>Student roles provide an opportunity to discuss a common, though not universal, corporate hierarchy:</p>
+<p>Owners → C-level → functional directors → managers → engineers and specialists.</p>
+<p><strong>An owner owns the company; the CEO manages it within defined corporate authority; the CTO and CFO are accountable for their respective functions.</strong> A director leads a major discipline and may have a delegated budget; an engineering, project or technical manager coordinates execution and escalation; engineers and technical leads produce technical outcomes. Formal authority and budgets depend on the actual company, legal structure and policies. This is an educational example, not a legal rule.</p>
+<p>Senior, Middle, Junior and Trainee denote competency grades used in staffing and compensation, not management positions and not automatic spending authority. A Lead Engineer should have a real <strong>technical</strong>-coordination responsibility, usually involving a team whose existence and responsibilities ought to be reflected in the proposed organization chart.</p>
+<h2>3. Why a one-pager needs an evidence-based structure</h2>
+<p>The review identifies strengths in the student one-pagers: a recognizable embedded focus, ECU/ADAS/<strong>verification</strong> as competence areas, clear descriptions of roles and small-scale production capability. Yet the material may be overloaded with text and lack enough technical visual explanations. Another problem is an unfocused service list: automotive ECUs and EV charging stations may both be valid areas of work, but should be presented as distinct directions, each linked clearly to the team's expertise.</p>
+<p><strong>Key check:</strong> if a potential customer stops at the booth, can they identify the team's specialization within ten seconds? If not, revise the information hierarchy and strengthen the connection between the technical visual and the value proposition.</p>
+<h2>4. From RFI / RFQ / RFC to a proposal</h2>
+<p>Following a conference introduction and a follow-up meeting, a prospective customer may send:</p>
+<ul>
+<li><strong>RFI — Request for Information:</strong> questions about capability, track record, tools, resources and the company's delivery capacity.</li>
+<li><strong>RFQ — Request for Quotation:</strong> a request for cost estimates, pricing assumptions, licences, equipment and expenses.</li>
+<li><strong>RFC — Request for Clarification:</strong> in this course scenario, clarification of an approach to solving a technical problem, followed by a proposal. Other fields use the abbreviation RFC differently; interpret it according to the actual customer's context.</li>
+</ul>
+<p><strong>A proposal is not simply a price list.</strong> It combines an engineering model, verification approach, delivery plan, team and commercial framework. In the recording, the lecturer presents an anonymized real proposal for an ECU Switching System, developed after several technical meetings. Numerical details and project stories are retrospective professional experience, not templates or norms valid for every project.</p>
+<h2>5. Structure of a strong technical proposal</h2>
+<ol>
+<li><strong>Executive Summary.</strong> Why the project matters, its value, planned stages, indicative duration and budget, and engagement model.</li>
+<li><strong>Glossary / Abbreviations.</strong> Shared terminology for engineers, procurement and management.</li>
+<li><strong>Introduction and communication history.</strong> Background, subject, agreements and assumptions.</li>
+<li><strong>Requirements baseline.</strong> Received documents and references, requirements and outstanding uncertainties.</li>
+<li><strong>High-level architecture.</strong> System structure, interfaces, data paths, power and control.</li>
+<li><strong>Detailed design hypotheses.</strong> Candidate modules, components, physical concepts and dependencies.</li>
+<li><strong>Validation and Verification.</strong> The strategy for demonstrating that the solution works as required.</li>
+<li><strong>Stages, deliverables and schedule.</strong> PoC, minimum useful product, documentation, milestones and Gantt chart.</li>
+<li><strong>Team and resources.</strong> Engineering roles, allocation, work sequence and capacity.</li>
+<li><strong>Commercial framework.</strong> Fixed Price or Time &amp; Materials, exclusions and assumptions.</li>
+<li><strong>Appendices and version history.</strong> Detailed drawings, lengthy tables and revision tracking.</li>
+</ol>
+<p>This is one example of an <strong>engineering</strong> proposal structure; individual customers may request a different order. The lecturer stresses that executives are likely to begin with the Executive Summary, whereas technical reviewers examine diagrams, assumptions and test methods. In the cited 40-page example, a substantial portion is devoted to architecture and the detailed breakdown of modules.</p>
+<h2>6. Architecture before contract: prove that the problem is understood</h2>
+<p>At proposal stage there is no finished product. However, a modular concept, CAD sketches, a block diagram, interface descriptions and selected physical evidence allow the customer to assess the feasibility of the solution. Visualization must complement technical reasoning: a picture addresses “what might it look like?”, whereas an <strong>engineering</strong> schematic addresses “how would it work?”.</p>
+<p>In the ECU Switcher demonstration, the lecturer describes a PoC built on an evaluation board, UART communication, an experimental bench setup and thermal imaging. This is an example of reducing <strong>engineering</strong> risk early; it is not proof that a final device complies with all requirements. The public notes do not reproduce confidential customer files or commercial figures from the case.</p>
+<h2>7. PoC → MVP → documentation and repeatability</h2>
+<p><strong>A PoC tests a risky engineering hypothesis.</strong> An MVP provides the minimum functionality that delivers practical value and must have explicit acceptance criteria. Production documentation makes it possible to repeat assembly, testing and support. Each stage requires defined outputs: a demonstration record or PoC report; a list of accepted MVP functions; and the source files and production instructions needed for reproduction.</p>
+<p>An illustrative estimation expression (not a statistical formula): E = Σ(rᵢ × tᵢ), where E denotes estimated person-hours, rᵢ is the number of specialists in role i, and tᵢ is the estimated effort per specialist in that role. This is a simple consistency check on the resource plan; a financial <strong>estimate</strong> also needs rates, reserves, materials and explicit assumptions.</p>
+<h2>8. Commercial model and revision control</h2>
+<p>The illustrative project used <strong>Time &amp; Materials</strong> because its technical subject was novel and the scope could not be fully predicted. This does not remove the need to monitor and agree budgets, duration, changes, risks and work scope. A proposal may undergo several revisions; after initial review, maintain a version/change log recording version, date, changes, author and the customer's decision.</p>
+<h2>9. Student assignments and acceptance criteria</h2>
+<ol>
+<li>Audit every business card and one-pager using the defect checklist.</li>
+<li>Create a concise organization chart with responsibilities, and explain every participant's role.</li>
+<li>Identify one customer problem the company could solve, distinguishing the need from a preferred technology.</li>
+<li>Draft the table of contents for a proposal addressing that request.</li>
+<li>Select the riskiest hypothesis and define the smallest PoC capable of testing it.</li>
+<li>Prepare verifiable references and do not portray fictional role-play partnerships as real.</li>
+</ol>
+<p><strong>Outcome:</strong> the team is prepared for a realistic customer-meeting simulation. The next session enacts the initial contact, objections and agreement to follow up; writing the detailed technical proposal will be a task for the subsequent stage.</p>
+</article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Teaching</b><p style="margin-top:8px">Author teaching materials by Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">About the author →</a></div>
+<div class="footer-links"><b>Course</b><a href="index.html">Course overview</a><a href="lecture-01.html">Lecture 01</a><a href="lecture-02.html">Lecture 02</a><a href="lecture-03.html">Lecture 03</a><a href="lecture-06.html">Lecture 04</a><a href="lecture-09.html">Session 09</a><a href="lecture-08.html">Session 08</a><a href="lecture-07.html">Session 07</a></div>
+<div class="footer-links"><b>Context</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in Power Engineering</a><a href="../../teaching.html">All teaching materials</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Privacy</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../assets/js/locale.js"></script><script defer src="../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

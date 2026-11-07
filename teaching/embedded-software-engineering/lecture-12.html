@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="en";var TARGETS={"en":"lecture-12.html","uk":"../../uk/teaching/embedded-software-engineering/lecture-12.html","de":"../../de/teaching/embedded-software-engineering/lecture-12.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>The Expert Meeting, RFI/RFC/RFQ and the Proposal: From Company Talk to a Project — Væringjar II</title><meta content="Second follow-up with experts, meeting roles, RFIs with a “false bottom”, RFCs and how much a proposal should disclose, versioning, RFQs and team estimates." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-12.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-12.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-12.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-12.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-12.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="The Expert Meeting, RFI/RFC/RFQ and the Proposal: From Company Talk to a Project" property="og:title"/><meta content="Second follow-up with experts, meeting roles, RFI, RFC and the proposal, document versioning, RFQ and team estimation of requirements." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/teaching/embedded-software-engineering/lecture-12.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="The Expert Meeting, RFI/RFC/RFQ and the Proposal: From Company Talk to a Project" name="twitter:title"/><meta content="Second follow-up with experts, meeting roles, RFI, RFC and the proposal, document versioning, RFQ and team estimation of requirements." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/><script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script></head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Framework</a><a href="../../research.html">Evidence</a><a href="../../implementation.html">Build</a><a class="active" href="../../teaching.html">Teaching</a><a href="../../collaboration.html">Collaborate</a></div>
+<div aria-label="Language" class="lang-switch"><a aria-current="page" class="active" data-lang="en" href="lecture-12.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../uk/teaching/embedded-software-engineering/lecture-12.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../de/teaching/embedded-software-engineering/lecture-12.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Teaching / Session 12 · 20 Oct 2026</div><h1>The Expert Meeting, RFI/RFC/RFQ and the Proposal: From Company Talk to a Project</h1><p class="lead reader-lead">Second follow-up with experts, meeting roles, RFI, RFC and the proposal, document versioning, RFQ and team estimation of requirements.</p><div class="reader-badges"><span>20.10.2026</span><span>Session 12 / 12</span><span>01:26:48</span><span>Lecture</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Course overview →</a><a class="btn btn-primary" href="#full-notes">Read full notes ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODULE 04 · COMMERCIAL ENGINEERING / 12 · 20.10.2026</div><div class="course-context-nav"><a class="previous" href="lecture-11.html">Previous · 11</a><span class="current">12</span><a class="next" href="lecture-13.html">Next · 13</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Course chronology</div><h2>Engineering notes</h2><p class="reader-intro">Second follow-up with experts, meeting roles, RFI, RFC and the proposal, document versioning, RFQ and team estimation of requirements.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>An expert meeting built around the customer’s problem</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Roles: familiar face, Engagement, experts</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>RFI, RFC, RFQ and requirements</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>Proposal: depth, versions, estimates</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Full session notes</div><h2>Full session notes</h2><p class="lecture-notes-intro">Complete English teaching notes derived from the Ukrainian transcript of 20 October. The customer Otto and his task are a teaching scenario; the industrial installation example is given without details covered by an NDA.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="source-notes/R12-2026-10-20.md">Ukrainian source notes →</a> <a class="btn btn-ghost" href="source-transcripts/2026-10-20.md">Original transcript →</a></div><article class="lecture-article lecture-notes-content" lang="en"><h1>Session 12. The expert meeting, RFI/RFC/RFQ and the proposal: how a conversation about the company becomes a conversation about the project</h1>
+<blockquote>
+<p><strong>20 October 2026 · Lecture 7 · 1 h 26 min 48 s.</strong> Based on the automatic transcript <code>IgorSikorskyKPI_L7_20102026.mp4</code>. This is an edited teaching note, not a verbatim transcript: obvious recognition errors were corrected and terminology was aligned with earlier sessions. The customer Otto, his company and the technical task are a <strong>teaching scenario</strong>. The industrial installation example was given by the lecturer only in general terms, without details covered by an NDA. The session was interrupted by an air-raid alert; this did not affect the content of the note.</p>
+</blockquote>
+<h2>Where this session fits: the last step before a concrete request</h2>
+<p>In Sessions 10–11 the team moved from an exhibition contact to the first follow-up: it presented the company, its expertise, locations and tools, and heard what really "hurts" the customer. Session 12 covers the <strong>second follow-up</strong> — an expert meeting after which the conversation must move from "who we are" to "which project we are doing". The main outcome of this meeting is a formal request from the customer: an RFI, RFC, RFQ or requirements straight away.</p>
+<p>The lecturer stressed that everything in the course consists of <strong>recommendations based on his own experience</strong> and that of colleagues, not the only possible procedure. They should be adapted to the specific customer, market and company culture.</p>
+<h2>0. Organisation: assessment and the large independent assignment</h2>
+<ul>
+<li>The course credit can be obtained automatically with <strong>60 points or more</strong>; students below that threshold take a written credit test.</li>
+<li>Attendance also earns points, so being present matters.</li>
+<li>After the second assessment there will be a large independent assignment — <strong>simulating an engineering company</strong>: a static website, a simulated trip to a conference or exhibition, obtaining a lead, converting it into a customer, requirements, a proposal, a project in GitHub or Jira, team allocation and a release. The work will be accompanied by regular meetings, roughly twice a week.</li>
+<li>Examination questions will cover the whole course; the list will be provided in advance.</li>
+</ul>
+<h2>1. Why a second follow-up</h2>
+<p>The first meeting at the conference created an acquaintance. The first follow-up presented the company broadly: years on the market, engineering capacity, competences, tools, locations, certifications. Its real purpose was to understand <strong>what hurts the customer</strong> and which "pill" should be offered.</p>
+<p>In the teaching scenario the customer Otto wants <strong>non-destructive diagnostics of an internal combustion engine</strong>: without dismantling the engine and without human involvement, check whether the camshafts, valve rocker arms or chamber walls in the cylinder head are damaged. Dismantling is expensive and immediately requires replacement parts, so the value of a solution is obvious. The second follow-up is the meeting where the company shows <strong>narrow expertise for exactly this problem</strong>. The ideal result is to convert Otto into a customer already at this stage.</p>
+<h2>2. Decomposing the problem: who is needed in the meeting</h2>
+<p>Even a short description of the problem immediately breaks down into several engineering disciplines:</p>
+<table>
+<thead>
+<tr>
+<th>Discipline</th>
+<th>Why it is needed for Otto's task</th>
+<th>Who represents it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Computer Vision</td>
+<td>An endoscope — a miniature camera on a flexible cable — is inserted into the engine through the intake or exhaust manifold</td>
+<td>CV architect or lead</td>
+</tr>
+<tr>
+<td>AI / Deep Learning</td>
+<td>Automatic defect recognition: a large image set of healthy engines is needed to detect anomalies against the norm</td>
+<td>Machine-learning expert</td>
+</tr>
+<tr>
+<td>Robotics</td>
+<td>"No people" means that a mechanism or robot must insert the endoscope</td>
+<td>Robotics Engineer</td>
+</tr>
+<tr>
+<td>Embedded</td>
+<td>Hardware and firmware that combine the camera, the actuator and processing into one product</td>
+<td>Embedded architect</td>
+</tr>
+<tr>
+<td>System Engineering</td>
+<td>Four very different engineers must work towards one common denominator</td>
+<td>System Architect</td>
+</tr>
+</tbody>
+</table>
+<p>That makes five strong specialists. But if this group simply turns up at the meeting, it will fail: Otto will be overwhelmed by the number of people, and unprepared experts will just stare at him in silence. That is why <strong>homework</strong> is required.</p>
+<h2>3. Homework: a tailored presentation and a message to the customer</h2>
+<p>The previous presentation covered the whole company: web, mobile, cloud, AI, embedded, automotive, robotics, fintech, healthcare, mining. Now it has to be <strong>rewritten for the identified need</strong>. The number of offices and the overall size of the company are no longer relevant. The key message is roughly: "As a follow-up to our previous meeting, we would like to show our expertise in the topics we believe are useful specifically for you. We have prepared several cases and would like to hear how closely they match your problem."</p>
+<p><strong>The expected outcome of the meeting</strong> is a deep understanding of the problem and of possible ways to solve it. You need to establish exactly what the customer already has. Perhaps hardware, firmware and mechanics are ready and only engineers are missing. Perhaps there is nothing, and then the proposal must describe the full vision: from the system level to the implementation.</p>
+<p>Play fair: <strong>tell Otto</strong> that you are preparing a new presentation and will bring your specialist experts. He can then bring his own specialists and prepare documents that explain his need better. If the customer agrees to such a second meeting, mutual interest has already been established.</p>
+<h2>4. The invitation: time slots, communication tool and agenda</h2>
+<p>An invitation to the expert meeting has three mandatory components.</p>
+<ol>
+<li><strong>Time slots.</strong> Offer about three options one day apart and spread them across morning, midday and evening. Always leave room for the customer to propose a time of his own.</li>
+<li><strong>Communication tool.</strong> The first meeting took place in the environment convenient for you, for example Google Meet. Now ask what the customer prefers: Google Meet, Microsoft Teams, Slack or something else. If he chooses Teams, organise yourselves to generate the invitation there. Adapting to the customer's business tools shows flexibility and respect.</li>
+<li><strong>Agenda.</strong> The person must understand what he is being invited to. List five or six items, for example: a short recap of the context, decomposition of the task, cases by discipline, discussion of the customer's problem, next steps.</li>
+</ol>
+<p>A good invitation simultaneously shows respect, flexibility, an investment of time and money, and a concrete goal. This is exactly the kind of message a customer reads as a sign of a good deal.</p>
+<h2>5. One email thread from the first contact to the contract</h2>
+<p>All communication — the first email after the conference, agreements, invitations, presentations and follow-ups — should be kept <strong>in one email thread</strong>. After the contract is signed, this thread is closed and a new, engineering thread is started.</p>
+<p>The reason is practical: when escalations arise later, it is easy to find the original agreements and show exactly how they were worded. At the start both sides are, so to speak, in love, but projects sometimes end in conflict. For the "divorce" to follow rules that are favourable and transparent for you, you need <strong>a signed contract and a documented history of agreements</strong>.</p>
+<h2>6. The cost of an expert meeting</h2>
+<p>From this point on, pre-sale starts to cost real money. Four or five highly qualified architects and leads are the most expensive people in the company. As soon as they take part in a meeting, their time has to be paid for, even though there is no project yet. So decide in advance <strong>exactly whom to bring, how many people and how long the meeting will be</strong>. It is an investment that must be consciously limited.</p>
+<h2>7. Roles in the meeting: the familiar face, Engagement and the experts</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Function in the meeting</th>
+<th>What it does not do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Familiar face</td>
+<td>The person who met Otto at the conference and shook his hand; holds a "trust quota" and attends every meeting until the contract is signed</td>
+<td>Does not run the process and need not be an expert in the topic</td>
+</tr>
+<tr>
+<td>Engagement Manager</td>
+<td>Organises all follow-ups, correspondence and invitations; opens the meeting, introduces participants, runs the presentation, hands over the floor and makes sure the customer is not isolated</td>
+<td>Does not write the very first email after the conference — the familiar face writes it</td>
+</tr>
+<tr>
+<td>Experts (architects, leads)</td>
+<td>Present two cases from their discipline each, ask clarifying questions, read the customer's reactions</td>
+<td>Do not turn their talk into a monologue</td>
+</tr>
+<tr>
+<td>Customer and his people</td>
+<td>Introduce themselves, describe the problem, bring their own documents</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>The lecturer used a hunting analogy: there are <strong>beaters</strong>, who drive the game along the right path, and <strong>shooters</strong>, who wait at their positions. Engagement are the beaters; architects, engineers and the familiar face are the shooters. In companies, engagement is often a separate unit of people who are always full of energy and keep up the pace of communication.</p>
+<p><strong>Who shares the screen first?</strong> The one who invites. You assembled the team and prepared the presentation, so you start sharing.</p>
+<h2>8. Meeting script</h2>
+<ol>
+<li><strong>Warm-up.</strong> The Engagement Manager greets Otto, asks how he and his business are doing and asks a few prepared questions that he senses are of interest to the customer. Everyone's camera is on: Otto must see the familiar face.</li>
+<li><strong>Round of introductions.</strong> If time is short, Engagement quickly names each participant and role. If there is more time, or he is confident that colleagues present themselves well, each person introduces himself or herself.</li>
+<li><strong>The customer introduces himself.</strong> Engagement asks Otto to introduce himself — not because he is unknown, but as a sign of respect. If colleagues came with him, they introduce themselves too.</li>
+<li><strong>Opening slides.</strong> Engagement shows the agenda and the system decomposition: robotics, computer vision, AI, embedded.</li>
+<li><strong>Expert cases.</strong> Engagement hands over control of the presentation to the experts in turn: two cases on computer vision, two on robotics and so on. After each block he asks: "Otto, what do you think? Does this resonate with your problem?"</li>
+<li><strong>Asking the customer.</strong> After the last block, do not wait for the customer to start talking on his own. Ask directly: "Please tell us what your problem is and what exactly you are trying to solve. We want to understand how we can help."</li>
+<li><strong>Open discussion.</strong> For about 10–15 minutes the experts of both sides talk directly.</li>
+<li><strong>Summary and next step.</strong> Engagement summarises the conversation and offers to prepare a proposal.</li>
+</ol>
+<p>The lecturer compared the architect to <strong>a lift operator in a high-rise building</strong>: he asks which floor you need and on the way learns what is happening on each floor. The architect carries information between levels of the system and between people, pauses on slides, asks again, notices a raised eyebrow, a look away or the customer reaching for his phone.</p>
+<h2>9. Open discussion with a conductor: the second screen and the internal chat</h2>
+<p>When the open discussion starts, every member of your team should have <strong>two screens</strong>: one shows the conversation with the customer, the other the team's internal chat. Engagement, the manager and other non-engineering participants stay out of the technical debate. They watch and steer: if one of the engineers enters an unnecessary dispute or pressures the customer, a short "stop" appears in the chat and the colleague changes tone.</p>
+<p>It is an orchestra, and the internal chat is the conductor's baton. Openly contradicting the customer at this stage is risky; support and clarification work better.</p>
+<h2>10. Closing: the promised request and the reminder "lever"</h2>
+<p>At the end Engagement says something like: "The intensity of this conversation shows that we speak the same language and understand how to do this. Let us prepare a proposal for you." The customer replies that he will send an RFI, RFQ or RFC. The team, in turn, promises <strong>to send the presentation as a follow-up</strong>.</p>
+<p>This promise is a lever. If the customer forgets to send the request, the email with the presentation becomes another natural occasion to remind him: "Here is the promised presentation; we are waiting for the RFI." The customer often has not written the request document yet: he will not say so in the meeting, but will spend a day or two on a spreadsheet of questions. After a few reminders the request usually arrives.</p>
+<p><strong>The key change after this meeting:</strong> before it, the conversation was about competences, the company, the team — about anything except the project. After it, the entire conversation concerns the project the customer is interested in.</p>
+<h2>11. What the customer may send: "asking" or "telling"</h2>
+<table>
+<thead>
+<tr>
+<th>What arrives</th>
+<th>Mode</th>
+<th>What it means</th>
+<th>Company response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RFI — Request for Information</td>
+<td>Customer asks</td>
+<td>Wants to measure your capability against an internal competence scale</td>
+<td>Completed answer sheet</td>
+</tr>
+<tr>
+<td>RFC — Request for Clarification (course term)</td>
+<td>Customer asks</td>
+<td>Asks you to describe your vision of a solution to his problem</td>
+<td>Proposal</td>
+</tr>
+<tr>
+<td>RFQ — Request for Quotation</td>
+<td>Customer asks</td>
+<td>Wants to know duration and cost</td>
+<td>Time and cost estimate with assumptions</td>
+</tr>
+<tr>
+<td>User stories</td>
+<td>Customer tells</td>
+<td>Describes expected behaviour from the user's perspective</td>
+<td>Analysis, clarification, estimate</td>
+</tr>
+<tr>
+<td>Requirements (system, hardware, software)</td>
+<td>Customer tells</td>
+<td>Knows what he wants; expects an estimate</td>
+<td>Team estimate of each requirement and an RFQ</td>
+</tr>
+</tbody>
+</table>
+<p>As in Session 04, <strong>RFC here means Request for Clarification in course terminology</strong>. In wider procurement practice, a request to "describe your solution" is more often called an RFP (Request for Proposal), while in software engineering RFC usually means Request for Comments. So in a real process the document name should be spelled out on first use.</p>
+<h2>12. RFI: a spreadsheet of questions with a "false bottom"</h2>
+<p>A typical RFI is an Excel spreadsheet: one column of questions and a second one for answers. Examples of questions from the lecture:</p>
+<ul>
+<li>Do you have Model-Based Development competence? Follow-up: which tools do you use for model-based development and for model-based testing? A possible answer: MATLAB/Simulink, OpenModelica; for testing — Simulink Test, for model and code coverage — Simulink Coverage.</li>
+<li>Do you have expertise in Embedded Engineering? Follow-up: which microcontrollers do you work with? The answer is a list of families, for example STM32 (STMicroelectronics), NXP, Xilinx (now AMD).</li>
+<li>Do you have experience with System on Chip (SoC)?</li>
+<li>Is your company, or are the engineers assigned to the project, certified against a functional-safety standard? If so, which one?</li>
+</ul>
+<p>Follow-up questions need no answer if you answered "no" to the main question. An RFI ranges from one page to 10–20 pages. Such questionnaires often have <strong>a "false bottom"</strong>: the same question reappears elsewhere from a different angle to test consistency. Your answers must therefore not contradict each other.</p>
+<p>Expect the customer to analyse your answers against his own template, possibly with AI, and score your technological fit. That is no reason to embellish: <strong>untruths surface sooner or later</strong>. If you do not meet the requirements, this is simply not your customer.</p>
+<h2>13. RFC and the proposal: how much to disclose</h2>
+<p>Sometimes after the meeting the customer realises that you understand the process better than he does. He then sends neither requirements nor user stories, only a short RFC of two sentences: "Hello. Could you please describe in Word, Markdown or another format your vision of a solution to our problem discussed in the meeting?"</p>
+<p>The answer to an RFC is <strong>a proposal</strong>, whose structure was covered in earlier sessions: summary, architectural view, design view, implementation plan, risks, commercial section. It can run from two pages to a hundred; the largest proposal in the lecturer's practice had about a hundred pages. Architects write it, and the team invests its own time. An RFC immediately after the meeting is a very good sign: the customer does not know how to solve the task and wants you to show creativity.</p>
+<p><strong>The danger</strong>, accurately named by one of the students in class: the team creates, free of charge, a document that effectively solves the problem, and the customer says thank you and disappears. The lecturer gave an example from his practice (without details because of an NDA). A large plant had an installation with a hazardous leak that could not be measured directly. A mathematical and computer model of the leak into the environment was needed. In the proposal the lecturer described a method for determining the leak volume based on MATLAB/Simulink modelling and analytical calculations. The customer then thanked him and disappeared: the local engineers had enough to implement the solution themselves.</p>
+<table>
+<thead>
+<tr>
+<th>Type of complexity</th>
+<th>Indicators</th>
+<th>How to write the proposal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Technological (scientific, mathematical) with simple implementation</td>
+<td>The idea is hard but the implementation is easy — in the example a wristwatch would have been enough to time the emergency valves opening</td>
+<td>Generally and carefully: show competence without disclosing the method</td>
+</tr>
+<tr>
+<td>Technical (complex implementation)</td>
+<td>Mechanics, electronics, firmware, desktop, cloud, AI; teams are needed for a long time</td>
+<td>In detail: explicit risks, a time buffer for implicit risks, analysis — this proves expertise</td>
+</tr>
+</tbody>
+</table>
+<p>The line between "too little" and "too much" is very thin. Too little, and the customer will not believe you can do it. Too much, and he will do it himself.</p>
+<h2>14. Proposal format and versioning</h2>
+<p>Historically, a proposal is written in a word processor (Microsoft Word, LibreOffice, OpenOffice), because it combines text, illustrations, formulas and tables. Mandatory attributes of such a document:</p>
+<ul>
+<li><strong>author</strong> — the person who created the initial version; remains the author permanently;</li>
+<li><strong>last changed by</strong> — who made the latest changes;</li>
+<li><strong>revision history</strong> at the beginning of the document — what exactly changed between release versions and in which sections.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First internal reviews by colleagues</td>
+<td>0.1, 0.2 … 0.7</td>
+</tr>
+<tr>
+<td>First submission to the customer</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Internal edits after the customer's comments</td>
+<td>1.1, 1.2 …</td>
+</tr>
+<tr>
+<td>Second submission to the customer</td>
+<td>2.0</td>
+</tr>
+</tbody>
+</table>
+<p>The number before the dot is the release number for the customer; the number after the dot counts internal iterations. However many times the document goes back and forth inside the company, the first version sent out is always 1.0.</p>
+<p>The lecturer prefers <strong>Excel</strong>: each tab works as a separate section (introduction, architecture and so on), the data are structured, and the financial part — quantity, duration and cost — can be calculated directly in the document, transparently for both sides. In the AI era <strong>Markdown</strong> has spread: it is a convenient format for joint work between people and language models, and small modern companies readily accept it. Large conservative companies have their own rules on AI use, so with them it is better to work traditionally at first, in Word or Excel, and to propose Markdown later if they have that practice.</p>
+<h2>15. RFQ: part of the first proposal and a quarterly request</h2>
+<p>The first proposal always contains a commercial section: quantity and price — the cost of engineering time and material resources. At the start, therefore, the RFQ is closely tied to the RFC.</p>
+<p>The RFQ becomes a separate document <strong>after the project starts</strong>: roughly once a quarter the customer asks for an estimate of the next quarter's costs. By then Jira, a GitHub Project or another tracking tool exists, but the forecast of future costs is still issued as a document. It covers engineering work, materials and related costs such as courier and postal services.</p>
+<p>Another common path: the customer iteratively reviews your proposal and returns comments ("rewrite this part differently"). In effect he is building the architecture of the future system at your expense. It is a shrewd approach, but in the lecturer's experience such stories usually convert into a contract.</p>
+<h2>16. The best case: requirements and a team estimate</h2>
+<p>If the customer knows well what he wants, he sends <strong>requirements at three levels</strong>: system requirements (how the system behaves), software requirements and hardware requirements. In that case you are expected to provide an RFQ already at the first stage.</p>
+<p>One person cannot estimate the whole system. You need to gather the team, ask each member to estimate individual features or requirements and describe how they see the implementation. The list of expected durations becomes the answer to the RFQ, for example: "feature X — 2 to 10 days at a rate of 400 US dollars per day for an engineer of a given level" (the rate is illustrative). This shows the customer what kind of money is involved.</p>
+<h2>17. Problems that estimation will bring</h2>
+<p>The estimation stage comes with internal problems — they will be the subject of the next sessions:</p>
+<ol>
+<li><strong>No one to estimate.</strong> In the "golden age" of Ukrainian IT (roughly 2016–2018, before COVID-19), companies kept engineers in a "pool" on the bench, ready for new projects. Today this practice has almost disappeared.</li>
+<li><strong>Involving external experts.</strong> A specialist you know from another company can help, but has to be paid; a payment model is required.</li>
+<li><strong>Freelancing</strong> as a source of resources, and its risks.</li>
+<li><strong>Accountability for the estimate.</strong> An external expert may underestimate a task because he will not be the one doing it. How do you obtain a thoughtful estimate, and how do you bring the people who estimated into the project?</li>
+<li><strong>Cost of engineering and of the product.</strong> In embedded, engineering time is joined by mechanics, PCB design, component procurement, assembly, validation and verification, logistics and customs clearance.</li>
+<li><strong>Risk analysis</strong> of late delivery for both sides.</li>
+<li><strong>Fixed Price or Time &amp; Material</strong> in today's European embedded practice.</li>
+</ol>
+<h2>Practical takeaways</h2>
+<ul>
+<li>The second follow-up is prepared for the customer's specific problem, not for a general company profile.</li>
+<li>The invitation contains several slots, a choice of communication tool and an agenda.</li>
+<li>All communication before the contract is kept in one email thread.</li>
+<li>The familiar face is always present, Engagement runs the meeting, and experts present cases and ask questions.</li>
+<li>The goal of the meeting is to obtain an RFI, RFC, RFQ or requirements; without them further work is a waste of time and money.</li>
+<li>RFI answers must be honest and consistent with each other.</li>
+<li>The depth of a proposal depends on where the complexity lies: in the technology or in the technical implementation.</li>
+<li>A proposal has an author, a revision history and a clear version numbering.</li>
+</ul>
+<h2>Self-check questions</h2>
+<ul>
+<li>How does the second follow-up differ from the first in purpose and presentation content?</li>
+<li>Which specialists should be involved in the non-destructive engine diagnostics task, and why not all of them at once?</li>
+<li>What must an invitation to an expert meeting contain?</li>
+<li>Why keep all correspondence before the contract in one email thread?</li>
+<li>What is the role of the familiar face, and why does that person write the very first email?</li>
+<li>Who shares the screen first, and who opens the meeting?</li>
+<li>Why does the team need a second screen and an internal chat during the open discussion?</li>
+<li>How does the "customer asks" mode differ from the "customer tells" mode?</li>
+<li>What is the "false bottom" in an RFI, and how do you avoid the trap of contradictory answers?</li>
+<li>When should a proposal be written in general terms, and when in maximum detail?</li>
+<li>How does the proposal version number change between internal reviews and submissions to the customer?</li>
+<li>Why does the RFQ exist separately from the RFC once the project has started?</li>
+</ul>
+<h2>What was announced next</h2>
+<p>The lecturer announced for the coming sessions: human resources for estimation when the "pool" is empty, paying external experts, freelancing, accountability for estimates, cost analysis of engineering and hardware, risk analysis, and a comparison of Fixed Price and Time &amp; Material. The course will then move on to signing the contract, user stories and internal requirements, team decomposition, hiring and defining management roles. Separate practical sessions will be devoted to writing a proposal and completing an RFI. This is <strong>an announced plan</strong>, not sessions that have already taken place.</p>
+<h2>Verified references</h2>
+<ul>
+<li>ISO/IEC/IEEE 29148:2018, Systems and software engineering — Requirements engineering: https://www.iso.org/standard/72089.html</li>
+<li>Simulink Test (MathWorks): https://www.mathworks.com/products/simulink-test.html</li>
+<li>Simulink Coverage (MathWorks): https://www.mathworks.com/products/simulink-coverage.html</li>
+<li>OpenModelica: https://openmodelica.org/</li>
+</ul></article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Teaching</b><p style="margin-top:8px">Author teaching materials by Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">About the author →</a></div>
+<div class="footer-links"><b>Course</b><a href="index.html">Course overview</a><a href="lecture-10.html">Session 10</a><a href="lecture-11.html">Session 11</a><a href="lecture-12.html">Session 12</a></div>
+<div class="footer-links"><b>Context</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in Power Engineering</a><a href="../../teaching.html">All teaching materials</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Privacy</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../assets/js/locale.js"></script><script defer src="../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

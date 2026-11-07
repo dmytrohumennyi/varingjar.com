@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="en";var TARGETS={"en":"implementation.html","uk":"uk/implementation.html","de":"de/implementation.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Software first. Hardware second. — Væringjar II</title>
+<meta content="Væringjar II implementation roadmap: mathematical control model to C++ core, ROS 2 components, RISC-V control subcore and SoC IP." name="description"/>
+<link href="assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/>
+<link href="assets/css/site-main.css?v=20261021-readability-v716" rel="stylesheet"/>
+<script>
+window.MathJax = window.MathJax || {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link href="assets/css/site-layout.css?v=20261014-single-site-v78" rel="stylesheet"/>
+<link href="https://varingjar.com/implementation.html" rel="canonical"/><meta content="Væringjar II" property="og:site_name"/><meta content="Software first. Hardware second. — Væringjar II" property="og:title"/><meta content="Væringjar II implementation roadmap: mathematical control model to C++ core, ROS 2 components, RISC-V control subcore and SoC IP." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/implementation.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Software first. Hardware second. — Væringjar II" name="twitter:title"/><meta content="Væringjar II implementation roadmap: mathematical control model to C++ core, ROS 2 components, RISC-V control subcore and SoC IP." name="twitter:description"/><link href="assets/css/modular-reading.css?v=20260928-scientific-v3" rel="stylesheet"/><link href="https://varingjar.com/implementation.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/implementation.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/implementation.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/implementation.html" hreflang="x-default" rel="alternate"/><link href="assets/css/research-workspace.css?v=20261014-research-wiki-v711" rel="stylesheet"/>
+<link href="assets/css/strict-template.css?v=20261030-about-v3" rel="stylesheet"/>
+<link href="assets/css/implementation-evidence.css?v=20261021-readability-v716" rel="stylesheet"/><script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="assets/js/wide-view.js?v=20261021-wide-v2"></script></head>
+<body class="site-page strict-template-v1 strict-template-v2 modular-ui module-hub-page">
+<header class="site-header"><nav aria-label="Primary navigation" class="nav"><a class="brand" href="index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a><button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button><div class="nav-links"><a href="programme.html">Framework</a><a href="research.html">Evidence</a><a class="active" href="implementation.html">Build</a><a href="teaching.html">Teaching</a><a href="collaboration.html">Collaborate</a></div><div aria-label="Language" class="lang-switch"><a aria-current="page" class="active" data-lang="en" href="implementation.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="uk/implementation.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="de/implementation.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header>
+<!-- RESEARCH-WORKSPACE:START -->
+<div class="research-workspace">
+<aside class="research-sidebar" aria-label="Build contents"><div class="research-sidebar-inner"><a class="research-skip" href="#science-article">Skip to article ↓</a><div class="research-tree-title">Build contents</div><label class="research-search-label"><span class="sr-only">Find a section…</span><input class="research-tree-search" type="search" placeholder="Find a section…" aria-label="Find a section…"/></label><nav aria-label="Build contents" class="research-tree"><details open=""><summary>Build</summary><div class="research-tree-group"><a aria-current="page" class="research-tree-link is-active" href="implementation.html">Build overview</a><a class="research-tree-link" href="implementation/runtime-questions.html">Four runtime questions</a><a class="research-tree-link" href="implementation/software-reference.html">Reference software: C++ → ROS 2</a><a class="research-tree-link" href="implementation/hardware-path.html">Hardware path: RISC-V → SoC IP</a><a class="research-tree-link" href="implementation/validation-limits.html">Validation limits</a></div></details><details open=""><summary>Application domains</summary><div class="research-tree-group"><a class="research-tree-link" href="applications.html">Domains overview</a><a class="research-tree-link" href="applications/robotics.html">Robotics</a><a class="research-tree-link" href="applications/aerospace.html">Aerospace</a><a class="research-tree-link" href="applications/case-criteria.html">Case criteria</a></div></details><details open=""><summary>Related sections</summary><div class="research-tree-group"><a class="research-tree-link" href="programme.html">Framework →</a><a class="research-tree-link" href="research.html">Evidence →</a></div></details></nav></div></aside>
+<!-- RESEARCH-WORKSPACE:MAIN -->
+<main class="modular-main"><section class="module-hub-hero implementation-evidence-intro"><div class="container narrow"><div class="eyebrow">IMPLEMENTATION · DISSERTATION, CHAPTER 4</div><h1>How the system is reconfigured</h1><p class="lead">Six ROS2 framework modules, a configuration catalogue, and three independent real-time constraints. The architecture and its timing analysis are documented in Chapter 4 of the dissertation.</p></div></section><section aria-labelledby="implementation-architecture-title" class="implementation-evidence"><div class="container narrow">
+<p class="evidence-label">§ 4.2–4.7 · ARCHITECTURE</p>
+<h2 id="implementation-architecture-title">More than switching. A complete control loop.</h2>
+<p class="evidence-intro">The system is modelled across four abstraction levels: mission → function → service → resource. Six modules cover state assessment, decision making, safe switching, and stability supervision.</p>
+<div class="implementation-abstraction"><strong>Mission</strong><span aria-hidden="true"> → </span><strong>Function</strong><span aria-hidden="true"> → </span><strong>Service</strong><span aria-hidden="true"> → </span><strong>Resource</strong></div>
+<div class="evidence-table-wrap"><table class="evidence-table"><thead><tr><th>Module</th><th>Role</th></tr></thead><tbody><tr><th scope="row">HealthMonitor</th><td>Assesses physical resource health and diagnostic inputs.</td></tr><tr><th scope="row">DecisionEngine</th><td>Selects an admissible configuration for the current mission and state.</td></tr><tr><th scope="row">ReconfigManager</th><td>Manages transitions, Hot Standby and Rollback.</td></tr><tr><th scope="row">StabilityAnalyzer</th><td>Checks stability conditions of configurations and transitions.</td></tr><tr><th scope="row">ConfigStore</th><td>Stores the catalogue of available, verified configurations.</td></tr><tr><th scope="row">SafetySupervisor</th><td>Independently supervises safety and inadmissible operating modes.</td></tr></tbody></table></div>
+</div></section>
+<section aria-labelledby="implementation-timing-title" class="implementation-evidence timing-evidence"><div class="container narrow">
+<p class="evidence-label">§ 4.10 · REAL-TIME ANALYSIS</p>
+<h2 id="implementation-timing-title">What the timing analysis actually shows</h2>
+<p class="evidence-intro">Functional correctness does not guarantee a timely result. The dissertation evaluates task schedulability, response to a single fault, and the admissibility of repeated reconfigurations.</p>
+<div class="evidence-table-wrap"><table class="evidence-table evidence-timing"><thead><tr><th>Property</th><th>Result / requirement</th><th>Interpretation</th></tr></thead><tbody><tr><th scope="row">Task schedulability</th><td>U = 0.396; bound 0.735</td><td>The sufficient schedulability condition holds for the defined task set.</td></tr><tr><th scope="row">Task response</th><td>max R/D = 0.176</td><td>All modelled tasks meet their deadlines.</td></tr><tr><th scope="row">DEGRADED reaction</th><td>54.80 ms; required 50 ms</td><td>The present timing budget does not meet this requirement.</td></tr><tr><th scope="row">Hot Standby switch</th><td>35 ms; must be ≤ 30.2 ms</td><td>Switching latency must be reduced; the requirement must not be relaxed.</td></tr></tbody></table></div>
+<p class="timing-constraint">Three independent conditions: task deadlines; end-to-end fault response; and a lower bound on the interval between successive reconfigurations (Equation 4.106).</p>
+<p class="evidence-source">Source: D. O. Humennyi, dissertation, §§ 4.2–4.7, 4.10.3–4.10.6, Equations (4.98)–(4.106). These figures describe the specified analytical model, not an arbitrary hardware product.</p>
+</div></section><section class="module-hub"><div class="container narrow"><div class="module-hub-head"><div><div class="eyebrow">ENGINEERING DETAIL &amp; NEXT STEPS</div><h2>Software reference, verification and hardware path</h2><p>Related engineering material. Planned stages are distinguished from the results documented in the dissertation.</p></div><div class="module-count">04</div></div><div class="module-grid"><a class="module-card" href="implementation/runtime-questions.html"><span class="module-index">01</span><div><h3>Four runtime questions.</h3><p>Stage 2 starts only after the software model is verified against the mathematical specification.</p></div><span class="module-open">Open module →</span></a><a class="module-card" href="implementation/software-reference.html"><span class="module-index">02</span><div><h3>Reference software: C++ core → ROS 2.</h3><p>Plant, health, capability, decision, stability and reconfiguration logic remain independent of ROS 2.</p></div><span class="module-open">Open module →</span></a><a class="module-card" href="implementation/hardware-path.html"><span class="module-index">03</span><div><h3>Planned hardware path: RISC-V → SoC IP.</h3><p>Capability, stability and transition supervision migrate from the software reference without changing their interfaces.</p></div><span class="module-open">Open module →</span></a><a class="module-card" href="implementation/validation-limits.html"><span class="module-index">04</span><div><h3>What must be demonstrated before the next stage?</h3><p>The implementation must stay within defined error bounds relative to the mathematical golden model.</p></div><span class="module-open">Open module →</span></a></div><div class="module-related"><span>Related routes</span><a href="research.html">Evidence</a><a href="applications.html">Domains</a></div></div></section></main>
+</div>
+<!-- RESEARCH-WORKSPACE:END -->
+<footer class="site-footer">
+<div class="container footer-grid">
+<div>
+<strong>VÆRINGJAR II</strong>
+<p>Independent research programme on survivability-oriented control.</p>
+<a class="footer-about" href="about.html">About the author →</a></div>
+<div>
+<span>AUTHOR</span>
+<b style="display:block;margin-top:6px">Dmytro Humennyi · Дмитро Гуменний</b>
+</div>
+<div>
+<span>CONTACT</span>
+<b style="display:block;margin-top:6px">dhumennyi@edu.kpi.ua</b>
+</div>
+</div>
+<a class="footer-privacy" href="privacy.html">Privacy</a></footer>
+<script src="assets/js/site.js?v=20261014-theme-v710"></script>
+<script src="assets/js/locale.js"></script><script defer src="assets/js/research-workspace.js?v=20261014-research-wiki-v711"></script>
+<script defer src="assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="assets/js/site-nav.js?v=20261028-nav3"></script></body></html>
