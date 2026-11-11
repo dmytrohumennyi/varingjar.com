@@ -23,11 +23,12 @@
 <div class="nav-links"><a href="../../programme.html">Modell</a><a href="../../research.html">Evidenz</a><a href="../../implementation.html">Implementierung</a><a class="active" href="../../teaching.html">Lehre</a><a href="../../collaboration.html">Mitwirken</a></div>
 <div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-15.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../../uk/teaching/embedded-software-engineering/lecture-15.html?lang=uk" hreflang="uk" lang="uk">UA</a><a aria-current="page" class="active" data-lang="de" href="lecture-15.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Lehre / Einheit 15 · 10.11.2026</div><h1>Vom Kanban-Board zu Trello und Jira: Aufgabenstatus, Kanban und Scrum</h1><p class="lead reader-lead">Woher To Do, In Progress, Hold, Review und Done stammen, warum offline geplant wird, wie sich Trello von Jira unterscheidet und wann Kanban oder Iterationen passen.</p><div class="reader-badges"><span>10.11.2026</span><span>Einheit 15 / 16</span><span>01:10:59</span><span>Vorlesung</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Kursübersicht →</a><a class="btn btn-primary" href="#full-notes">Vollständige Notizen ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODUL 05 · REQUIREMENTS &amp; ARCHITECTURE / 15 · 10.11.2026</div><div class="course-context-nav"><a class="previous" href="lecture-14.html">Vorherige · 14</a><span class="current">15</span><a class="next" href="lecture-16.html">Als Nächstes · 16</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Kurschronologie</div><h2>Ingenieurnotizen</h2><p class="reader-intro">Woher To Do, In Progress, Hold, Review und Done stammen, warum offline geplant wird, wie sich Trello von Jira unterscheidet und wann Kanban oder Iterationen passen.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Die Fabriktafel: fünf Status</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Offline-Planung und SAFe</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Trello oder Jira</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>Kanban oder Scrum</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Vollständige Unterrichtsnotizen</div><h2>Vollständige Unterrichtsnotizen</h2><p class="lecture-notes-intro">Vollständige deutschsprachige Fachmitschrift auf Grundlage des ukrainischen Transkripts vom 10. November. Die Diagramme stammen von der Redaktion nach den Erklärungen des Dozenten; die Erfahrung in Automobilunternehmen ist persönliche Praxis des Dozenten, ohne Firmennamen.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R15-2026-11-10.md">Ukrainische Originalnotizen →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-11-10.md">Ukrainisches Rohtranskript →</a></div><article class="lecture-article lecture-notes-content" lang="de"><h1>Einheit 15. Vom physischen Kanban-Board zu Trello und Jira: Aufgabenstatus, Kanban und Scrum</h1>
 <blockquote>
-<p><strong>10. November 2026 · Vorlesung · 1 Std. 11 Min.</strong> Erstellt auf Grundlage des automatischen Transkripts <code>IgorSikorskyKPI_L10_101126.mp4</code>. Dies ist eine redigierte Lernmitschrift, kein Wortprotokoll: offensichtliche Erkennungsfehler sind korrigiert, Begriffe an frühere Einheiten angeglichen. Individuelle Fragen von Studierenden zu Noten sowie Namen von Studierenden und Dritten werden nicht veröffentlicht. Die Erfahrung in großen Automobilunternehmen ist <strong>persönliche Praxis des Dozenten</strong>, ohne Firmennamen. Redaktionelle Präzisierungen und Diagramme der Redaktion sind gesondert gekennzeichnet.</p>
+<p><strong>10. November 2026 · Vorlesung · 1 Std. 11 Min.</strong> Erstellt auf Grundlage des automatischen Transkripts und der <strong>Videoaufzeichnung</strong> <code>IgorSikorskyKPI_L10_101126.mp4</code>: Was der Dozent auf dem Bildschirm zeigte oder an die Tafel zeichnete, ohne es auszusprechen, wurde aus dem Video ergänzt. Dies ist eine redigierte Lernmitschrift, kein Wortprotokoll: offensichtliche Erkennungsfehler sind korrigiert, Begriffe an frühere Einheiten angeglichen. Individuelle Fragen von Studierenden zu Noten sowie Namen von Studierenden und Dritten werden nicht veröffentlicht. Die Erfahrung in großen Automobilunternehmen ist <strong>persönliche Praxis des Dozenten</strong>, ohne Firmennamen. Redaktionelle Präzisierungen und Diagramme der Redaktion sind gesondert gekennzeichnet.</p>
 </blockquote>
 <h2>0. Organisatorisches</h2>
 <ul>
 <li>Die ersten Minuten galten einer individuellen Frage zu Punkten im Universitätssystem „Campus“. Der Dozent versprach, über die Systemadministratoren zu klären, warum sich der Eintrag geändert hat, und merkte an, dass solchen Systemen eine transparente <strong>Änderungshistorie</strong> fehlt – „wie in Git nachsehen, wer den Commit gemacht hat“. Details werden nicht veröffentlicht.</li>
+<li>Danach ging der Dozent kurz die veröffentlichte Mitschrift von Einheit 14 auf der Kurswebsite durch: Phasen und Gates, HARA, PoC, Aufbaustufen und den detaillierten Plan von EPIC 1 – daraus stammen die Aufgaben für das heutige Board.</li>
 <li>Sicherheitshinweis bei Luftalarm: „Engineering funktioniert, solange der Ingenieur lebt.“</li>
 <li>Die zweite Leistungsüberprüfung ist ein Teamprojekt (siehe Abschnitt 6). Empfohlene Frist: <strong>Ende November</strong>.</li>
 <li>Nach der zweiten Überprüfung folgt eine große <strong>individuelle Berechnungs- und Entwurfsarbeit</strong> mit etwa 60 Punkten: noch einmal den ganzen Weg gehen – Vorbereitung auf eine Konferenz, Teilnahme, simuliertes Kundengespräch, Präsentation, Follow-up, Proposal und Teamzerlegung. Damit lassen sich auch versäumte Einheiten nachholen.</li>
@@ -37,6 +38,7 @@
 <p>Die Logik von Jira, Trello, GitHub Projects oder jedem Kanban-Board stammt aus der Fabrik. Die Leitung musste den <strong>tatsächlichen Fortschritt jeder Aufgabe</strong> sehen, nicht nur, dass „irgendetwas getan wird“.</p>
 <p>Beispiel des Dozenten: Der Dreher Iwan soll 10 Teile drehen. Er braucht Zeichnungen und Ausrüstung, erledigt die Arbeit und übergibt sie einem Ingenieur zur Prüfung. Ist alles in Ordnung, ist die Arbeit erledigt; wenn nicht, geht sie zur Nacharbeit zurück. Fehlen Rohlinge, muss die Arbeit angehalten werden.</p>
 <p>So entstand in Fabriken eine Tafel mit Spalten; jede Aufgabe stand auf einem eigenen Zettel:</p>
+<p>Diese Tafel zeichnete der Dozent live mit Markern auf das Whiteboard in seinem Büro und zeigte sie über die Kamera: Statusspalten und rosa Haftnotizen, die er beim Beispiel mit Iwan zwischen den Spalten umsetzte.</p>
 <div class="table-scroll"><table>
 <thead>
 <tr>
@@ -80,13 +82,49 @@
 <p>Der Kern: sehr einfaches Management und <strong>Rückverfolgbarkeit</strong> – man sieht, wohin sich jede Anweisung bewegt, bei wem sie liegt und wodurch sie blockiert ist.</p>
 <h2>2. Das physische Board heute: Brainstorming und Offline-Planung</h2>
 <p>Der Dozent zeigte Fotos seiner Arbeitstafeln aus der nicht allzu fernen Vergangenheit bei großen Automobilunternehmen in Skandinavien (ohne Namen). Dort war das Kanban mit Haftnotizen ausgelegt, Farben markierten Teams und Risiken, Aufgaben wurden auf Teams verteilt. Auf den Nachbartafeln stand Brainstorming: eine Fahrzeugskizze, Differentialgleichungen, Kräfte, Momente, Diagramme.</p>
+<p>So war eine solche Sprint-Tafel aufgebaut (nach dem in der Einheit gezeigten Foto; das Foto selbst wird nicht veröffentlicht, da es Arbeitsmaterial des Auftraggebers ist):</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linke Spalte</td>
+<td><strong>Backlog</strong> des Teams</td>
+</tr>
+<tr>
+<td>Sprint-Spalten</td>
+<td>Zweiwöchige Sprints, beschriftet mit Kalenderwochen (W11–12, W13–14 …)</td>
+</tr>
+<tr>
+<td>Kopf jedes Sprints</td>
+<td><strong>Kapazität</strong> des Teams in Punkten, die Kapazität eines Teilteams und die <strong>geplante Last</strong></td>
+</tr>
+<tr>
+<td>Haftnotizen</td>
+<td>Farben für Arbeitsarten; auf jeder Notiz ein Kurztitel und eine Punkteschätzung</td>
+</tr>
+<tr>
+<td>Gestrichelte Linie</td>
+<td>Trennt Geplantes von dem, was womöglich nicht hineinpasst</td>
+</tr>
+<tr>
+<td>Seitenfeld</td>
+<td>Arbeitsprodukte für Anforderungen und Verifikation: SRS, Traceability, Software-Testplan und Testbericht</td>
+</tr>
+</tbody>
+</table></div>
+<p>Es ist dieselbe Logik von Kapazität und Last, die Einheit 16 durcharbeitet.</p>
 <p>Persönliche Planungstreffen sind laut Dozent wieder die Norm:</p>
 <ul>
 <li>Online-Engineering ist dem Offline-Engineering in Qualität und Tempo deutlich unterlegen – „Engineering passiert in der Küche, wenn Ingenieure zusammen Kaffee trinken“;</li>
 <li>Menschen müssen sich sehen, die Hand geben und die nächste Iteration oder das nächste Inkrement „physisch durchsprechen“;</li>
 <li>nach gemeinsamer Planung fällt die Remote-Kommunikation leichter.</li>
 </ul>
-<p>Er verwies auf das <strong>Scaled Agile Framework (SAFe)</strong>: Einmal im Quartal treffen sich die Teams persönlich, planen den Arbeitsumfang, analysieren Risiken, zerlegen große Vorhaben in Stories, Tasks und Subtasks, weisen Personen zu und schätzen – erst danach kehren sie in ihre Büros und Unternehmen in anderen Ländern zurück.</p>
+<p>Er verwies auf das <strong>Scaled Agile Framework (SAFe)</strong>: Einmal im Quartal treffen sich die Teams persönlich, planen den Arbeitsumfang, analysieren Risiken, zerlegen große Vorhaben in Stories, Tasks und Subtasks, weisen Personen zu und schätzen – erst danach kehren sie in ihre Büros und Unternehmen in anderen Ländern zurück. In der Einheit öffnete der Dozent die interaktive SAFe-Karte (Big Picture, Konfiguration Core SAFe) und zeigte, dass jedes Element auf einen eigenen Artikel verlinkt – etwa zur Rolle der Business Owners.</p>
 <blockquote>
 <p><strong>Redaktionelle Präzisierung zu SAFe.</strong> In SAFe heißt dieses Ereignis <strong>PI Planning</strong>: in der Regel eine zweitägige Planung des gesamten Agile Release Train, die alle 8–12 Wochen zu Beginn jedes Planning Interval (PI) stattfindet. Physische Präsenz ist erwünscht, SAFe erlaubt aber auch ein verteiltes Format; entscheidend ist, dass diejenigen planen, die die Arbeit ausführen. Der Rhythmus hängt also am PI, nicht am Epic: Ein Epic ist in SAFe eine große Initiative, die mehrere PIs umfassen kann.</p>
 </blockquote>
@@ -138,7 +176,11 @@
 </tbody>
 </table></div>
 <p>Ein Prioritätsfeld fand der Dozent auf der Karte nicht und schlug einen Kniff vor: <strong>Aufgaben höherer Priorität in der Liste nach oben schieben</strong>.</p>
+<p>Das Demo-Board <strong>demoBoard</strong> hatte die Listen <em>To Do, InProg, Hold, Review, done</em>; Karten wurden die ersten Etappen des EPIC-1-Plans aus Einheit 14 – „Informationen über Objekt und Umgebung sammeln (≈ F&amp;E)“, „Systemanforderungen entwickeln und freigeben“, „Architekturbeschreibung des Systems“. Der ersten Karte wies sich der Dozent selbst zu, vergab das Label <em>doc</em>, die Daten 10.–11. November, eine Checkliste <em>steps</em> mit dem Punkt „nach vorhandenen Arbeiten suchen“ (mit eigener Frist und eigenem Bearbeiter) und einen Kommentar mit @-Erwähnung eines Board-Mitglieds.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l15-trello-card.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l15-trello-card.webp" alt="Trello-Karte „Informationen über Objekt und Umgebung sammeln (≈ F&E)“ im Status Review: Mitglied, Label doc, Daten 10.–11. November, Checkliste steps, Kommentar mit Erwähnung und Aktivitätsprotokoll mit Verschiebungen zwischen Listen" loading="lazy"/></a><figcaption class="diagram-note">Abb. 15.2. Die Karte aus der Einheit: Label, Daten, Checkliste, Kommentar mit Erwähnung und Aktivitätsprotokoll. Bildschirmfoto aus der Videoaufzeichnung.</figcaption></figure>
+
 <blockquote>
+<p><strong>Redaktionelle Präzisierung.</strong> Das Bildschirmfoto zeigt, dass Trello sehr wohl ein <strong>Aktivitätsprotokoll</strong> der Karte führt: Anlegen, Beitritt eines Mitglieds, Änderung der Frist und jede Verschiebung zwischen Listen („moved this card from To Do to InProg“). Was Trello fehlt, sind Regeln, die Übergänge verbieten: Das Protokoll hält nur fest, wer was getan hat. Ein neues Konto erhält außerdem eine Testphase von Trello Premium („14 days left“ auf dem Bildschirm), sodass manche Funktionen in der Demo nur vorübergehend verfügbar sind.</p>
 <p><strong>Redaktionelle Präzisierung.</strong> Trello hat tatsächlich kein eingebautes Prioritätsfeld. Priorität wird über Labels, die Reihenfolge der Karten in der Liste oder ein Custom Field (in kostenpflichtigen Plänen oder über Power-Ups) ausgedrückt.</p>
 </blockquote>
 <p>Karten werden per Drag &amp; Drop bewegt: übernommen → In Progress, fertig → Review mit dem Kommentar „bitte prüfen“, und der Reviewer verschiebt sie nach Done oder mit Anmerkungen zurück nach In Progress. Benachrichtigungen kommen per E-Mail und in der mobilen App.</p>
@@ -155,7 +197,10 @@
 <li>Automatisierung und Filter;</li>
 <li><strong>Workflow</strong> – Regeln, nach denen eine Aufgabe ihren Status ändern darf. Trello hat solche Regeln nicht, „und das ist ein Albtraum – so sollte es nicht sein“.</li>
 </ul>
-<p>In der Einheit legte der Dozent eine Jira-Site für ein Demo-Projekt an. Schon beim Anlegen fragt Jira nach dem Ansatz: <strong>Kanban, Scrum</strong> oder eine Vorlage für Business-Teams. Zuerst muss man also den Unterschied verstehen. Die Konfiguration von Jira wurde auf die nächste Einheit verschoben.</p>
+<p>In der Einheit legte der Dozent eine Jira-Site für ein Demo-Projekt an. Schon beim Anlegen fragt Jira nach dem Ansatz: <strong>Kanban, Scrum</strong> oder eine Vorlage für Business-Teams. So sah dieser Bildschirm aus:</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l15-jira-templates.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l15-jira-templates.webp" alt="Jira-Bildschirm „Select a template for your first space“ mit drei Vorlagen: Kanban, Scrum und Business" loading="lazy"/></a><figcaption class="diagram-note">Abb. 15.3. Auswahl der Vorlage für den ersten Jira-Space: Kanban – ein einfaches Board zur Visualisierung des Prozesses, Scrum – Arbeit in kurzen, wiederkehrenden Zeitblöcken, Business – für Business-Teams. Bildschirmfoto aus der Videoaufzeichnung.</figcaption></figure>
+
+<p>Zuerst muss man also den Unterschied verstehen. Die Konfiguration von Jira wurde auf die nächste Einheit verschoben.</p>
 <blockquote>
 <p><strong>Redaktionelle Präzisierung.</strong> Seit September 2025 heißen „Projekte“ in Jira Cloud <strong>„Spaces“</strong>. Nur der Name hat sich geändert; Workflows, Filter und Integrationen funktionieren wie bisher.</p>
 </blockquote>
