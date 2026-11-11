@@ -74,7 +74,8 @@ SHORT = {
            "contact.html": "Kontakt"},
 }
 
-LECTURES = [f"teaching/embedded-software-engineering/lecture-{i:02d}.html" for i in range(1, 15)]
+# every published session is picked up automatically (lecture-NN.html in the course folder)
+LECTURES = sorted(str(p.relative_to(ROOT)) for p in (ROOT / "teaching/embedded-software-engineering").glob("lecture-[0-9][0-9].html"))
 STRUCT = [
     ("model", [
         ("programme.html", []),

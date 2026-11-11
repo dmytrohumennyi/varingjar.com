@@ -1,0 +1,160 @@
+/* =====================================================================
+ VÆRINGJAR II — THEME-VJ v1 (2026-11-11)
+ Visual identity layer: "friends of ContiMech", not a subdivision.
+ Shared grammar with contimech.org: black or paper ground, restraint, large type,
+ square outline buttons, hairline rules, tracked uppercase labels and navigation.
+ Own signature: wide Unbounded display face in sentence case (Latin + Cyrillic),
+ IBM Plex Sans / Mono for reading, one muted green accent, line drawings.
+
+ LOAD ORDER: this file is linked LAST on every page, after strict-template.css and any
+ page-local file, so that both themes win without editing the older layers.
+ Specificity: every rule starts with the prefix html:is(:root,#vj) body.strict-template-v1, which carries id-level weight through :is(),
+ so it outranks the class-based selectors (and their !important) of earlier layers.
+ Colours live only in the --vj-* tokens below; dark is the default, light is opt-in
+ through the existing theme control (html[data-theme="light"]).
+ COPIES: assets/, uk/assets/ and de/assets/ hold byte-identical copies, like the
+ other shared files. Hardcoded greens of the old palette were recoloured in place
+ (tools/degreen.py) and point to var(--vj-accent) where they were accents.
+ ===================================================================== */
+@import url("vj-fonts.css");
+
+/* ---------- tokens ---------- */
+html{
+  --vj-accent:#8cc49a;--vj-accent-soft:rgba(140,196,154,.13);
+  --vj-bg:#000;--vj-surface:#08090a;--vj-surface-2:#101113;
+  --vj-ink:#f2f2f0;--vj-text:#c9cbcf;--vj-muted:#8d9096;
+  --vj-rule:rgba(255,255,255,.14);--vj-rule-strong:rgba(255,255,255,.42);
+  --vj-on-ink:#000;--vj-hover:rgba(255,255,255,.03);
+  --vj-display:"VJ Unbounded","Helvetica Neue",Arial,sans-serif;
+  --vj-sans:"VJ Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --vj-mono:"VJ Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+html[data-theme="light"]{
+  --vj-accent:#2f6a45;--vj-accent-soft:rgba(47,106,69,.10);
+  --vj-bg:#f4f4f0;--vj-surface:#fbfbf8;--vj-surface-2:#ecece7;
+  --vj-ink:#0f1110;--vj-text:#2a2d2b;--vj-muted:#5d625f;
+  --vj-rule:rgba(0,0,0,.14);--vj-rule-strong:rgba(0,0,0,.45);
+  --vj-on-ink:#fff;--vj-hover:rgba(0,0,0,.03);
+}
+/* map the site's existing tokens onto --vj-* (both themes) */
+html:is(:root,#vj),html:is(:root,#vj) body,html:is(:root,#vj) body.strict-template-v1{
+  --bg:var(--vj-bg);--text:var(--vj-text);--muted:var(--vj-muted);--white:var(--vj-ink);
+  --phosphor:var(--vj-accent);--amber:var(--vj-accent);--red:var(--vj-ink);
+  --line:var(--vj-rule);--line-strong:var(--vj-rule-strong);
+  --terminator-green:var(--vj-accent);--terminator-green-hot:var(--vj-ink);--terminator-green-soft:var(--vj-accent-soft);
+  --terminator-line:var(--vj-rule);--terminator-line-strong:var(--vj-rule-strong);--terminator-dim:var(--vj-muted);--terminator-amber:var(--vj-accent);
+  --science-bg:var(--vj-bg);--science-bg-2:var(--vj-bg);--science-surface:var(--vj-bg);--science-surface-2:var(--vj-surface);
+  --science-panel:var(--vj-surface);--science-panel-2:var(--vj-surface-2);
+  --science-ink:var(--vj-ink);--science-text:var(--vj-text);--science-muted:var(--vj-muted);
+  --science-accent:var(--vj-accent);--science-accent-soft:var(--vj-accent-soft);
+  --science-amber:var(--vj-accent);--science-red:var(--vj-ink);--science-grid:transparent;--science-shadow:none;--science-radius:0;
+  --science-line:var(--vj-rule);--science-line-strong:var(--vj-rule-strong);
+  --science-sans:var(--vj-sans);--science-mono:var(--vj-mono);--mono:var(--vj-mono);
+  --strict-radius:0px;
+  --exp-panel:transparent;--exp-panel-2:var(--vj-hover);--exp-grid:var(--vj-rule);
+  color-scheme:dark;
+}
+html:is(:root,#vj)[data-theme="light"],html:is(:root,#vj)[data-theme="light"] body{color-scheme:light}
+
+/* ---------- ground ---------- */
+html:is(:root,#vj){background:var(--vj-bg)}
+html:is(:root,#vj) body.strict-template-v1{background:var(--vj-bg)!important;background-image:none!important;font-family:var(--vj-sans)!important;color:var(--vj-text)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(main,section,article,aside,header,footer,div,figure,nav)::before,
+html:is(:root,#vj) body.strict-template-v1 :is(main,section,article,aside,header,footer,div,figure,nav)::after{background-image:none!important;box-shadow:none!important}
+html:is(:root,#vj) body.strict-template-v1 :is(main,section,article,aside,[class*="hero"],[class*="intro"]){background-image:none!important;box-shadow:none!important}
+html:is(:root,#vj) body.strict-template-v1 :is(main,.first-routes,.first-method,.site-footer,[class*="footer"],[class*="hero"]){background-color:var(--vj-bg)!important}
+html:is(:root,#vj) body.strict-template-v1 ::selection{background:var(--vj-accent);color:var(--vj-on-ink)}
+html:is(:root,#vj) body.strict-template-v1 :focus-visible{outline:1px solid var(--vj-accent)!important;outline-offset:3px}
+
+/* ---------- type ---------- */
+html:is(:root,#vj) body.strict-template-v1 :is(h1,h2){font-family:var(--vj-display)!important;font-weight:500!important;text-transform:none!important;color:var(--vj-ink)!important;letter-spacing:-.015em!important}
+html:is(:root,#vj) body.strict-template-v1 h1{font-size:clamp(2.1rem,1.1rem + 2.4vw,3.2rem)!important;line-height:1.08!important}
+html:is(:root,#vj) body.strict-template-v1 h2{font-size:clamp(1.4rem,1rem + 1.1vw,2rem)!important;line-height:1.15!important}
+html:is(:root,#vj) body.strict-template-v1 :is(h3,h4,h5){font-family:var(--vj-sans)!important;font-weight:600!important;text-transform:none!important;letter-spacing:0!important;color:var(--vj-ink)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(p,li,dd,dt,td,th,figcaption,summary,label,.lead,blockquote){font-family:var(--vj-sans)}
+html:is(:root,#vj) body.strict-template-v1 :is(p,li,dd,td,.lead,figcaption){color:var(--vj-text)}
+html:is(:root,#vj) body.strict-template-v1 :is(strong,b){color:var(--vj-ink)}
+html:is(:root,#vj) body.strict-template-v1 :is(code,pre,kbd,samp){font-family:var(--vj-mono)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(pre){background:var(--vj-surface)!important;border:1px solid var(--vj-rule)!important;border-radius:0!important;color:var(--vj-ink)!important}
+html:is(:root,#vj) body.strict-template-v1 :not(pre)>code{background:var(--vj-surface-2)!important;color:var(--vj-ink)!important;border-radius:0!important}
+html:is(:root,#vj) body.strict-template-v1 a{color:var(--vj-ink);text-decoration-color:var(--vj-rule-strong)}
+html:is(:root,#vj) body.strict-template-v1 a:hover{color:var(--vj-accent)}
+html:is(:root,#vj) body.strict-template-v1 :is(.muted,.pub-note,.pub-meta,.meta,.diagram-note,.claim-note,.roadmap-note,.cases-credit-note,.i18n-note,.about-ledger-note,.collab-note,.contact-mail-note){color:var(--vj-muted)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.eyebrow,.first-routes-kicker,[class*="kicker"],[class*="eyebrow"],.crumbs,[class*="breadcrumb"]){font-family:var(--vj-sans)!important;font-weight:500!important;font-size:.74rem!important;letter-spacing:.22em!important;text-transform:uppercase!important;color:var(--vj-muted)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.eyebrow,[class*="kicker"],[class*="eyebrow"])::before{background:var(--vj-accent)!important;border-color:var(--vj-accent)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.eyebrow,[class*="kicker"]) a{color:var(--vj-muted)!important}
+
+/* ---------- header ---------- */
+html:is(:root,#vj) body.strict-template-v1 .site-header{background:var(--vj-bg)!important;border:0!important;border-bottom:1px solid var(--vj-rule)!important;box-shadow:none!important;backdrop-filter:none!important}
+html:is(:root,#vj) body.strict-template-v1 .site-header::before{display:none!important}
+html:is(:root,#vj) body.strict-template-v1 .brand-copy{font-family:var(--vj-display)!important;font-weight:600!important;font-size:1rem!important;letter-spacing:.14em!important;color:var(--vj-ink)!important;white-space:nowrap}
+html:is(:root,#vj) body.strict-template-v1 .brand-copy small{font-family:var(--vj-sans)!important;font-weight:500!important;font-size:.62rem!important;letter-spacing:.24em!important;color:var(--vj-muted)!important}
+html:is(:root,#vj):not([data-theme="light"]) body .brand-emblem{filter:grayscale(1) brightness(1.5)}
+html:is(:root,#vj)[data-theme="light"] body .brand-emblem{filter:grayscale(1)}
+html:is(:root,#vj) body.strict-template-v1 .nav-links a{font-family:var(--vj-sans)!important;font-size:.76rem!important;font-weight:500!important;letter-spacing:.2em!important;text-transform:uppercase!important;color:var(--vj-ink)!important;background:transparent!important;border:0!important;border-bottom:1px solid transparent!important;border-radius:0!important;box-shadow:none!important}
+html:is(:root,#vj) body.strict-template-v1 .nav-links a:hover{border-bottom-color:var(--vj-rule-strong)!important}
+html:is(:root,#vj) body.strict-template-v1 .nav-links a:is([aria-current="page"],.active){border-bottom-color:var(--vj-accent)!important}
+html:is(:root,#vj) body.strict-template-v1 .site-header :is(button,[class*="search"],[class*="theme"]){border:1px solid var(--vj-rule)!important;border-radius:0!important;background:transparent!important;color:var(--vj-ink)!important;box-shadow:none!important;font-family:var(--vj-sans)!important;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem!important}
+html:is(:root,#vj) body.strict-template-v1 .site-header :is(button,[class*="search"],[class*="theme"]):hover{border-color:var(--vj-rule-strong)!important}
+html:is(:root,#vj) body.strict-template-v1 .site-header svg{stroke:currentColor}
+html:is(:root,#vj) body.strict-template-v1 .lang-switch a{color:var(--vj-muted)!important;background:transparent!important;border-radius:0!important;font-family:var(--vj-sans)!important;letter-spacing:.14em;font-size:.72rem!important}
+html:is(:root,#vj) body.strict-template-v1 .lang-switch a:is(.active,[aria-current]){color:var(--vj-ink)!important;box-shadow:inset 0 -1px 0 var(--vj-accent)!important}
+
+/* ---------- buttons: square outline, 1 px (ContiMech: 2 px, all white) ---------- */
+html:is(:root,#vj) body.strict-template-v1 :is(.first-main-action,.first-secondary-action,.button,.btn,[class*="action-primary"],[class*="action-secondary"]){border:1px solid var(--vj-ink)!important;border-radius:0!important;background:transparent!important;color:var(--vj-ink)!important;font-family:var(--vj-sans)!important;font-weight:500!important;font-size:.74rem!important;letter-spacing:.2em!important;text-transform:uppercase!important;box-shadow:none!important;padding:15px 28px!important;transition:background .25s,color .25s,border-color .25s}
+html:is(:root,#vj) body.strict-template-v1 :is(.first-main-action,[class*="action-primary"]){border-color:var(--vj-accent)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.first-main-action,.first-secondary-action,.button,.btn,[class*="action-primary"],[class*="action-secondary"]):hover{background:var(--vj-ink)!important;border-color:var(--vj-ink)!important;color:var(--vj-bg)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.first-main-action,.first-secondary-action,.button,.btn,[class*="action-primary"],[class*="action-secondary"]) *{color:inherit!important}
+
+/* ---------- tiles, cards, panels: hairlines only ---------- */
+html:is(:root,#vj) body.strict-template-v1 :is(.first-route,.first-method-link,[class*="card"],.equation-panel,.paradigm-panel,.hierarchy-panel,.module-tile,.module-prev,.module-next,details,.research-evolution-callout){background:transparent!important;border-radius:0!important;box-shadow:none!important;border-color:var(--vj-rule)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.first-route,.first-method-link,[class*="card"],[class*="tile"],.module-prev,.module-next):hover{border-color:var(--vj-rule-strong)!important;background:var(--vj-hover)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.first-route-no,.first-method-no,.programme-step-number,.reader-num,.card-num,.case-index,.pub-index){color:var(--vj-accent)!important;font-family:var(--vj-mono)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.first-route-text b,.first-route-text strong,.first-method-copy b,.first-method-copy strong){font-family:var(--vj-sans)!important;font-weight:600!important;color:var(--vj-ink)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.first-route-open,.first-method-arrow){color:var(--vj-ink)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.science-expression,.equation,[class*="formula"]){color:var(--vj-accent)!important;font-family:var(--vj-mono)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.science-meaning,.first-evidence){color:var(--vj-muted)!important}
+
+/* ---------- home ---------- */
+html:is(:root,#vj) body.strict-template-v1 .first-hero-copy h1{font-size:clamp(2.2rem,1.1rem + 2.6vw,3.4rem)!important;max-width:13ch!important;letter-spacing:-.02em!important}
+html:is(:root,#vj) body.strict-template-v1 .first-routes-title{font-size:1.35rem!important}
+html:is(:root,#vj) body.strict-template-v1 .first-system-figure{border-color:var(--vj-rule)!important;border-radius:0!important;background:transparent!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.first-system-figure figcaption,.first-system-figure p,.first-system-figure span){color:var(--vj-text)!important}
+html:is(:root,#vj) body.strict-template-v1 .first-system-figure img{border:0!important}
+
+/* ---------- photographs: archival mission images in monochrome ---------- */
+html:is(:root,#vj) body.strict-template-v1 :is(.case-media-photo,.programme-case-photo) img{filter:grayscale(1) contrast(1.05)}
+html:is(:root,#vj) body.strict-template-v1 :is(figure,.case-media){border-radius:0!important;border-color:var(--vj-rule)!important}
+
+/* ---------- reading pages ---------- */
+html:is(:root,#vj) body.strict-template-v1 aside :is(a[aria-current],.active,.is-active){background:transparent!important;border-left-color:var(--vj-accent)!important;color:var(--vj-ink)!important}
+html:is(:root,#vj) body.strict-template-v1 aside a{color:var(--vj-text)}
+html:is(:root,#vj) body.strict-template-v1 :is(input,select,textarea){border-radius:0!important;background:var(--vj-bg)!important;border:1px solid var(--vj-rule-strong)!important;color:var(--vj-ink)!important;font-family:var(--vj-sans)!important;box-shadow:none!important}
+html:is(:root,#vj) body.strict-template-v1 :is(time,[class*="date"],.research-library-id){color:var(--vj-accent)!important;font-family:var(--vj-mono)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.research-library-row h2,.research-revision-row h2){font-family:var(--vj-sans)!important;font-weight:600!important;font-size:1.15rem!important;letter-spacing:0!important;line-height:1.3!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.status,.course-map-status,.collab-status,.tag,.about-ledger-tag,.reader-badges>*){border-radius:0!important;border:1px solid var(--vj-rule-strong)!important;color:var(--vj-text)!important;background:transparent!important;font-family:var(--vj-mono)!important;letter-spacing:.06em;font-size:.72rem!important}
+html:is(:root,#vj) body.strict-template-v1 table{border-color:var(--vj-rule)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(th,td){border-color:var(--vj-rule)!important;background:transparent!important}
+html:is(:root,#vj) body.strict-template-v1 th{font-family:var(--vj-sans)!important;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem!important;color:var(--vj-muted)!important;font-weight:500!important}
+html:is(:root,#vj) body.strict-template-v1 hr{border-color:var(--vj-rule)!important;background:var(--vj-rule)!important}
+html:is(:root,#vj) body.strict-template-v1 blockquote{border-left:1px solid var(--vj-accent)!important;background:transparent!important}
+html:is(:root,#vj) body.strict-template-v1 :is(mark){background:var(--vj-accent-soft)!important;color:var(--vj-ink)!important}
+html:is(:root,#vj) body.strict-template-v1 .site-footer{border-top:1px solid var(--vj-rule)!important;font-family:var(--vj-sans)!important;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem}
+html:is(:root,#vj) body.strict-template-v1 .site-footer a{color:var(--vj-text)!important}
+
+/* ---------- site navigator (search + map overlay) ---------- */
+html:is(:root,#vj) body.strict-template-v1 .vjn-panel{background:var(--vj-bg)!important;border:1px solid var(--vj-rule)!important;border-radius:0!important;box-shadow:none!important;color:var(--vj-text)!important}
+html:is(:root,#vj) body.strict-template-v1 .vjn-backdrop{background:rgba(0,0,0,.6)!important;backdrop-filter:none!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.vjn-title,.vjn-r-title){font-family:var(--vj-sans)!important;color:var(--vj-ink)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.vjn-here,.vjn .is-here){color:var(--vj-accent)!important;border-color:var(--vj-accent)!important}
+html:is(:root,#vj) body.strict-template-v1 :is(.vjn-sec,.vjn-r-sec,.vjn-hint,.vjn-status){color:var(--vj-muted)!important;font-family:var(--vj-sans)!important}
+
+/* ---------- phones: the wide wordmark must not run under the header controls ---------- */
+@media (max-width:700px){
+  html:is(:root,#vj) body.strict-template-v1 .brand-copy{font-size:.74rem!important;letter-spacing:.04em!important;white-space:normal!important;line-height:1.15}
+  html:is(:root,#vj) body.strict-template-v1 .brand-copy small{display:none!important}
+}
+
+/* ---------- lecture diagrams: frame follows the theme (was a fixed dark panel) ---------- */
+html:is(:root,#vj) body.strict-template-v1 figure.diagram{background:var(--vj-surface)!important;border:1px solid var(--vj-rule)!important;border-radius:0!important;box-shadow:none!important}
+html:is(:root,#vj) body.strict-template-v1 figure.diagram figcaption{color:var(--vj-muted)!important}

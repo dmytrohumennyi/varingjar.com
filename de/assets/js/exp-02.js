@@ -109,7 +109,7 @@
     const svg=$('[data-state-graph]');
     const effective=mode==='nominal'?'nominal':'damaged';
     const pathPairs=new Set(selectedPath.slice(0,-1).map((x,i)=>`${x}>${selectedPath[i+1]}`));
-    let parts=[`<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="rgba(126,170,132,.6)"/></marker><marker id="arrow-red" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#ff4b3e"/></marker></defs>`];
+    let parts=[`<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="rgba(158,158,158,.6)"/></marker><marker id="arrow-red" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#ff4b3e"/></marker></defs>`];
     for(const e of data.edges){
       const a=stateById(e.from),b=stateById(e.to); if(!a||!b)continue;
       const avail=edgeAvailable(e,effective)&&feasible(e.from,effective)&&feasible(e.to,effective);

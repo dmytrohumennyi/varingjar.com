@@ -1,13 +1,13 @@
 :root {
   --bg:#050907;
-  --panel:#09110d;
-  --panel2:#0c1712;
-  --line:#183326;
-  --ink:#dce9df;
-  --muted:#89a094;
-  --green:#76ff98;
+  --panel:#0f0f0f;
+  --panel2:#141414;
+  --line:#2c2c2c;
+  --ink:#e6e6e6;
+  --muted:#9a9a9a;
+  --green:var(--vj-accent);
   --amber:#e3b867;
-  --red:#8fb69a;
+  --red:#acacac;
   --max:1180px;
 }
 *{box-sizing:border-box}
@@ -16,8 +16,8 @@ body{
   margin:0;
   color:var(--ink);
   background:
-    linear-gradient(rgba(118,255,152,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(118,255,152,.018) 1px, transparent 1px),
+    linear-gradient(color-mix(in srgb,var(--vj-accent) 2.5%,transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb,var(--vj-accent) 1.8%,transparent) 1px, transparent 1px),
     var(--bg);
   background-size:28px 28px;
   font-family:var(--science-mono);
@@ -33,14 +33,14 @@ h1,h2{font-family:var(--science-sans);letter-spacing:-.03em}
 h1{font-size:clamp(34px,4.6vw,54px);line-height:1.02;margin:.5rem 0 1rem;max-width:1000px}
 h2{font-size:clamp(26px,3vw,36px);line-height:1.08;margin:0 0 26px}
 h3{color:var(--green);font-size:18px;line-height:1.2;margin:28px 0 10px}
-.lede{font-size:17px;line-height:1.55;color:#b8c8be;max-width:940px}
+.lede{font-size:17px;line-height:1.55;color:#c4c4c4;max-width:940px}
 section{padding:68px 0;border-bottom:1px solid var(--line)}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .panel{
   border:1px solid var(--line);
-  background:linear-gradient(180deg,rgba(118,255,152,.028),transparent 40%),var(--panel);
+  background:linear-gradient(180deg,color-mix(in srgb,var(--vj-accent) 2.8%,transparent),transparent 40%),var(--panel);
   padding:22px;
 }
 .label{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
@@ -89,14 +89,14 @@ pre{
   overflow:auto;
   border:1px solid var(--line);
   background:#020403;
-  color:#cfe3d5;
+  color:#dedede;
   font-size:13px;
   line-height:1.5
 }
 .result{
   border:1px solid var(--green);
   padding:28px;
-  background:rgba(118,255,152,.04)
+  background:color-mix(in srgb,var(--vj-accent) 4.0%,transparent)
 }
 .result h3{margin-top:0}
 .kpi-line{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
@@ -112,7 +112,7 @@ footer{padding:36px 0 60px;color:var(--muted);font-size:12px}
   margin:18px 0;
   padding:22px 72px 22px 26px;
   border-left:3px solid var(--green);
-  background:#07100b;
+  background:#0e0e0e;
   overflow-x:auto;
   font-size:1.08rem;
 }

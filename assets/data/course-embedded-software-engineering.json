@@ -1,9 +1,9 @@
 {
   "id": "embedded-software-engineering",
-  "version": "2026-10-28",
+  "version": "2026-11-11",
   "structure": "module-grouped",
-  "publishedLectures": 14,
-  "nextLecture": 15,
+  "publishedLectures": 16,
+  "nextLecture": 17,
   "modules": [
     {
       "id": "01",

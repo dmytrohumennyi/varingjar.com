@@ -632,6 +632,36 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-14.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-14.html"/>
   </url>
+  <url><loc>https://varingjar.com/teaching/embedded-software-engineering/lecture-15.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://varingjar.com/teaching/embedded-software-engineering/lecture-15.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-15.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-15.html"/>
+  </url>
+  <url><loc>https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-15.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://varingjar.com/teaching/embedded-software-engineering/lecture-15.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-15.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-15.html"/>
+  </url>
+  <url><loc>https://varingjar.com/de/teaching/embedded-software-engineering/lecture-15.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://varingjar.com/teaching/embedded-software-engineering/lecture-15.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-15.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-15.html"/>
+  </url>
+  <url><loc>https://varingjar.com/teaching/embedded-software-engineering/lecture-16.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://varingjar.com/teaching/embedded-software-engineering/lecture-16.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-16.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-16.html"/>
+  </url>
+  <url><loc>https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-16.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://varingjar.com/teaching/embedded-software-engineering/lecture-16.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-16.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-16.html"/>
+  </url>
+  <url><loc>https://varingjar.com/de/teaching/embedded-software-engineering/lecture-16.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://varingjar.com/teaching/embedded-software-engineering/lecture-16.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-16.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-16.html"/>
+  </url>
 <!-- RESEARCH-DOCS-SITEMAP:START -->
   <url>
     <loc>https://varingjar.com/knowledge/start-here.html</loc>

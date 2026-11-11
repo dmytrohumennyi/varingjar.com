@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="uk";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-15.html","uk":"lecture-15.html","de":"../../../de/teaching/embedded-software-engineering/lecture-15.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Від канбан-дошки до Trello і Jira: статуси задач, Kanban і Scrum — Væringjar II</title><meta content="Звідки взялися статуси To Do, In Progress, Hold, Review і Done, навіщо планувати офлайн, чим Trello відрізняється від Jira і коли обирати Kanban, а коли ітерації." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261111-vj1" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261111-vj1" rel="stylesheet"/>
+<link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-15.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-15.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-15.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-15.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-15.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Від канбан-дошки до Trello і Jira: статуси задач, Kanban і Scrum" property="og:title"/><meta content="Звідки взялися статуси To Do, In Progress, Hold, Review і Done, навіщо планувати офлайн, чим Trello відрізняється від Jira і коли обирати Kanban, а коли ітерації." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-15.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Від канбан-дошки до Trello і Jira: статуси задач, Kanban і Scrum" name="twitter:title"/><meta content="Звідки взялися статуси To Do, In Progress, Hold, Review і Done, навіщо планувати офлайн, чим Trello відрізняється від Jira і коли обирати Kanban, а коли ітерації." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261111-vj1" rel="stylesheet"/><script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script><style id="lecture-figure-style">.lecture-notes-content figure.lecture-figure{margin:28px 0;padding:0;max-width:100%}.lecture-notes-content figure.lecture-figure a{display:block;border:0;background:#fff;padding:10px;border-radius:6px;border:1px solid rgba(127,127,127,.35)}.lecture-notes-content figure.lecture-figure img{display:block;width:100%;height:auto;margin:0 auto}.lecture-notes-content figure.lecture-figure-small{max-width:560px}.lecture-notes-content figure.lecture-figure-wide{width:min(1180px,calc(100vw - 48px));max-width:none}.lecture-notes-content figure.lecture-figure figcaption{margin-top:10px}.lecture-notes-content .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}@media (max-width:640px){.lecture-notes-content .table-scroll table{min-width:600px;width:600px;max-width:none!important;table-layout:auto}}</style><link href="../../assets/css/vj-theme.css?v=20261111-vj1" rel="stylesheet"/>
+</head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Модель</a><a href="../../research.html">Докази</a><a href="../../implementation.html">Реалізація</a><a class="active" href="../../teaching.html">Навчання</a><a href="../../collaboration.html">Співпраця</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-15.html?lang=en" hreflang="en" lang="en">EN</a><a aria-current="page" class="active" data-lang="uk" href="lecture-15.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../../de/teaching/embedded-software-engineering/lecture-15.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Навчання / Заняття 15 · 10.11.2026</div><h1>Від канбан-дошки до Trello і Jira: статуси задач, Kanban і Scrum</h1><p class="lead reader-lead">Звідки взялися статуси To Do, In Progress, Hold, Review і Done, навіщо планувати офлайн, чим Trello відрізняється від Jira і коли обирати Kanban, а коли ітерації.</p><div class="reader-badges"><span>10.11.2026</span><span>Заняття 15 / 16</span><span>01:10:59</span><span>Лекція</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Огляд курсу →</a><a class="btn btn-primary" href="#full-notes">Читати повний конспект ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / МОДУЛЬ 05 · REQUIREMENTS &amp; ARCHITECTURE / 15 · 10.11.2026</div><div class="course-context-nav"><a class="previous" href="lecture-14.html">Попереднє · 14</a><span class="current">15</span><a class="next" href="lecture-16.html">Далі · 16</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Хронологія курсу</div><h2>Інженерний конспект</h2><p class="reader-intro">Звідки взялися статуси To Do, In Progress, Hold, Review і Done, навіщо планувати офлайн, чим Trello відрізняється від Jira і коли обирати Kanban, а коли ітерації.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Заводська дошка: п’ять статусів</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Офлайн-планування й SAFe</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Trello проти Jira</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>Kanban чи Scrum</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Повний конспект заняття</div><h2>Повний конспект заняття</h2><p class="lecture-notes-intro">Повний авторський конспект за транскриптом від 10 листопада. Схеми — редакторські, за поясненнями викладача; досвід роботи в автомобільних компаніях — особиста практика викладача, без назв компаній.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R15-2026-11-10.md">Повний конспект Markdown →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-11-10.md">Оригінальний транскрипт →</a></div><article class="lecture-article lecture-notes-content" lang="uk"><h1>Заняття 15. Від фізичної канбан-дошки до Trello і Jira: статуси задач, Kanban і Scrum</h1>
+<blockquote>
+<p><strong>10 листопада 2026 · лекція · 1 год 11 хв.</strong> Матеріал підготовлено за автоматичним транскриптом <code>IgorSikorskyKPI_L10_101126.mp4</code>. Це відредагований навчальний конспект, а не дослівна стенограма: очевидні помилки розпізнавання виправлено, терміни уніфіковано з попередніми заняттями. Індивідуальні питання студентів щодо оцінок, імена студентів і третіх осіб не публікуються. Досвід роботи у великих автомобільних компаніях — <strong>особиста практика викладача</strong>, подана без назв компаній. Редакторські уточнення й схеми редакції позначено окремо.</p>
+</blockquote>
+<h2>0. Організаційне</h2>
+<ul>
+<li>Перші хвилини заняття пішли на індивідуальне питання щодо балів у системі «Кампус». Викладач пообіцяв з’ясувати причину зміни через адміністраторів системи й зауважив, що для таких систем бракує прозорої <strong>історії змін</strong> — «як у Git глянути, хто зробив коміт». Подробиці не публікуються.</li>
+<li>Нагадування про безпеку під час повітряної тривоги: «інженерія діє, коли інженер живий».</li>
+<li>Друга атестація — командний проєкт (див. розділ 6). Рекомендований строк — <strong>до кінця листопада</strong>.</li>
+<li>Після другої атестації планується велика <strong>індивідуальна розрахунково-графічна робота (РГР)</strong> приблизно на 60 балів: знову пройти весь шлях — підготовку до конференції, участь у ній, емуляцію зустрічі з клієнтом, презентацію, follow-up, proposal, декомпозицію команди. Вона дасть змогу надолужити пропущені заняття.</li>
+<li>Цей курс покриває <strong>менеджмент</strong> життєвого циклу. Інженерну частину — апаратну й програмну розробку, інтеграцію, валідацію й верифікацію, deployment і закриття проєкту — викладач хотів би дати окремим продовженням, якщо й далі викладатиме в КПІ.</li>
+</ul>
+<h2>1. Звідки взялася канбан-дошка</h2>
+<p>Логіка Jira, Trello, GitHub Projects чи будь-якої канбан-дошки прийшла з заводу. Керівництву треба було бачити <strong>реальний прогрес кожної задачі</strong>, а не лише «щось робиться».</p>
+<p>Приклад викладача: токар Іван має виточити 10 деталей. Для цього йому потрібні креслення й обладнання; потім він робить роботу й передає її інженерові на перевірку. Якщо все гаразд — робота виконана; якщо ні — її повертають на переробку. Може забракнути заготовки — тоді роботу доводиться призупинити.</p>
+<p>Так на заводах з’явилася дошка з колонками, а задачі писали на окремих аркушах:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Статус</th>
+<th>Що означає</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>To Do</strong></td>
+<td>Задача відкрита й чекає, поки її візьмуть у роботу</td>
+</tr>
+<tr>
+<td><strong>In Progress</strong></td>
+<td>Хтось над нею працює (навіть якщо виконавці змінюються)</td>
+</tr>
+<tr>
+<td><strong>Hold</strong></td>
+<td>Роботу зупинено: чогось бракує, задача заблокована</td>
+</tr>
+<tr>
+<td><strong>Review</strong></td>
+<td>Роботу зроблено, вона на перевірці</td>
+</tr>
+<tr>
+<td><strong>Done</strong></td>
+<td>Перевірку пройдено, задача завершена</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l15-kanban-board.svg"><img src="../../../assets/img/teaching/embedded-software-engineering/l15-kanban-board.svg" alt="П'ять колонок канбан-дошки: To Do, In Progress, Hold, Review, Done. Стрілки: To Do → In Progress; In Progress ↔ Hold; In Progress → Review; Review → Done; повернення з Review у In Progress або в Hold" loading="lazy"/></a><figcaption class="diagram-note">Рис. 15.1. Канонічна дошка з заняття: п’ять статусів і можливі повернення після рев’ю. Схема редакції за поясненням викладача.</figcaption></figure>
+
+<h3>Як рухається задача</h3>
+<ol>
+<li>Задачу «Виточити вал» вішають у To Do й призначають на Івана. Його питають, скільки часу це займе; Іван каже «4 години» — це <strong>початкова оцінка</strong> (original estimate).</li>
+<li>На Івана вішають ще й ще задачі, інші — на Максима. Але <strong>одна людина в один момент робить одну роботу</strong>, тому потрібні <strong>пріоритети</strong>: найвищий, середній, низький. Іван бере найвищий і переносить його в In Progress. Якщо задачу з найвищим пріоритетом не взяли, до виконавця будуть питання.</li>
+<li>Забракло заготовок — задачу кидають у <strong>Hold</strong>.</li>
+<li>Потрібна немеханічна обробка — Іван <strong>перепризначає</strong> задачу на Колю, той робить свою частину й повертає Іванові. Задача весь час лишається в In Progress, просто над нею працюють різні люди.</li>
+<li>Готову роботу передають на <strong>Review</strong>. Звідти можуть сказати: «на переробку» (назад в In Progress), «не готові — на hold» або «вже нерелевантна — назад у To Do». Найкращий результат — <strong>Done</strong>.</li>
+</ol>
+<p>Суть підходу — дуже простий менеджмент і <strong>трасованість</strong>: видно, куди рухається кожне розпорядження, на кому воно висить і від чого заблоковане.</p>
+<h2>2. Фізична дошка сьогодні: брейншторм і офлайн-планування</h2>
+<p>Викладач показав фото своїх робочих дошок із не такого далекого минулого — у великих автомобільних компаніях у Скандинавії (назви не наводяться). Там канбан був розписаний стікерами, кольори позначали окремі команди й ризики, задачі «розкидалися» між командами. На сусідніх дошках — брейншторм: схема автомобіля, диференціальні рівняння, сили, моменти, графіки.</p>
+<p>Фізичні зустрічі для планування, за словами викладача, знову стали нормою:</p>
+<ul>
+<li>онлайн-інженерія сильно поступається офлайн-інженерії за якістю й швидкістю — «інженерія працює на кухні, коли інженери п’ють каву разом»;</li>
+<li>люди мають побачити одне одного, потиснути руки й «фізично проговорити» наступну ітерацію чи інкремент;</li>
+<li>після спільного планування простіше комунікувати віддалено.</li>
+</ul>
+<p>Викладач послався на <strong>Scaled Agile Framework (SAFe)</strong>: раз на квартал команди зустрічаються фізично, планують обсяг робіт, аналізують ризики, розбивають великі задачі на сторі, таски й сабтаски, призначають виконавців і оцінюють — і лише після цього роз’їжджаються по офісах і компаніях в інших країнах.</p>
+<blockquote>
+<p><strong>Редакторське уточнення щодо SAFe.</strong> У SAFe цю подію називають <strong>PI Planning</strong> — зазвичай дводенне планування всього Agile Release Train, яке проводять кожні 8–12 тижнів на початку кожного Planning Interval (PI). Фізична присутність бажана, але SAFe допускає й розподілений формат; головне — щоб роботу планували ті, хто її виконуватиме. Отже, ритм прив’язаний до PI, а не до епіка: епік у SAFe — велика ініціатива, що може тривати кілька PI.</p>
+</blockquote>
+<p>Особистий досвід викладача: усі його великі проєкти — і з великими клієнтами зараз — починалися <strong>офлайн, із рукостискання</strong>: знайомство на конференції, оперативне планування, обід у клієнта. Для людей, які навчалися в епоху COVID і війни, офлайн може звучати некомфортно, але для європейського бізнесу це працює ефективніше.</p>
+<h3>Чому все ж Jira</h3>
+<p>Фізична дошка має межі:</p>
+<ul>
+<li>стікери <strong>відклеюються</strong> й губляться, затираються від правок;</li>
+<li>залежності між тасками доводиться показувати буквально <strong>нитками на скотчі</strong>;</li>
+<li>до стікера важко прикріпити артефакт — наприклад, фото корпусу, який треба виготовити;</li>
+<li>після декомпозиції епіків на сторі дошка перетворюється на «суцільно заклеєну шпалеру», навігація стає жахливою.</li>
+</ul>
+<p>Тому фізичну дошку використовують для <strong>першого, високорівневого етапу</strong>, а повсякденну рутину й поточний статус ведуть у Jira, Trello чи GitHub Projects. Так поєднуються переваги обох світів.</p>
+<p>Для тих, хто бачить себе в менеджменті, викладач рекомендував два безкоштовні джерела: сайт <strong>SAFe</strong> (пройтися його інтерактивною картою «дуже в деталях») і <strong>Project Management Institute (PMI)</strong> — міжнародну організацію, що канонізує процеси управління проєктами. Детальний розбір Kanban, Scrum і SAFe — предмет окремих курсів. «Я хотів би, щоб через якийсь час кожен з вас давав роботу, а не робив роботу».</p>
+<h2>3. Trello: мінімальна дошка за кілька хвилин</h2>
+<p><strong>Trello</strong> належить Atlassian — тому ж вендору, що й Jira. Це інструмент для невеликих проєктів, яким потрібне просте й безкоштовне відстеження задач.</p>
+<blockquote>
+<p><strong>Редакторське уточнення.</strong> Atlassian оголосила про купівлю Trello 9 січня 2017 року й завершила угоду 3 лютого 2017 року.</p>
+</blockquote>
+<p>На занятті викладач створив акаунт і нову дошку зі списками <strong>To Do, In Progress, Hold, Review, Done</strong> — «дуже проста, канонічна борда» — і першу картку «Збір інформації про робот» (продовження прикладу з заняття 14). Що можна зробити з карткою:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Елемент картки</th>
+<th>Навіщо</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Members (виконавець)</td>
+<td>Хто відповідає за задачу</td>
+</tr>
+<tr>
+<td>Labels (мітки)</td>
+<td>Швидка візуальна категорія, наприклад <em>Documentation</em></td>
+</tr>
+<tr>
+<td>Dates</td>
+<td>Початок і кінець — таймлайн, як у плані епіку з заняття 14</td>
+</tr>
+<tr>
+<td>Checklist</td>
+<td>Проміжні кроки, напр. «Пошукати існуючі роботи-маніпулятори»; пункт можна призначити іншій людині з власним строком або винести в окрему задачу</td>
+</tr>
+<tr>
+<td>Comments</td>
+<td>Обговорення з тегуванням колег (@згадка) — те, чого майже неможливо досягти на фізичній дошці</td>
+</tr>
+</tbody>
+</table></div>
+<p>Пріоритетів у картці викладач не знайшов і запропонував лайфхак: <strong>задачі вищого пріоритету переміщувати вгору</strong> списку.</p>
+<blockquote>
+<p><strong>Редакторське уточнення.</strong> У Trello справді немає вбудованого поля пріоритету. Його задають мітками, порядком карток у списку або custom field (доступно в платних планах чи через Power-Ups).</p>
+</blockquote>
+<p>Рух картки — drag &amp; drop: взяв у роботу → In Progress, закінчив → Review з коментарем «переглянь, будь ласка», рецензент переносить у Done або повертає в In Progress із зауваженнями. Сповіщення приходять на пошту й у мобільний застосунок.</p>
+<p><strong>Сильні сторони Trello:</strong> розгортання за хвилини, усі мінімально необхідні інструменти, мобільний застосунок.</p>
+<p><strong>Слабкі сторони:</strong> немає правил переходів — будь-яку картку можна просто перетягнути в Done; історію змін відстежувати важко. Викладач назвав Trello «видом дитячого садка» серед таких інструментів.</p>
+<h3>Практика викладача: Trello для неінженерних ролей</h3>
+<p>Викладач використовує Trello для <strong>окремих неінженерних доменів</strong>. Наприклад, у нього є бухгалтер, і для нього створено окрему дошку із задачами на кшталт «оплатити закупівлю гвинтів» чи «забезпечити доставку в Україну й розмитнення корпусів». З інженерами він працює в Jira. Ці світи він <strong>ізолює</strong>: фінансовий відділ не має доступу до інженерного, бо інакше «починається безлад».</p>
+<p>Студент заперечив, що в Jira для цього є окремі простори (spaces). Відповідь викладача: Trello <strong>простий</strong>, а це важливо, коли маєш справу не з інженерами. Викладач активно працює з фрілансерами — інженерами, юристами, фінансистами. Людина, якій некомфортно в Jira, витрачає там багато оплачуваного часу. Мета — прозорий процес для замовника робіт і мінімум часу й коштів на виконавця.</p>
+<h2>4. Jira: коли команд і підрозділів багато</h2>
+<p>Trello зручний на базовому рівні, але недостатньо гнучкий для великих проєктів, де багато команд і навіть підрозділів. <strong>Jira</strong> — «доросла версія». Її переваги:</p>
+<ul>
+<li>підтримка <strong>розгалужених команд</strong> і багатьох підрозділів;</li>
+<li><strong>зв’язок із Git</strong> (GitHub, GitLab): згадуєте коміт у Jira — переходите в Git; згадуєте тікет Jira в коміті — переходите в Jira;</li>
+<li>автоматизація й фільтри;</li>
+<li><strong>workflow</strong> — правила, за якими задача може змінювати статус. У Trello таких правил немає, «і це кошмар — воно так не повинно бути».</li>
+</ul>
+<p>На занятті викладач створив робочий простір Jira для демо-проєкту. Уже під час створення Jira пропонує обрати підхід: <strong>Kanban, Scrum</strong> або шаблон для бізнес-команд. Тому спершу треба зрозуміти різницю між ними. Налаштування Jira перенесено на наступне заняття.</p>
+<blockquote>
+<p><strong>Редакторське уточнення.</strong> З вересня 2025 року в Jira Cloud «проєкти» (projects) перейменовано на «простори» (spaces). Змінилася лише назва; робочі процеси, фільтри й інтеграції працюють як раніше.</p>
+</blockquote>
+<h2>5. Kanban чи Scrum: приклад із мишкою</h2>
+<p>Більшість студентів працювали зі Scrum, із Kanban — ні. Викладач пояснив різницю на побутовому прикладі.</p>
+<p><strong>Kanban — техпідтримка.</strong> Інженерові потрібна нова мишка. Тікет потрапляє в IT-департамент:</p>
+<ol>
+<li>IT-фахівець бере тікет у роботу й перепризначає на завідувача складу: «перевір, чи є мишка».</li>
+<li>Мишку передають зі складу в IT, IT перепризначає задачу на офіс-адміністратора: «віднеси на пошту, відправ».</li>
+<li>Задача висить на офіс-адміністраторі, доки отримувач не отримає мишку.</li>
+<li>Інженер підтверджує отримання, офіс-адміністратор повертає задачу в IT, IT вносить заміну в реєстр обладнання (щоб уникнути зловживань).</li>
+<li>Інженер переносить задачу на review й підтверджує, що мишка працює; IT закриває задачу — Done.</li>
+</ol>
+<p>Одна ітерація, без спроб: «взяли й вирішили».</p>
+<p><strong>Той самий IT-департамент за Scrum (для приколу).</strong> Ітерація 1: «спершу надішлю тобі батарейку — може, мишка запрацює». Не запрацювало — батарейка повертається. Ітерація 2: «може, не працює радіомодуль — надішлемо радіомодуль». І так далі: через багато місяців або мишку зберуть заново, або все ж надішлють нову. Для техпідтримки <strong>Kanban значно реалістичніший</strong>.</p>
+<p><strong>Розробка виробу — інша справа.</strong> Будь-який hardware-інженер скаже, що електроніку за одну ітерацію не зробиш:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Ітерація</th>
+<th>Що відбувається</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Схема, трасування плати, закупівля компонентів, виробництво. Не запрацювало; ріжуть доріжки, перепаюють, і плата «шкутильгаючи» починає щось робити</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Виправлення схематики й трасування з урахуванням досвіду — працює плюс-мінус</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Компоненти задорогі — програємо конкуренцію; шукають доступні аналоги без зміни схеми</td>
+</tr>
+<tr>
+<td>4</td>
+<td>«Прострілює» на корпус — додають захист від розряду (діоди, мости). Нарешті все гаразд</td>
+</tr>
+</tbody>
+</table></div>
+<p>Software дуже подібний: перша ітерація «на милицях», далі оптимізація, а потім інтеграційні й end-to-end тести, кожен із яких приносить нові сюрпризи й виправлення. Висновок викладача: <strong>ітеративний підхід (Scrum) властивий інженерії комп’ютерних систем — hardware, software й системній інженерії</strong>; Kanban — задачам на кшталт техпідтримки.</p>
+<blockquote>
+<p><strong>Редакторське уточнення.</strong> У канонічних визначеннях різниця формулюється інакше. <strong>Kanban Guide</strong> (Vacanti, Coleman) описує Kanban як стратегію оптимізації потоку цінності: визначення робочого процесу (Definition of Workflow), явний контроль незавершеної роботи (WIP limits) і метрики потоку. Ітерації він не вимагає й не забороняє, а Kanban-практики широко застосовують і в командах розробки. <strong>Scrum Guide</strong> описує спринти тривалістю до місяця, події й артефакти. Приклад викладача — практична евристика вибору: потік однотипних незалежних запитів добре лягає на Kanban, а розробка з високою невизначеністю — на ітерації.</p>
+</blockquote>
+<h2>6. Завдання до другої атестації</h2>
+<p>Кожна з чотирьох команд готує <strong>один проєкт</strong> обраного виробу:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Що здати</th>
+<th>Зміст</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Опис архітектури</td>
+<td>Architecture description обраного виробу</td>
+</tr>
+<tr>
+<td>Proposal</td>
+<td>Summary, architecture description, design description</td>
+</tr>
+<tr>
+<td>План</td>
+<td>Діаграма досяжності проєкту — діаграма Ганта</td>
+</tr>
+<tr>
+<td>Ресурси й кошти</td>
+<td>Діаграма залученості інженерів, вартість</td>
+</tr>
+<tr>
+<td>Моделі роботи</td>
+<td>Для кожного етапу — обґрунтований вибір: Fixed Price, Time &amp; Material чи комбінація (чому саме так для R&amp;D, MVP тощо)</td>
+</tr>
+<tr>
+<td>Простір у трекері</td>
+<td>Jira (рекомендовано), Trello або GitHub Projects</td>
+</tr>
+<tr>
+<td>Структура робіт</td>
+<td>Епіки, сторі, таски, сабтаски</td>
+</tr>
+<tr>
+<td>Backlog за Scrum</td>
+<td>Щонайменше <strong>4 двотижневі спринти</strong></td>
+</tr>
+<tr>
+<td>Команда</td>
+<td>Учасники команди додані в простір; попереднє призначення тікетів і попередня оцінка кожної задачі</td>
+</tr>
+</tbody>
+</table></div>
+<p>Частину про Jira / Trello / GitHub Projects курс ще не покрив — з неї почалося це заняття, а продовжилося наступне.</p>
+<h2>Практичні висновки</h2>
+<ul>
+<li>Канбан-дошка — цифрова копія заводської: To Do, In Progress, Hold, Review, Done.</li>
+<li>Одна людина в один момент робить одну задачу, тому пріоритети обов’язкові.</li>
+<li>Перепризначення не змінює статусу: задача лишається в роботі, поки її хтось робить.</li>
+<li>Фізична дошка лишається найкращою для першого спільного планування; щоденний статус ведуть у трекері.</li>
+<li>Trello — швидкий і простий, але без правил переходів; зручний для неінженерних ролей.</li>
+<li>Jira — для багатьох команд, інтеграції з Git, автоматизації й контрольованого workflow.</li>
+<li>Kanban добре працює для потоку незалежних запитів; розробка виробів з невизначеністю — ітеративна.</li>
+</ul>
+<h2>Питання для самоперевірки</h2>
+<ul>
+<li>Які п’ять статусів має канонічна дошка і що означає кожен?</li>
+<li>Чому без пріоритетів дошка не працює, якщо виконавців мало?</li>
+<li>Чим перепризначення задачі відрізняється від зміни її статусу?</li>
+<li>Навіщо планувати офлайн, якщо є Jira?</li>
+<li>Що таке PI Planning у SAFe і як часто його проводять?</li>
+<li>Які обмеження фізичної дошки компенсує цифровий трекер?</li>
+<li>Чому відсутність правил переходів у Trello небезпечна?</li>
+<li>Як задати пріоритет картки в Trello, якщо такого поля немає?</li>
+<li>Чому заміну мишки логічно вести за Kanban, а розробку плати — ітераціями?</li>
+<li>Що має містити командний проєкт до другої атестації?</li>
+</ul>
+<h2>Що далі</h2>
+<p>Викладач оголосив, що налаштування Jira продовжиться наступного дня. Це продовження опубліковано як <strong>заняття 16</strong>.</p>
+<h2>Перевірені посилання</h2>
+<ul>
+<li>SAFe, PI Planning: https://framework.scaledagile.com/pi-planning/</li>
+<li>Project Management Institute: https://www.pmi.org/</li>
+<li>Atlassian — оголошення про купівлю Trello (SEC, 2017): https://www.sec.gov/Archives/edgar/data/0001650372/000165037217000002/a992atlassianpressrelease1.htm</li>
+<li>Atlassian Community — Jira «projects» стають «spaces»: https://community.atlassian.com/forums/Jira-articles/Evolving-Jira-terminology-Projects-will-soon-be-Spaces/ba-p/3034977</li>
+<li>Trello — пріоритет через custom field або Power-Up (Atlassian Community): https://community.atlassian.com/t5/Trello-questions/Trello-Card-Priority/qaq-p/1790778</li>
+<li>The Kanban Guide: https://kanbanguides.org/english/</li>
+<li>The Scrum Guide (2020): https://scrumguides.org/scrum-guide.html</li>
+</ul></article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Викладання</b><p style="margin-top:8px">Авторські навчальні матеріали Дмитра Гуменного.</p><a class="footer-about" href="../../about.html">Про автора →</a></div>
+<div class="footer-links"><b>Курс</b><a href="index.html">Огляд курсу</a><a href="lecture-13.html">Заняття 13</a><a href="lecture-14.html">Заняття 14</a><a href="lecture-15.html">Заняття 15</a></div>
+<div class="footer-links"><b>Контекст</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">КПІ · кафедра ІПЗЕ</a><a href="../../teaching.html">Усі навчальні матеріали</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Конфіденційність</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

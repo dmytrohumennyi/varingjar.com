@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="en";var TARGETS={"en":"lecture-15.html","uk":"../../uk/teaching/embedded-software-engineering/lecture-15.html","de":"../../de/teaching/embedded-software-engineering/lecture-15.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>From a Kanban Board to Trello and Jira: Task States, Kanban and Scrum — Væringjar II</title><meta content="Where To Do, In Progress, Hold, Review and Done come from, why plan offline, how Trello differs from Jira, and when to choose Kanban or iterations." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261111-vj1" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261111-vj1" rel="stylesheet"/>
+<link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-15.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-15.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-15.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-15.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-15.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="From a Kanban Board to Trello and Jira: Task States, Kanban and Scrum" property="og:title"/><meta content="Where To Do, In Progress, Hold, Review and Done come from, why plan offline, how Trello differs from Jira, and when to choose Kanban or iterations." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/teaching/embedded-software-engineering/lecture-15.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="From a Kanban Board to Trello and Jira: Task States, Kanban and Scrum" name="twitter:title"/><meta content="Where To Do, In Progress, Hold, Review and Done come from, why plan offline, how Trello differs from Jira, and when to choose Kanban or iterations." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261111-vj1" rel="stylesheet"/><script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script><style id="lecture-figure-style">.lecture-notes-content figure.lecture-figure{margin:28px 0;padding:0;max-width:100%}.lecture-notes-content figure.lecture-figure a{display:block;border:0;background:#fff;padding:10px;border-radius:6px;border:1px solid rgba(127,127,127,.35)}.lecture-notes-content figure.lecture-figure img{display:block;width:100%;height:auto;margin:0 auto}.lecture-notes-content figure.lecture-figure-small{max-width:560px}.lecture-notes-content figure.lecture-figure-wide{width:min(1180px,calc(100vw - 48px));max-width:none}.lecture-notes-content figure.lecture-figure figcaption{margin-top:10px}.lecture-notes-content .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}@media (max-width:640px){.lecture-notes-content .table-scroll table{min-width:600px;width:600px;max-width:none!important;table-layout:auto}}</style><link href="../../assets/css/vj-theme.css?v=20261111-vj1" rel="stylesheet"/>
+</head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Framework</a><a href="../../research.html">Evidence</a><a href="../../implementation.html">Build</a><a class="active" href="../../teaching.html">Teaching</a><a href="../../collaboration.html">Collaborate</a></div>
+<div aria-label="Language" class="lang-switch"><a aria-current="page" class="active" data-lang="en" href="lecture-15.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../uk/teaching/embedded-software-engineering/lecture-15.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../de/teaching/embedded-software-engineering/lecture-15.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Teaching / Session 15 · 10 Nov 2026</div><h1>From a Kanban Board to Trello and Jira: Task States, Kanban and Scrum</h1><p class="lead reader-lead">Where To Do, In Progress, Hold, Review and Done come from, why plan offline, how Trello differs from Jira, and when to choose Kanban or iterations.</p><div class="reader-badges"><span>10.11.2026</span><span>Session 15 / 16</span><span>01:10:59</span><span>Lecture</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Course overview →</a><a class="btn btn-primary" href="#full-notes">Read full notes ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODULE 05 · REQUIREMENTS &amp; ARCHITECTURE / 15 · 10.11.2026</div><div class="course-context-nav"><a class="previous" href="lecture-14.html">Previous · 14</a><span class="current">15</span><a class="next" href="lecture-16.html">Next · 16</a></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Course chronology</div><h2>Engineering notes</h2><p class="reader-intro">Where To Do, In Progress, Hold, Review and Done come from, why plan offline, how Trello differs from Jira, and when to choose Kanban or iterations.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>The factory board: five states</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Offline planning and SAFe</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Trello versus Jira</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>Kanban or Scrum</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Full session notes</div><h2>Full session notes</h2><p class="lecture-notes-intro">Complete English teaching notes derived from the Ukrainian transcript of 10 November. Diagrams are editorial, based on the lecturer’s explanations; experience at automotive companies is the lecturer’s own practice, without company names.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="source-notes/R15-2026-11-10.md">Ukrainian source notes →</a> <a class="btn btn-ghost" href="source-transcripts/2026-11-10.md">Original transcript →</a></div><article class="lecture-article lecture-notes-content" lang="en"><h1>Session 15. From a physical kanban board to Trello and Jira: task states, Kanban and Scrum</h1>
+<blockquote>
+<p><strong>10 November 2026 · lecture · 1 h 11 min.</strong> Prepared from the automatic transcript <code>IgorSikorskyKPI_L10_101126.mp4</code>. These are edited teaching notes, not a verbatim record: obvious recognition errors are corrected and terms are aligned with earlier sessions. Individual student questions about grades and the names of students and third parties are not published. Experience at large automotive companies is the <strong>lecturer’s own practice</strong>, given without company names. Editorial clarifications and editorial diagrams are marked separately.</p>
+</blockquote>
+<h2>0. Organisational</h2>
+<ul>
+<li>The first minutes went to an individual question about points in the university’s “Campus” system. The lecturer promised to find out through the system administrators why the record changed and remarked that such systems lack a transparent <strong>change history</strong> — “like looking in Git at who made the commit”. Details are not published.</li>
+<li>Safety reminder during an air-raid alert: “engineering works when the engineer is alive”.</li>
+<li>The second assessment is a team project (see section 6). Recommended deadline: <strong>end of November</strong>.</li>
+<li>After the second assessment there will be a large <strong>individual design assignment</strong> worth about 60 points: going through the whole path again — preparing for a conference, attending it, a simulated customer meeting, a presentation, follow-up, proposal and team decomposition. It also lets students make up for missed sessions.</li>
+<li>This course covers the <strong>management</strong> of the life cycle. The lecturer would like to give the engineering part — hardware and software development, integration, validation and verification, deployment and project closure — as a separate continuation, if he continues teaching at KPI.</li>
+</ul>
+<h2>1. Where the kanban board comes from</h2>
+<p>The logic of Jira, Trello, GitHub Projects or any kanban board comes from the factory floor. Management needed to see the <strong>real progress of every task</strong>, not just that “something is being done”.</p>
+<p>The lecturer’s example: a turner named Ivan has to turn 10 parts. He needs drawings and equipment, then does the work and hands it to an engineer for checking. If everything is fine, the work is done; if not, it goes back for rework. Blanks may run out, and the work has to be paused.</p>
+<p>So factories drew a board with columns, and each task was written on its own sheet:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>To Do</strong></td>
+<td>The task is open and waiting to be picked up</td>
+</tr>
+<tr>
+<td><strong>In Progress</strong></td>
+<td>Someone is working on it (even if the people working on it change)</td>
+</tr>
+<tr>
+<td><strong>Hold</strong></td>
+<td>Work has stopped: something is missing, the task is blocked</td>
+</tr>
+<tr>
+<td><strong>Review</strong></td>
+<td>The work is done and being checked</td>
+</tr>
+<tr>
+<td><strong>Done</strong></td>
+<td>The check has passed, the task is finished</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="diagram lecture-figure"><a href="../../assets/img/teaching/embedded-software-engineering/l15-kanban-board.svg"><img src="../../assets/img/teaching/embedded-software-engineering/l15-kanban-board.svg" alt="Five kanban columns: To Do, In Progress, Hold, Review, Done. Arrows: To Do → In Progress; In Progress ↔ Hold; In Progress → Review; Review → Done; returns from Review to In Progress or to Hold" loading="lazy"/></a><figcaption class="diagram-note">Fig. 15.1. The canonical board from the session: five states and the possible returns after review. Editorial diagram based on the lecturer’s explanation.</figcaption></figure>
+
+<h3>How a task moves</h3>
+<ol>
+<li>The task “Turn a shaft” goes to To Do and is assigned to Ivan. He is asked how long it will take; Ivan says “4 hours” — the <strong>original estimate</strong>.</li>
+<li>More and more tasks land on Ivan, others on Maksym. But <strong>one person does one job at a time</strong>, so <strong>priorities</strong> are needed: highest, medium, low. Ivan takes the highest one and moves it to In Progress. If the top-priority task is not picked up, the assignee will be asked why.</li>
+<li>Blanks run out — the task goes to <strong>Hold</strong>.</li>
+<li>Non-mechanical processing is needed — Ivan <strong>reassigns</strong> the task to Kolya, who does his part and assigns it back. The task stays In Progress all along; different people simply work on it.</li>
+<li>Finished work goes to <strong>Review</strong>. From there it can go back “for rework” (to In Progress), to Hold (“we are not ready”) or back to To Do (“no longer relevant”). The best outcome is <strong>Done</strong>.</li>
+</ol>
+<p>The point is very simple management and <strong>traceability</strong>: you can see where each instruction is moving, who holds it and what it is blocked by.</p>
+<h2>2. The physical board today: brainstorming and offline planning</h2>
+<p>The lecturer showed photos of his working boards from the not-so-distant past at large automotive companies in Scandinavia (names not given). There the kanban was laid out in sticky notes, colours marked teams and risks, and tasks were distributed across teams. The neighbouring boards held brainstorming: a sketch of a car, differential equations, forces, moments, graphs.</p>
+<p>According to the lecturer, meeting in person for planning has become the norm again:</p>
+<ul>
+<li>online engineering is clearly inferior to offline engineering in quality and speed — “engineering happens in the kitchen, when engineers drink coffee together”;</li>
+<li>people need to see each other, shake hands and “physically talk through” the next iteration or increment;</li>
+<li>after planning together, remote communication becomes easier.</li>
+</ul>
+<p>He referred to the <strong>Scaled Agile Framework (SAFe)</strong>: once a quarter teams meet in person, plan the scope of work, analyse risks, break large items into stories, tasks and subtasks, assign people and estimate — and only then return to their offices and companies in other countries.</p>
+<blockquote>
+<p><strong>Editorial clarification on SAFe.</strong> In SAFe this event is called <strong>PI Planning</strong>: usually a two-day planning session for the whole Agile Release Train, held every 8–12 weeks at the start of each Planning Interval (PI). Physical presence is preferred, but SAFe also allows a distributed format; what matters is that the people who do the work plan the work. The rhythm is therefore tied to the PI rather than to an epic: in SAFe an epic is a large initiative that may span several PIs.</p>
+</blockquote>
+<p>The lecturer’s personal experience: all his large projects — including those with large customers today — started <strong>offline, with a handshake</strong>: meeting at a conference, quick planning, lunch at the customer’s office. For people who studied during COVID and the war, offline may feel uncomfortable, but for European business it works better.</p>
+<h3>So why Jira</h3>
+<p>A physical board has limits:</p>
+<ul>
+<li>sticky notes <strong>fall off</strong>, get lost and wear out from corrections;</li>
+<li>dependencies between tasks have to be shown literally <strong>with threads and tape</strong>;</li>
+<li>it is hard to attach an artefact to a sticky note — for example, a photo of an enclosure that has to be manufactured;</li>
+<li>once epics are broken into stories, the board turns into “solid wallpaper of notes” and navigation becomes awful.</li>
+</ul>
+<p>So the physical board is used for the <strong>first, high-level stage</strong>, while the daily routine and current status live in Jira, Trello or GitHub Projects. This combines the strengths of both.</p>
+<p>For those who see themselves in management, the lecturer recommended two free sources: the <strong>SAFe</strong> website (explore its interactive map “in great detail”) and the <strong>Project Management Institute (PMI)</strong>, the international organisation that standardises project management processes. A detailed treatment of Kanban, Scrum and SAFe belongs to separate courses. “I would like each of you, some time from now, to be giving out work rather than doing it.”</p>
+<h2>3. Trello: a minimal board in minutes</h2>
+<p><strong>Trello</strong> belongs to Atlassian, the same vendor as Jira. It is a tool for small projects that need simple, free task tracking.</p>
+<blockquote>
+<p><strong>Editorial clarification.</strong> Atlassian announced the acquisition of Trello on 9 January 2017 and completed it on 3 February 2017.</p>
+</blockquote>
+<p>In the session the lecturer created an account and a new board with the lists <strong>To Do, In Progress, Hold, Review, Done</strong> — “a very simple, canonical board” — and a first card, “Collect information about the robot” (continuing the example from session 14). What a card can carry:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Card element</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Members (assignee)</td>
+<td>Who is responsible for the task</td>
+</tr>
+<tr>
+<td>Labels</td>
+<td>A quick visual category, e.g. <em>Documentation</em></td>
+</tr>
+<tr>
+<td>Dates</td>
+<td>Start and end — a timeline, as in the epic plan from session 14</td>
+</tr>
+<tr>
+<td>Checklist</td>
+<td>Intermediate steps, e.g. “Look for existing robot manipulators”; an item can be assigned to another person with its own deadline or turned into a separate task</td>
+</tr>
+<tr>
+<td>Comments</td>
+<td>Discussion with @mentions of colleagues — something almost impossible on a physical board</td>
+</tr>
+</tbody>
+</table></div>
+<p>The lecturer found no priority field on the card and suggested a workaround: <strong>move higher-priority tasks up</strong> the list.</p>
+<blockquote>
+<p><strong>Editorial clarification.</strong> Trello indeed has no built-in priority field. Priority is expressed with labels, card order in the list, or a custom field (available on paid plans or through Power-Ups).</p>
+</blockquote>
+<p>Cards move by drag and drop: picked up → In Progress, finished → Review with a comment “please review”, and the reviewer moves it to Done or back to In Progress with remarks. Notifications arrive by e-mail and in the mobile app.</p>
+<p><strong>Trello’s strengths:</strong> set up in minutes, all the minimum tools you need, a mobile app.</p>
+<p><strong>Weaknesses:</strong> no transition rules — any card can simply be dragged to Done; change history is hard to follow. The lecturer called Trello “a kind of kindergarten” among such tools.</p>
+<h3>The lecturer’s practice: Trello for non-engineering roles</h3>
+<p>The lecturer uses Trello for <strong>separate non-engineering domains</strong>. For example, he has an accountant, and a separate board holds tasks such as “pay for the screw order” or “arrange delivery to Ukraine and customs clearance of the enclosures”. With engineers he works in Jira. He keeps these worlds <strong>isolated</strong>: the finance department has no access to the engineering one, because otherwise “a mess begins”.</p>
+<p>A student objected that Jira has separate spaces for this. The lecturer’s answer: Trello is <strong>simple</strong>, and that matters when you deal with people who are not engineers. He works extensively with freelancers — engineers, lawyers, finance specialists. Someone who is uncomfortable in Jira spends a lot of paid time there. The aim is a process that is transparent to the person commissioning the work and costs the contractor as little time and money as possible.</p>
+<h2>4. Jira: when there are many teams and departments</h2>
+<p>Trello is convenient at a basic level but not flexible enough for large projects with many teams or even departments. <strong>Jira</strong> is the “grown-up version”. Its strengths:</p>
+<ul>
+<li>support for <strong>branched teams</strong> and many departments;</li>
+<li><strong>linking with Git</strong> (GitHub, GitLab): mention a commit in Jira and jump to Git; mention a Jira ticket in a commit and jump to Jira;</li>
+<li>automation and filters;</li>
+<li><strong>workflow</strong> — rules for how a task may change state. Trello has no such rules, “and that is a nightmare — it should not be like that”.</li>
+</ul>
+<p>In the session the lecturer created a Jira site for a demo project. Already at creation, Jira asks you to choose an approach: <strong>Kanban, Scrum</strong> or a business-team template. So first you need to understand the difference. Configuring Jira was moved to the next session.</p>
+<blockquote>
+<p><strong>Editorial clarification.</strong> Since September 2025 Jira Cloud calls “projects” <strong>“spaces”</strong>. Only the name changed; workflows, filters and integrations work as before.</p>
+</blockquote>
+<h2>5. Kanban or Scrum: the mouse example</h2>
+<p>Most students had worked with Scrum, none with Kanban. The lecturer explained the difference with an everyday example.</p>
+<p><strong>Kanban — technical support.</strong> An engineer needs a new mouse. The ticket lands in the IT department:</p>
+<ol>
+<li>An IT specialist takes the ticket and reassigns it to the warehouse manager: “check whether we have a mouse”.</li>
+<li>The mouse goes from the warehouse to IT; IT reassigns the task to the office administrator: “take it to the post office and send it”.</li>
+<li>The task stays with the office administrator until the recipient has the mouse.</li>
+<li>The engineer confirms receipt, the office administrator returns the task to IT, and IT records the replacement in the equipment register (to prevent abuse).</li>
+<li>The engineer moves the task to review and confirms that the mouse works; IT closes the task — Done.</li>
+</ol>
+<p>One iteration, no attempts: “took it and solved it”.</p>
+<p><strong>The same IT department under Scrum (as a joke).</strong> Iteration 1: “first I’ll send you a battery — maybe the mouse will work”. It doesn’t — the battery comes back. Iteration 2: “maybe the radio module is broken — let’s send a radio module”. And so on: after many months either the mouse is reassembled or a new one is sent after all. For technical support <strong>Kanban is far more realistic</strong>.</p>
+<p><strong>Developing a product is a different story.</strong> Any hardware engineer will tell you electronics cannot be done in one iteration:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Iteration</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Schematic, PCB layout, component purchasing, manufacturing. It doesn’t work; traces are cut, parts re-soldered, and the board starts “limping along”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Schematic and layout corrected using that experience — it more or less works</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Components are too expensive — we are losing to the competition; cheaper equivalents are found without changing the schematic</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The enclosure gets shocks — discharge protection (diodes, bridges) is added. Finally everything is fine</td>
+</tr>
+</tbody>
+</table></div>
+<p>Software is very similar: the first iteration runs “on crutches”, then comes optimisation, then integration and end-to-end tests, each of which brings new surprises and fixes. The lecturer’s conclusion: <strong>an iterative approach (Scrum) is natural for computer-systems engineering — hardware, software and systems engineering</strong>; Kanban suits tasks such as technical support.</p>
+<blockquote>
+<p><strong>Editorial clarification.</strong> The canonical definitions draw the line differently. The <strong>Kanban Guide</strong> (Vacanti, Coleman) describes Kanban as a strategy for optimising the flow of value: a Definition of Workflow, explicit control of work in progress (WIP limits) and flow metrics. It neither requires nor forbids iterations, and Kanban practices are widely used by development teams too. The <strong>Scrum Guide</strong> describes Sprints of up to one month, events and artefacts. The lecturer’s example is a practical heuristic: a flow of similar, independent requests fits Kanban well, while development under high uncertainty fits iterations.</p>
+</blockquote>
+<h2>6. Second assessment: what to hand in</h2>
+<p>Each of the four teams prepares <strong>one project</strong> for a product of its choice:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Deliverable</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Architecture</td>
+<td>Architecture description of the chosen product</td>
+</tr>
+<tr>
+<td>Proposal</td>
+<td>Summary, architecture description, design description</td>
+</tr>
+<tr>
+<td>Plan</td>
+<td>Project feasibility timeline — a Gantt chart</td>
+</tr>
+<tr>
+<td>Resources and costs</td>
+<td>Engineer involvement chart, costs</td>
+</tr>
+<tr>
+<td>Engagement models</td>
+<td>For each phase, a justified choice: Fixed Price, Time &amp; Material or a combination (why exactly that for R&amp;D, the MVP and so on)</td>
+</tr>
+<tr>
+<td>Tracker space</td>
+<td>Jira (recommended), Trello or GitHub Projects</td>
+</tr>
+<tr>
+<td>Work structure</td>
+<td>Epics, stories, tasks, subtasks</td>
+</tr>
+<tr>
+<td>Scrum backlog</td>
+<td>At least <strong>4 two-week sprints</strong></td>
+</tr>
+<tr>
+<td>Team</td>
+<td>Team members added to the space; preliminary ticket assignment and a preliminary estimate of every task</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Jira / Trello / GitHub Projects part had not yet been covered — this session started it and the next one continued.</p>
+<h2>Practical takeaways</h2>
+<ul>
+<li>A kanban board is a digital copy of the factory board: To Do, In Progress, Hold, Review, Done.</li>
+<li>One person does one task at a time, so priorities are essential.</li>
+<li>Reassigning does not change the state: a task stays in progress while someone works on it.</li>
+<li>A physical board is still best for the first joint planning; the daily status lives in a tracker.</li>
+<li>Trello is quick and simple but has no transition rules; it suits non-engineering roles.</li>
+<li>Jira is for many teams, Git integration, automation and a controlled workflow.</li>
+<li>Kanban works well for a flow of independent requests; product development under uncertainty is iterative.</li>
+</ul>
+<h2>Self-check questions</h2>
+<ul>
+<li>What are the five states of the canonical board and what does each mean?</li>
+<li>Why does a board not work without priorities when there are few people?</li>
+<li>How does reassigning a task differ from changing its state?</li>
+<li>Why plan offline if Jira exists?</li>
+<li>What is PI Planning in SAFe and how often is it held?</li>
+<li>Which limitations of a physical board does a digital tracker compensate for?</li>
+<li>Why is the lack of transition rules in Trello dangerous?</li>
+<li>How can you express a card’s priority in Trello if there is no such field?</li>
+<li>Why does replacing a mouse fit Kanban, while developing a PCB needs iterations?</li>
+<li>What must the team project for the second assessment contain?</li>
+</ul>
+<h2>What comes next</h2>
+<p>The lecturer announced that configuring Jira would continue the next day. That continuation is published as <strong>session 16</strong>.</p>
+<h2>Verified links</h2>
+<ul>
+<li>SAFe, PI Planning: https://framework.scaledagile.com/pi-planning/</li>
+<li>Project Management Institute: https://www.pmi.org/</li>
+<li>Atlassian — announcement of the Trello acquisition (SEC, 2017): https://www.sec.gov/Archives/edgar/data/0001650372/000165037217000002/a992atlassianpressrelease1.htm</li>
+<li>Atlassian Community — Jira “projects” become “spaces”: https://community.atlassian.com/forums/Jira-articles/Evolving-Jira-terminology-Projects-will-soon-be-Spaces/ba-p/3034977</li>
+<li>Trello — priority via a custom field or Power-Up (Atlassian Community): https://community.atlassian.com/t5/Trello-questions/Trello-Card-Priority/qaq-p/1790778</li>
+<li>The Kanban Guide: https://kanbanguides.org/english/</li>
+<li>The Scrum Guide (2020): https://scrumguides.org/scrum-guide.html</li>
+</ul></article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Teaching</b><p style="margin-top:8px">Author teaching materials by Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">About the author →</a></div>
+<div class="footer-links"><b>Course</b><a href="index.html">Course overview</a><a href="lecture-13.html">Session 13</a><a href="lecture-14.html">Session 14</a><a href="lecture-15.html">Session 15</a></div>
+<div class="footer-links"><b>Context</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in Power Engineering</a><a href="../../teaching.html">All teaching materials</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Privacy</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../assets/js/locale.js"></script><script defer src="../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

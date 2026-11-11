@@ -4,7 +4,7 @@ Rebuilt from primary transcripts on 2026-09-28 by explicit author request.
 
 ## Preservation rule
 
-Sessions 01–06 are frozen after this reconstruction; sessions 07–14 were appended under the same rule and are frozen as published (revision 2026-10-28). Future lecture uploads **append** new sessions. Existing sessions are not shortened, paraphrased, regenerated or silently corrected. If a later correction is necessary, add a dated erratum rather than rewriting history.
+Sessions 01–06 are frozen after this reconstruction; sessions 07–16 were appended under the same rule and are frozen as published (revisions 2026-10-28 and 2026-11-11). Future lecture uploads **append** new sessions. Existing sessions are not shortened, paraphrased, regenerated or silently corrected. If a later correction is necessary, add a dated erratum rather than rewriting history.
 
 ## Source chain
 
@@ -24,6 +24,8 @@ Sessions 01–06 are frozen after this reconstruction; sessions 07–14 were app
 | 12 | 20.10.2026 | [R12-2026-10-20.md](R12-2026-10-20.md) | [raw](../source-transcripts/2026-10-20.md) |
 | 13 | 27.10.2026 | [R13-2026-10-27.md](R13-2026-10-27.md) | [raw](../source-transcripts/2026-10-27.md) |
 | 14 | 28.10.2026 | [R14-2026-10-28.md](R14-2026-10-28.md) | [raw](../source-transcripts/2026-10-28.md) |
+| 15 | 10.11.2026 | [R15-2026-11-10.md](R15-2026-11-10.md) | [raw](../source-transcripts/2026-11-10.md) |
+| 16 | 11.11.2026 | [R16-2026-11-11.md](R16-2026-11-11.md) | [raw](../source-transcripts/2026-11-11.md) |
 
 ## Update protocol for every new upload
 

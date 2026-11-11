@@ -1,0 +1,161 @@
+/* =====================================================================
+ VÆRINGJAR II — HOME-VJ v1 (2026-11-11), page-local for the home page.
+ Cinematic home: one idea per screen, full-bleed imagery, few words.
+ Shares ContiMech's grammar (black ground, full-screen panels, outline buttons,
+ scroll cue) with its own voice: wide Unbounded capitals, live S(t) telemetry,
+ archival mission photographs, one muted green accent.
+ The home page stays dark in both themes, like a launch broadcast; the header
+ and reading pages follow the theme control as before.
+ Loaded after vj-theme.css on index pages only (body.vj-cinema-page).
+ ===================================================================== */
+
+/* dark tokens are fixed on the home page, whatever the theme */
+html:is(:root,#vj) body.vj-cinema-page{
+  --vj-accent:#8cc49a;--vj-accent-soft:rgba(140,196,154,.13);
+  --vj-bg:#000;--vj-surface:#08090a;--vj-surface-2:#101113;
+  --vj-ink:#f2f2f0;--vj-text:#c9cbcf;--vj-muted:#8d9096;
+  --vj-rule:rgba(255,255,255,.14);--vj-rule-strong:rgba(255,255,255,.42);--vj-on-ink:#000;--vj-hover:rgba(255,255,255,.03);
+  color-scheme:dark;background:#000!important;
+}
+html:is(:root,#vj) body.vj-cinema-page .site-header .brand-emblem{filter:grayscale(1) brightness(1.5)!important}
+
+/* header floats over the first screen and turns solid on scroll */
+html:is(:root,#vj) body.vj-cinema-page .site-header{position:fixed!important;top:0;left:0;right:0;z-index:50;background:transparent!important;border-bottom-color:transparent!important;transition:background .35s ease,border-color .35s ease}
+html:is(:root,#vj) body.vj-cinema-page .site-header.vjc-solid{background:rgba(0,0,0,.92)!important;border-bottom-color:rgba(255,255,255,.08)!important}
+
+/* frame */
+html:is(:root,#vj) body.vj-cinema-page main.vjc{display:block;margin:0!important;padding:0!important;max-width:none!important;width:100%!important;background:#000!important}
+.vjc :is(section){margin:0;padding:0;max-width:none}
+.vjc-wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 max(24px,4vw)}
+.vjc-hero,.vjc-panel{position:relative;overflow:hidden;background:#000;display:grid;align-items:end;isolation:isolate}
+.vjc-hero{min-height:100vh;min-height:100svh}
+.vjc-panel{min-height:92vh;min-height:92svh;border-top:1px solid rgba(255,255,255,.06)}
+
+/* type */
+html:is(:root,#vj) body.vj-cinema-page .vjc :is(h1,h2){font-family:var(--vj-display)!important;font-weight:500!important;text-transform:uppercase!important;letter-spacing:.01em!important;color:#fff!important;margin:0;text-wrap:balance}
+html:is(:root,#vj) body.vj-cinema-page .vjc h1{font-size:clamp(2.5rem,1.2rem + 3.4vw,4.6rem)!important;line-height:1.02!important;max-width:13ch!important}
+html:is(:root,#vj) body.vj-cinema-page .vjc h2{font-size:clamp(1.8rem,1rem + 2.3vw,3.3rem)!important;line-height:1.06!important;max-width:14ch!important}
+.vjc-eyebrow{font-family:var(--vj-sans);font-weight:500;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--vj-muted)}
+.vjc-eyebrow a{color:inherit!important;text-decoration:none;border-bottom:1px dotted currentColor}
+html:is(:root,#vj) body.vj-cinema-page .vjc :is(.vjc-lead,.vjc-text){font-family:var(--vj-sans);font-size:1.1rem;line-height:1.6;color:#d4d6d9!important;max-width:46ch;margin:0}
+html:is(:root,#vj) body.vj-cinema-page .vjc-copy{position:relative;z-index:2;display:grid;gap:22px;padding-bottom:12vh;max-width:1280px}
+.vjc-stat{display:grid;gap:6px;margin:0}
+.vjc-stat b{font-family:var(--vj-display);font-weight:500;font-size:clamp(2.6rem,1.6rem + 3vw,4.6rem);line-height:1;color:#fff;letter-spacing:-.01em}
+.vjc-stat b i{font-style:normal;color:var(--vj-accent)}
+.vjc-stat span{font-family:var(--vj-sans);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--vj-muted);max-width:44ch;line-height:1.6}
+.vjc-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+html:is(:root,#vj) body.vj-cinema-page a.vjc-btn{display:inline-block;padding:16px 34px;border:1px solid #fff;color:#fff!important;text-decoration:none;font-family:var(--vj-sans);font-weight:500;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;background:transparent;transition:background .25s,color .25s}
+html:is(:root,#vj) body.vj-cinema-page a.vjc-btn:hover{background:#fff;color:#000!important}
+html:is(:root,#vj) body.vj-cinema-page a.vjc-btn.vjc-primary{border-color:var(--vj-accent)}
+html:is(:root,#vj) body.vj-cinema-page a.vjc-btn.vjc-primary:hover{background:var(--vj-accent);color:#000!important}
+
+/* hero telemetry */
+.vjc-telemetry{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.vjc-hero .vjc-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.6) 38%,rgba(0,0,0,0) 70%),linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,0) 45%)}
+.vjc-surv{stroke-dasharray:1;stroke-dashoffset:1;animation:vjcDraw 2.8s cubic-bezier(.45,.05,.25,1) .2s forwards}
+.vjc-ghost,.vjc-tf,.vjc-labels .l1,.vjc-labels .l2,.vjc-labels .l3{opacity:0;animation:vjcFade 1s ease forwards}
+.vjc-tf,.vjc-labels .l1{animation-delay:1.3s}
+.vjc-ghost,.vjc-labels .l2{animation-delay:1.8s}
+.vjc-labels .l3{animation-delay:2.9s}
+.vjc-stars{animation:vjcDrift 90s linear infinite alternate}
+@keyframes vjcDraw{to{stroke-dashoffset:0}}
+@keyframes vjcFade{to{opacity:1}}
+@keyframes vjcDrift{to{transform:translateX(-40px)}}
+
+/* scroll cue (same grammar as ContiMech) */
+.vjc-down{position:absolute;z-index:3;left:50%;bottom:28px;width:22px;height:36px;margin-left:-11px;border:1px solid rgba(255,255,255,.7);border-radius:12px}
+.vjc-down span{position:absolute;left:50%;top:7px;width:2px;height:7px;margin-left:-1px;background:#fff;animation:vjcCue 1.8s ease infinite}
+@keyframes vjcCue{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+
+/* photograph panels: archival image on black, copy opposite */
+.vjc-media{position:absolute;inset:0;z-index:0}
+.vjc-media img{position:absolute;top:0;height:100%;width:62%;right:0;object-fit:cover;object-position:center;filter:grayscale(1) contrast(1.08) brightness(.95);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 35%);mask-image:linear-gradient(90deg,transparent 0,#000 35%)}
+.vjc-left .vjc-media img{right:auto;left:0;-webkit-mask-image:linear-gradient(270deg,transparent 0,#000 35%);mask-image:linear-gradient(270deg,transparent 0,#000 35%)}
+.vjc-left .vjc-copy{justify-items:end;text-align:right}
+.vjc-left .vjc-copy>*{margin-left:auto}
+.vjc-left .vjc-stat{justify-items:end}
+.vjc-panel .vjc-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,0) 40%)}
+.vjc-diagram .vjc-media img{width:66%;right:-2vw;top:6vh;height:84%;object-fit:contain;filter:grayscale(1) brightness(1.15);opacity:.42;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%);mask-image:linear-gradient(90deg,transparent 0,#000 30%)}
+.vjc-news{font-family:var(--vj-mono);font-size:.78rem;letter-spacing:.06em;color:var(--vj-muted);margin:0}
+.vjc-news a{color:#fff!important;text-decoration:none;border-bottom:1px solid var(--vj-rule-strong)}
+
+/* research logic: three words, one screen */
+.vjc-logic{align-items:center}
+.vjc-logic .vjc-copy{padding:14vh 0 12vh;gap:34px}
+html:is(:root,#vj) body.vj-cinema-page .vjc-rows{list-style:none;margin:0!important;padding:0!important;max-width:none!important;width:100%;border-top:1px solid rgba(255,255,255,.5)}
+html:is(:root,#vj) body.vj-cinema-page .vjc-rows li{margin:0!important;padding:0!important;max-width:none!important;border-bottom:1px solid var(--vj-rule)}
+html:is(:root,#vj) body.vj-cinema-page .vjc-rows a{display:grid;grid-template-columns:4.5rem max-content minmax(0,1fr) 2rem;column-gap:48px;align-items:baseline;gap:24px;padding:26px 0;color:#fff!important;text-decoration:none}
+.vjc-rows .no{font-family:var(--vj-mono);font-size:.85rem;color:var(--vj-accent);letter-spacing:.08em}
+.vjc-rows .word{white-space:nowrap;font-family:var(--vj-display);font-weight:500;text-transform:uppercase;font-size:clamp(1.7rem,.9rem + 2.2vw,3.1rem);line-height:1;letter-spacing:.01em;transition:color .25s}
+.vjc-rows .q{font-family:var(--vj-sans);font-size:1.02rem;line-height:1.5;color:var(--vj-text)}
+.vjc-rows .go{font-family:var(--vj-sans);color:var(--vj-muted);transition:transform .25s,color .25s}
+.vjc-rows a:hover .word{color:var(--vj-accent)}
+.vjc-rows a:hover .go{transform:translateX(6px);color:#fff}
+.vjc-formula{font-family:var(--vj-mono);font-size:1rem;color:var(--vj-accent);margin:0}
+.vjc-formula span{color:var(--vj-muted);font-family:var(--vj-sans);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;margin-left:16px}
+
+/* closing panel */
+.vjc-close{align-items:center;text-align:center}
+.vjc-close .vjc-copy{justify-items:center;padding:16vh 0}
+html:is(:root,#vj) body.vj-cinema-page .vjc-close h2{max-width:22ch!important;margin:0 auto}
+.vjc-close .vjc-text{margin:0 auto!important}
+.vjc-close .vjc-actions{justify-content:center}
+.vjc-emblem{width:72px;height:72px;filter:grayscale(1) brightness(1.6);opacity:.9}
+
+/* reveal on scroll */
+.vjc-reveal{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s ease}
+.vjc-reveal.vjc-in{opacity:1;transform:none}
+
+/* footer on black */
+html:is(:root,#vj) body.vj-cinema-page .site-footer{background:#000!important;border-top:1px solid rgba(255,255,255,.08)!important}
+
+@media (prefers-reduced-motion:reduce){
+  .vjc-surv{animation:none;stroke-dashoffset:0}
+  .vjc-ghost,.vjc-tf,.vjc-labels .l1,.vjc-labels .l2,.vjc-labels .l3{animation:none;opacity:1}
+  .vjc-stars,.vjc-down span{animation:none}
+  .vjc-reveal{opacity:1;transform:none;transition:none}
+}
+@media (max-width:860px){
+  .vjc-media img,.vjc-left .vjc-media img{width:100%;left:0;right:0;opacity:.45;-webkit-mask-image:linear-gradient(0deg,transparent 0,#000 60%);mask-image:linear-gradient(0deg,transparent 0,#000 60%)}
+  .vjc-diagram .vjc-media img{width:94%;left:3%;top:8vh;height:40%}
+  .vjc-left .vjc-copy{justify-items:start;text-align:left}
+  .vjc-left .vjc-copy>*{margin-left:0}
+  .vjc-left .vjc-stat{justify-items:start}
+  .vjc-rows a{grid-template-columns:3rem minmax(0,1fr);gap:8px 16px}
+  .vjc-rows .q{grid-column:2}
+  .vjc-rows .go{display:none}
+  .vjc-hero .vjc-shade{background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.2) 100%)}
+}
+.vjc-sr{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
+
+/* the home stays dark in the light theme too: pin colours and filters above the light-theme layer */
+html:is(:root,#vj) body.vj-cinema-page .vjc-media img{filter:grayscale(1) contrast(1.08) brightness(.95)!important}
+html:is(:root,#vj) body.vj-cinema-page .vjc-diagram .vjc-media img{filter:grayscale(1) brightness(1.15)!important}
+html:is(:root,#vj) body.vj-cinema-page .vjc :is(h1,h2,p,span,a){-webkit-hyphens:manual!important;hyphens:manual!important}
+html:is(:root,#vj) body.vj-cinema-page .vjc .vjc-news a{color:#fff!important}
+html:is(:root,#vj) body.vj-cinema-page .vjc .vjc-eyebrow{color:var(--vj-muted)!important}
+html:is(:root,#vj) body.vj-cinema-page .vjc .vjc-eyebrow a{color:var(--vj-muted)!important}
+html:is(:root,#vj) body.vj-cinema-page .site-footer :is(summary,a,span,p,b){color:var(--vj-text)!important}
+html:is(:root,#vj) body.vj-cinema-page .site-footer .home-footer-about{color:#fff!important}
+html:is(:root,#vj) body.vj-cinema-page .site-footer .footer-grid{background:#000!important;border-color:var(--vj-rule)!important;box-shadow:none!important}
+html:is(:root,#vj) body.vj-cinema-page .site-header :is(.nav-links a,.brand-copy,.lang-switch a.active,.lang-switch a[aria-current],button,[class*="search"],[class*="theme"]){color:#f2f2f0!important}
+html:is(:root,#vj) body.vj-cinema-page .site-header :is(button,[class*="search"],[class*="theme"]){border-color:rgba(255,255,255,.18)!important}
+.vjc-diagram .vjc-shade{background:linear-gradient(90deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.7) 40%,rgba(0,0,0,0) 72%),linear-gradient(0deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,0) 40%)}
+html:is(:root,#vj) body.vj-cinema-page .vjc-wrap{max-width:1280px!important;margin:0 auto!important;padding:0 max(24px,4vw)!important}
+@media (max-width:700px){
+  html:is(:root,#vj) body.vj-cinema-page .vjc h1{font-size:clamp(1.6rem,7.4vw,2.5rem)!important}
+  html:is(:root,#vj) body.vj-cinema-page .vjc h2{font-size:clamp(1.35rem,6vw,2rem)!important}
+  html:is(:root,#vj) body.vj-cinema-page .vjc-rows a{grid-template-columns:2.4rem minmax(0,1fr);column-gap:14px;row-gap:8px;padding:20px 0}
+  html:is(:root,#vj) body.vj-cinema-page .vjc-rows .word{font-size:clamp(1.1rem,5.6vw,1.7rem)}
+  html:is(:root,#vj) body.vj-cinema-page .vjc-rows .q{grid-column:2;font-size:.95rem}
+  html:is(:root,#vj) body.vj-cinema-page .vjc-rows .go{display:none}
+  .vjc-down{display:none}
+  .vjc-stat b{font-size:2.4rem}
+  .vjc-hero .vjc-copy{padding-bottom:8vh}
+}
+/* telemetry labels: pin SVG paint above any theme rule for svg text */
+html:is(:root,#vj) body.vj-cinema-page .vjc-telemetry text{fill:#fff!important;color:#fff!important}
+html:is(:root,#vj) body.vj-cinema-page .vjc-telemetry text.l3{fill:var(--vj-accent)!important;color:var(--vj-accent)!important}
+html:is(:root,#vj) body.vj-cinema-page .vjc-telemetry :is(.vjc-grid line,.vjc-tf,.vjc-ghost){stroke:#fff!important}
+html:is(:root,#vj) body.vj-cinema-page .vjc-telemetry .vjc-surv{stroke:var(--vj-accent)!important}
+html:is(:root,#vj) body.vj-cinema-page .vjc-telemetry .vjc-stars{fill:#fff!important}

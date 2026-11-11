@@ -12,8 +12,8 @@
 .research-tree details>summary:focus-visible{outline:2px solid var(--phosphor)}
 .research-tree-group{display:grid;gap:2px;margin:5px 0 13px 7px;padding-left:10px;border-left:1px solid var(--line)}
 .research-tree-link{display:block;padding:7px 9px;border-radius:4px;color:var(--muted);font:500 13px/1.42 var(--sans);overflow-wrap:anywhere;max-width:100%;text-decoration:none}
-.research-tree-link:hover,.research-tree-link:focus-visible{background:rgba(111,255,126,.07);color:var(--text)}
-.research-tree-link.is-active{background:rgba(111,255,126,.085);color:var(--phosphor);box-shadow:inset 2px 0 0 var(--phosphor);font-weight:700}
+.research-tree-link:hover,.research-tree-link:focus-visible{background:color-mix(in srgb,var(--vj-accent) 7.0%,transparent);color:var(--text)}
+.research-tree-link.is-active{background:color-mix(in srgb,var(--vj-accent) 8.5%,transparent);color:var(--phosphor);box-shadow:inset 2px 0 0 var(--phosphor);font-weight:700}
 .research-tree-link.is-managed:before{content:'◦ ';font-size:16px;line-height:0}
 .research-tree-link[hidden]{display:none}
 .research-workspace :is(.container,.narrow,.reading-width){max-width:min(100%,1040px)}
@@ -37,7 +37,7 @@
 .research-document-content pre{padding:17px;border:1px solid var(--line);border-radius:5px;background:var(--surface, #0d100e);overflow-x:auto}
 .research-document-content table{border-collapse:collapse;width:100%;display:block;overflow-x:auto;margin-block:22px}
 .research-document-content :is(th,td){border:1px solid var(--line);padding:10px 13px;text-align:left;vertical-align:top}
-.research-math{max-width:100%;overflow-x:auto;background:rgba(111,255,126,.025);border:1px solid var(--line);padding:24px 16px;margin:22px 0}
+.research-math{max-width:100%;overflow-x:auto;background:color-mix(in srgb,var(--vj-accent) 2.5%,transparent);border:1px solid var(--line);padding:24px 16px;margin:22px 0}
 .research-document-footer{border-top:1px solid var(--line);padding-top:20px;margin-top:50px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:12px;line-height:1.5}
 .research-back{font-size:13px}
 /* Light treatment retains neutral grayscale and never inverts figures or photos. */

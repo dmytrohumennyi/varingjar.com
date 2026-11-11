@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="en";var TARGETS={"en":"lecture-16.html","uk":"../../uk/teaching/embedded-software-engineering/lecture-16.html","de":"../../de/teaching/embedded-software-engineering/lecture-16.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Jira in Practice: Workflow, Story Points and Sprint Capacity — Væringjar II</title><meta content="What a ticket must contain, when you can do without iterations, decomposing an active suspension, a workflow without shortcuts, voting on story points and a sprint at 80 % capacity." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261111-vj1" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261111-vj1" rel="stylesheet"/>
+<link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-16.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-16.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-16.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-16.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-16.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Jira in Practice: Workflow, Story Points and Sprint Capacity" property="og:title"/><meta content="What a ticket must contain, when you can do without iterations, decomposing an active suspension, a workflow without shortcuts, voting on story points and a sprint at 80 % capacity." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/teaching/embedded-software-engineering/lecture-16.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Jira in Practice: Workflow, Story Points and Sprint Capacity" name="twitter:title"/><meta content="What a ticket must contain, when you can do without iterations, decomposing an active suspension, a workflow without shortcuts, voting on story points and a sprint at 80 % capacity." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261111-vj1" rel="stylesheet"/><script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script><style id="lecture-figure-style">.lecture-notes-content figure.lecture-figure{margin:28px 0;padding:0;max-width:100%}.lecture-notes-content figure.lecture-figure a{display:block;border:0;background:#fff;padding:10px;border-radius:6px;border:1px solid rgba(127,127,127,.35)}.lecture-notes-content figure.lecture-figure img{display:block;width:100%;height:auto;margin:0 auto}.lecture-notes-content figure.lecture-figure-small{max-width:560px}.lecture-notes-content figure.lecture-figure-wide{width:min(1180px,calc(100vw - 48px));max-width:none}.lecture-notes-content figure.lecture-figure figcaption{margin-top:10px}.lecture-notes-content .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}@media (max-width:640px){.lecture-notes-content .table-scroll table{min-width:600px;width:600px;max-width:none!important;table-layout:auto}}</style><link href="../../assets/css/vj-theme.css?v=20261111-vj1" rel="stylesheet"/>
+</head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Framework</a><a href="../../research.html">Evidence</a><a href="../../implementation.html">Build</a><a class="active" href="../../teaching.html">Teaching</a><a href="../../collaboration.html">Collaborate</a></div>
+<div aria-label="Language" class="lang-switch"><a aria-current="page" class="active" data-lang="en" href="lecture-16.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../uk/teaching/embedded-software-engineering/lecture-16.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../de/teaching/embedded-software-engineering/lecture-16.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Teaching / Session 16 · 11 Nov 2026</div><h1>Jira in Practice: Workflow, Story Points and Sprint Capacity</h1><p class="lead reader-lead">What a ticket must contain, when you can do without iterations, decomposing an active suspension, a workflow without shortcuts, voting on story points and a sprint at 80 % capacity.</p><div class="reader-badges"><span>11.11.2026</span><span>Session 16 / 16</span><span>01:36:23</span><span>Practical session</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Course overview →</a><a class="btn btn-primary" href="#full-notes">Read full notes ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODULE 05 · REQUIREMENTS &amp; ARCHITECTURE / 16 · 11.11.2026</div><div class="course-context-nav"><a class="previous" href="lecture-15.html">Previous · 15</a><span class="current">16</span><span class="next">Gantt chart, costs and sprints (forecast)</span></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Course chronology</div><h2>Engineering notes</h2><p class="reader-intro">What a ticket must contain, when you can do without iterations, decomposing an active suspension, a workflow without shortcuts, voting on story points and a sprint at 80 % capacity.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>A good ticket and workflow</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>From requirements to tasks</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Story points and voting</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>Sprint capacity up to 80 %</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Full session notes</div><h2>Full session notes</h2><p class="lecture-notes-intro">Complete English teaching notes derived from the Ukrainian transcript of 11 November. Diagrams are editorial, based on the lecturer’s explanations; student names are not published.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="source-notes/R16-2026-11-11.md">Ukrainian source notes →</a> <a class="btn btn-ghost" href="source-transcripts/2026-11-11.md">Original transcript →</a></div><article class="lecture-article lecture-notes-content" lang="en"><h1>Session 16. Jira in practice: work hierarchy, workflow, story points and sprint capacity</h1>
+<blockquote>
+<p><strong>11 November 2026 · practical session · 1 h 36 min.</strong> Prepared from the automatic transcript <code>IgorSikorskyKPI_L11_111126.mp4</code>. These are edited teaching notes, not a verbatim record: obvious recognition errors are corrected and terms are aligned with earlier sessions. The names of students and third parties are not published. The conversation about internships and interviews reflects the <strong>lecturer’s opinion and experience</strong>. Editorial clarifications and editorial diagrams are marked separately.</p>
+</blockquote>
+<h2>0. Organisational</h2>
+<ul>
+<li>There were two alerts during the session; during a missile threat the lecturer called a 10-minute break and asked everyone in Kyiv to go to a shelter: “It is not worth it.”</li>
+<li>The session continues session 15: yesterday a Trello board was created, today Jira is configured.</li>
+</ul>
+<h2>1. Recap: what a ticket must contain</h2>
+<p>A reminder using Trello (the same vendor as Jira and Confluence — Atlassian, “practically a monopolist in the traceability of processes and tasks”):</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stage</td>
+<td>To Do, In Progress, Hold, Review, Done — or others, depending on your workflow</td>
+</tr>
+<tr>
+<td>Title</td>
+<td>Short, but enough to understand the task</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>What to do, which results are expected and the <strong>completion criterion</strong> (definition of done); important notes from the author — “data on the website”, “the Excel sheet”</td>
+</tr>
+<tr>
+<td>Comments</td>
+<td>Stay in the history with date and time; editing comments can be disabled</td>
+</tr>
+<tr>
+<td>Assignment</td>
+<td>Who the task is assigned to</td>
+</tr>
+<tr>
+<td>Labels</td>
+<td>A category (testing, documentation…) — like labels in GitHub, to find a group of tickets quickly</td>
+</tr>
+<tr>
+<td>Dates</td>
+<td>A start date is required, an end date is desirable — until when the task is relevant</td>
+</tr>
+<tr>
+<td>Subtasks / checklist</td>
+<td>The assignee closes items one by one — progress is visible</td>
+</tr>
+</tbody>
+</table></div>
+<p>If a task is not described in detail, the assignee will either do “something else”, spend your time asking for explanations, or say: “You did not explain the task well enough, so I did it this way.”</p>
+<p><strong>The lecturer’s rule:</strong> after <strong>every state change</strong> (In Progress → Hold, In Progress → Review, Review → Done) leave a comment — what was checked, whether there are remarks. It is a safeguard: the person really worked with the task rather than dragging it mechanically.</p>
+<p><strong>Why Trello is dangerous:</strong> a card can be dragged from In Progress straight to Done, bypassing Review. If moving to Done automatically triggers a GitHub Action that merges into main, unreviewed code ends up in the main branch — a serious source of errors.</p>
+<h2>2. Kanban and Scrum: what you need to know before starting</h2>
+<p>Scrum is not the pinnacle but <strong>one of the models</strong> of team work. Its drawback is <strong>redundancy</strong>: development is run through several times iteratively and improved each time. The lecturer put it this way: first make it work, then make it work well, then make it look good. Four iterations take more time: you get the product later, but with fewer risks.</p>
+<blockquote>
+<p><strong>Editorial clarification.</strong> This sequence is usually quoted as “Make it work, make it right, make it fast” and attributed to Kent Beck; Brian Kernighan expressed a similar idea earlier.</p>
+</blockquote>
+<p>Why not always use Kanban, which, in the lecturer’s words, “delivers something good, high-quality and working from the first iteration”? Because Kanban, as he understands it, has one precondition: <strong>before the project starts you must understand very clearly what you are building</strong>. There is no room for research, attempts or mistakes. You need:</p>
+<ol>
+<li><strong>Requirements engineering</strong> — a huge field: standards, guidelines, frameworks, very clear communication with stakeholders and the customer. People who know processes and standards join the project: architects, technical writers, leads.</li>
+<li><strong>Architecture description</strong> — a large, strictly controlled document that describes the whole system “on paper, in A4 format”. It is agreed with the customer, who confirms by e-mail or signature that it fully matches what they want to receive.</li>
+<li><strong>Design descriptions</strong> — the decomposition of the architecture: each part of the system with its algorithm, interfaces, technologies and test approach.</li>
+<li><strong>Distribution between architects.</strong> The system architect hands large pieces of work to domain architects (software, hardware, mechanics) together with the system requirements. The hardware architect “runs them through himself” and produces <strong>hardware requirements</strong>, then cuts them into tasks in Jira. The tasks cover his requirements, and his requirements cover the system requirements.</li>
+</ol>
+<figure class="diagram lecture-figure"><a href="../../assets/img/teaching/embedded-software-engineering/l16-requirements-chain.svg"><img src="../../assets/img/teaching/embedded-software-engineering/l16-requirements-chain.svg" alt="Chain: customer needs → architecture description (signed off) → design descriptions → system requirements → hardware, software and mechanical requirements from domain architects → tasks in Jira" loading="lazy"/></a><figcaption class="diagram-note">Fig. 16.1. The “everything described before the start” approach as the lecturer explained it: from customer needs to tasks in Jira. Editorial diagram.</figcaption></figure>
+
+<p>Then everything is written down before work begins, and the system will be best aligned. An example from the <strong>lecturer’s practice</strong>: he was the architect of a hardware module with its own interfaces, while another architect on the customer’s side described the wire harnesses. Because of poor communication, the harness and the interface did not match — a difference of a few millimetres. An adapter had to be made in a hurry, and the issue could only be fixed in the next development iteration half a year later. “We did not follow Kanban: we worked Scrum-style, he and I separately, in parallel — and got two mismatched pieces of one system.”</p>
+<p><strong>Scrum</strong> is for work where “who knows how to do it”: there is a general understanding, but it is unclear what is inside, which methods and libraries to use. You start with interfaces, then find the main library, connect it to the interfaces, then build the UI. “There is a vast field to plough: you take one square, plough it, things become clearer — and move on.”</p>
+<p>If everything can be described up front, Kanban gives you an excellent system “in one go”. But if you fail at the systems-engineering level, there is no chance to fix it: “huge investments thrown under a train”.</p>
+<blockquote>
+<p><strong>Editorial clarification.</strong> What the lecturer calls Kanban here is a <strong>plan-driven approach</strong> (waterfall, V-model): a full specification and architecture before the start and formal agreement with the customer — the approach typical of projects under ISO 26262 or Automotive SPICE. A kanban board is often used to <strong>execute</strong> such a plan. In the canonical definition (Kanban Guide), Kanban is a strategy for optimising flow with controlled work in progress; it does not require a full specification up front. The main point of the session stands: the better the system is described before the start, the fewer iterations are needed; the more uncertainty, the more iterations.</p>
+</blockquote>
+<h2>3. Example: active vehicle suspension — from composition to tasks</h2>
+<p>The running example is an <strong>active vehicle suspension</strong>, software part only (hardware and mechanics are out of scope).</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>In the example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Composition</td>
+<td>Active suspension</td>
+</tr>
+<tr>
+<td>Epics (components)</td>
+<td><strong>Levelling</strong> — ride height; <strong>Damping</strong> — stiffness; <strong>Roll control</strong> — controlling body roll so the car does not slide</td>
+</tr>
+<tr>
+<td>Stories</td>
+<td>Interfaces; initial initialisation; implementing front and rear ride-height change</td>
+</tr>
+<tr>
+<td>Tasks</td>
+<td>Inflating the air spring; deflating it; emergency stop of the air flow</td>
+</tr>
+</tbody>
+</table></div>
+<p>Above the composition there is a higher level — vehicle body control — and above that the vehicle control system. But they are <strong>out of scope</strong> for the team: you join calls with those teams and agree the <strong>interfaces</strong>, but implement nothing for them. That is why <strong>interfaces down</strong> (to the actuators) and <strong>interfaces up</strong> (to the higher-level vehicle control software) are written as separate work.</p>
+<figure class="diagram lecture-figure"><a href="../../assets/img/teaching/embedded-software-engineering/l16-active-suspension.svg"><img src="../../assets/img/teaching/embedded-software-engineering/l16-active-suspension.svg" alt="Hierarchy: vehicle body control above the composition (out of scope); composition Active suspension; epics Levelling, Damping, Roll control; under Levelling stories Interfaces down/up, Initialisation, Front/rear clearance; under a story tasks Inflate, Deflate, Emergency stop" loading="lazy"/></a><figcaption class="diagram-note">Fig. 16.2. Decomposition of the active suspension from the session: composition → epics → stories → tasks. Editorial diagram.</figcaption></figure>
+
+<h2>4. Configuring the Jira space</h2>
+<p>The lecturer created a <strong>Scrum</strong> space — “an iterative approach for software engineering is a really neat thing” — named <em>Vehicle body control active suspension</em>. The board shows a <strong>sprint</strong> (a time interval for solving tasks) and a <strong>backlog</strong> (the “basket” where tasks wait to be taken into a sprint).</p>
+<p>By default only stories, features and bugs could be created, so <strong>Epic</strong> was added in the space settings and the fields of each work type were configured:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Fields kept</th>
+<th>Removed, and why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Epic</strong></td>
+<td>Summary, Description (required), Assignee (optional — an epic may belong to the team as a whole), Start/Due date, Reporter — who created it and is responsible</td>
+<td>Sprint — an epic is more abstract than a sprint; Story points — they belong to features, tasks and subtasks; Parent — an epic above an epic breaks the canonical hierarchy</td>
+</tr>
+<tr>
+<td><strong>Bug</strong></td>
+<td>Original estimate (how long the fix will take), Assignee, Parent (the task in which the bug was found), Due date, Labels, Team, Start date, <strong>Sprint</strong> (which sprint fixes it), <strong>Priority</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Feature / Task</strong></td>
+<td>Summary, Description with a completion criterion, Original estimate, Priority, Assignee, Parent (epic), Due date, Labels, Team, Start date, <strong>Story points</strong>, <strong>Time tracking</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Team</strong> is needed because there may be several teams: one for levelling, one for damping, one for roll control, plus testers, DevOps and others. A task can be assigned to a whole team, and the team decides who does it.</p>
+<p><strong>Time tracking</strong> matters under <strong>Time &amp; Material</strong>: the customer wants to know what exactly the time went into (“20 hours on this feature”), not just to receive a big invoice once a month. In Jira you can start and stop a timer or enter time manually.</p>
+<h3>Workflow</h3>
+<p>The key setting is the <strong>workflow</strong>, i.e. which paths a task may take between states:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Transition</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Created → <strong>To Do</strong></td>
+<td>Automatically, no conditions</td>
+</tr>
+<tr>
+<td>To Do → <strong>In Progress</strong></td>
+<td>Only through the “Take” action</td>
+</tr>
+<tr>
+<td>In Progress ↔ <strong>Hold</strong></td>
+<td>You can pause when blocked; from Hold only back to In Progress</td>
+</tr>
+<tr>
+<td>In Progress → <strong>Review</strong></td>
+<td>The work is ready for checking</td>
+</tr>
+<tr>
+<td>Review → <strong>Done</strong></td>
+<td>Only after review</td>
+</tr>
+<tr>
+<td>Review → <strong>In Progress</strong></td>
+<td>The reviewer found a problem — back for rework</td>
+</tr>
+<tr>
+<td>Anything → To Do</td>
+<td><strong>Forbidden</strong>: a task never returns to To Do</td>
+</tr>
+<tr>
+<td>Anything → Done</td>
+<td><strong>Forbidden</strong> except from Review</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="diagram lecture-figure"><a href="../../assets/img/teaching/embedded-software-engineering/l16-jira-workflow.svg"><img src="../../assets/img/teaching/embedded-software-engineering/l16-jira-workflow.svg" alt="Workflow: Create → To Do; To Do → In Progress (Take); In Progress ↔ Hold; In Progress → Review; Review → Done; Review → In Progress. Crossed out: returning to To Do and moving to Done without Review" loading="lazy"/></a><figcaption class="diagram-note">Fig. 16.3. The workflow configured in the session: Done only through Review, no way back to To Do. Editorial diagram.</figcaption></figure>
+
+<p>Such a workflow “is safe: nobody can bypass the system”. It was applied to all work types. For <strong>bugs</strong> it was tempting to remove Hold, but the lecturer kept it: without Hold an <strong>endless loop</strong> In Progress → Review → In Progress is possible. If ideas for fixing a bug have run out, the bug needs somewhere to “rest” rather than consume time “banging your head against the wall”.</p>
+<h2>5. Story points</h2>
+<p>Can you say right away how much the levelling feature will cost and take — a car that rises on the move before turning onto a forest track and lowers itself on the motorway? “A year, maybe two, with ten engineers, or maybe twenty” is guesswork. Nobody in their right mind estimates a whole feature; it is <strong>broken into small pieces</strong>.</p>
+<ol>
+<li><strong>The interface</strong> between the control system and the compressor: a request for a new pressure — effectively one parameter. The compressor knows its current pressure and decides whether to inflate or deflate. This can be estimated: one engineer of a given level, about two days.</li>
+<li><strong>Measuring the current pressure</strong> — “this is harder”. The key word is <em>harder</em>: we are talking about <strong>relative values</strong>.</li>
+</ol>
+<p>The simplest task that could be tied to time and a specific person is <strong>1 story point</strong>. There will probably be no smaller tasks. Everything else is estimated relative to it:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Task in the levelling feature</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface to the compressor</td>
+<td>1 SP</td>
+</tr>
+<tr>
+<td>Measure the current pressure</td>
+<td>3 SP (≈ three times harder)</td>
+</tr>
+<tr>
+<td>Control the pressure — a controller (P, PI, PID, LQR…)</td>
+<td>6 SP</td>
+</tr>
+<tr>
+<td><strong>Levelling feature as a whole (simplified)</strong></td>
+<td><strong>≈ 10 SP</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>There is no mathematical formula such as “a story point is 10 person-hours of an engineer of class X”: people differ, and there are no “classes”.</p>
+<h3>How the team votes</h3>
+<p>The whole team estimates, and <strong>all votes are equal</strong> — the lecturer’s, a team lead’s or a junior’s. In the session everyone gave an estimate for the “level measurement” task: from 4 to 9 SP. The average was <strong>6.25</strong>, which is <strong>always rounded up</strong>, to 7, because of risks.</p>
+<p>The <strong>extreme values</strong> are the most valuable:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Extreme</th>
+<th>Possible reasons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maximum (9)</td>
+<td>The engineer wants more time “to take it easy” (according to the lecturer, the most common reason); an experienced engineer has done something similar and knows where problems appear; simply not paying attention</td>
+</tr>
+<tr>
+<td>Minimum (4)</td>
+<td>The engineer has done something similar and knows a faster way</td>
+</tr>
+</tbody>
+</table></div>
+<p>Both extremes are “a gift from the gods”: either you detect a problem early or you find someone with experience and a faster solution. “In a sane business there is no place for attacking your team.”</p>
+<blockquote>
+<p><strong>Editorial clarification.</strong> The exercise is close to <strong>Planning Poker</strong> (James Grenning, 2002; popularised by Mike Cohn in 2005). Canonically, everyone reveals their estimate at the same time to avoid anchoring, then the authors of the highest and lowest estimates explain their reasoning, and the team votes again until the estimates converge. A Fibonacci-like scale (1, 2, 3, 5, 8, 13…) is common. Averaging and rounding up is a widespread variant. Tying “1 SP = 2 days” is a local team agreement for the first sprint; after that, capacity is usually forecast from the actual velocity of previous sprints.</p>
+</blockquote>
+<h2>6. Priorities and sprint capacity</h2>
+<p><strong>Priorities follow dependencies.</strong> Everything depends on the interfaces, so they get the highest priority. Without measuring the current level you cannot control it — high. The level request — high. Level control and level change become possible only after that.</p>
+<p><strong>Capacity calculation:</strong></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 story point</td>
+<td>2 working days of one engineer (team estimate)</td>
+</tr>
+<tr>
+<td>Sprint</td>
+<td>2 weeks = 10 working days (always start with two weeks; you can change it later)</td>
+</tr>
+<tr>
+<td>Engineers in the team</td>
+<td>3</td>
+</tr>
+<tr>
+<td>One engineer’s contribution</td>
+<td>0.5 SP per day × 10 days = 5 SP</td>
+</tr>
+<tr>
+<td><strong>Sprint capacity</strong></td>
+<td><strong>3 × 5 = 15 SP</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Tasks are dragged into the sprint by priority: 1 + 7 + 4 = 12 SP. The next task would bring it to 16 SP — over capacity — so <strong>sprint 2</strong> is created and filled in turn.</p>
+<p>The lecturer rejected the “clever” option of cutting a task in two to bring the first sprint up to 15: a task may not be splittable in engineering terms at all; besides, new tasks will appear during the sprint, and changing a sprint is “a mortal sin”.</p>
+<p><strong>Why you must not overload a sprint, especially the first one:</strong></p>
+<ul>
+<li>the first sprint <strong>never goes smoothly</strong>: someone’s tools are not installed, someone’s computer has not arrived, two engineers argue about the seat by the window, someone is in the draught from the air conditioner;</li>
+<li>the team is layered on top of the “sprint maths”: someone dislikes someone, someone drinks tea rather than coffee — and work slows down;</li>
+<li>the <strong>bus factor</strong>: anyone may fall ill or drop out, and their tasks fall on fewer people.</li>
+</ul>
+<p>So a 15 SP plan is <strong>idealistic</strong>. The lecturer referred to SAFe and PMI: load a sprint <strong>to 80 % of capacity</strong>. He left the first sprint at 12 SP.</p>
+<blockquote>
+<p><strong>Editorial clarification.</strong> The Scrum Guide (2020) says that during the Sprint no changes are made that would endanger the Sprint Goal; at the same time scope may be clarified and renegotiated with the Product Owner. So the “mortal sin” is changes that undermine the Sprint Goal, not any clarification. On the 80 %: SAFe explicitly advises against planning to 100 % of capacity, and its normalised estimate (8 SP per full-time person per two-week iteration) corresponds to about 80 % of working time. We did not find a separate “80 %” rule in PMI publications; it is a widespread rule of thumb.</p>
+</blockquote>
+<p>After each sprint there is a <strong>retrospective</strong> and planning of the next one: the manager looks at how the sprint went, assigns tasks to the new one and gradually tunes the process. The goal is for the team to be comfortable working for as long as needed, for the customer to be able to pay for as long as needed and for the product to keep developing for as long as possible. “If I achieve that, I am a good manager.” The strongest instrument here is <strong>team feedback</strong> at the end of the sprint.</p>
+<h2>7. Off topic: internships and juniors (the lecturer’s opinion)</h2>
+<p>During the shelter break the conversation turned to the pre-diploma internship, which, according to the students, their group does not have. The lecturer considers an internship at a company very valuable:</p>
+<ul>
+<li>a diploma based on real equipment, tasks and corporate processes is quite different from an abstract topic;</li>
+<li>students bring modern approaches back to the department — a “useful stress” for a department that otherwise “stews in its own juice”;</li>
+<li>a year ago the lecturer took student interns into his project, and they did so well that the company hired them.</li>
+</ul>
+<p>A student said that getting an interview for a junior position is much harder than for a mid-level one. The lecturer’s explanation: it is a <strong>management problem</strong>. A non-technical manager is afraid of juniors — “you have to explain everything to them”. A technically competent one sees the benefits: creativity without “walls” and the chance to do a project more cheaply with a higher margin. In the lecturer’s estimate, the salary gap is so large that a month of a senior’s work is almost a year of a trainee’s. His advice: at an interview, find the words to get this argument across to management.</p>
+<h2>Practical takeaways</h2>
+<ul>
+<li>A good ticket: a short title, a description with a completion criterion, an assignee, labels, dates, subtasks.</li>
+<li>A comment after every state change guards against mechanical dragging.</li>
+<li>Moving to Done without Review is dangerous, especially with an automatic merge.</li>
+<li>The more completely the system is described before the start, the fewer iterations are needed; under high uncertainty, use Scrum.</li>
+<li>Work hierarchy: composition → epics → stories → tasks; interfaces up and down are separate work.</li>
+<li>Workflow: Done only through Review, never back to To Do, Hold protects against endless loops.</li>
+<li>Story points are relative to the simplest task; the whole team votes and the extremes are discussed.</li>
+<li>Sprint capacity is calculated from the team and the sprint length; the first sprint is not fully loaded.</li>
+</ul>
+<h2>Self-check questions</h2>
+<ul>
+<li>What should a ticket description contain, and what is a definition of done?</li>
+<li>Why leave a comment after every state change?</li>
+<li>Why is In Progress → Done combined with an automatic merge dangerous?</li>
+<li>What must you have before the start to work without iterations, and what is the risk of that approach?</li>
+<li>How do system requirements relate to hardware requirements?</li>
+<li>How do you decompose an active suspension into epics, stories and tasks?</li>
+<li>Which fields does an epic need, and which a bug, and why?</li>
+<li>Why was Hold kept in the bug workflow?</li>
+<li>What is 1 story point, and how are other tasks estimated?</li>
+<li>Why is the average estimate rounded up, and why discuss the extreme values?</li>
+<li>How do you calculate sprint capacity for 3 engineers, a 2-week sprint and 1 SP = 2 days?</li>
+<li>Why should the first sprint not be loaded to 100 %?</li>
+</ul>
+<h2>What comes next (forecast)</h2>
+<p>The lecturer did not announce a specific topic for the next session. <strong>This is an editorial forecast, not an announcement</strong>: given the second-assessment requirements, likely topics are the Gantt chart and the engineer involvement chart, costing, filling the backlog with at least four two-week sprints, assigning and estimating tasks, and GitHub Projects — the third tool mentioned in session 15.</p>
+<h2>Verified links</h2>
+<ul>
+<li>The Scrum Guide (2020): https://scrumguides.org/scrum-guide.html</li>
+<li>The Kanban Guide: https://kanbanguides.org/english/</li>
+<li>SAFe — “Planning to 100% capacity? Don’t do it!”: https://scaledagile.com/planning-to-100-capacity-dont-do-it/</li>
+<li>SAFe, Iteration Planning: https://framework.scaledagile.com/iteration-planning/</li>
+<li>Make it work, make it right, make it fast (Kent Beck): https://dev.to/weeklydevtips/make-it-work-make-it-right-make-it-fast</li>
+</ul></article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Teaching</b><p style="margin-top:8px">Author teaching materials by Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">About the author →</a></div>
+<div class="footer-links"><b>Course</b><a href="index.html">Course overview</a><a href="lecture-14.html">Session 14</a><a href="lecture-15.html">Session 15</a><a href="lecture-16.html">Session 16</a></div>
+<div class="footer-links"><b>Context</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in Power Engineering</a><a href="../../teaching.html">All teaching materials</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Privacy</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../assets/js/locale.js"></script><script defer src="../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>
