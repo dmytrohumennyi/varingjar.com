@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="de";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-17.html","uk":"../../../uk/teaching/embedded-software-engineering/lecture-17.html","de":"lecture-17.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Projektstart in Jira: Precondition, Abhängigkeiten und Sprint-Ziele — Væringjar II</title><meta content="PMBOK und der Preis von SAFe, ein Precondition-Backlog für einen Roboter-Manipulator, Blocking-Verknüpfungen und Epics, ein längerer erster Sprint mit Sprint-Ziel, Feiertage und 80 % Kapazität – dazu die Aufgabe zur zweiten Überprüfung." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261111-vj1" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261111-vj1" rel="stylesheet"/>
+<link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-17.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-17.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-17.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-17.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-17.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Projektstart in Jira: Precondition, Abhängigkeiten und Sprint-Ziele" property="og:title"/><meta content="PMBOK und der Preis von SAFe, ein Precondition-Backlog für einen Roboter-Manipulator, Blocking-Verknüpfungen und Epics, ein längerer erster Sprint mit Sprint-Ziel, Feiertage und 80 % Kapazität – dazu die Aufgabe zur zweiten Überprüfung." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-17.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Projektstart in Jira: Precondition, Abhängigkeiten und Sprint-Ziele" name="twitter:title"/><meta content="PMBOK und der Preis von SAFe, ein Precondition-Backlog für einen Roboter-Manipulator, Blocking-Verknüpfungen und Epics, ein längerer erster Sprint mit Sprint-Ziel, Feiertage und 80 % Kapazität – dazu die Aufgabe zur zweiten Überprüfung." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261111-vj1" rel="stylesheet"/><script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script><style id="lecture-figure-style">.lecture-notes-content figure.lecture-figure{margin:28px 0;padding:0;max-width:100%}.lecture-notes-content figure.lecture-figure a{display:block;border:0;background:#fff;padding:10px;border-radius:6px;border:1px solid rgba(127,127,127,.35)}.lecture-notes-content figure.lecture-figure img{display:block;width:100%;height:auto;margin:0 auto}.lecture-notes-content figure.lecture-figure-small{max-width:560px}.lecture-notes-content figure.lecture-figure-wide{width:min(1180px,calc(100vw - 48px));max-width:none}.lecture-notes-content figure.lecture-figure figcaption{margin-top:10px}.lecture-notes-content .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}@media (max-width:640px){.lecture-notes-content .table-scroll table{min-width:600px;width:600px;max-width:none!important;table-layout:auto}}</style><link href="../../assets/css/vj-theme.css?v=20261111-vj1" rel="stylesheet"/>
+</head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Modell</a><a href="../../research.html">Evidenz</a><a href="../../implementation.html">Implementierung</a><a class="active" href="../../teaching.html">Lehre</a><a href="../../collaboration.html">Mitwirken</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-17.html?lang=en" hreflang="en" lang="en">EN</a><a data-lang="uk" href="../../../uk/teaching/embedded-software-engineering/lecture-17.html?lang=uk" hreflang="uk" lang="uk">UA</a><a aria-current="page" class="active" data-lang="de" href="lecture-17.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Lehre / Einheit 17 · 17.11.2026</div><h1>Projektstart in Jira: Precondition, Abhängigkeiten und Sprint-Ziele</h1><p class="lead reader-lead">PMBOK und der Preis von SAFe, ein Precondition-Backlog für einen Roboter-Manipulator, Blocking-Verknüpfungen und Epics, ein längerer erster Sprint mit Sprint-Ziel, Feiertage und 80 % Kapazität – dazu die Aufgabe zur zweiten Überprüfung.</p><div class="reader-badges"><span>17.11.2026</span><span>Einheit 17 / 17</span><span>00:59:42</span><span>Praktische Einheit</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Kursübersicht →</a><a class="btn btn-ghost" href="#assessment-2">Aufgabe zur zweiten Überprüfung ↓</a><a class="btn btn-primary" href="#full-notes">Vollständige Notizen ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / MODUL 05 · REQUIREMENTS &amp; ARCHITECTURE / 17 · 17.11.2026</div><div class="course-context-nav"><a class="previous" href="lecture-16.html">Vorherige · 16</a><span class="current">17</span><span class="next">Einstellung von Ingenieuren (angekündigt)</span></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Kurschronologie</div><h2>Ingenieurnotizen</h2><p class="reader-intro">PMBOK und der Preis von SAFe, ein Precondition-Backlog für einen Roboter-Manipulator, Blocking-Verknüpfungen und Epics, ein längerer erster Sprint mit Sprint-Ziel, Feiertage und 80 % Kapazität – dazu die Aufgabe zur zweiten Überprüfung.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Precondition-Backlog</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Abhängigkeiten und Epics</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Sprint-Ziel und Kalender</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>Zweite Überprüfung</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Vollständige Unterrichtsnotizen</div><h2>Vollständige Unterrichtsnotizen</h2><p class="lecture-notes-intro">Vollständige deutschsprachige Fachmitschrift auf Grundlage des ukrainischen Transkripts und der Videoaufzeichnung vom 17. November. Die Diagramme stammen von der Redaktion nach den Erklärungen des Dozenten; Namen von Studierenden werden nicht veröffentlicht.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R17-2026-11-17.md">Ukrainische Originalnotizen →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-11-17.md">Ukrainisches Rohtranskript →</a></div><article class="lecture-article lecture-notes-content" lang="de"><h1>Einheit 17. Projektstart in Jira: Precondition, Abhängigkeiten, Epics, Sprint-Ziel und Kapazität</h1>
+<blockquote>
+<p><strong>17. November 2026 · Übung · 1 Std.</strong> Erstellt aus dem automatischen Transkript und der <strong>Videoaufzeichnung</strong> <code>IgorSikorskyKPI_L12_17112006.mp4</code>: Ticketnamen, Verknüpfungen zwischen Tickets sowie die Sprint- und Epic-Einstellungen, die der Dozent auf dem Bildschirm zeigte, wurden aus dem Video ergänzt. Dies sind redigierte Lehrnotizen, kein wörtliches Protokoll: offensichtliche Erkennungsfehler sind korrigiert, Begriffe an frühere Einheiten angeglichen. Namen von Studierenden werden nicht veröffentlicht; der Kalender des Dozenten, den er als Beispiel zeigte, wird nicht wiedergegeben. Erfahrungen aus Unternehmen sind <strong>persönliche Praxis des Dozenten</strong>. Redaktionelle Präzisierungen und Diagramme der Redaktion sind gesondert gekennzeichnet. <strong>Die Aufgabe zur zweiten Überprüfung steht in Abschnitt 8.</strong></p>
+</blockquote>
+<h2>0. Organisatorisches</h2>
+<ul>
+<li>Zu Beginn der Einheit herrschte in Kyjiw Luftalarm (gelbe Stufe). Der Dozent bat alle zu bestätigen, dass sie in Sicherheit sind, erinnerte daran, dass die Einheit aufgezeichnet wird und es bei realer Gefahr besser ist, die Aufzeichnung später anzusehen: „Ein guter Ingenieur ist ein lebender Ingenieur.“</li>
+<li>Die Einheit setzt die Einheiten 15 und 16 fort: Dort wurden der Weg einer Aufgabe vom Start bis zum Abschluss (Workflow) beschrieben, Ticket-Typen durchgegangen, ein Scrum-Board für den Kurs gewählt, zwei Sprints angelegt und Kriterien für die Verteilung der Aufgaben vereinbart.</li>
+<li>Am Ende kündigte der Dozent die <strong>Aufgabe zur zweiten Überprüfung</strong> (Abschnitt 8) und das Thema der nächsten Einheit (Abschnitt 9) an.</li>
+</ul>
+<h2>1. Woher Best Practices kommen: PMBOK und SAFe</h2>
+<p>Projektmodelle unterscheiden sich von Unternehmen zu Unternehmen und von Projekt zu Projekt, doch es gibt anerkannte Best Practices.</p>
+<p><strong>PMBOK</strong> (Project Management Body of Knowledge) ist eine Sammlung von Best Practices für die verschiedenen Arten des Managements in Projekten. Ältere Ausgaben kann man kaufen oder kostenlos herunterladen. In der Ukraine gibt es eine Community, die Schulungen und Zertifizierungen anbietet; ein Zertifikat ist ein gutes Signal, dass man einen Kandidaten als möglichen Projektmanager in Betracht ziehen sollte. Auf dem Bildschirm zeigte der Dozent die Seite der ukrainischen Übersetzung des <em>PMBOK Guide</em> (siebte Ausgabe) auf der Website von PMI Ukraine.</p>
+<p><strong>SAFe</strong> (Scaled Agile Framework) skaliert Agile für den Fall, dass es <strong>viele Teams</strong> mit gemeinsamen Abhängigkeiten gibt, die voneinander isoliert arbeiten müssen – und zwar so, dass das Produkt am Ende ausgeliefert wird. Nach Aussage des Dozenten nutzen SAFe unter anderem große Automobilhersteller bei der Entwicklung eines neuen Fahrzeugs: Gibt es viele Teams wie Ihres und baut jedes sein eigenes Stück des Produkts, wählt das Top-Management höchstwahrscheinlich SAFe als Release-Instrument.</p>
+<p>Ist das Produkt klein und bauen es ein bis vier Teams, investiert niemand in SAFe: Man wählt Agile (Scrum), Wasserfall, Kanban oder ein anderes einfaches Modell aus dem PMBOK.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Ansatz</th>
+<th>Wann er passt</th>
+<th>Preis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SAFe</strong></td>
+<td>Viele Teams, gemeinsame Abhängigkeiten, großes Produkt (z. B. ein Auto)</td>
+<td>Viele Routinen: Kommunikation zwischen Ingenieuren, Planung, Risikoanalyse, Backlog Refinement, Demos, Plannings, Meetings, Abstimmungen</td>
+</tr>
+<tr>
+<td><strong>Scrum / Agile</strong></td>
+<td>Ein Produkt, ein oder wenige Teams</td>
+<td>Deutlich weniger Routinen als SAFe</td>
+</tr>
+<tr>
+<td><strong>Wasserfall, Kanban</strong></td>
+<td>Gut verstandene Aufgaben, kleiner Maßstab</td>
+<td>Die wenigsten Routinen</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Was dieser Preis kauft.</strong> Sie zahlen damit, dass jeder Ingenieur einen Teil seiner Zeit in Zusammenarbeit investiert. Dafür löst SAFe Integration, Test, Qualitätskontrolle, Zertifizierung und den Ersatz eines Ingenieurs, der früher oder später kündigen will, auf Systemebene. Für das Projekt sind das keine „Schocknachrichten“, sondern gewöhnliche Routine. Allgemeinere Ansätze verdauen solche Situationen deutlich schwerer.</p>
+<p><strong>Wann SAFe nicht nötig ist.</strong> Ein interdisziplinäres Team (Hardware, Mechanik, Firmware, Desktop, Designer) baut das Produkt, und es passt in ein oder zwei Inkremente – etwa bis zu einem halben Jahr, höchstens ein Jahr. Dann ergibt es höchstwahrscheinlich keinen Sinn, die Zeit des Teams in SAFe-Routinen zu investieren. Die Entscheidung muss bewusst getroffen werden.</p>
+<p><strong>Eine Ausnahme aus der Praxis des Dozenten.</strong> Er hat die Schulungen absolviert und die Zertifikate gehalten, auch für SAFe. In Unternehmen, in denen er arbeitete, wurden Teams auf internen Pet-Projekten vorbereitet und nutzten SAFe bewusst „im Übermaß“. Als ein großer Kunde kam, der nach SAFe arbeitet, war es leicht, sich mit dessen Teams zu integrieren und gemeinsam zu arbeiten.</p>
+<blockquote>
+<p><strong>Redaktionelle Präzisierung.</strong> Die aktuelle Ausgabe ist der <em>PMBOK® Guide — Eighth Edition</em> (PMI, November 2025). Eine ukrainische Übersetzung der siebten Ausgabe (2021) ist auf der Website des PMI Ukraine Chapter frei verfügbar. Die verbreitetste Zertifizierung auf Basis des PMBOK ist der PMP (Project Management Professional). In SAFe dauert ein Inkrement (PI, in SAFe 6 <em>Planning Interval</em>) meist 8–12 Wochen; „bis zu einem halben Jahr“ entspricht also etwa zwei bis drei PIs. Die Aussage über bestimmte Automobilhersteller gibt die Erfahrung des Dozenten wieder; eine öffentliche Bestätigung hat die Redaktion nicht geprüft.</p>
+</blockquote>
+<h2>2. Precondition: was vor dem Projektstart zu tun ist</h2>
+<p>Bevor die Arbeit in Sprints geschnitten wird, kommt alles, was das Projekt leisten muss, in den <strong>Backlog</strong>. Das Beispiel ist der bekannte <strong>Roboter-Manipulator</strong>. Der Dozent legte die Tickets nacheinander an und präzisierte dann die Reihenfolge; unten die endgültige Reihenfolge (Ticketschlüssel wie auf dem Bildschirm, SS = Steuerungssystem):</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Schlüssel</th>
+<th>Aufgabe</th>
+<th>Erklärung des Dozenten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCRUM-7</td>
+<td>Suche nach bestehenden Lösungen für die mechanische Plattform</td>
+<td>Verstehen, welche Roboter es auf dem Markt gibt</td>
+</tr>
+<tr>
+<td>SCRUM-8</td>
+<td>Kriterien für Roboter und SS</td>
+<td>Eine Suche ohne Kriterien ist sinnlos; höhere Priorität als die Suche nach dem Roboter selbst</td>
+</tr>
+<tr>
+<td>SCRUM-9</td>
+<td>Suche nach einem bestehenden SS</td>
+<td>Die Kriterien liegen vor – einfach suchen</td>
+</tr>
+<tr>
+<td>SCRUM-10</td>
+<td>Analyse und Auswahl von SS und Roboter</td>
+<td>Eine Vergleichstabelle in Excel: was wählen</td>
+</tr>
+<tr>
+<td>SCRUM-11</td>
+<td>Systemanforderungen an das neue Produkt</td>
+<td>High-Level-Anforderungen an das Roboter-SS, Sensorik, Aktoren, Kommunikation, HMI und den Cloud-Teil</td>
+</tr>
+<tr>
+<td>SCRUM-17</td>
+<td>Architektur</td>
+<td>Direkt nach den Systemanforderungen – vor Software-Anforderungen, Workflow und Werkzeugen; sie legt die nötigen Rollen fest</td>
+</tr>
+<tr>
+<td>SCRUM-16</td>
+<td>Teambildung</td>
+<td>Rollen ergeben Personallisten; dann Einstellung</td>
+</tr>
+<tr>
+<td>SCRUM-12</td>
+<td>Software-, Hardware- und Funktionale-Sicherheits-Anforderungen (FuSa)</td>
+<td>Zerlegung der Systemanforderungen</td>
+</tr>
+<tr>
+<td>SCRUM-13</td>
+<td>Auswahl der Werkzeuge für Entwicklung, Test und Dokumentation</td>
+<td>Welche Werkzeuge wir verwenden</td>
+</tr>
+<tr>
+<td>SCRUM-14</td>
+<td>Vorbereitung des Workflows</td>
+<td>Wie Aufgaben auf Ingenieure verteilt und in Arbeit genommen werden, wer reviewt, wo Zeit erfasst und wohin Ergebnisse gepusht werden – Dokumentation der Arbeitsprozesse, damit das ganze Team gleich arbeitet</td>
+</tr>
+<tr>
+<td>SCRUM-15</td>
+<td>Vorbereitung des Ökosystems</td>
+<td>GitHub oder GitLab einrichten und mit Jira integrieren, Confluence vorbereiten, Werkzeuge auf einem Server oder lokal bei jedem Entwickler installieren, Zugänge vergeben, Konformität mit Anforderungen an Cybersecurity und funktionale Sicherheit sicherstellen</td>
+</tr>
+</tbody>
+</table></div>
+<p>Die entstandene Kette: Marktanaloga → Kriterien → Anforderungen → Zerlegung der Anforderungen → Architektur → Team → Werkzeuge → Entwicklungs- und Testansatz → Ökosystem. <strong>Das Ökosystem lässt sich nicht vorbereiten, bevor die Leute eingestellt sind.</strong></p>
+<p><strong>Auch die Teambildung ist ein Ticket im selben Jira.</strong> Das ist übliche Praxis: Ein Projekt kennt keine Rolle „Chef“; es gibt Manager, Architekt, Lead, Techniker, Monteur, Entwickler, Tester. Aber alle sollten verstehen, was getan wurde, warum so, in welcher Reihenfolge, welche Abhängigkeiten es gibt und warum eine bestimmte Person genommen wurde.</p>
+<p>Diese ganze Menge an Aufgaben ist nichts anderes als das <strong>Schaffen der Voraussetzungen (Precondition)</strong>: was erledigt sein muss, bevor die eigentliche Projektarbeit beginnt.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-precondition-backlog.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-precondition-backlog.webp" alt="Jira-Backlog auf Ukrainisch: SCRUM-8, 7, 9, 10, 11, 17, 16, 12, 13, 14, 15 mit dem Epic-Label Precondition und SCRUM-19 „Systemzerlegung“ ohne Epic; alle in To Do" loading="lazy"/></a><figcaption class="diagram-note">Abb. 17.1. Der Backlog, nachdem die Aufgaben dem Epic Precondition zugeordnet wurden (Ticketnamen auf Ukrainisch, wie vom Dozenten eingegeben). Bildschirmfoto aus der Videoaufzeichnung.</figcaption></figure>
+
+<h2>3. Abhängigkeiten zwischen Tickets</h2>
+<p>Wie sagt man Jira, dass eine Aufgabe nicht starten kann, bevor eine andere geschlossen ist? Das Feld Parent und Subtasks gibt es, ein eigenes Feld „Dependency“ fand der Dozent in diesem Space jedoch nicht. Die Lösung: im Ticket auf <strong>„+“ → Link work item</strong> klicken und den Verknüpfungstyp <strong>is blocked by</strong> wählen.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-blocked-by.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-blocked-by.webp" alt="Ticket SCRUM-13 „Auswahl der Werkzeuge für Entwicklung, Test und Dokumentation“ auf Ukrainisch: Linked work items – is blocked by SCRUM-17 „Architektur“ und is blocked by SCRUM-16 „Teambildung“" loading="lazy"/></a><figcaption class="diagram-note">Abb. 17.2. Die Werkzeugauswahl ist durch Architektur und Teambildung blockiert. Bildschirmfoto aus der Videoaufzeichnung.</figcaption></figure>
+
+<p>Die Verknüpfungen, die der Dozent in der Einheit gesetzt hat:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Ticket</th>
+<th>Blockiert durch (is blocked by)</th>
+<th>Logik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCRUM-16 Teambildung</td>
+<td>SCRUM-17 Architektur</td>
+<td>Die Architektur legt die Rollen fest</td>
+</tr>
+<tr>
+<td>SCRUM-13 Werkzeugauswahl</td>
+<td>SCRUM-16, SCRUM-17</td>
+<td>Ohne Architektur und Team keine Werkzeugwahl</td>
+</tr>
+<tr>
+<td>SCRUM-14 Vorbereitung des Workflows</td>
+<td>SCRUM-16, SCRUM-17, SCRUM-12</td>
+<td>Der Workflow hängt von Leuten, Architektur und Anforderungen ab</td>
+</tr>
+<tr>
+<td>SCRUM-15 Vorbereitung des Ökosystems</td>
+<td>SCRUM-13</td>
+<td>Eine Verknüpfung genügt – siehe unten</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Vererbte Abhängigkeiten.</strong> Mit wachsendem Plan sammeln sich Abhängigkeiten an. Man muss nicht bei jedem Ticket alle blockierenden Aufgaben eintragen: Eine Kette genügt. Die Architektur blockiert die Anforderungen, die Anforderungen blockieren die Werkzeugauswahl, und die Werkzeugauswahl blockiert Workflow und Ökosystem. Deshalb wurde das Ökosystem (SCRUM-15) nur mit der Werkzeugauswahl (SCRUM-13) verknüpft.</p>
+<p>Der Dozent wollte zeigen, wie Jira daraus eine Roadmap in der Zeit baut, doch der Dienst bot ein kostenpflichtiges Abonnement an.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-precondition-dependencies.svg"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-precondition-dependencies.svg" alt="Graph des Epics Precondition: SCRUM-8 → 7 und 9 → 10 → 11 → 17; 17 blockiert 16, 13 und 14; 16 blockiert 13 und 14; 12 blockiert 14; 13 blockiert 15; Sprint-Markierungen; darunter Epic SCRUM-22 mit den Aufgaben 19, 20, 21, blockiert durch Epic SCRUM-18" loading="lazy"/></a><figcaption class="diagram-note">Abb. 17.3. Aufgaben und Abhängigkeiten des Epics Precondition: durchgezogene Pfeile sind in Jira gesetzte Verknüpfungen, gestrichelte die Reihenfolge aus der Erklärung des Dozenten. Diagramm der Redaktion.</figcaption></figure>
+
+<blockquote>
+<p><strong>Redaktionelle Präzisierung.</strong> <em>Blocks / is blocked by</em> ist ein Standard-Verknüpfungstyp in Jira. Die eingebaute Zeitleiste (Timeline) eines Space zeigt Abhängigkeiten nur für Verknüpfungen vom Typ Blocks und nur innerhalb eines Space; projektübergreifende Planung (Plans) gibt es in den Tarifen Premium und Enterprise. Beachten Sie: In der Standardkonfiguration <strong>verhindert</strong> eine Verknüpfung allein nicht, dass eine blockierte Aufgabe in Arbeit genommen wird – das ist eine Teamvereinbarung; eine technische Sperre erfordert Workflow-Bedingungen oder Automatisierungsregeln. Auch „entfaltet“ Jira eine Abhängigkeitskette nicht automatisch: Ein Mensch liest sie, deshalb sollten Verknüpfungen auf den nächsten Blocker zeigen, wie es der Dozent gezeigt hat.</p>
+</blockquote>
+<h2>4. Epics: Precondition und Produktarchitektur</h2>
+<p><strong>Eine Aufgabe in ein Epic umwandeln.</strong> Der Dozent legte eine Aufgabe „Precondition“ (SCRUM-18) an und änderte ihren Typ in <strong>Epic</strong>, statt sie zu löschen und neu anzulegen. Die Logik: Wenn Sie schon zwei Tage in die Einrichtung eines Tickets gesteckt haben, ist Umwandeln einfacher. Dann markierte er alle Voraussetzungsaufgaben, wählte <strong>Edit fields</strong> (Massenbearbeitung) und setzte <strong>Parent = Precondition</strong> → Confirm. Nun haben sie eine gemeinsame Eigenschaft: Sie gehören zum Epic Precondition.</p>
+<p><strong>Die ersten Aufgaben nach der Vorbereitung.</strong> Ist die Architektur beschrieben, wird sie zuerst in Teile zerlegt:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Schlüssel</th>
+<th>Aufgabe</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCRUM-19</td>
+<td>Systemzerlegung</td>
+<td>Aus dem High-Level-Diagramm konkrete Teile machen, die einzelne Ingenieure umsetzen</td>
+</tr>
+<tr>
+<td>SCRUM-20</td>
+<td>Design description</td>
+<td>Was in jedem Teil passiert: Algorithmus, Anforderungen, vor allem die Schnittstellen, und wie am Ende alles zusammengebaut wird</td>
+</tr>
+<tr>
+<td>SCRUM-21</td>
+<td>Design-Deployment</td>
+<td>Das Design auf Platzhalter verteilen, damit Ingenieure parallel arbeiten können, jeder in seiner „Sandbox“</td>
+</tr>
+</tbody>
+</table></div>
+<p>Für sie wurde ein zweites Epic angelegt – <strong>„Produktarchitektur und Zerlegung“</strong> (SCRUM-22) – und ebenso per Massenbearbeitung als Parent gesetzt. Die Aufgaben erhielten den Termin 10. Dezember („es brennt“) und die höchste Priorität (Highest).</p>
+<p><strong>Eine Abhängigkeit auf Epic-Ebene.</strong> Im Epic SCRUM-22 selbst setzte der Dozent: <em>is blocked by</em> SCRUM-18 Precondition. Stellen Sie sich zwei Eltern vor – Precondition und Architektur. Der Prozess muss die Teamleads dazu bringen, zuerst Precondition und erst dann die Architektur zu nehmen. Das Architektur-Epic mit Deadline lässt sich nicht schließen, solange das Voraussetzungs-Epic offen ist.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-architecture-epic.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-architecture-epic.webp" alt="Epic SCRUM-22 „Produktarchitektur und Zerlegung“ auf Ukrainisch: Kind-Elemente SCRUM-19, 20, 21 mit Priorität Highest; unter Linked work items – is blocked by SCRUM-18 Precondition" loading="lazy"/></a><figcaption class="diagram-note">Abb. 17.4. Das Architektur-Epic: drei Kind-Aufgaben und die Verknüpfung „blockiert durch das Epic Precondition“. Bildschirmfoto aus der Videoaufzeichnung.</figcaption></figure>
+
+<p><strong>Schätzungen und Zuweisung.</strong> Wie Aufgaben geschätzt werden, wurde in Einheit 16 behandelt (Story-Point-Abstimmung); hier erinnerte der Dozent nur daran, wie sie eingetragen werden: 4, 4 und 3 SP für die Aufgaben des Architektur-Epics, und wies sie Personen im Team zu.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-backlog-estimates.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-backlog-estimates.webp" alt="Unterer Teil des Backlogs: SCRUM-12–15 mit dem Label Precondition ohne Schätzung; SCRUM-19 Systemzerlegung, SCRUM-20 design description, SCRUM-21 Design-Deployment mit dem Label des Architektur-Epics, fällig Dec 10, Schätzungen 4, 4, 3 und zugewiesenen Personen" loading="lazy"/></a><figcaption class="diagram-note">Abb. 17.5. Die Aufgaben des Architektur-Epics mit Termin, Schätzungen und Zuständigen. Bildschirmfoto aus der Videoaufzeichnung.</figcaption></figure>
+
+<p>Das Modell steht nun, liegt aber noch im Backlog. Als Nächstes werden auf dem Scrum-Board einige Aufgaben in den ersten Sprint genommen, einige in den zweiten und so weiter.</p>
+<h2>5. Sprints: Dauer und Ziel</h2>
+<p>Sprints lassen sich bearbeiten (Menü „…“ → Edit sprint).</p>
+<p><strong>Dauer.</strong> Standard sind <strong>zwei Wochen</strong>; das Enddatum wird automatisch aus dem Startdatum berechnet. Die Dauer muss aber nicht einmal innerhalb eines Projekts gleich sein. Der Dozent machte den ersten Sprint <strong>drei Wochen</strong> lang (auf dem Bildschirm 2.–23. November), die übrigen je zwei Wochen. Das ist eine bewusste Managemententscheidung: Die erste Woche wird durch unvorhersehbare Abhängigkeiten stark verzögert – selbst mit sehr guten Ingenieuren „fangen die Überraschungen an“, und ohne Reserve scheitert der Sprint.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-sprint-edit.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-sprint-edit.webp" alt="Dialog Edit sprint: SCRUM Sprint 1, Duration 3 weeks, Start date 11/2/2026, End date 11/23/2026, leeres Feld Sprint goal" loading="lazy"/></a><figcaption class="diagram-note">Abb. 17.6. Bearbeiten eines Sprints: Dauer drei Wochen, das Enddatum wird automatisch berechnet, das Feld Sprint goal. Bildschirmfoto aus der Videoaufzeichnung.</figcaption></figure>
+
+<p><strong>Das Sprint-Ziel (Sprint Goal)</strong> ist das, was im Sprint erreicht werden soll, knapp in einem Satz formuliert. Es muss <strong>erreichbar</strong> und <strong>beobachtbar</strong> sein: Man muss klar sagen können, ob es erreicht wurde oder nicht. Das Ziel des ersten Sprints: <strong>„Analoga von Robotern und Steuerungssystemen ermittelt“</strong> – im Sprint liegen genau die Kriterien, die Suche nach bestehenden Lösungen und die Analyse.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-sprints-goal.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-sprints-goal.webp" alt="Backlog: SCRUM Sprint 1, 2 Nov – 23 Nov, Ziel auf Ukrainisch „Analoga von Robotern und SS ermittelt“, Aufgaben SCRUM-8, 7, 9, 10; SCRUM Sprint 2 – SCRUM-17, 11, 16; SCRUM Sprint 3, 17 Nov – 1 Dec, leer" loading="lazy"/></a><figcaption class="diagram-note">Abb. 17.7. Die ersten Sprints: Das Ziel von Sprint 1 steht unter seinem Namen. Bildschirmfoto aus der Videoaufzeichnung.</figcaption></figure>
+
+<p>Ein Sprint ist etwas „Gespieltes“, Künstliches, aber alle spielen das Spiel mit. Und das größte Unglück in diesem Spiel ist, <strong>das Sprint-Ziel zu verfehlen</strong>: Es bedeutet, dass das Team irgendwo falsch lag und überlegen muss, was es als Nächstes tut, um dieselben Fehler nicht zu wiederholen.</p>
+<blockquote>
+<p><strong>Redaktionelle Präzisierung.</strong> Laut Scrum Guide (2020) haben Sprints eine <strong>feste Länge</strong> von höchstens einem Monat – das schafft Rhythmus und vergleichbare Daten zur Velocity des Teams. Ein längerer erster Sprint ist ein bewusster praktischer Kompromiss des Dozenten; wer ihn nutzt, sollte beachten, dass die Velocity des ersten Sprints nicht direkt mit späteren vergleichbar ist. Im Scrum Guide ist das Sprint Goal das einzige Ziel des Sprints, das das Team im Sprint Planning formuliert; es lässt Flexibilität bei der konkreten Arbeit.</p>
+</blockquote>
+<h2>6. Wie der Plan und die Sprint-Ziele entstehen</h2>
+<p>Der Dozent beschrieb, wie das in der Praxis aussieht:</p>
+<ol>
+<li><strong>Schneiden.</strong> Das ganze Team kommt zusammen und schneidet die Arbeit in Aufgaben im Backlog – hundert, zweihundert, dreihundert, vierhundert Tasks.</li>
+<li><strong>„Kämmen“.</strong> Die erfahrensten Leute, „denen das alles wehtut“, setzen Termine (die Schätzungen stimmt das Team ab), Parents, Abhängigkeiten und eine Beschreibung für jede Aufgabe.</li>
+<li><strong>Prioritäten.</strong> Leads, der Architekt und der <strong>Product Owner</strong> – derjenige, der die Kriterien des Produkts am Ausgang festlegt und weiß, was er am Ende haben will – vergeben Prioritäten: höchste, hohe, mittlere, niedrige, niedrigste.</li>
+<li><strong>Entwirren.</strong> Priorität ist nicht alles: Man muss auf die Abhängigkeiten schauen. Die Architektur hat die höchste Priorität, kann aber nicht in den ersten Sprint – es gibt noch keine Kriterien und Anforderungen, „der Systemansatz ist noch sehr roh“. Also nehmen wir die Aufgaben, von denen sie abhängt, und erledigen sie so schnell wie möglich; das gibt die hochpriore Aufgabe frei, und diese wiederum einen ganzen Busch weiterer. Die Metapher des Dozenten: Haare kämmen – die verfilzteste Stelle suchen, sie entwirren, zur nächsten gehen, „bis alle Kletten aus dem Haar sind“.</li>
+<li><strong>Sprints füllen.</strong> Nach diesem Kriterium verteilen sich die Aufgaben auf Sprints. Ziel ist, dass zum Zeitpunkt der Planung nichts im Backlog übrig bleibt. Die Zahl der benötigten Sprints ist die Projektdauer: Man sieht das Enddatum.</li>
+<li><strong>Puffer und Kalender.</strong> Dann kommt ein Puffer hinzu, und man öffnet den Kalender: wer wann arbeitet, welche Feiertage. Beispiel: Ein schwedischer Kunde hat eigene Feiertage (Mittsommer und andere), dazu globale: Neujahr, Weihnachten. Ein Sprint kann zwei Wochen dauern, doch von seinen 10 Arbeitstagen sind nur 4 real – die <strong>Sprint-Kapazität beträgt 4 Tage, nicht 10</strong>, weil auf diesen Sprint für das ganze Team Feiertage fallen.</li>
+<li><strong>Ein Ziel für jeden Sprint</strong> und der <strong>Start</strong>.</li>
+</ol>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-sprint-planning-flow.svg"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-sprint-planning-flow.svg" alt="Acht Schritte: schneiden, verfeinern, priorisieren, Abhängigkeiten entwirren, Sprints bis 80 % der Kapazität füllen, Kalender und Feiertage, Sprint-Ziel, Start" loading="lazy"/></a><figcaption class="diagram-note">Abb. 17.8. Vom rohen Backlog zum gestarteten Sprint – die vom Dozenten beschriebene Abfolge. Diagramm der Redaktion.</figcaption></figure>
+
+<p><strong>Investieren Sie Zeit in die Planung.</strong> Je sorgfältiger Sie sie durchgehen, desto weniger Probleme. Sonst entsteht ein schönes Jira, das nicht funktioniert, weil Sie „übersehen“ haben, dass in dieser Zeit niemand arbeitet.</p>
+<p><strong>SAFe</strong> betont ausdrücklich: Einmal in drei Monaten kommen alle an einem Ort zusammen und schauen, was erledigt ist und was nicht, was verschoben, was ganz aus dem Scope gestrichen, was in den Backlog aufgenommen und wie priorisiert wird; sie halten eine Retrospektive – was lief schief, was ändern, stoppen oder beginnen. Ziel ist, dass das Produkt weiterhin pünktlich, in Qualität und ohne übermäßigen Stress ausgeliefert wird.</p>
+<p>Berücksichtigt die Planung die reale Sprint-Kapazität, das reale Ziel, die realen Abhängigkeiten und die realen Fähigkeiten des Teams, können Team, Leads und Kunde komfortabel arbeiten. Und wenn Menschen sich wohlfühlen, können sie so lange wie nötig arbeiten und ebenso lange den Wert des Produkts steigern. Alle sind zufrieden – das ist gutes Geschäft. Die Schweden nennen diese Harmonie <strong>lagom</strong>.</p>
+<blockquote>
+<p><strong>Redaktionelle Präzisierung.</strong> In SAFe ist das das <strong>PI Planning</strong>: meist zwei Tage, zu Beginn jedes Inkrements, also alle 8–12 Wochen – „einmal im Quartal“ entspricht der Obergrenze. Mittsommer wird in Schweden Ende Juni gefeiert (Midsommarafton ist der Freitag zwischen dem 19. und 25. Juni). <em>Lagom</em> ist schwedisch für „genau richtig“, weder zu viel noch zu wenig.</p>
+</blockquote>
+<h2>7. 80 % Kapazität: wie man es dem Kunden erklärt</h2>
+<p>Erinnerung aus Einheit 16: Ein Sprint wird zu etwa <strong>80 %</strong> der Kapazität gefüllt. Hier entsteht ein Konflikt. Der Kunde zahlt Geld – und Ingenieure werden nicht gerade wenig bezahlt. Architekten, PO und PM sagen: „Wir haben einen Sprint mit 10 Story Points berechnet, wir planen nur 8.“ Der Kunde ist empört: „Ich bezahle Sie doch für 10!“</p>
+<p>Die Argumente des Dozenten:</p>
+<ul>
+<li><strong>Routinen</strong> – Kommunikation zwischen Kunde und Auftragnehmer, Sprint Planning, Sprint Demo, Retrospektiven, Backlog Refinement, Calls. Man wird sie nicht los, „solange es Menschen gibt“, aber sie kosten Zeit – viel Zeit. Der Dozent zeigte seinen Arbeitskalender der Vorwoche: der größte Teil Calls und Prozessabstimmung, nur kleine Fenster für Offline-Arbeit. Seine Rolle ist speziell, Ingenieure haben weniger davon, aber Zeit kostet es trotzdem.</li>
+<li><strong>Kontextwechsel.</strong> Iwan programmiert, denkt über seine Aufgabe nach – und dann ein Anruf: „Erzähl mal, wie ihr diese Schnittstelle umgesetzt habt?“ Er muss sich lösen, kommunizieren, zurückkehren – und auch das Zurückkehren kostet Zeit.</li>
+<li><strong>Ungeplantes.</strong> Vieles wird geplant, aber nicht alles landet im Plan.</li>
+</ul>
+<p>Daher <strong>80 %</strong>. Lassen Sie sich nicht provozieren mit „machen wir 100 %, wir haben schon bezahlt“: Erklären Sie wörtlich, dass das Zeit für Kommunikation, Kontextwechsel und Ungeplantes ist.</p>
+<p><strong>Sprint-Start.</strong> Wenn alles geplant ist, drückt man <strong>Start sprint</strong>. Jira fragt noch einmal nach, ob alle bereit sind. In großartigen Projekten ist das wie ein Raketenstart: Alle stehen zusammen und halten den Atem an; manchmal ruft jemand im letzten Moment „Stopp!“ – etwas wurde vergessen. Es wird ergänzt, und wieder: „Drei, zwei, eins, Start.“ Ab diesem Moment läuft der <strong>Countdown</strong>: Es gibt ein Arbeitspaket, das erledigt werden muss, sonst „verbrennen“ Sie das Sprint-Ziel und lassen Ihr Team, Ihren Lead und sich selbst im Stich.</p>
+<h2 id="assessment-2">8. Zweite Überprüfung: die individuelle Aufgabe</h2>
+<p>Am Ende der Einheit kündigte der Dozent an, dass die <strong>zweite Überprüfung</strong> beginnt, und erklärte, was er für eine erfolgreiche Abgabe erwartet. Auf die Frage eines Studierenden bestätigte er: Es ist eine <strong>individuelle</strong> Arbeit. Auf die Bitte, die Aufgabe im Gruppenchat zu wiederholen, antwortete er, dass er die Aufzeichnung durch Whisper laufen lässt und die Aufgabe als Liste erhält – hier ist sie.</p>
+<p><strong>Was vorzubereiten ist:</strong></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Nr.</th>
+<th>Etappe</th>
+<th>Was zu tun ist</th>
+<th>Wo im Kurs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Unternehmen</td>
+<td>Name, Ziel, Branche, Set-up (Zusammensetzung und Struktur), Standort, Budget des Unternehmens</td>
+<td>01, 07</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Website</td>
+<td>Darauf aufbauend – mit einem beliebigen KI-Werkzeug – eine einseitige Website (One-Pager) des Unternehmens; auf kostenlosem Hosting veröffentlichen, damit sie im Web erscheint</td>
+<td>07, 08</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Präsentation</td>
+<td>Eine Präsentation über das Unternehmen im selben Designstil</td>
+<td>07, 10</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Poster und Karten</td>
+<td>Ein Poster, mit dem Sie angeblich zu einer Konferenz fahren, und Visitenkarten</td>
+<td>07, 08</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Konferenz</td>
+<td>Eine <strong>reale Konferenz, die 2027 stattfindet</strong>, finden und zeigen, dass Sie hinfahren: mit den Veranstaltern vereinbart, Teilnahme bezahlt usw. (simuliert)</td>
+<td>03, 09</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Reise</td>
+<td>Simulation der Reisevorbereitung und der Kommunikation mit der Reiseabteilung; die Reise selbst</td>
+<td>09, 10</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Kundentreffen</td>
+<td>Simulation eines Treffens mit einem Kunden und einer Diskussion mit ihm</td>
+<td>09, 10, 11</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Follow-up</td>
+<td>Erstes Follow-up, zweites Follow-up, Gewinnung als Kunde, weitere Kommunikation</td>
+<td>04, 10, 11, 12</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Proposal und Architektur</td>
+<td>Erstellung des Proposals und der Architecture Description</td>
+<td>05, 06, 08, 12–14</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Aufgaben</td>
+<td>Zerlegung der Architecture Description in Aufgaben in Trello, Jira oder GitHub Projects</td>
+<td>15, 16, 17</td>
+</tr>
+</tbody>
+</table></div>
+<p>Die Spalte „Wo im Kurs“ hat die Redaktion ergänzt: die Nummern der Einheiten, in denen das Thema ausführlicher behandelt wird.</p>
+<p><strong>Abgabeformat:</strong></p>
+<ul>
+<li><strong>Eine Bildschirmaufnahme mit Sprechkommentar</strong>: Sie schlüpfen in die Rollen und sprechen buchstäblich durch, wie alles abläuft.</li>
+<li><strong>Ein Video pro Studierendem</strong> mit allen oben genannten Etappen.</li>
+<li>Gesamtlänge <strong>höchstens 15 Minuten</strong>. Bereiten Sie sich gründlich vor und zeigen Sie dann die Artefakte.</li>
+<li>Worauf Sie Zeit und Aufwand konzentrieren, entscheiden Sie. Das ist eigentlich Teil Ihrer <strong>Vertriebsstrategie</strong>.</li>
+</ul>
+<p><strong>Frist:</strong> Die Bewertungsliste wird am <strong>30. November</strong> geschlossen; der Dozent braucht Zeit zur Prüfung, daher ist die Arbeit <strong>bis zum 27. November 2026</strong> abzugeben.</p>
+<p>„Wenn Sie das machen, werde ich unglaublich glücklich sein. Für mich bedeutet das, dass all das nicht umsonst ist.“</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-assessment-path.svg"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-assessment-path.svg" alt="Vier Blöcke der Aufgabe: A – Unternehmen (Name, Ziel, Branche, Set-up, Standort, Budget; One-Pager auf kostenlosem Hosting; Präsentation; Poster und Karten); B – eine Konferenz 2027, Vereinbarung mit Veranstaltern, Reisevorbereitung, Reise; C – Treffen, Diskussion, zwei Follow-ups, Gewinnung als Kunde; D – Proposal, Architecture Description, Aufgaben in Trello, Jira oder GitHub Projects. Darunter: ein Video bis 15 Minuten, individuell, bis 27. November 2026" loading="lazy"/></a><figcaption class="diagram-note">Abb. 17.9. Die Aufgabe zur zweiten Überprüfung als ein durchgehender Weg. Diagramm der Redaktion (Beschriftung auf Englisch).</figcaption></figure>
+
+<blockquote>
+<p><strong>Redaktionelle Präzisierung: Bezug zu Einheit 15.</strong> Am 10. November wurde die zweite Überprüfung als <strong>Teamprojekt</strong> beschrieben (Architecture Description, Proposal, Gantt-Diagramm, Einbindung der Ingenieure und Kosten, Preismodelle, ein Tracker-Space mit Backlog für mindestens vier Sprints), der Weg „Unternehmen → Konferenz → Kunde → Proposal“ dagegen als große individuelle Berechnungs- und Entwurfsarbeit <strong>nach</strong> der zweiten Überprüfung. Am 17. November kündigte der Dozent genau diese individuelle Liste als Aufgabe zur zweiten Überprüfung an. Diese Notizen halten beide Ankündigungen so fest, wie sie gemacht wurden; die jüngste ist die vom 17. November. Ist etwas an den Anforderungen unklar, fragen Sie beim Dozenten nach.</p>
+</blockquote>
+<p><strong>Checkliste vor der Abgabe (von der Redaktion, auf Basis der Anforderungen des Dozenten):</strong></p>
+<ul>
+<li>Die Website öffnet sich über einen öffentlichen Link von einem anderen Gerät.</li>
+<li>Website, Präsentation, Poster und Karten haben einen Stil und dieselben Kontaktdaten.</li>
+<li>Die Konferenz ist real und findet 2027 statt; das Video enthält einen Link dazu.</li>
+<li>Das Video deckt alle Etappen 1–10 ab, manche auch nur kurz.</li>
+<li>Die Aufgaben im Tracker stammen aus Ihrer Architecture Description und sind nicht separat geschrieben.</li>
+<li>Die Gesamtlänge des Videos beträgt höchstens 15 Minuten; es ist bis zum 27. November abgegeben.</li>
+</ul>
+<h2>9. Ankündigungen und die nächste Einheit</h2>
+<ul>
+<li>Der Dozent wollte über den <strong>Prozess der Einstellung von Ingenieuren und anderen Fachleuten</strong> in ein Projekt sprechen – wie er abläuft und worauf man achtet. Das Thema wurde auf die nächste Einheit (in einer Woche) oder eine Offline-Aufzeichnung verschoben.</li>
+<li>Die Vorbereitung auf die Dienstreise des Dozenten hat begonnen. Wie immer gibt es Nuancen: Etwas passt nicht, jemand hat etwas übersehen, die Reiseabteilung macht „nicht ganz das Richtige“. Der Dozent nimmt kurze Videos dieser Vorbereitung auf; nach der Rückkehr will er sie aufbereiten und als Seminarmodul veröffentlichen: Reisevorbereitung, Reise, Probleme, wie sie gelöst wurden und wie alles endete.</li>
+<li><strong>Nächste Einheit:</strong> Vorbereitung der internen Prozesse des Unternehmens für die Einstellung von Ingenieuren – verschiedene Arten von Ingenieuren, verschiedene Arten der Einbindung.</li>
+</ul>
+<h2>Praktische Erkenntnisse</h2>
+<ul>
+<li>PMBOK ist eine Sammlung von Best Practices des Projektmanagements; SAFe ist für viele Teams mit gemeinsamen Abhängigkeiten, sein Preis ist jedoch ein Anteil der Zeit jedes Ingenieurs für Routinen.</li>
+<li>Vor dem Projektstart enthält der Backlog die <strong>Precondition</strong>: Analoga, Kriterien, Anforderungen, Architektur, Team, Werkzeuge, Workflow, Ökosystem.</li>
+<li>Die Architektur folgt direkt auf die Systemanforderungen und legt die Rollen fest; ohne Leute lässt sich das Ökosystem nicht vorbereiten.</li>
+<li>Abhängigkeiten in Jira sind Verknüpfungen <em>is blocked by</em>; eine Kette bis zum nächsten Blocker genügt.</li>
+<li>Eine bestehende Aufgabe lässt sich in ein Epic umwandeln; den Parent vieler Aufgaben ändert man per Massenbearbeitung.</li>
+<li>Abhängigkeiten lassen sich auch zwischen Epics setzen – so wird die Reihenfolge großer Arbeitsblöcke festgelegt.</li>
+<li>Der erste Sprint darf länger sein; das Sprint-Ziel ist ein erreichbarer, überprüfbarer Satz.</li>
+<li>Der Plan wird aus Abhängigkeiten gebaut, nicht nur aus Prioritäten; die Zahl der Sprints ergibt das Enddatum.</li>
+<li>Feiertage von Team und Kunde verringern die reale Sprint-Kapazität – prüfen Sie den Kalender.</li>
+<li>80 % Kapazität sind Zeit für Routinen, Kontextwechsel und Ungeplantes; das muss man dem Kunden erklären können.</li>
+</ul>
+<h2>Fragen zur Selbstkontrolle</h2>
+<ul>
+<li>Was ist das PMBOK, und wozu braucht ein Manager ein Zertifikat?</li>
+<li>Wann ist SAFe gerechtfertigt, und wann zahlen sich seine Routinen nicht aus?</li>
+<li>Was gehört zur Precondition des Roboter-Manipulator-Projekts, und warum in dieser Reihenfolge?</li>
+<li>Warum wird die Architektur vor Teambildung und Werkzeugauswahl erstellt?</li>
+<li>Wie setzt man in Jira eine Abhängigkeit zwischen Tickets, und was sind vererbte Abhängigkeiten?</li>
+<li>Warum eine Aufgabe in ein Epic umwandeln, statt das Epic neu anzulegen?</li>
+<li>Wie und warum setzt man eine Abhängigkeit zwischen Epics?</li>
+<li>Warum darf der erste Sprint länger sein als die folgenden?</li>
+<li>Wie sollte ein Sprint-Ziel aussehen? Nennen Sie ein Beispiel für den ersten Sprint.</li>
+<li>Wie erhält man aus dem Backlog das Enddatum des Projekts?</li>
+<li>Wie beeinflussen die Feiertage des Kunden die Sprint-Kapazität?</li>
+<li>Welche Argumente für 80 % Kapazität kann man dem Kunden nennen?</li>
+<li>Welche Etappen muss das Video zur zweiten Überprüfung abdecken, wie lang darf es höchstens sein, und was ist die Frist?</li>
+</ul>
+<h2>Wie es weitergeht</h2>
+<p><strong>Vom Dozenten angekündigt:</strong> Die nächste Einheit (etwa eine Woche später) behandelt die internen Prozesse des Unternehmens für die Einstellung von Ingenieuren, verschiedene Arten von Ingenieuren und verschiedene Arten der Einbindung. <strong>Prognose der Redaktion</strong>, keine Ankündigung: wahrscheinliche Themen sind aus der Architektur abgeleitete Rollenprofile, Stellenausschreibungen und Vorstellungsgespräche, Einbindungsmodelle (Festanstellung, Outstaffing, Auftragnehmer) und Onboarding – also das Ausfüllen der Aufgabe „Teambildung“ (SCRUM-16).</p>
+<h2>Geprüfte Links</h2>
+<ul>
+<li>PMI, PMBOK® Guide — Eighth Edition: <a href="https://www.pmi.org/pmbok-guide" rel="noopener" target="_blank">https://www.pmi.org/pmbok-guide</a></li>
+<li>PMI Ukraine Chapter, PMBOK Guide (siebte Ausgabe, ukrainische Übersetzung): <a href="https://pmiukraine.org/pmbok7" rel="noopener" target="_blank">https://pmiukraine.org/pmbok7</a></li>
+<li>SAFe, PI Planning: <a href="https://framework.scaledagile.com/pi-planning/" rel="noopener" target="_blank">https://framework.scaledagile.com/pi-planning/</a></li>
+<li>The Scrum Guide (2020): <a href="https://scrumguides.org/scrum-guide.html" rel="noopener" target="_blank">https://scrumguides.org/scrum-guide.html</a></li>
+<li>Atlassian, Abhängigkeiten auf der Jira-Zeitleiste: <a href="https://support.atlassian.com/jira-software-cloud/docs/show-or-hide-dependencies-on-your-roadmap/" rel="noopener" target="_blank">https://support.atlassian.com/jira-software-cloud/docs/show-or-hide-dependencies-on-your-roadmap/</a></li>
+</ul></article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Lehre</b><p style="margin-top:8px">Lehrmaterialien von Dmytro Humennyi.</p><a class="footer-about" href="../../about.html">Über den Autor →</a></div>
+<div class="footer-links"><b>Kurs</b><a href="index.html">Kursübersicht</a><a href="lecture-15.html">Einheit 15</a><a href="lecture-16.html">Einheit 16</a><a href="lecture-17.html">Einheit 17</a></div>
+<div class="footer-links"><b>Kontext</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">KPI · Software Engineering in der Energietechnik</a><a href="../../teaching.html">Alle Lehrmaterialien</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Datenschutz</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

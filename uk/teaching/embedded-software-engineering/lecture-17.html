@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head><script id="theme-prepaint">(function(){try{var k='varingjarTheme',s=null,c=null,q=null;try{s=localStorage.getItem(k);}catch(e){}try{var m=document.cookie.match(/(?:^|;\s*)varingjarTheme=(light|dark)(?:;|$)/);c=m?m[1]:null;}catch(e){}try{var x=new URL(location.href).searchParams.get('theme');if(x==='light'||x==='dark')q=x;}catch(e){}var f=location.protocol==='file:';var t=(f&&q)||((s==='light'||s==='dark')?s:null)||c||q||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script><script id="locale-bootstrap">(function(){try{var CURRENT="uk";var TARGETS={"en":"../../../teaching/embedded-software-engineering/lecture-17.html","uk":"lecture-17.html","de":"../../../de/teaching/embedded-software-engineering/lecture-17.html"};var SUP=['en','uk','de'];function valid(x){return SUP.indexOf(x)>=0;}function save(x){try{localStorage.setItem('varingjarLanguage',x);}catch(e){}try{document.cookie='varingjarLanguage='+x+'; path=/; max-age=31536000; SameSite=Lax';}catch(e){}}function fromCookie(){try{var m=document.cookie.match(/(?:^|;\s*)varingjarLanguage=(en|uk|de)(?:;|$)/);return m?m[1]:null;}catch(e){return null;}}var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}var s=null;if(valid(q)){s=q;save(q);}else{try{s=localStorage.getItem('varingjarLanguage');}catch(e){}if(!valid(s))s=fromCookie();}var l=null;if(valid(s)){l=s;}else if(CURRENT==='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/^uk(?:-|$)/.test(b)?'uk':(/^de(?:-|$)/.test(b)?'de':'en');}if(l&&l!==CURRENT&&TARGETS[l]){var u=new URL(TARGETS[l],location.href);if(valid(q))u.searchParams.set('lang',l);try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')u.searchParams.set('theme',t);}catch(e){}location.replace(u.href);}}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-18416808811">
+</script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'AW-18416808811');
+   </script>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Старт проєкту в Jira: precondition, залежності й цілі спринтів — Væringjar II</title><meta content="PMBOK і ціна SAFe, backlog передумов для робота-маніпулятора, зв’язки blocked by й епіки, довший перший спринт із ціллю, свята й 80 % ємності — і завдання до другої атестації." name="description"/>
+<link href="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3" rel="icon" type="image/png"/><link href="../../assets/css/site-main.css?v=20261111-vj1" rel="stylesheet"/>
+<link href="../../assets/css/site-layout.css?v=20261111-vj1" rel="stylesheet"/>
+<link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-17.html" rel="canonical"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-17.html" hreflang="en" rel="alternate"/><link href="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-17.html" hreflang="uk" rel="alternate"/><link href="https://varingjar.com/de/teaching/embedded-software-engineering/lecture-17.html" hreflang="de" rel="alternate"/><link href="https://varingjar.com/teaching/embedded-software-engineering/lecture-17.html" hreflang="x-default" rel="alternate"/><meta content="Væringjar II" property="og:site_name"/><meta content="Старт проєкту в Jira: precondition, залежності й цілі спринтів" property="og:title"/><meta content="PMBOK і ціна SAFe, backlog передумов для робота-маніпулятора, зв’язки blocked by й епіки, довший перший спринт із ціллю, свята й 80 % ємності — і завдання до другої атестації." property="og:description"/><meta content="website" property="og:type"/><meta content="https://varingjar.com/uk/teaching/embedded-software-engineering/lecture-17.html" property="og:url"/><meta content="https://varingjar.com/assets/img/vaeringjar-emblem.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Старт проєкту в Jira: precondition, залежності й цілі спринтів" name="twitter:title"/><meta content="PMBOK і ціна SAFe, backlog передумов для робота-маніпулятора, зв’язки blocked by й епіки, довший перший спринт із ціллю, свята й 80 % ємності — і завдання до другої атестації." name="twitter:description"/><link href="../../assets/css/strict-template.css?v=20261111-vj1" rel="stylesheet"/><script id="wide-view-prepaint">(function(){try{localStorage.removeItem('varingjarWideView')}catch(e){}try{sessionStorage.removeItem('varingjarWideView')}catch(e){}try{document.cookie='varingjarWideView=;path=/;max-age=0'}catch(e){}}());</script><script defer src="../../assets/js/wide-view.js?v=20261021-wide-v2"></script><style id="lecture-figure-style">.lecture-notes-content figure.lecture-figure{margin:28px 0;padding:0;max-width:100%}.lecture-notes-content figure.lecture-figure a{display:block;border:0;background:#fff;padding:10px;border-radius:6px;border:1px solid rgba(127,127,127,.35)}.lecture-notes-content figure.lecture-figure img{display:block;width:100%;height:auto;margin:0 auto}.lecture-notes-content figure.lecture-figure-small{max-width:560px}.lecture-notes-content figure.lecture-figure-wide{width:min(1180px,calc(100vw - 48px));max-width:none}.lecture-notes-content figure.lecture-figure figcaption{margin-top:10px}.lecture-notes-content .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}@media (max-width:640px){.lecture-notes-content .table-scroll table{min-width:600px;width:600px;max-width:none!important;table-layout:auto}}</style><link href="../../assets/css/vj-theme.css?v=20261111-vj1" rel="stylesheet"/>
+</head><body class="site-page teaching-page reader-page strict-template-v1 strict-template-v2"><header class="site-header"><nav aria-label="Primary navigation" class="nav">
+<a class="brand" href="../../index.html"><span aria-hidden="true" class="brand-mark"><img alt="" class="brand-emblem" src="../../assets/img/vaeringjar-emblem.png?v=20260904-emblem-local3"/></span><span class="brand-copy">VÆRINGJAR II<small>POWERED BY DMYTRO HUMENNYI</small></span></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
+<div class="nav-links"><a href="../../programme.html">Модель</a><a href="../../research.html">Докази</a><a href="../../implementation.html">Реалізація</a><a class="active" href="../../teaching.html">Навчання</a><a href="../../collaboration.html">Співпраця</a></div>
+<div aria-label="Language" class="lang-switch"><a data-lang="en" href="../../../teaching/embedded-software-engineering/lecture-17.html?lang=en" hreflang="en" lang="en">EN</a><a aria-current="page" class="active" data-lang="uk" href="lecture-17.html?lang=uk" hreflang="uk" lang="uk">UA</a><a data-lang="de" href="../../../de/teaching/embedded-software-engineering/lecture-17.html?lang=de" hreflang="de" lang="de">DE</a></div></nav></header><main><section class="page-hero reader-hero"><div class="container"><div class="eyebrow">Навчання / Заняття 17 · 17.11.2026</div><h1>Старт проєкту в Jira: precondition, залежності й цілі спринтів</h1><p class="lead reader-lead">PMBOK і ціна SAFe, backlog передумов для робота-маніпулятора, зв’язки blocked by й епіки, довший перший спринт із ціллю, свята й 80 % ємності — і завдання до другої атестації.</p><div class="reader-badges"><span>17.11.2026</span><span>Заняття 17 / 17</span><span>00:59:42</span><span>Практичне заняття</span></div><div class="hero-actions"><a class="btn btn-ghost" href="index.html">Огляд курсу →</a><a class="btn btn-ghost" href="#assessment-2">Завдання до другої атестації ↓</a><a class="btn btn-primary" href="#full-notes">Читати повний конспект ↓</a></div></div></section><section class="course-context-v3"><div class="container course-context-inner"><div class="course-breadcrumb">Embedded Software Engineering / МОДУЛЬ 05 · REQUIREMENTS &amp; ARCHITECTURE / 17 · 17.11.2026</div><div class="course-context-nav"><a class="previous" href="lecture-16.html">Попереднє · 16</a><span class="current">17</span><span class="next">Найм інженерів (оголошено)</span></div></div></section><section class="reader-section"><div class="container"><div class="eyebrow">Хронологія курсу</div><h2>Інженерний конспект</h2><p class="reader-intro">PMBOK і ціна SAFe, backlog передумов для робота-маніпулятора, зв’язки blocked by й епіки, довший перший спринт із ціллю, свята й 80 % ємності — і завдання до другої атестації.</p><div class="reader-grid"><article class="reader-card"><span class="reader-num">01</span><h3>Backlog передумов</h3></article><article class="reader-card"><span class="reader-num">02</span><h3>Залежності й епіки</h3></article><article class="reader-card"><span class="reader-num">03</span><h3>Ціль спринту й календар</h3></article><article class="reader-card"><span class="reader-num">04</span><h3>Друга атестація</h3></article></div></div></section><section class="full-lecture-notes" id="full-notes"><div class="container lecture-notes-shell"><div class="eyebrow">Повний конспект заняття</div><h2>Повний конспект заняття</h2><p class="lecture-notes-intro">Повний авторський конспект за транскриптом і відеозаписом від 17 листопада. Схеми — редакторські, за поясненнями викладача; імена студентів не публікуються.</p><div class="lecture-notes-source"><a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-notes/R17-2026-11-17.md">Повний конспект Markdown →</a> <a class="btn btn-ghost" href="../../../teaching/embedded-software-engineering/source-transcripts/2026-11-17.md">Оригінальний транскрипт →</a></div><article class="lecture-article lecture-notes-content" lang="uk"><h1>Заняття 17. Старт проєкту в Jira: precondition, залежності, епіки, ціль і ємність спринту</h1>
+<blockquote>
+<p><strong>17 листопада 2026 · практичне заняття · 1 год.</strong> Матеріал підготовлено за автоматичним транскриптом і <strong>відеозаписом</strong> заняття <code>IgorSikorskyKPI_L12_17112006.mp4</code>: назви тікетів, зв’язки між ними, налаштування спринтів і епіків, які викладач показував на екрані, додано з відео. Це відредагований навчальний конспект, а не дослівна стенограма: очевидні помилки розпізнавання виправлено, терміни уніфіковано з попередніми заняттями. Імена студентів не публікуються; календар викладача, який він показував як приклад, не відтворюється. Досвід роботи в компаніях — <strong>особиста практика викладача</strong>. Редакторські уточнення й схеми редакції позначено окремо. <strong>Завдання до другої атестації — у розділі 8.</strong></p>
+</blockquote>
+<h2>0. Організаційне</h2>
+<ul>
+<li>На початку заняття в Києві тривала повітряна тривога (жовтий рівень). Викладач попросив підтвердити, що всі в безпеці, нагадав, що заняття записується, і що за реального ризику краще переглянути запис пізніше: «Хороший інженер — це живий інженер».</li>
+<li>Заняття продовжує 15-те й 16-те: тоді описали шлях задачі від старту до завершення (workflow), пройшли типи тікетів, обрали для курсу Scrum-дошку, створили два спринти й домовилися, за якими критеріями розкидати задачі.</li>
+<li>Наприкінці викладач оголосив <strong>завдання до другої атестації</strong> (розділ 8) і тему наступного заняття (розділ 9).</li>
+</ul>
+<h2>1. Де брати найкращі практики: PMBOK і SAFe</h2>
+<p>Моделі ведення проєктів відрізняються від компанії до компанії й від проєкту до проєкту, але є визнані найкращі практики.</p>
+<p><strong>PMBOK</strong> (Project Management Body of Knowledge) — збірка найкращих практик для різних видів менеджменту в проєктах. Старі версії можна купити або завантажити безкоштовно. В Україні є спільнота, яка проводить тренінги й сертифікацію; сертифікат — добрий сигнал, що кандидата варто розглянути як потенційного менеджера проєкту. На екрані викладач показав сторінку українського перекладу «Настанови PMBOK» (сьоме видання) на сайті PMI Ukraine.</p>
+<p><strong>SAFe</strong> (Scaled Agile Framework) — масштабування Agile для випадку, коли <strong>команд багато</strong>, між ними є спільні залежності, і вони мають працювати ізольовано одна від одної, але так, щоб продукт зрештою вийшов. За словами викладача, SAFe використовують, зокрема, великі автовиробники, коли розробляють новий автомобіль: якщо таких команд, як ваша, багато і кожна робить свій шматок виробу, найімовірніше, керівництво обере SAFe як інструмент релізів.</p>
+<p>Якщо ж продукт невеликий і його роблять одна–чотири команди, у SAFe ніхто інвестувати не буде: оберуть Agile (Scrum), Waterfall, Kanban чи іншу просту модель із PMBOK.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Підхід</th>
+<th>Коли доречний</th>
+<th>Ціна</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SAFe</strong></td>
+<td>Багато команд, спільні залежності, великий виріб (наприклад, автомобіль)</td>
+<td>Багато рутин: комунікація між інженерами, планування, аналіз ризиків, backlog refinement, демо, планінги, зустрічі, голосування</td>
+</tr>
+<tr>
+<td><strong>Scrum / Agile</strong></td>
+<td>Один продукт, одна або кілька команд</td>
+<td>Рутин помітно менше, ніж у SAFe</td>
+</tr>
+<tr>
+<td><strong>Waterfall, Kanban</strong></td>
+<td>Добре зрозумілі задачі, малий масштаб</td>
+<td>Найменше рутин</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Що ви купуєте цією ціною.</strong> Ви платите тим, що кожен інженер інвестує частину свого часу в кооперацію. Натомість SAFe на системному рівні розв’язує інтеграцію, тестування, контроль якості, сертифікацію, заміну інженера, який рано чи пізно захоче звільнитися. Для проєкту це не «шокуючий контент», а звичайна рутина. Загальніші підходи «пережовують» такі ситуації значно важче.</p>
+<p><strong>Коли SAFe не потрібен.</strong> Виріб робить одна різнопрофільна команда (hardware, механіка, firmware, desktop, дизайнери), і він вміщається в один-два інкременти — орієнтовно до пів року, максимум до року. Тоді інвестувати час команди в рутини SAFe, найімовірніше, немає сенсу. Рішення треба ухвалювати свідомо.</p>
+<p><strong>Виняток із практики викладача.</strong> Свого часу він проходив тренінги й мав сертифікати, зокрема з SAFe. У компаніях, де він працював, команди готували на внутрішніх pet-проєктах і свідомо використовували SAFe «з надлишком». Коли прийшов великий клієнт, що працює за SAFe, інтегруватися з його командами й працювати спільно було нескладно.</p>
+<blockquote>
+<p><strong>Редакторське уточнення.</strong> Актуальне видання — <em>PMBOK® Guide — Eighth Edition</em> (PMI, листопад 2025). Український переклад сьомого видання (2021) безкоштовно доступний на сайті PMI Ukraine Chapter. Найпоширеніша сертифікація на основі PMBOK — PMP (Project Management Professional). У SAFe інкремент (PI, у SAFe 6 — <em>Planning Interval</em>) зазвичай триває 8–12 тижнів, тож «до пів року» — це приблизно два-три PI. Твердження про конкретних автовиробників — досвід викладача; публічних підтверджень редакція не перевіряла.</p>
+</blockquote>
+<h2>2. Precondition: що зробити до старту проєкту</h2>
+<p>Перш ніж різати роботу на спринти, усе, що треба зробити за проєкт, закидають у <strong>backlog</strong>. Приклад — уже знайомий <strong>робот-маніпулятор</strong>. Викладач створював тікети по черзі, а потім уточнював порядок; нижче — підсумковий порядок (ключі тікетів — як на екрані, СК — система керування):</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Ключ</th>
+<th>Задача</th>
+<th>Пояснення викладача</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCRUM-7</td>
+<td>Пошук існуючих рішень щодо механічної платформи</td>
+<td>Зрозуміти, які роботи є на ринку</td>
+</tr>
+<tr>
+<td>SCRUM-8</td>
+<td>Критерії до робота та СК</td>
+<td>Без критеріїв пошук не має сенсу; пріоритет вищий, ніж у пошуку самого робота</td>
+</tr>
+<tr>
+<td>SCRUM-9</td>
+<td>Пошук існуючої СК</td>
+<td>Критерії вже є — просто шукаємо</td>
+</tr>
+<tr>
+<td>SCRUM-10</td>
+<td>Аналіз і вибір СК та робота</td>
+<td>Порівняльна таблиця в Excel, що обрати</td>
+</tr>
+<tr>
+<td>SCRUM-11</td>
+<td>Системні вимоги до нового продукту</td>
+<td>High-level вимоги до СК робота, сенсорної системи, актуаторів, комунікації, HMI, хмарної частини</td>
+</tr>
+<tr>
+<td>SCRUM-17</td>
+<td>Архітектура</td>
+<td>Одразу після системних вимог — ще до програмних вимог, workflow й інструментів; визначає потрібні ролі</td>
+</tr>
+<tr>
+<td>SCRUM-16</td>
+<td>Формування команди</td>
+<td>Ролі формують списки людей; далі найм</td>
+</tr>
+<tr>
+<td>SCRUM-12</td>
+<td>Програмні, апаратні вимоги й вимоги функційної безпеки (FuSa)</td>
+<td>Декомпозиція системних вимог</td>
+</tr>
+<tr>
+<td>SCRUM-13</td>
+<td>Вибір інструментів розробки, тестування й документування</td>
+<td>Які інструменти використовуватимемо</td>
+</tr>
+<tr>
+<td>SCRUM-14</td>
+<td>Підготовка workflow</td>
+<td>Як задачі розподіляють між інженерами, як беруть у роботу, хто рев’ює, куди трекати час, куди пушити результати — документація робочих процесів, щоб уся команда працювала однаково</td>
+</tr>
+<tr>
+<td>SCRUM-15</td>
+<td>Підготовка екосистеми</td>
+<td>Налаштувати GitHub або GitLab, інтегрувати з Jira, підготувати Confluence, встановити інструменти на сервер або локально в кожного розробника, видати доступи, забезпечити відповідність вимогам кібербезпеки й функційної безпеки</td>
+</tr>
+</tbody>
+</table></div>
+<p>Ланцюжок вийшов такий: пошук аналогів на ринку → критерії → вимоги → декомпозиція вимог → архітектура → команда → інструменти → підхід до розробки й тестування → екосистема. <strong>Підготувати екосистему неможливо, поки не набрали людей.</strong></p>
+<p><strong>Формування команди — теж тікет у тій самій Jira.</strong> Це нормальна практика: у проєкті немає ролі «шеф», є менеджер, архітект, лід, технік, монтажник, розробник, тестувальник. Але всі мають розуміти, що зроблено, чому саме так, у якій послідовності, які залежності і чому взяли ту чи іншу людину.</p>
+<p>Уся ця сукупність задач — не що інше, як <strong>створення передумов (precondition)</strong>: що треба зробити, перш ніж реально братися до проєктної діяльності.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-precondition-backlog.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-precondition-backlog.webp" alt="Backlog у Jira: SCRUM-8, 7, 9, 10, 11, 17, 16, 12, 13, 14, 15 з міткою епіка Precondition і SCRUM-19 «системна декомпозиція» без епіка; усі в статусі To Do" loading="lazy"/></a><figcaption class="diagram-note">Рис. 17.1. Backlog після прив’язки задач до епіка Precondition. Назви тікетів — як їх набирав викладач. Знімок екрана з відеозапису.</figcaption></figure>
+
+<h2>3. Залежності між тікетами</h2>
+<p>Як у Jira сказати, що одна задача не може стартувати, поки не закрита інша? Поле Parent і сабтаски є, а окремого поля «dependency» викладач у цьому просторі не знайшов. Рішення: у тікеті натиснути <strong>«+» → Link work item</strong> і обрати тип зв’язку <strong>is blocked by</strong>.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-blocked-by.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-blocked-by.webp" alt="Тікет SCRUM-13 «вибір інструментарію розробки, тестування і документування»: Linked work items — is blocked by SCRUM-17 «архітектура» і is blocked by SCRUM-16 «формування команди»" loading="lazy"/></a><figcaption class="diagram-note">Рис. 17.2. Вибір інструментів заблоковано архітектурою й формуванням команди. Знімок екрана з відеозапису.</figcaption></figure>
+
+<p>Зв’язки, які викладач встановив на занятті:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Тікет</th>
+<th>Заблоковано (is blocked by)</th>
+<th>Логіка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCRUM-16 Формування команди</td>
+<td>SCRUM-17 Архітектура</td>
+<td>Архітектура визначає ролі</td>
+</tr>
+<tr>
+<td>SCRUM-13 Вибір інструментів</td>
+<td>SCRUM-16, SCRUM-17</td>
+<td>Без архітектури й команди інструменти не обрати</td>
+</tr>
+<tr>
+<td>SCRUM-14 Підготовка workflow</td>
+<td>SCRUM-16, SCRUM-17, SCRUM-12</td>
+<td>Workflow залежить від людей, архітектури й вимог</td>
+</tr>
+<tr>
+<td>SCRUM-15 Підготовка екосистеми</td>
+<td>SCRUM-13</td>
+<td>Достатньо одного зв’язку — див. нижче</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Наслідування залежностей.</strong> Із розвитком плану залежності накопичуються. Не обов’язково прописувати для кожного тікета всі задачі, що його блокують: досить ланцюжка. Архітектура блокує вимоги, вимоги — вибір інструментів, вибір інструментів — workflow й екосистему. Тому екосистему (SCRUM-15) прив’язали лише до вибору інструментів (SCRUM-13).</p>
+<p>Викладач хотів показати, як Jira побудує з цього roadmap у часі, але сервіс запропонував платну підписку.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-precondition-dependencies.svg"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-precondition-dependencies.svg" alt="Граф задач епіка Precondition: SCRUM-8 → 7 і 9 → 10 → 11 → 17; 17 блокує 16, 13 і 14; 16 блокує 13 і 14; 12 блокує 14; 13 блокує 15; мітки спринтів; нижче епік SCRUM-22 з задачами 19, 20, 21, заблокований епіком SCRUM-18" loading="lazy"/></a><figcaption class="diagram-note">Рис. 17.3. Задачі й залежності епіка Precondition: суцільні стрілки — зв’язки, встановлені в Jira, пунктирні — порядок із пояснень викладача. Схема редакції.</figcaption></figure>
+
+<blockquote>
+<p><strong>Редакторське уточнення.</strong> <em>Blocks / is blocked by</em> — стандартний тип зв’язку в Jira. Вбудована шкала часу (Timeline) простору показує залежності лише для зв’язків типу Blocks і лише в межах одного простору; планування між кількома проєктами (Plans) доступне в тарифах Premium та Enterprise. Зверніть увагу: у стандартній конфігурації зв’язок сам по собі <strong>не забороняє</strong> перевести заблоковану задачу в роботу — це домовленість команди; технічно заборону роблять умовами workflow або правилами автоматизації. Ланцюжок залежностей Jira теж не «розгортає» автоматично: його читає людина, тому зв’язки варто ставити до найближчого блокера, як і показав викладач.</p>
+</blockquote>
+<h2>4. Епіки: Precondition і архітектура продукту</h2>
+<p><strong>Перетворити задачу на епік.</strong> Викладач створив задачу «Precondition» (SCRUM-18) і змінив її тип на <strong>Epic</strong> — замість того, щоб видаляти й створювати нову. Логіка: якщо ви вже два дні налаштовували тікет, його простіше конвертувати. Потім виділив усі задачі передумов, обрав <strong>Edit fields</strong> (масове редагування) і задав їм <strong>Parent = Precondition</strong> → Confirm. Тепер у них спільна властивість — вони є частиною епіка Precondition.</p>
+<p><strong>Перші задачі після підготовки.</strong> Коли архітектуру описано, першим ділом її розкладають на частини:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Ключ</th>
+<th>Задача</th>
+<th>Що це означає</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCRUM-19</td>
+<td>Системна декомпозиція</td>
+<td>З high-level діаграми зробити предметні частини, які реалізовуватимуть окремі інженери</td>
+</tr>
+<tr>
+<td>SCRUM-20</td>
+<td>Design description</td>
+<td>Що відбувається всередині кожної частини: алгоритм, вимоги, головне — інтерфейси, і як усе зберемо наприкінці</td>
+</tr>
+<tr>
+<td>SCRUM-21</td>
+<td>Деплоймент дизайну</td>
+<td>Рознести дизайн по плейсхолдерах, щоб інженери працювали паралельно, кожен у своїй «пісочниці»</td>
+</tr>
+</tbody>
+</table></div>
+<p>Для них створили другий епік — <strong>«Архітектура продукту і декомпозиція»</strong> (SCRUM-22) і так само масово призначили його батьком. Задачам поставили термін — 10 грудня («прямо горить») і найвищий пріоритет (Highest).</p>
+<p><strong>Залежність на рівні епіків.</strong> У самому епіку SCRUM-22 викладач указав: <em>is blocked by</em> SCRUM-18 Precondition. Уявіть двох батьків — Precondition і Архітектуру. Процес треба побудувати так, щоб тимліди спершу взяли Precondition, а вже потім — архітектуру. Закрити епік архітектури, в якого є дедлайн, неможливо, поки не закрито епік передумов.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-architecture-epic.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-architecture-epic.webp" alt="Епік SCRUM-22 «Архітектура продукту і декомпозиція»: дочірні SCRUM-19, 20, 21 з пріоритетом Highest; у Linked work items — is blocked by SCRUM-18 Precondition" loading="lazy"/></a><figcaption class="diagram-note">Рис. 17.4. Епік архітектури: три дочірні задачі й зв’язок «заблоковано епіком Precondition». Знімок екрана з відеозапису.</figcaption></figure>
+
+<p><strong>Оцінки й призначення.</strong> Як оцінювати задачі, розібрали на занятті 16 (голосування story points); тут викладач просто нагадав, як їх проставляють: задачам епіка архітектури — 4, 4 і 3 SP, і призначив їх на людей із команди.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-backlog-estimates.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-backlog-estimates.webp" alt="Нижня частина backlog: SCRUM-12–15 з міткою Precondition без оцінок; SCRUM-19 системна декомпозиція, SCRUM-20 design description, SCRUM-21 деплоймент дизайну з міткою епіка архітектури, термін Dec 10, оцінки 4, 4, 3 і призначеними виконавцями" loading="lazy"/></a><figcaption class="diagram-note">Рис. 17.5. Задачі епіка архітектури з терміном, оцінками й виконавцями. Знімок екрана з відеозапису.</figcaption></figure>
+
+<p>Тепер модель вибудувано, але вона ще в backlog. Далі в Scrum-дошці частину задач беруть у перший спринт, частину — у другий, і так далі.</p>
+<h2>5. Спринти: тривалість і ціль</h2>
+<p>Спринти можна редагувати (меню «…» → Edit sprint).</p>
+<p><strong>Тривалість.</strong> Стандартна — <strong>два тижні</strong>; дата завершення рахується автоматично від дати старту. Але тривалість не мусить бути однаковою навіть у межах одного проєкту. Перший спринт викладач зробив <strong>тритижневим</strong> (на екрані — 2–23 листопада), решта — по два тижні. Це штучне рішення менеджера: перший тиждень матиме велику затримку через залежності, яких неможливо передбачити, — навіть із дуже добрими інженерами «почнуться приколи», і без запасу спринт буде провалено.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-sprint-edit.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-sprint-edit.webp" alt="Діалог Edit sprint: SCRUM Sprint 1, Duration 3 weeks, Start date 11/2/2026, End date 11/23/2026, порожнє поле Sprint goal" loading="lazy"/></a><figcaption class="diagram-note">Рис. 17.6. Редагування спринту: тривалість 3 тижні, дата завершення рахується автоматично, поле Sprint goal. Знімок екрана з відеозапису.</figcaption></figure>
+
+<p><strong>Ціль спринту (sprint goal)</strong> — лаконічно описана фразою річ, якої треба досягти за спринт. Вона має бути <strong>досяжною</strong> й <strong>спостережуваною</strong>: потрібно мати змогу чітко сказати, досягли її чи ні. Ціль першого спринту: <strong>«Визначено аналоги роботів і систем керування»</strong> — у спринті якраз критерії, пошук існуючих рішень і аналіз.</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-sprints-goal.webp"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-sprints-goal.webp" alt="Backlog: SCRUM Sprint 1, 2 Nov – 23 Nov, ціль «визнані аналогії роботів та СК», задачі SCRUM-8, 7, 9, 10; SCRUM Sprint 2 — SCRUM-17, 11, 16; SCRUM Sprint 3, 17 Nov – 1 Dec, порожній" loading="lazy"/></a><figcaption class="diagram-note">Рис. 17.7. Перші спринти: ціль спринту 1 видно під його назвою. Знімок екрана з відеозапису.</figcaption></figure>
+
+<p>Спринт — штука «награна», штучна, але в цю гру грають усі. І найбільше горе в цій грі — <strong>не досягти sprint goal</strong>: це означає, що команда десь помилилася, і треба переглянути, що робити далі, щоб не повторити тих самих помилок.</p>
+<blockquote>
+<p><strong>Редакторське уточнення.</strong> За Scrum Guide (2020) спринти мають <strong>фіксовану тривалість</strong> до одного місяця — це дає ритм і порівнянні дані про швидкість команди. Подовжений перший спринт — свідомий практичний компроміс викладача; якщо його робите, пам’ятайте, що velocity першого спринту не можна напряму порівнювати з наступними. Sprint Goal у Scrum Guide — єдина ціль спринту, яку команда формулює під час Sprint Planning; вона дає гнучкість щодо конкретного складу робіт.</p>
+</blockquote>
+<h2>6. Як формується план і цілі спринтів</h2>
+<p>Викладач описав, як це виглядає на практиці:</p>
+<ol>
+<li><strong>Нарізка.</strong> Уся команда збирається разом і нарізає роботу на задачі в backlog — сотня, дві, три, чотири сотні тасок.</li>
+<li><strong>«Розчісування».</strong> Найдосвідченіші люди, «яким усе це болить», проставляють дати (оцінки голосує команда), parents, залежності, описи до кожної задачі.</li>
+<li><strong>Пріоритети.</strong> Ліди, архітект і <strong>product owner</strong> — той, хто визначає критерії виробу на виході й знає, що хоче отримати наприкінці, — розставляють пріоритети: найвищий, високий, середній, нижчий, найнижчий.</li>
+<li><strong>Розплутування.</strong> Пріоритет — не все: треба дивитися на залежності. В архітектури найвищий пріоритет, але в перший спринт її не взяти — ще немає критеріїв і вимог, «системний підхід дуже сирий». Тому беремо задачі, від яких вона залежить, і робимо їх якнайшвидше; це розблоковує високопріоритетну задачу, а вона — цілий кущ інших. Метафора викладача: розчісуємо волосся — шукаємо найбільш заплутане місце, розплутуємо його, переходимо до наступного, «доки всі реп’яхи з голови не витягнемо».</li>
+<li><strong>Заповнення спринтів.</strong> За цим критерієм задачі складаються в спринти. Ціль — щоб на момент планування в backlog не лишилося нічого. Скільки спринтів знадобилося — така й тривалість проєкту: видно дату завершення.</li>
+<li><strong>Буфер і календар.</strong> Далі додають буфер і відкривають календар: хто і коли працюватиме, які свята. Приклад: шведський замовник — у них свої свята (Мідсуммар тощо), плюс глобальні: Новий рік, Різдво. Спринт може тривати два тижні, але з 10 робочих днів реально буде 4 — тобто <strong>ємність спринту — 4 дні, а не 10</strong>, бо на цей спринт у всієї команди припадають свята.</li>
+<li><strong>Ціль кожного спринту</strong> й <strong>старт</strong>.</li>
+</ol>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-sprint-planning-flow.svg"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-sprint-planning-flow.svg" alt="Вісім кроків: нарізка, розчісування, пріоритети, розплутування залежностей, заповнення спринтів до 80 % ємності, календар і свята, ціль спринту, старт" loading="lazy"/></a><figcaption class="diagram-note">Рис. 17.8. Від сирого backlog до запущеного спринту — послідовність, яку описав викладач. Схема редакції.</figcaption></figure>
+
+<p><strong>Інвестуйте час у планування.</strong> Що охайніше ви пройдетеся по ньому, то менше проблем. Інакше вийде гарна Jira, яка не працює, бо ви «провтикали», що в цей час ніхто не працюватиме.</p>
+<p><strong>SAFe</strong> прямо наголошує: раз на три місяці всі з’їжджаються в одне місце й дивляться, що зроблено, чого не зроблено, що перенести, що взагалі викинути зі скоупу, що додати в backlog, як пріоритизувати; проходять ретроспективу — що було не так, що змінити, зупинити або почати. Мета — щоб продукт і далі виходив вчасно, якісно й без надмірного стресу.</p>
+<p>Якщо на етапі планування врахувати реальну ємність спринту, реальну ціль, реальні залежності й можливості команди, то команда, ліди й клієнт працюватимуть комфортно. А якщо людям комфортно, вони можуть працювати скільки завгодно довго й так само довго нарощувати цінність продукту. Усі щасливі — це хороший бізнес. Шведи називають таку гармонію <strong>lagom</strong>.</p>
+<blockquote>
+<p><strong>Редакторське уточнення.</strong> У SAFe це подія <strong>PI Planning</strong>: зазвичай дводенна, проводиться на початку кожного інкременту, тобто кожні 8–12 тижнів — «раз на квартал» відповідає верхній межі. Midsommar у Швеції святкують наприкінці червня (Midsommarafton — п’ятниця між 19 і 25 червня). <em>Lagom</em> — шведське «саме стільки, скільки треба», без надлишку й нестачі.</p>
+</blockquote>
+<h2>7. 80 % ємності: як пояснити замовникові</h2>
+<p>Нагадування з заняття 16: спринт заповнюють приблизно <strong>на 80 %</strong> ємності. Тут виникає конфлікт. Замовник платить гроші — і гроші інженерам платять немаленькі. Архітектори, PO, PM кажуть: «Порахували, що спринт — 10 story points, плануємо тільки 8». Замовника це обурює: «Я ж вам плачу за 10!»</p>
+<p>Аргументи викладача:</p>
+<ul>
+<li><strong>Рутини</strong> — комунікація між замовником і виконавцем, sprint planning, sprint demo, ретроспективи, backlog refinement, дзвінки. Їх не позбутися, «доки існує людина», але час на них іде — і чимало. Викладач показав свій робочий календар за минулий тиждень: більшість часу — дзвінки й узгодження процесів, лише невеликі вікна для офлайн-роботи. У нього специфічна роль, в інженерів такого менше, але час це все одно забирає.</li>
+<li><strong>Перемикання контексту.</strong> Іван кодить, думає над задачею — і тут дзвінок: «Розкажи, як ви реалізували цей інтерфейс?» Треба відійти, прокомунікувати, повернутися — і на повернення теж іде час.</li>
+<li><strong>Незаплановане.</strong> Багато чого планується, але не все потрапляє в план.</li>
+</ul>
+<p>Тому — <strong>80 %</strong>. Не ведіться на провокації «давайте 100 %, ми вже заплатили»: поясніть буквально, що це час на комунікацію, перемикання й незаплановані речі.</p>
+<p><strong>Старт спринту.</strong> Коли все сплановано, натискають <strong>Start sprint</strong>. Jira перепитує, чи всі готові. У крутих проєктах це як запуск ракети: усі стоять разом і затамовують подих; буває, хтось у останню мить кричить «стоп!» — забули щось додати. Додали, знову: «Три, два, один, старт». З цієї миті йде <strong>зворотний відлік</strong>: є обсяг роботи, який треба зробити, інакше ви «палите» sprint goal і підводите команду, свого ліда й себе.</p>
+<h2 id="assessment-2">8. Друга атестація: індивідуальне завдання</h2>
+<p>Наприкінці заняття викладач оголосив, що починається <strong>друга атестація</strong>, і пояснив, чого очікує для успішної здачі. На запитання студента він підтвердив: це <strong>індивідуальна</strong> робота. На прохання продублювати завдання в чат групи викладач відповів, що проганяє запис через Whisper і отримає завдання списком — ось він.</p>
+<p><strong>Що підготувати:</strong></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>№</th>
+<th>Етап</th>
+<th>Що зробити</th>
+<th>Де в курсі</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Компанія</td>
+<td>Назва компанії, ціль, сфера, сетап (склад і структура), локація, бюджет</td>
+<td>01, 07</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Вебсайт</td>
+<td>На основі цього — за допомогою будь-якого AI-інструмента — односторінковий сайт (one-pager) компанії; опублікувати на безкоштовному хостингу, щоб він з’явився в вебі</td>
+<td>07, 08</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Презентація</td>
+<td>Презентація про компанію в тому самому дизайн-стилі</td>
+<td>07, 10</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Постер і візитки</td>
+<td>Постер, з яким ви нібито їдете на конференцію, і бізнес-картки</td>
+<td>07, 08</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Конференція</td>
+<td>Знайти в інтернеті <strong>реальну конференцію, що відбудеться у 2027 році</strong>, і показати, що ви туди їдете: домовилися з організаторами, оплатили участь тощо (імітація)</td>
+<td>03, 09</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Поїздка</td>
+<td>Імітація підготовки до виїзду й комунікації з тревел-відділом; сам виїзд</td>
+<td>09, 10</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Зустріч із клієнтом</td>
+<td>Імітація зустрічі з клієнтом і дискусії з ним</td>
+<td>09, 10, 11</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Follow-up</td>
+<td>Перший follow-up, другий follow-up, конвертація в клієнта, подальша комунікація</td>
+<td>04, 10, 11, 12</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Proposal і архітектура</td>
+<td>Створення proposal і architecture description</td>
+<td>05, 06, 08, 12–14</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Задачі</td>
+<td>Декомпозиція architecture description на задачі в Trello, Jira або GitHub Projects</td>
+<td>15, 16, 17</td>
+</tr>
+</tbody>
+</table></div>
+<p>Колонку «Де в курсі» додала редакція: це номери занять, де відповідну тему розібрано докладніше.</p>
+<p><strong>Формат здачі:</strong></p>
+<ul>
+<li><strong>Запис екрана з голосовим супроводом</strong>: ви входите в ролі й буквально проговорюєте, як усе відбувається.</li>
+<li><strong>Один відеоролик від кожного студента</strong> з усіма етапами, переліченими вище.</li>
+<li>Загальна тривалість — <strong>не більше 15 хвилин</strong>. Підготуйтеся як слід, а потім продемонструйте артефакти.</li>
+<li>На чому зосередити час і зусилля — вирішуєте ви. Це, власне, частина вашої <strong>sales-стратегії</strong>.</li>
+</ul>
+<p><strong>Строк:</strong> атестаційну відомість закривають <strong>30 листопада</strong>; викладачеві потрібен час на перевірку, тому здати роботу треба <strong>до 27 листопада 2026 року</strong>.</p>
+<p>«Якщо ви це зробите, я буду неймовірно щасливий. Для мене це означатиме, що все це йде не впусту».</p>
+<figure class="diagram lecture-figure"><a href="../../../assets/img/teaching/embedded-software-engineering/l17-assessment-path.svg"><img src="../../../assets/img/teaching/embedded-software-engineering/l17-assessment-path.svg" alt="Чотири блоки завдання: A — компанія (назва, ціль, сфера, сетап, локація, бюджет; one-pager на безкоштовному хостингу; презентація; постер і візитки); B — конференція 2027 року, домовленість з організаторами, підготовка поїздки, поїздка; C — зустріч, дискусія, два follow-up, конвертація в клієнта; D — proposal, architecture description, задачі в Trello, Jira або GitHub Projects. Нижче: один відеозапис до 15 хвилин, індивідуально, до 27 листопада 2026" loading="lazy"/></a><figcaption class="diagram-note">Рис. 17.9. Завдання до другої атестації як один наскрізний шлях. Схема редакції (написи англійською).</figcaption></figure>
+
+<blockquote>
+<p><strong>Редакторське уточнення: зв’язок із заняттям 15.</strong> 10 листопада другу атестацію було описано як <strong>командний проєкт</strong> (architecture description, proposal, діаграма Ганта, залученість інженерів і вартість, моделі оплати, простір у трекері з backlog щонайменше на чотири спринти), а шлях «компанія → конференція → клієнт → proposal» — як індивідуальну РГР <strong>після</strong> другої атестації. 17 листопада викладач оголосив саме цей індивідуальний перелік як завдання до другої атестації. Конспект фіксує обидва оголошення так, як їх зроблено; останнім за часом є оголошення 17 листопада. Якщо щось у вимогах неясно — уточніть у викладача.</p>
+</blockquote>
+<p><strong>Чек-лист перед здачею (від редакції, на основі вимог викладача):</strong></p>
+<ul>
+<li>Сайт відкривається за публічним посиланням з іншого пристрою.</li>
+<li>Сайт, презентація, постер і візитки — в одному стилі й з однаковими контактами.</li>
+<li>Конференція реальна, відбудеться у 2027 році; у відео є посилання на неї.</li>
+<li>У відео пройдено всі етапи 1–10, навіть якщо деякі — коротко.</li>
+<li>Задачі в трекері походять з вашого architecture description, а не написані окремо.</li>
+<li>Загальна тривалість відео — до 15 хвилин; відео здано до 27 листопада.</li>
+</ul>
+<h2>9. Оголошення й наступне заняття</h2>
+<ul>
+<li>Викладач хотів розповісти про <strong>процес найму інженерів та інших спеціалістів</strong> у проєкт — як його проводять і на що звертають увагу. Тему перенесено на наступне заняття (через тиждень) або на офлайн-запис.</li>
+<li>Почалася підготовка до службового відрядження викладача. Вона, як завжди, супроводжується нюансами: щось не складається, хтось щось пропустив, тревел-відділ робить «трошки не те». Викладач записує короткі відео цієї підготовки; після повернення обробить їх і опублікує як семінарський модуль: підготовка до поїздки, поїздка, проблеми, як їх розв’язали і чим усе завершилося.</li>
+<li><strong>Наступне заняття:</strong> підготовка внутрішніх процесів компанії для найму інженерів — різні види інженерів, різні види залученості.</li>
+</ul>
+<h2>Практичні висновки</h2>
+<ul>
+<li>PMBOK — збірка найкращих практик проєктного менеджменту; SAFe — для багатьох команд зі спільними залежностями, але його ціна — частка часу кожного інженера на рутини.</li>
+<li>До старту проєкту в backlog закладають <strong>precondition</strong>: аналоги, критерії, вимоги, архітектуру, команду, інструменти, workflow, екосистему.</li>
+<li>Архітектура йде одразу після системних вимог і визначає ролі; екосистему не підготувати без людей.</li>
+<li>Залежності в Jira — зв’язок <em>is blocked by</em>; достатньо ланцюжка до найближчого блокера.</li>
+<li>Наявну задачу можна конвертувати в епік; parent для багатьох задач змінюють масовим редагуванням.</li>
+<li>Залежність можна ставити й між епіками — так задається порядок великих блоків роботи.</li>
+<li>Перший спринт можна зробити довшим; ціль спринту — одна досяжна й перевірювана фраза.</li>
+<li>План будують від залежностей, а не лише від пріоритетів; кількість спринтів дає дату завершення.</li>
+<li>Свята команди й замовника зменшують реальну ємність спринту — перевіряйте календар.</li>
+<li>80 % ємності — час на рутини, перемикання контексту й незаплановане; це треба вміти пояснити замовникові.</li>
+</ul>
+<h2>Питання для самоперевірки</h2>
+<ul>
+<li>Що таке PMBOK і навіщо менеджерові сертифікація?</li>
+<li>Коли SAFe виправданий, а коли його рутини не окупаються?</li>
+<li>Що входить у precondition проєкту робота-маніпулятора і чому в такому порядку?</li>
+<li>Чому архітектуру роблять до формування команди й вибору інструментів?</li>
+<li>Як у Jira встановити залежність між тікетами і що таке наслідування залежностей?</li>
+<li>Навіщо конвертувати задачу в епік, а не створювати епік заново?</li>
+<li>Як і навіщо задати залежність між епіками?</li>
+<li>Чому перший спринт може бути довшим за наступні?</li>
+<li>Якою має бути ціль спринту? Наведіть приклад для першого спринту.</li>
+<li>Як із backlog отримати дату завершення проєкту?</li>
+<li>Як свята замовника впливають на ємність спринту?</li>
+<li>Які аргументи на користь 80 % ємності можна навести замовникові?</li>
+<li>Які етапи має пройти відео до другої атестації, яка його максимальна тривалість і строк здачі?</li>
+</ul>
+<h2>Що далі</h2>
+<p><strong>Оголошено викладачем:</strong> наступне заняття (орієнтовно через тиждень) — внутрішні процеси компанії для найму інженерів, різні види інженерів і різні види залученості. <strong>Прогноз редакції</strong>, а не анонс: ймовірні теми — профілі ролей із архітектури, вакансії й співбесіди, моделі залучення (штат, аутстафінг, підрядник), онбординг — тобто наповнення задачі «Формування команди» (SCRUM-16).</p>
+<h2>Перевірені посилання</h2>
+<ul>
+<li>PMI, PMBOK® Guide — Eighth Edition: <a href="https://www.pmi.org/pmbok-guide" rel="noopener" target="_blank">https://www.pmi.org/pmbok-guide</a></li>
+<li>PMI Ukraine Chapter, «Настанова PMBOK» (сьоме видання, український переклад): <a href="https://pmiukraine.org/pmbok7" rel="noopener" target="_blank">https://pmiukraine.org/pmbok7</a></li>
+<li>SAFe, PI Planning: <a href="https://framework.scaledagile.com/pi-planning/" rel="noopener" target="_blank">https://framework.scaledagile.com/pi-planning/</a></li>
+<li>The Scrum Guide (2020): <a href="https://scrumguides.org/scrum-guide.html" rel="noopener" target="_blank">https://scrumguides.org/scrum-guide.html</a></li>
+<li>Atlassian, залежності на шкалі часу Jira: <a href="https://support.atlassian.com/jira-software-cloud/docs/show-or-hide-dependencies-on-your-roadmap/" rel="noopener" target="_blank">https://support.atlassian.com/jira-software-cloud/docs/show-or-hide-dependencies-on-your-roadmap/</a></li>
+</ul></article></div></section></main><footer class="site-footer"><div class="container footer-grid">
+<div><b style="color:var(--text)">Væringjar II · Викладання</b><p style="margin-top:8px">Авторські навчальні матеріали Дмитра Гуменного.</p><a class="footer-about" href="../../about.html">Про автора →</a></div>
+<div class="footer-links"><b>Курс</b><a href="index.html">Огляд курсу</a><a href="lecture-15.html">Заняття 15</a><a href="lecture-16.html">Заняття 16</a><a href="lecture-17.html">Заняття 17</a></div>
+<div class="footer-links"><b>Контекст</b><a href="https://ipze.kpi.ua/" rel="noopener" target="_blank">КПІ · кафедра ІПЗЕ</a><a href="../../teaching.html">Усі навчальні матеріали</a></div>
+</div><a class="footer-privacy" href="../../privacy.html">Конфіденційність</a></footer><script src="../../assets/js/site.js?v=20261014-theme-v710"></script><script src="../../../assets/js/locale.js"></script><script defer src="../../../assets/js/site-tree.js?v=20261028-nav3"></script><script defer src="../../../assets/js/site-nav.js?v=20261028-nav3"></script></body></html>

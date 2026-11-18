@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 560" width="1240" height="560" role="img" aria-label="Precondition epic: tasks and dependencies from session 17">
+<title>Precondition epic: tasks and dependencies from session 17</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/></marker><marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a8a8a"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2f6a45"/></marker></defs>
+<rect width="1240" height="560" fill="#ffffff"/>
+<g font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" fill="#1a1a1a">
+<rect x="20" y="20" width="1200" height="330" fill="#ffffff" stroke="#6b4fa0" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="36" y="44" text-anchor="start" font-size="13" font-weight="600" fill="#6b4fa0">EPIC SCRUM-18 · Precondition</text>
+<text x="40" y="164" text-anchor="start" font-size="10.5" font-weight="400" fill="#555">Sprint 1</text>
+<rect x="40" y="170" width="128" height="62" fill="#eef2f7" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="104.0" y="190.2" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-8</text>
+<text x="104.0" y="205.1" text-anchor="middle" font-size="11.5" font-weight="400">Criteria for robot</text>
+<text x="104.0" y="220.1" text-anchor="middle" font-size="11.5" font-weight="400">and control system</text>
+<text x="190" y="94" text-anchor="start" font-size="10.5" font-weight="400" fill="#555">Sprint 1</text>
+<rect x="190" y="100" width="128" height="62" fill="#eef2f7" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="254.0" y="120.2" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-7</text>
+<text x="254.0" y="135.1" text-anchor="middle" font-size="11.5" font-weight="400">Search: existing</text>
+<text x="254.0" y="150.1" text-anchor="middle" font-size="11.5" font-weight="400">mech. platforms</text>
+<text x="190" y="234" text-anchor="start" font-size="10.5" font-weight="400" fill="#555">Sprint 1</text>
+<rect x="190" y="240" width="128" height="62" fill="#eef2f7" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="254.0" y="260.2" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-9</text>
+<text x="254.0" y="275.1" text-anchor="middle" font-size="11.5" font-weight="400">Search: existing</text>
+<text x="254.0" y="290.1" text-anchor="middle" font-size="11.5" font-weight="400">control systems</text>
+<text x="340" y="164" text-anchor="start" font-size="10.5" font-weight="400" fill="#555">Sprint 1</text>
+<rect x="340" y="170" width="128" height="62" fill="#eef2f7" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="404.0" y="190.2" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-10</text>
+<text x="404.0" y="205.1" text-anchor="middle" font-size="11.5" font-weight="400">Analysis, choice of</text>
+<text x="404.0" y="220.1" text-anchor="middle" font-size="11.5" font-weight="400">robot and CS</text>
+<text x="490" y="164" text-anchor="start" font-size="10.5" font-weight="400" fill="#555">Sprint 2</text>
+<rect x="490" y="170" width="128" height="62" fill="#f3eef7" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="554.0" y="190.2" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-11</text>
+<text x="554.0" y="205.1" text-anchor="middle" font-size="11.5" font-weight="400">System requirements</text>
+<text x="554.0" y="220.1" text-anchor="middle" font-size="11.5" font-weight="400">for the new product</text>
+<text x="640" y="164" text-anchor="start" font-size="10.5" font-weight="400" fill="#555">Sprint 2</text>
+<rect x="640" y="170" width="128" height="62" fill="#f3eef7" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="704.0" y="197.7" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-17</text>
+<text x="704.0" y="212.6" text-anchor="middle" font-size="11.5" font-weight="400">Architecture</text>
+<text x="790" y="94" text-anchor="start" font-size="10.5" font-weight="400" fill="#555">Sprint 2</text>
+<rect x="790" y="100" width="128" height="62" fill="#f3eef7" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="854.0" y="127.7" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-16</text>
+<text x="854.0" y="142.6" text-anchor="middle" font-size="11.5" font-weight="400">Team formation</text>
+<text x="790" y="234" text-anchor="start" font-size="10.5" font-weight="400" fill="#555">Backlog</text>
+<rect x="790" y="240" width="128" height="62" fill="#f4f4f0" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="854.0" y="260.2" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-12</text>
+<text x="854.0" y="275.1" text-anchor="middle" font-size="11.5" font-weight="400">SW / HW / FuSa</text>
+<text x="854.0" y="290.1" text-anchor="middle" font-size="11.5" font-weight="400">requirements</text>
+<text x="940" y="94" text-anchor="start" font-size="10.5" font-weight="400" fill="#555">Backlog</text>
+<rect x="940" y="100" width="128" height="62" fill="#f4f4f0" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="1004.0" y="120.2" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-13</text>
+<text x="1004.0" y="135.1" text-anchor="middle" font-size="11.5" font-weight="400">Tool selection:</text>
+<text x="1004.0" y="150.1" text-anchor="middle" font-size="11.5" font-weight="400">dev, test, docs</text>
+<text x="1090" y="94" text-anchor="start" font-size="10.5" font-weight="400" fill="#555">Backlog</text>
+<rect x="1090" y="100" width="128" height="62" fill="#f4f4f0" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="1154.0" y="120.2" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-15</text>
+<text x="1154.0" y="135.1" text-anchor="middle" font-size="11.5" font-weight="400">Ecosystem</text>
+<text x="1154.0" y="150.1" text-anchor="middle" font-size="11.5" font-weight="400">preparation</text>
+<text x="1090" y="234" text-anchor="start" font-size="10.5" font-weight="400" fill="#555">Backlog</text>
+<rect x="1090" y="240" width="128" height="62" fill="#f4f4f0" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="1154.0" y="260.2" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-14</text>
+<text x="1154.0" y="275.1" text-anchor="middle" font-size="11.5" font-weight="400">Workflow</text>
+<text x="1154.0" y="290.1" text-anchor="middle" font-size="11.5" font-weight="400">preparation</text>
+<path d="M 168 201.0 C 179.0 201.0, 179.0 131.0, 190 131.0" fill="none" stroke="#8a8a8a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m)"/>
+<path d="M 168 201.0 C 179.0 201.0, 179.0 271.0, 190 271.0" fill="none" stroke="#8a8a8a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m)"/>
+<path d="M 318 131.0 C 329.0 131.0, 329.0 201.0, 340 201.0" fill="none" stroke="#8a8a8a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m)"/>
+<path d="M 318 271.0 C 329.0 271.0, 329.0 201.0, 340 201.0" fill="none" stroke="#8a8a8a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m)"/>
+<line x1="468" y1="201.0" x2="490" y2="201.0" stroke="#8a8a8a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m)"/>
+<line x1="618" y1="201.0" x2="640" y2="201.0" stroke="#8a8a8a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m)"/>
+<path d="M 768 201.0 C 779.0 201.0, 779.0 271.0, 790 271.0" fill="none" stroke="#8a8a8a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m)"/>
+<path d="M 768 201.0 C 779.0 201.0, 779.0 131.0, 790 131.0" fill="none" stroke="#1a1a1a" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="918" y1="131.0" x2="940" y2="131.0" stroke="#1a1a1a" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="1068" y1="131.0" x2="1090" y2="131.0" stroke="#1a1a1a" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="918" y1="271.0" x2="1090" y2="271.0" stroke="#1a1a1a" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M 704.0 170 C 704.0 60, 900 60, 940 114" fill="none" stroke="#1a1a1a" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M 768 207.0 C 900 207.0, 1000 226, 1090 254" fill="none" stroke="#1a1a1a" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M 918 154 C 1010 154, 1000 267.0, 1090 267.0" fill="none" stroke="#1a1a1a" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="40" y1="325" x2="90" y2="325" stroke="#1a1a1a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="98" y="329" text-anchor="start" font-size="11.5" font-weight="400" fill="#1a1a1a">Jira link set in the session (arrow: blocker → blocked)</text>
+<line x1="470" y1="325" x2="520" y2="325" stroke="#8a8a8a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m)"/>
+<text x="528" y="329" text-anchor="start" font-size="11.5" font-weight="400" fill="#1a1a1a">order from the lecturer’s narrative (not linked)</text>
+<text x="880" y="329" text-anchor="start" font-size="11.5" font-weight="400" fill="#555">Tags: sprint planned in the session</text>
+<rect x="560" y="420" width="660" height="110" fill="#ffffff" stroke="#a0601f" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="576" y="444" text-anchor="start" font-size="13" font-weight="600" fill="#a0601f">EPIC SCRUM-22 · Product architecture and decomposition</text>
+<rect x="576" y="458" width="190" height="56" fill="#f4f4f0" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="671.0" y="482.7" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-19</text>
+<text x="671.0" y="497.6" text-anchor="middle" font-size="11.5" font-weight="400">System decomposition</text>
+<rect x="786" y="458" width="190" height="56" fill="#f4f4f0" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="881.0" y="482.7" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-20</text>
+<text x="881.0" y="497.6" text-anchor="middle" font-size="11.5" font-weight="400">Design description</text>
+<rect x="996" y="458" width="210" height="56" fill="#f4f4f0" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="1101.0" y="482.7" text-anchor="middle" font-size="11.5" font-weight="600">SCRUM-21</text>
+<text x="1101.0" y="497.6" text-anchor="middle" font-size="11.5" font-weight="400">Design deployment</text>
+<line x1="766" y1="486" x2="786" y2="486" stroke="#8a8a8a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m)"/>
+<line x1="976" y1="486" x2="996" y2="486" stroke="#8a8a8a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m)"/>
+<text x="40" y="445" text-anchor="start" font-size="12" font-weight="400" fill="#1a1a1a">Epic-level link: SCRUM-22 is blocked by SCRUM-18,</text>
+<text x="40" y="463" text-anchor="start" font-size="12" font-weight="400" fill="#1a1a1a">so the architecture epic cannot start before the</text>
+<text x="40" y="481" text-anchor="start" font-size="12" font-weight="400" fill="#1a1a1a">precondition epic is closed.</text>
+<text x="40" y="507" text-anchor="start" font-size="12" font-weight="400" fill="#555">Children of SCRUM-22: priority Highest, due 10 Dec,</text>
+<text x="40" y="525" text-anchor="start" font-size="12" font-weight="400" fill="#555">estimates 4 + 4 + 3 SP.</text>
+<path d="M 470 350 C 470 395, 520 470, 560 470" fill="none" stroke="#1a1a1a" stroke-width="1.6" marker-end="url(#a)"/>
+</g></svg>
